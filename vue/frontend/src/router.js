@@ -4,6 +4,11 @@ import auth from './auth'
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Register from './views/Register.vue'
+import ToolSearch from './views/ToolSearch.vue'
+import Tools from './views/Tools.vue'
+import ToolDetail from './views/ToolDetail.vue'
+import Reserve from './views/Reserve.vue'
+import Cart from './views/Cart.vue'
 
 Vue.use(Router)
 
@@ -42,6 +47,46 @@ const router = new Router({
       component: Register,
       meta: {
         requiresAuth: false
+      }
+    },
+    {
+      path: "/toolsearch",
+      name: "tool-search",
+      component: ToolSearch,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/tools',
+      name: 'tools',
+      component: Tools,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/tools/:id',
+      name: 'tool-detail',
+      component: ToolDetail,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      component: Cart,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/reserve',
+      name: 'reserve',
+      component: Reserve,
+      meta: {
+        requiresAuth: true
       }
     },
   ]
