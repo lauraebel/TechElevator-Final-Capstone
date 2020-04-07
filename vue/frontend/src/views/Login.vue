@@ -38,7 +38,7 @@ import auth from '../auth';
 
 export default {
   name: 'login',
-  components: {},
+
   data() {
     return {
       user: {
@@ -81,5 +81,5 @@ export default {
 </script>
 
 <style>
-
+  
 </style>

@@ -1,0 +1,10 @@
+:root {
+    --background-yellow: #FFD58E;
+    --div-background: #FF9B5A;
+    --div-header: #F26249;
+    --nav-background: #EC2F3B;
+}
+
+* {
+    font-family: 'Overpass', sans-serif;
+}
