@@ -2,8 +2,13 @@ package com.techelevator.controller;
 
 import com.techelevator.authentication.AuthProvider;
 import com.techelevator.authentication.UnauthorizedException;
+import com.techelevator.model.park.Park;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api")
+
 public class ApiController {
 
     @Autowired
@@ -32,4 +38,15 @@ public class ApiController {
         }
         return "Success";
     }
+    
+    @GetMapping
+    public List<Tool> list() {
+    	return toolDao.getAllTools();
+    }
+    
+	@GetMapping("{id}")
+	public Tool get(@PathVariable int id) {
+		return toolDao.getToolById(id);
+	}
+	
 }
