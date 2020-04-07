@@ -19,9 +19,20 @@ public class JdbcToolDAO implements ToolDAO {
 	public JdbcToolDAO(DataSource dataSource) {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
+	
+	@Override
+	public List<Tool> getAllTools() {
+		List<Tool> tools = new ArrayList<Tool>();
+		String sql = "SELECT id, name, description, img_name, brand_id FROM tools";
+		SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+		while (result.next()) {
+			tools.add(mapRowToTool(result));
+		}
+		return tools;
+	}
 
 	@Override
-	public List<Tool> searchByAvailable() {
+	public List<Tool> getAllAvailableTools() {
 		List<Tool> tools = new ArrayList<Tool>();
 		String sql = "SELECT tools.id, tools.name, tools.description, " + "tools.img_name, tools.brand_id "
 				+ "FROM tools " + "JOIN reservations ON tools.id=reservations.tool_id "
@@ -33,9 +44,20 @@ public class JdbcToolDAO implements ToolDAO {
 		}
 		return tools;
 	}
+	
+	@Override
+	public List<Tool> getToolById(long id) {
+		List<Tool> tools = new ArrayList<Tool>();
+		String sql = "SELECT id, name, description, img_name, brand_id FROM tools WHERE id = ?";
+		SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
+		while (result.next()) {
+			tools.add(mapRowToTool(result));
+		}
+		return tools;
+	}
 
 	@Override
-	public List<Tool> searchByCategory(String category) {
+	public List<Tool> getToolsByCategory(String category) {
 		List<Tool> tools = new ArrayList<Tool>();
 		String sql = "SELECT tools.id, tools.name, tools.description, " + "tools.img_name, tools.brand_id "
 				+ "FROM tools " + "JOIN tool_category ON tools.id=tool_category.tool_id "
@@ -48,7 +70,7 @@ public class JdbcToolDAO implements ToolDAO {
 	}
 
 	@Override
-	public List<Tool> searchByBrand(String brand) {
+	public List<Tool> getToolsByBrand(String brand) {
 		List<Tool> tools = new ArrayList<Tool>();
 		String sql = "SELECT tools.id, tools.name, tools.description, " + "tools.img_name, tools.brand_id "
 				+ "FROM tools " + "JOIN brands ON tools.brand_id=brands.id " + "WHERE brands.name = ?";
@@ -60,7 +82,7 @@ public class JdbcToolDAO implements ToolDAO {
 	}
 
 	@Override
-	public List<Tool> searchByName(String name) {
+	public List<Tool> getToolsByName(String name) {
 		List<Tool> tools = new ArrayList<Tool>();
 		String sql = "SELECT id, name, description, img_name, brand_id FROM tools " + "WHERE name LIKE ?";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(sql, "%" + name + "%");
@@ -71,7 +93,7 @@ public class JdbcToolDAO implements ToolDAO {
 	}
 
 	@Override
-	public List<Tool> searchByCheckedOut() {
+	public List<Tool> getAllCheckedOutTools() {
 		List<Tool> tools = new ArrayList<Tool>();
 		String sql = "SELECT tools.id, tools.name, tools.description, "
 				+ "tools.img_name, tools.brand_id, reservations.due_on FROM tools "

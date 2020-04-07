@@ -27,7 +27,7 @@ public class JdbcReservationDAO implements ReservationDAO {
 	}
 
 	@Override
-	public List<Reservation> searchByBorrowerName(String name) {
+	public List<Reservation> getReservationByBorrowerName(String name) {
 		List<Reservation> reservations = new ArrayList<Reservation>();
 		String sql = "SELECT reservations.id, reservations.user_id, reservations.tool_id, "
 				+ "reservations.loaned_on, reservations.due_on, " + "reservations.returned_on FROM reservations "
@@ -41,7 +41,7 @@ public class JdbcReservationDAO implements ReservationDAO {
 	}
 
 	@Override
-	public List<Reservation> searchByBorrowerLicenseNumber(String licenseNumber) {
+	public List<Reservation> getReservationByLicenseNumber(String licenseNumber) {
 		List<Reservation> reservations = new ArrayList<Reservation>();
 		String sql = "SELECT reservations.id, reservations.user_id, reservations.tool_id, "
 				+ "reservations.loaned_on, reservations.due_on, " + "reservations.returned_on FROM reservations "
@@ -54,7 +54,7 @@ public class JdbcReservationDAO implements ReservationDAO {
 	}
 
 	@Override
-	public List<Reservation> searchByToolId(long toolId) {
+	public List<Reservation> getReservationByToolId(long toolId) {
 		List<Reservation> reservations = new ArrayList<Reservation>();
 		String sql = SQL_SELECT_RESERVATION + " WHERE tool_id=?";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(sql, toolId);

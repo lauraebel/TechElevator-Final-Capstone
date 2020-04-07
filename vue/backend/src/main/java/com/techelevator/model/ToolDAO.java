@@ -3,13 +3,17 @@ package com.techelevator.model;
 import java.util.List;
 
 public interface ToolDAO {
+	
+	public List<Tool> getAllTools();
 
 	/**
 	 * View all available tools.
 	 * 
 	 * @return a List of tool objects
 	 */
-    public List <Tool> searchByAvailable();
+    public List <Tool> getAllAvailableTools();
+    
+    public List<Tool> getToolById(long id);
     
     /**
      * Search tool collection by category.
@@ -17,7 +21,7 @@ public interface ToolDAO {
      * @param category the category selected from given list
      * @return a List of tool objects
      */
-    public List <Tool> searchByCategory(String category);
+    public List <Tool> getToolsByCategory(String category);
     
     /**
      * Search tool collection by brand.
@@ -25,7 +29,7 @@ public interface ToolDAO {
      * @param brand the brand selected from given list
      * @return a List of tool objects
      */
-    public List <Tool> searchByBrand(String brand);
+    public List <Tool> getToolsByBrand(String brand);
     
     /**
      * Search tool collection by name.
@@ -33,7 +37,7 @@ public interface ToolDAO {
      * @param name the entered tool name
      * @return a List of tool objects
      */
-    public List <Tool> searchByName(String name);
+    public List <Tool> getToolsByName(String name);
     
     /**
      * View all checked out tools and when they will
@@ -41,7 +45,7 @@ public interface ToolDAO {
      * 
      * @return a List of tool objects
      */
-    public List <Tool> searchByCheckedOut();
+    public List <Tool> getAllCheckedOutTools();
 
    /**
     * Save a new tool to the database. Category & Brand will be cross-referenced

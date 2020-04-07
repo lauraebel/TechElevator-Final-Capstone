@@ -10,7 +10,7 @@ public interface ReservationDAO {
 	 * @param name borrower's first or last name
 	 * @return a List of reservations
 	 */
-	public List <Reservation> searchByBorrowerName(String name);
+	public List <Reservation> getReservationByBorrowerName(String name);
 	
 	/**
 	 * Search reservations by borrower's license number.
@@ -18,7 +18,7 @@ public interface ReservationDAO {
 	 * @param licenseNumber borrower's license number
 	 * @return a List of reservations
 	 */
-	public List <Reservation> searchByBorrowerLicenseNumber(String licenseNumber);
+	public List <Reservation> getReservationByLicenseNumber(String licenseNumber);
 	
 	/**
 	 * Search reservations by tool id
@@ -26,7 +26,7 @@ public interface ReservationDAO {
 	 * @param toolId 
 	 * @return a List of reservations
 	 */
-	public List <Reservation> searchByToolId(long toolId);
+	public List <Reservation> getReservationByToolId(long toolId);
 	
 	/**
 	 * Add a reservation to the database.
