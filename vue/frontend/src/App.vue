@@ -6,3 +6,9 @@
     <router-view/>
   </div>
 </template>
+
+<style>
+  div#app {
+    background-color: #FFD58E;
+  }
+</style>
