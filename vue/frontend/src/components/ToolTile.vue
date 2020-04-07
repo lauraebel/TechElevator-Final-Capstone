@@ -7,33 +7,17 @@
 
 <script>
 export default {
+    name: 'tool-tile',
     props: {
-        // toolName: String,
-        // toolDescription: String,
-        // toolImgName: String,
-        // toolBrand: String,
+        name: String,
+        image_path: String
     },
     data() {
-        return {
-            tool: {
-                name: 'Hammer',
-                description: 'A really cool hammer.',
-                img_name: 'hammer.jpg',
-                brand: 'Black & Decker'
-            }
-        }
+        
     },
-    computed: {},
-    methods(){},
-    created(){
-
-    }
 }
 </script>
 
 <style>
-    div.tool {
-        background-color: #FFD58E;
-    }
-
+    
 </style>

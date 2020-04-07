@@ -1,13 +1,17 @@
 <template>
   <div class="tools">
     <h1>Tools</h1>
-    <p>You must be authenticated to see this</p>
   </div>
 </template>
 
 <script>
+import ToolTile from '../components/ToolTile'
+
 export default {
-  name: 'tools'
+  name: 'tools',
+  components: {
+    ToolTile
+  }
 }
 </script>
 

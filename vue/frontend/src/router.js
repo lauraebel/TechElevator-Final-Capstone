@@ -30,7 +30,11 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        requiresAuth: true
+        // correct setting
+        // requiresAuth: true
+
+        // temporary for development
+        requiresAuth: false
       }
     },
     {
@@ -54,7 +58,11 @@ const router = new Router({
       name: "tool-search",
       component: ToolSearch,
       meta: {
-        requiresAuth: true
+        // correct setting
+        // requiresAuth: true
+
+        // temporary for development
+        requiresAuth: false
       }
     },
     {
@@ -62,7 +70,11 @@ const router = new Router({
       name: 'tools',
       component: Tools,
       meta: {
-        requiresAuth: true
+        // correct setting
+        // requiresAuth: true
+
+        // temporary for development
+        requiresAuth: false
       }
     },
     {
@@ -70,7 +82,11 @@ const router = new Router({
       name: 'tool-detail',
       component: ToolDetail,
       meta: {
-        requiresAuth: true
+        // correct setting
+        // requiresAuth: true
+
+        // temporary for development
+        requiresAuth: false
       }
     },
     {
@@ -78,7 +94,11 @@ const router = new Router({
       name: 'cart',
       component: Cart,
       meta: {
-        requiresAuth: true
+        // correct setting
+        // requiresAuth: true
+
+        // temporary for development
+        requiresAuth: false
       }
     },
     {
@@ -86,7 +106,11 @@ const router = new Router({
       name: 'reserve',
       component: Reserve,
       meta: {
-        requiresAuth: true
+        // correct setting
+        // requiresAuth: true
+        
+        // temporary for development
+        requiresAuth: false
       }
     },
   ]
