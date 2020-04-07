@@ -13,7 +13,7 @@ public interface ToolDAO {
 	 */
     public List <Tool> getAllAvailableTools();
     
-    public List<Tool> getToolById(long id);
+    public Tool getToolById(long id);
     
     /**
      * Search tool collection by category.

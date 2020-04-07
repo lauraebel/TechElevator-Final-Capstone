@@ -46,14 +46,14 @@ public class JdbcToolDAO implements ToolDAO {
 	}
 	
 	@Override
-	public List<Tool> getToolById(long id) {
-		List<Tool> tools = new ArrayList<Tool>();
+	public Tool getToolById(long id) {
+		Tool tool = null;
 		String sql = "SELECT id, name, description, img_name, brand_id FROM tools WHERE id = ?";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
-		while (result.next()) {
-			tools.add(mapRowToTool(result));
+		if(result.next()) {
+			tool = mapRowToTool(result);
 		}
-		return tools;
+		return tool;
 	}
 
 	@Override
