@@ -2,6 +2,9 @@ package com.techelevator.model;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public interface ToolDAO {
 	
 	public List<Tool> getAllTools();

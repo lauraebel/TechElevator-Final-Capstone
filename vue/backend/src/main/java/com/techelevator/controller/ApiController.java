@@ -2,7 +2,8 @@ package com.techelevator.controller;
 
 import com.techelevator.authentication.AuthProvider;
 import com.techelevator.authentication.UnauthorizedException;
-import com.techelevator.model.park.Park;
+import com.techelevator.model.Tool;
+import com.techelevator.model.ToolDAO;
 
 import java.util.List;
 
@@ -21,6 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 public class ApiController {
 
+	@Autowired
+	private ToolDAO toolDao;
+	
     @Autowired
     private AuthProvider authProvider;
 
@@ -45,8 +49,7 @@ public class ApiController {
     }
     
 	@GetMapping("{id}")
-	public Tool get(@PathVariable int id) {
+	public Tool get(@PathVariable long id) {
 		return toolDao.getToolById(id);
 	}
-	
 }
