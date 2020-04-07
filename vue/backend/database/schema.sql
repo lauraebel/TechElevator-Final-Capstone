@@ -36,6 +36,7 @@ CREATE TABLE tools (
   id serial PRIMARY KEY,
   name varchar(25) NOT NULL,
   description varchar(255),
+  img_name varchar(25),
   brand_id int NOT NULL,
 
   CONSTRAINT fk_t_brand_id FOREIGN KEY (brand_id) references brands(id)

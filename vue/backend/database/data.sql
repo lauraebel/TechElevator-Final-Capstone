@@ -4,7 +4,7 @@ INSERT INTO roles (id, name) VALUES (DEFAULT, 'user');
 INSERT INTO users (id, username, password, salt, role, first_name, last_name, license_number) 
     VALUES (DEFAULT, 'katherinelillemoen', 'password', 'salt', (SELECT id FROM roles WHERE name = 'user'), 'katherine', 'lillemoen', '09281999');
 INSERT INTO users (id, username, password, salt, role, first_name, last_name, license_number)
-    VALUES (DEFAULT, 'lauraebel', 'password1', 'salt', (SELECT id FROM roles WHERE name = 'user'), 'laura', 'ebel', '09281999');
+    VALUES (DEFAULT, 'lauraebel', 'password1', 'salt', (SELECT id FROM roles WHERE name = 'user'), 'laura', 'ebel', '10291991');
 INSERT INTO users (id, username, password, salt, role, first_name, last_name, license_number)    
     VALUES (DEFAULT, 'marthaweisheimer', 'password2', 'salt', (SELECT id FROM roles WHERE name = 'user'), 'martha', 'weisheimer', '05301985');
 INSERT INTO users (id, username, password, salt, role, first_name, last_name, license_number)    
@@ -21,16 +21,16 @@ INSERT INTO brands (id, name)
 INSERT INTO brands (id, name) 
     VALUES (DEFAULT, 'stanley');
 
-INSERT INTO tools (id, name, description, brand_id) 
-    VALUES (DEFAULT, 'power drill', 'a really cool drill', (SELECT id FROM brands WHERE name = 'black & decker'));
-INSERT INTO tools (id, name, description, brand_id) 
-    VALUES (DEFAULT, 'hammer', 'a really cool hammer', (SELECT id FROM brands WHERE name = 'husky'));
-INSERT INTO tools (id, name, description, brand_id) 
-    VALUES (DEFAULT, 'screwdriver', 'a really cool screwdriver', (SELECT id FROM brands WHERE name = 'stanley'));
-INSERT INTO tools (id, name, description, brand_id) 
-    VALUES (DEFAULT, 'shovel', 'a really cool shovel', (SELECT id FROM brands WHERE name = 'dewalt'));
-INSERT INTO tools (id, name, description, brand_id) 
-    VALUES (DEFAULT, 'socket wrench', 'a really cool socket wrench', (SELECT id FROM brands WHERE name = 'black & decker'));
+INSERT INTO tools (id, name, description, img_name, brand_id) 
+    VALUES (DEFAULT, 'power drill', 'a really cool drill', 'power-drill.jpg', (SELECT id FROM brands WHERE name = 'black & decker'));
+INSERT INTO tools (id, name, description, img_name, brand_id) 
+    VALUES (DEFAULT, 'hammer', 'a really cool hammer', 'hammer.jpg', (SELECT id FROM brands WHERE name = 'husky'));
+INSERT INTO tools (id, name, description, img_name, brand_id) 
+    VALUES (DEFAULT, 'screwdriver', 'a really cool screwdriver', 'screwdriver.jpg', (SELECT id FROM brands WHERE name = 'stanley'));
+INSERT INTO tools (id, name, description, img_name, brand_id) 
+    VALUES (DEFAULT, 'shovel', 'a really cool shovel', 'shovel.jpg', (SELECT id FROM brands WHERE name = 'dewalt'));
+INSERT INTO tools (id, name, description, img_name, brand_id) 
+    VALUES (DEFAULT, 'socket wrench', 'a really cool socket wrench', 'socket-wrench.jpg', (SELECT id FROM brands WHERE name = 'black & decker'));
 
 INSERT INTO category (id, name) 
     VALUES (DEFAULT, 'power tool');
