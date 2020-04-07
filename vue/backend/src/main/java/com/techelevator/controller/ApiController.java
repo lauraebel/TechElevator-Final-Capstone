@@ -2,6 +2,8 @@ package com.techelevator.controller;
 
 import com.techelevator.authentication.AuthProvider;
 import com.techelevator.authentication.UnauthorizedException;
+import com.techelevator.model.Reservation;
+import com.techelevator.model.ReservationDAO;
 import com.techelevator.model.Tool;
 import com.techelevator.model.ToolDAO;
 
@@ -25,6 +27,9 @@ public class ApiController {
 	@Autowired
 	private ToolDAO toolDao;
 	
+	@Autowired
+	private ReservationDAO reservationDao;
+	
     @Autowired
     private AuthProvider authProvider;
 
@@ -44,12 +49,69 @@ public class ApiController {
     }
     
     @GetMapping
-    public List<Tool> list() {
+    public List<Tool> listAllTools() {
     	return toolDao.getAllTools();
     }
     
-	@GetMapping("{id}")
-	public Tool get(@PathVariable long id) {
-		return toolDao.getToolById(id);
+	@GetMapping("/{id}")
+	public Tool getToolById(@PathVariable long id) throws Exception {
+		Tool tool = toolDao.getToolById(id);
+		if(tool != null) {
+			return tool;
+		} else {
+			throw new Exception("Tool not found");
+		}
 	}
+	
+	@GetMapping("/{name}")
+	public List<Tool> getToolsByName(@PathVariable String name) throws Exception {
+		List<Tool> tools = toolDao.getToolsByName(name);
+		if(tools != null) {
+			return tools;
+		} else {
+			throw new Exception("No tools by that name");
+		}
+	}
+	
+	@GetMapping
+	public List<Tool> listAvailableTools() {
+		return toolDao.getAllAvailableTools();
+	}
+	
+	@GetMapping("/{name}")
+	public List<Reservation> listReservationsByBorrowerName(@PathVariable String name) throws Exception {
+		List<Reservation> reservations = reservationDao.getReservationByBorrowerName(name);
+		if(reservations != null) {
+			return reservations;
+		} else {
+			throw new Exception("There are no reservations under that name");
+		}
+	}
+	
+	@GetMapping("/{licenseNumber}")
+	public List<Reservation> listReservationsByLicenseNumber(@PathVariable String licenseNumber) throws Exception {
+		List<Reservation> reservations = reservationDao.getReservationByLicenseNumber(licenseNumber);
+		if(reservations != null) {
+			return reservations;
+		} else {
+			throw new Exception("There are no reservations attached to that Driver's License Number");
+		}
+	}
+	
+	@GetMapping("/{toolId}")
+	public List<Reservation> listReservationsByToolId(@PathVariable long toolId) throws Exception {
+		List<Reservation> reservations = reservationDao.getReservationByToolId(toolId);
+		if(reservations != null) {
+			return reservations;
+		} else {
+			throw new Exception("There are no reservations for that tool");
+		}
+	}
+	
+	@GetMapping()
+	public List<Tool> listCheckedOutToolsAndDueDates() {
+		return toolDao.getAllCheckedOutTools();
+	}
+	
+	
 }
