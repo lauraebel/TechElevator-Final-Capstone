@@ -1,10 +1,286 @@
 :root {
-    --background-yellow: #FFD58E;
-    --div-background: #FF9B5A;
-    --div-header: #F26249;
-    --nav-background: #EC2F3B;
+  --background-yellow: #FFD58E;
+  --div-background: #FF9B5A;
+  --div-header: #F26249;
+  --nav-background: #EC2F3B;
+}
+
+@font-face {
+  font-family: 'archiaregular';
+  src: url('./Archia_Regular_Webfont/archia-regular-webfont.eot');
+  src: url('./Archia_Regular_Webfont/archia-regular-webfont.eot?#iefix') format('embedded-opentype'),
+       url('./Archia_Regular_Webfont/archia-regular-webfont.woff2') format('woff2'),
+       url('./Archia_Regular_Webfont/archia-regular-webfont.woff') format('woff'),
+       url('./Archia_Regular_Webfont/archia-regular-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 * {
-    font-family: 'Overpass', sans-serif;
+  font-family: 'archiaregular';
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: var(--nav-background);
+  padding: 1vw;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+div#app {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.menu {
+  order: 1;
+  margin-left: 5vw;
+  margin-top: 4vw;
+  background-color: var(--nav-background);
+}
+.menu-icon {
+  display: inline;
+}
+
+.branding {
+  color: white;
+  background-color: #EC2F3B;
+  order: 2;
+
+  margin-top: 2vw;
+  margin-bottom: 1vw;
+}
+  
+.title {
+  display: none;
+}
+
+.mobile-logo {
+  display: inline;
+}
+
+.logo {
+  display: none;
+}
+
+.cart {
+  order: 3;
+  margin-right: 5vw;
+  margin-top: 4vw;
+}
+
+.mobile-cart-icon {
+  display: inline;
+}
+
+.cart-icon {
+  display: none;
+}
+
+.dropdown {
+  order: 4;
+  width: 100%;
+} 
+
+.content {
+  order: 5;
+  width: 100%;
+  align-self: stretch;
+}
+
+.dropdown div {
+  background-color: white;
+  max-height: fit-content;
+  margin: 0;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.dropdown a {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  display: block;
+  width: 100%;
+  font-size: 8vw;
+  text-align: center;
+  background-color: var(--nav-background);
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.content {
+  order: 5;
+}
+
+#footer {
+  padding-left: 1vw;
+  width: 100%;
+  text-align: right;
+  order: 5;
+  align-self: flex-end;
+}
+
+@media only screen and (min-width: 760px) {     
+  .cart-icon {
+    display: inline;
+  }
+  
+  .cart {
+    margin-top: 3vw;
+    margin-right: 3vw;
+  }
+
+
+  #footer {
+    font-size: 3vw;
+  }
+
+  #credits {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: 2vw;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+
+  #author {
+    text-align: left;
+  }
+
+  #icons {
+    text-align: right;
+  }
+}
+
+@media only screen and (min-width: 1024px) { 
+  
+  div#app {
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-rows: 1fr 1fr 4fr 1fr;
+    grid-template-areas: 
+    "header . cart"
+    "header . menu"
+    "header content dropdown"
+    "footer footer footer"
+    ;
+
+    gap: 1vw;
+    justify-items: center;
+    justify-content: stretch;
+    align-items: center;
+  }
+
+  .branding {
+    margin: 0;
+    grid-area: header;
+    width: 100%;
+    height: 100%;
+    white-space: normal;
+  }
+
+  .branding a {
+    display: grid;
+    grid-template-areas: 
+    "logo"
+    "name"
+    ;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+  }
+
+  .title {
+    margin-top: 2vw;
+    display: block;
+    grid-area: name;
+
+    font-size: 3vw;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .cart {
+    grid-area: cart;
+    margin: 0;
+    margin-top: 2vw;
+  }
+
+  .menu {
+    display: block;
+    grid-area: menu;
+    margin: 0;
+    margin-top: 2vw;
+    
+    background-color: var(--nav-background);
+  }
+  
+  .dropdown {
+    grid-area: dropdown;
+    width: 100%;
+  }
+
+  dropdown div {
+    max-height: 100%;
+  }
+
+  .dropdown a {
+    font-size: 2vw;
+  }
+
+  .content {
+    grid-area: content;
+  }
+
+  .mobile-logo {
+    display: none;
+  }
+    
+  .logo {
+    display: block;
+    grid-area: logo;
+  }
+
+  .mobile-cart-icon {
+    display: none;
+  }
+    
+  .cart-icon {
+    display: block;
+  }
+
+  #footer {
+    grid-area: footer;
+    font-size: 1vw;
+  }
+}
+  
+
+

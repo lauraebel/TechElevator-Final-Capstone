@@ -1,36 +1,41 @@
 <template>
   <div id="app">
-    <nav-bar />
+    <branding />
+    <cart-icon />
+    <menu-icon v-on:clickedMenu="handleMenu" />
+    <dropdown-menu v-bind:isVisible="visible"/>
+    <router-view class="content"/>
+    <router-link :to="{name: 'credits'}" id="footer" >Credits</router-link>
   </div>
 </template>
 
 <script>
-import NavBar from './components/NavBar'
+import MenuIcon from './components/MenuIcon'
+import DropdownMenu from './components/DropdownMenu'
+import Branding from './components/Branding'
+import CartIcon from './components/CartIcon'
+
 export default {
   name: 'app',
   components: {
-    NavBar
+    Branding,
+    CartIcon,
+    DropdownMenu,
+    MenuIcon
+  },
+  data (){
+    return {
+      visible: false
+    }
+  },
+  methods: {
+    handleMenu() {
+      this.visible = !this.visible;
+    }
   }
 }
 </script>
 
 <style>
-  * {
-    font-family: 'Philosopher', sans-serif;
-    background-color: #FFD58E;
-
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-
-    text-align: center;
-  }
-  .nav {
-    background-color: #EC2F3B;
-  }
-  a {
-    color: white;
-    text-decoration: none;
-  }
-
+  @import './assets/style/style.css';
 </style>

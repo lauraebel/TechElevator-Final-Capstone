@@ -13,7 +13,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
-
 @Component
 public class JdbcReservationDAO implements ReservationDAO{
 	
@@ -93,6 +92,7 @@ public class JdbcReservationDAO implements ReservationDAO{
 		LocalDate newDueDate = LocalDate.now().plusDays(RESERVATION_PERIOD);
 		String sql = "UPDATE reservations SET due_on = ? WHERE id = ?";
 		long id = jdbcTemplate.update(sql, newDueDate, reservationId);
+		
 		Reservation result = jdbcTemplate.queryForObject(SQL_SELECT_RESERVATION 
 				+ "WHERE id = ?", reservationId);
 		// TODO determine appropriate syntax for above query

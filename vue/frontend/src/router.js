@@ -9,6 +9,7 @@ import Tools from './views/Tools.vue'
 import ToolDetail from './views/ToolDetail.vue'
 import Reserve from './views/Reserve.vue'
 import Cart from './views/Cart.vue'
+import Credits from './views/Credits.vue'
 
 Vue.use(Router)
 
@@ -113,6 +114,18 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: '/credits',
+      name: 'credits',
+      component: Credits,
+      meta: {
+        // correct setting
+        // requiresAuth: true
+        
+        // temporary for development
+        requiresAuth: false
+      }
+    }
   ]
 })
 
