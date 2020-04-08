@@ -23,7 +23,8 @@ public class JdbcToolDAO implements ToolDAO {
 	@Override
 	public List<Tool> getAllTools() {
 		List<Tool> tools = new ArrayList<Tool>();
-		String sql = "SELECT id, name, description, img_name, brand_id FROM tools";
+		String sql = "SELECT tools.id, tools.name, tools.description, tools.img_name, tools.brand_id "
+				+ "tool_category.catetory_id JOIN tool_category ON tools.id=tool_category.tool_id FROM tools";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
 		while (result.next()) {
 			tools.add(mapRowToTool(result));
@@ -95,15 +96,18 @@ public class JdbcToolDAO implements ToolDAO {
 	}
 
 	@Override
-	public Tool addTool(String toolName, String description, long brandId, String imgName, long categoryId) {
+	public Tool addTool(String toolName, String description, long brandId, String imgName, List<Long> toolCategories) {
 
 		String sql = "INSERT INTO tools(name, description, img_name, brand_id) " + "VALUES (?, ?, ?, ?) RETURNING id";
 		SqlRowSet row = jdbcTemplate.queryForRowSet(sql, toolName, description, brandId, imgName);
 		row.next();
 		long newToolId = row.getLong("id");
 
-		sql = "INSERT INTO tool_category(tool_id, category_id) VALUES (?, ?)";
-		jdbcTemplate.update(sql, newToolId, categoryId);
+		for (Long toolCategory : toolCategories) {
+			sql = "INSERT INTO tool_category(tool_id, category_id) VALUES (?, ?)";
+			jdbcTemplate.update(sql, newToolId, toolCategory);
+		}
+		
 
 		Tool newTool = new Tool();
 		newTool.setToolId(newToolId);
@@ -111,10 +115,12 @@ public class JdbcToolDAO implements ToolDAO {
 		newTool.setToolDescription(description);
 		newTool.setToolBrandId(brandId);
 		newTool.setToolImgName(imgName);
+		newTool.setToolCategories(toolCategories);
 		return newTool;
 	}
 
-	private Tool mapRowToTool(SqlRowSet row) {
+	private Tool mapRowToTool(SqlRowSet row) {		
+		
 		Tool tool = new Tool();
 		tool.setToolId(row.getLong("tools.id"));
 		tool.setToolName(row.getString("tools.name"));
