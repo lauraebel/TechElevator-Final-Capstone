@@ -10,6 +10,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import com.techelevator.model.Category;
+
 @Component
 public class JdbcCategoryDAO implements CategoryDAO {
 	
@@ -37,6 +39,18 @@ public class JdbcCategoryDAO implements CategoryDAO {
 		String sqlInsertCategory = "INSERT INTO category(id, name) VALUES (?, ?)";
 		jdbcTemplate.update(sqlInsertCategory, categoryId, newCategory.getCategoryName());
 		newCategory.setCategoryId(categoryId);
+	}
+	
+	@Override
+	public Category findCategoryById(long id) {
+		Category category = null;
+		String sql = "SELECT id, name FROM category WHERE id = ? ";
+		SqlRowSet rows = jdbcTemplate.queryForRowSet(sql, id);
+		
+		if (rows.next()) {
+			category = mapRowToCategory(rows);
+		}
+		return category;
 	}
 	
 	private Category mapRowToCategory(SqlRowSet row) {
