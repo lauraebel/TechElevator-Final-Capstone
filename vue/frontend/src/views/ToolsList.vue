@@ -1,7 +1,7 @@
 <template>
   <div class="tools">
     <h1>Available Tools</h1>
-    <tool-tile v-for="tool in tools" :key="tool.toolId" v-bind:apiUrl="TOOLS_API"/>
+    <tool-tile v-for="tool in tools" :key="tool.toolId" v-bind:apiUrl="TOOLS_API" />
   </div>
 </template>
 
@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     getAllTools(){
-      fetch(process.env.TOOLS_API + "/available")
+      fetch(process.env.TOOLS_API + "/tools")
                 .then( response => {
                     return response.json();
                 })
