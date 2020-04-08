@@ -4,6 +4,10 @@ import java.util.List;
 
 public interface ReservationDAO {
 	
+	public List <Reservation> getAllReservations();
+	
+	public List <Reservation> getAllCurrentlyOnLoan();
+	
 	/**
 	 * Search reservations by borrowers first or last name.
 	 * 
@@ -27,6 +31,8 @@ public interface ReservationDAO {
 	 * @return a List of reservations
 	 */
 	public List <Reservation> getReservationByToolId(long toolId);
+
+	public Reservation getReservationByReservationId(long reservationId);
 	
 	/**
 	 * Add a reservation to the database.

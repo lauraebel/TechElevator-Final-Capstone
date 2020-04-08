@@ -20,8 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
  * ApiController
  */
 @RestController
-@RequestMapping("/api")
-
+@RequestMapping("/tools")
 public class ApiController {
 
 	@Autowired
@@ -63,9 +62,29 @@ public class ApiController {
 		}
 	}
 	
-	@GetMapping("/{name}")
-	public List<Tool> getToolsByName(@PathVariable String name) throws Exception {
-		List<Tool> tools = toolDao.getToolsByName(name);
+	@GetMapping("/brands")
+	public List<String> getListOfBrandNames() throws Exception {
+		List<String> brands = toolDao.getListOfBrandNames();
+		if(brands != null) {
+			return brands;
+		} else {
+			throw new Exception("No tool brands available");
+		}
+	}
+	
+	@GetMapping("/brand/{brand}")
+	public List<Tool> getToolByBrand(@PathVariable String brandName) throws Exception {
+		List<Tool> tools = toolDao.getToolsByBrand(brandName);
+		if(tools != null) {
+			return tools;
+		} else {
+			throw new Exception("No tools by that brand");
+		}
+	}
+	
+	@GetMapping("/search/{keyword}")
+	public List<Tool> getToolsByKeyword(@PathVariable String keyword) throws Exception {
+		List<Tool> tools = toolDao.getToolsByKeyword(keyword);
 		if(tools != null) {
 			return tools;
 		} else {
@@ -73,12 +92,13 @@ public class ApiController {
 		}
 	}
 	
-	@GetMapping
+	@GetMapping("/available")
 	public List<Tool> listAvailableTools() {
 		return toolDao.getAllAvailableTools();
 	}
 	
-	@GetMapping("/{name}")
+	
+	@GetMapping("/loans/user/{name}")
 	public List<Reservation> listReservationsByBorrowerName(@PathVariable String name) throws Exception {
 		List<Reservation> reservations = reservationDao.getReservationByBorrowerName(name);
 		if(reservations != null) {
@@ -88,7 +108,7 @@ public class ApiController {
 		}
 	}
 	
-	@GetMapping("/{licenseNumber}")
+	@GetMapping("/loans/user/{licenseNumber}")
 	public List<Reservation> listReservationsByLicenseNumber(@PathVariable String licenseNumber) throws Exception {
 		List<Reservation> reservations = reservationDao.getReservationByLicenseNumber(licenseNumber);
 		if(reservations != null) {
@@ -98,7 +118,7 @@ public class ApiController {
 		}
 	}
 	
-	@GetMapping("/{toolId}")
+	@GetMapping("/loans/tool/{toolId}")
 	public List<Reservation> listReservationsByToolId(@PathVariable long toolId) throws Exception {
 		List<Reservation> reservations = reservationDao.getReservationByToolId(toolId);
 		if(reservations != null) {
@@ -108,9 +128,14 @@ public class ApiController {
 		}
 	}
 	
-	@GetMapping()
-	public List<Tool> listCheckedOutToolsAndDueDates() {
-		return toolDao.getAllCheckedOutTools();
+	@GetMapping("/loaned")
+	public List<Reservation> listCheckedOutToolsAndDueDates() throws Exception {
+		List<Reservation> reservations = reservationDao.getAllCurrentlyOnLoan();
+		if(reservations != null) {
+			return reservations;
+		} else {
+			throw new Exception("There are no tools currently on loan");
+		}
 	}
 	
 	

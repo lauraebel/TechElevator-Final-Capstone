@@ -7,7 +7,12 @@
 
 <script>
 export default {
-  name: 'home'
+  name: 'home',
+  data() {
+    return {
+      apiUrl: process.env.VUE_APP_API_URL
+    }
+  }
 }
 </script>
 

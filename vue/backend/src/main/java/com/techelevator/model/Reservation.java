@@ -6,7 +6,7 @@ public class Reservation {
 	
 	private long reservationId;	
 	private long userId;	
-	private long toolId;	
+	private Tool tool;	
 	private LocalDate dateLoaned;	
 	private LocalDate dateReturned;	
 	private LocalDate dueDate;
@@ -27,12 +27,12 @@ public class Reservation {
 		this.userId = userId;
 	}
 	
-	public long getToolId() {
-		return toolId;
+	public Tool getTool() {
+		return tool;
 	}
 	
-	public void setToolId(long toolId) {
-		this.toolId = toolId;
+	public void setTool(Tool tool) {
+		this.tool = tool;
 	}
 	
 	public LocalDate getDateLoaned() {
