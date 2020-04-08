@@ -62,11 +62,29 @@ public class ApiController {
 		}
 	}
 	
+	@GetMapping("/brand")
+	public List<String> getListOfBrandNames() throws Exception {
+		List<String> brands = toolDao.getListOfBrandNames();
+		if(brands != null) {
+			return brands;
+		} else {
+			throw new Exception("No tool brands available");
+		}
+	}
 	
+	@GetMapping("/{brand}")
+	public List<Tool> getToolByBrand(@PathVariable String brandName) throws Exception {
+		List<Tool> tools = toolDao.getToolsByBrand(brandName);
+		if(tools != null) {
+			return tools;
+		} else {
+			throw new Exception("No tools by that brand");
+		}
+	}
 	
 	@GetMapping("/{keyword}")
 	public List<Tool> getToolsByKeyword(@PathVariable String keyword) throws Exception {
-		List<Tool> tools = toolDao.getToolsByName(keyword);
+		List<Tool> tools = toolDao.getToolsByKeyword(keyword);
 		if(tools != null) {
 			return tools;
 		} else {
@@ -111,8 +129,13 @@ public class ApiController {
 	}
 	
 	@GetMapping("/loaned")
-	public List<Tool> listCheckedOutToolsAndDueDates() {
-		return toolDao.getAllCheckedOutTools();
+	public List<Reservation> listCheckedOutToolsAndDueDates() throws Exception {
+		List<Reservation> reservations = reservationDao.getAllCurrentlyOnLoan();
+		if(reservations != null) {
+			return reservations;
+		} else {
+			throw new Exception("There are no tools currently on loan");
+		}
 	}
 	
 	
