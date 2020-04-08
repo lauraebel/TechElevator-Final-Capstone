@@ -23,8 +23,7 @@ public class JdbcToolDAO implements ToolDAO {
 	@Override
 	public List<Tool> getAllTools() {
 		List<Tool> tools = new ArrayList<Tool>();
-		String sql = "SELECT tools.id, tools.name, tools.description, tools.img_name, brands.name FROM tools "
-				+ "JOIN brands ON tools.brand_id=brands.id";
+		String sql = "SELECT id, name, description, img_name, brand_id FROM tools";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
 		while (result.next()) {
 			tools.add(mapRowToTool(result));
@@ -35,22 +34,22 @@ public class JdbcToolDAO implements ToolDAO {
 	@Override
 	public List<Tool> getAllAvailableTools() {
 		List<Tool> tools = new ArrayList<Tool>();
-		String sql = "SELECT tools.id, tools.name, tools.description, tools.img_name, brands.name "
+		String sql = "SELECT tools.id, tools.name, tools.description, tools.img_name, tools.brand_id "
 				+ "FROM tools JOIN reservations ON tools.id=reservations.tool_id "
-				+ "JOIN brands ON tools.brand_id=brands.id WHERE (returned_on IS NOT NULL) AND (";
-		// TODO selects tools which have been returned but checked out again
+				+ "WHERE tools.id NOT IN (SELECT tools.id FROM reservations JOIN tools ON "
+				+ "reservation.tool_id=tools.id WHERE reservations.returned_on IS NULL)";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
 		while (result.next()) {
 			tools.add(mapRowToTool(result));
 		}
 		return tools;
+		
 	}
 	
 	@Override
 	public Tool getToolById(long id) {
 		Tool tool = null;
-		String sql = "SELECT tools.id, tools.name, tools.description, tools.img_name, brands.name FROM tools "
-				+ "JOIN brands ON tools.brand_id=brands.id WHERE tools.id = ?";
+		String sql = "SELECT id, name, description, img_name, brand_id FROM tools WHERE id = ?";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
 		if(result.next()) {
 			tool = mapRowToTool(result);
@@ -59,13 +58,12 @@ public class JdbcToolDAO implements ToolDAO {
 	}
 
 	@Override
-	public List<Tool> getToolsByCategory(String category) {
+	public List<Tool> getToolsByCategoryId(long categoryId) {
 		List<Tool> tools = new ArrayList<Tool>();
-		String sql = "SELECT tools.id, tools.name, tools.description, " + "tools.img_name, brands.name "
+		String sql = "SELECT tools.id, tools.name, tools.description, tools.img_name, tools.brand_id "
 				+ "FROM tools JOIN tool_category ON tools.id=tool_category.tool_id "
-				+ "JOIN category ON tool_category.category_id=category.id "
-				+ "JOIN brands ON tools.brand_id=brands.id WHERE category.name = ?";
-		SqlRowSet result = jdbcTemplate.queryForRowSet(sql, category);
+				+ "WHERE tool_category.category_id = ?";
+		SqlRowSet result = jdbcTemplate.queryForRowSet(sql, categoryId);
 		while (result.next()) {
 			tools.add(mapRowToTool(result));
 		}
@@ -73,11 +71,11 @@ public class JdbcToolDAO implements ToolDAO {
 	}
 
 	@Override
-	public List<Tool> getToolsByBrand(String brand) {
+	public List<Tool> getToolsByBrandId(long brandId) {
 		List<Tool> tools = new ArrayList<Tool>();
-		String sql = "SELECT tools.id, tools.name, tools.description, tools.img_name, brands.name "
-				+ "FROM tools JOIN brands ON tools.brand_id=brands.id WHERE brands.name = ?";
-		SqlRowSet result = jdbcTemplate.queryForRowSet(sql, brand);
+		String sql = "SELECT id, name, description, img_name, brand_id "
+				+ "FROM tools WHERE brand_id = ?";
+		SqlRowSet result = jdbcTemplate.queryForRowSet(sql, brandId);
 		while (result.next()) {
 			tools.add(mapRowToTool(result));
 		}
@@ -87,8 +85,8 @@ public class JdbcToolDAO implements ToolDAO {
 	@Override
 	public List<Tool> getToolsByKeyword(String keyword) {
 		List<Tool> tools = new ArrayList<Tool>();
-		String sql = "SELECT tools.id, tools.name, tools.description, tools.img_name, brands.name FROM tools "
-				+ "JOIN brands ON tools.brand_id=brands.id WHERE name LIKE ?";
+		String sql = "SELECT id, name, description, img_name, brand_id FROM tools "
+				+ "WHERE name LIKE ?";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(sql, "%" + keyword + "%");
 		while (result.next()) {
 			tools.add(mapRowToTool(result));
@@ -97,41 +95,21 @@ public class JdbcToolDAO implements ToolDAO {
 	}
 
 	@Override
-	public List<String> getListOfBrandNames() {
-		List<String> brands = new ArrayList<String>();
-		String sql = "SELECT name FROM brands";
-		SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
-		while (result.next()) {
-			brands.add(result.toString());
-		}
-		return brands;
-	}
+	public Tool addTool(String toolName, String description, long brandId, String imgName, long categoryId) {
 
-	@Override
-	public Tool addTool(String toolName, String description, String brand, String imgName, String category) {
-		String sql = "SELECT id FROM brands WHERE name=?";
-		SqlRowSet row = jdbcTemplate.queryForRowSet(sql, brand);
-		row.next();
-		long brandId = row.getLong("id");
-
-		sql = "INSERT INTO tools(name, description, img_name, brand_id) " + "VALUES (?, ?, ?, ?) RETURNING id";
-		row = jdbcTemplate.queryForRowSet(sql, toolName, description, brandId, imgName);
+		String sql = "INSERT INTO tools(name, description, img_name, brand_id) " + "VALUES (?, ?, ?, ?) RETURNING id";
+		SqlRowSet row = jdbcTemplate.queryForRowSet(sql, toolName, description, brandId, imgName);
 		row.next();
 		long newToolId = row.getLong("id");
 
-		sql = "SELECT id FROM category WHERE name=?";
-		row = jdbcTemplate.queryForRowSet(sql, category);
-		row.next();
-		long newCategoryId = row.getLong("id");
-
 		sql = "INSERT INTO tool_category(tool_id, category_id) VALUES (?, ?)";
-		jdbcTemplate.update(sql, newToolId, newCategoryId);
+		jdbcTemplate.update(sql, newToolId, categoryId);
 
 		Tool newTool = new Tool();
 		newTool.setToolId(newToolId);
 		newTool.setToolName(toolName);
 		newTool.setToolDescription(description);
-		newTool.setToolBrand(brand);
+		newTool.setToolBrandId(brandId);
 		newTool.setToolImgName(imgName);
 		return newTool;
 	}
@@ -142,7 +120,7 @@ public class JdbcToolDAO implements ToolDAO {
 		tool.setToolName(row.getString("tools.name"));
 		tool.setToolDescription(row.getString("tools.description"));
 		tool.setToolImgName(row.getString("tools.img_name"));
-		tool.setToolBrand(row.getString("brands.name"));
+		tool.setToolBrandId(row.getLong("tools.brand_id"));
 		return tool;
 	}
 

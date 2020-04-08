@@ -1,0 +1,20 @@
+[
+	{
+		"id": 1,
+		"firstName": "katherine",
+		"lastName": "lillemoen",
+		"licenseNumber": "09281999"
+	},
+	{
+		"id": 2,
+		"firstName": "laura",
+		"lastName": "ebel",
+		"licenseNumber": "10291991"
+	},
+	{
+		"id": 3,
+		"firstName": "martha",
+		"lastName": "wiesheimer",
+		"licenseNumber": "05301985"
+	}
+]

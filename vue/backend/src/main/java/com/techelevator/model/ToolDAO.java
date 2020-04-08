@@ -24,7 +24,7 @@ public interface ToolDAO {
      * @param category the category selected from given list
      * @return a List of tool objects
      */
-    public List <Tool> getToolsByCategory(String category);
+    public List <Tool> getToolsByCategoryId(long categoryId);
     
     /**
      * Search tool collection by brand.
@@ -32,7 +32,7 @@ public interface ToolDAO {
      * @param brand the brand selected from given list
      * @return a List of tool objects
      */
-    public List <Tool> getToolsByBrand(String brand);
+    public List <Tool> getToolsByBrandId(long brandId);
     
     /**
      * Search tool collection by name.
@@ -41,12 +41,10 @@ public interface ToolDAO {
      * @return a List of tool objects
      */
     public List <Tool> getToolsByKeyword(String keyword);
-    
-    public List <String> getListOfBrandNames();
 
    /**
     * Save a new tool to the database. Category & Brand will be cross-referenced
-    * with category and brand tables to ultimately add a category id and brand id.
+    * with category and brand tables to add to those tables as necessary.
     * 
     * @param toolName name of tool
     * @param description a brief description of the tool
@@ -54,6 +52,6 @@ public interface ToolDAO {
     * @param category selected from list of available categories
     * @return the new tool object
     */
-    public Tool addTool(String toolName, String description, String brand, String imgName, String category);
+    public Tool addTool(String toolName, String description, long brandId, String imgName, long categoryId);
 	
 }

@@ -1,0 +1,53 @@
+[
+	{
+	"toolName": "hammer",
+	"toolDescription": "really cool hammer",
+	"toolImgName": "hammer.jpg",
+	"toolId": 1,
+	"toolBrand": 1,
+	"toolCategory": [2]
+	},
+	{
+	"toolName": "screwdriver",
+	"toolDescription": "really cool screwdriver",
+	"toolImgName": "screwdriver.jpg",
+	"toolId": 2,
+	"toolBrand": 2,
+	"toolCategory": [2]
+	},
+	{
+	"toolName": "shovel",
+	"toolDescription": "really cool shovel",
+	"toolImgName": "shovel.jpg",
+	"toolId": 3,
+	"toolBrand": [3]
+	},
+	{
+	"toolName": "wrench",
+	"toolDescription": "really cool wrench",
+	"toolImgName": "wrench.jpg",
+	"toolId": 4,
+	"toolBrand": [2,3]
+	},
+	{
+	"toolName": "power drill",
+	"toolDescription": "really cool drill",
+	"toolImgName": "powerdrill.jpg",
+	"toolId": 5,
+	"toolBrand": [1]
+	},
+	{
+	"toolName": "pliers",
+	"toolDescription": "really cool pliers",
+	"toolImgName": "pliers.jpg",
+	"toolId": 6,
+	"toolBrand": [2, 4]
+	},
+	{
+	"toolName": "saw",
+	"toolDescription": "really cool saw",
+	"toolImgName": "saw.jpg",
+	"toolId": 7,
+	"toolBrand": [4]
+	}
+]

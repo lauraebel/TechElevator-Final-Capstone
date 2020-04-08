@@ -2,6 +2,8 @@ package com.techelevator.controller;
 
 import com.techelevator.authentication.AuthProvider;
 import com.techelevator.authentication.UnauthorizedException;
+import com.techelevator.model.Brand;
+import com.techelevator.model.BrandDAO;
 import com.techelevator.model.Category;
 import com.techelevator.model.CategoryDAO;
 import com.techelevator.model.Reservation;
@@ -34,6 +36,9 @@ public class ApiController {
 	@Autowired
 	private CategoryDAO categoryDao;
 	
+	@Autowired
+	private BrandDAO brandDao;
+	
     @Autowired
     private AuthProvider authProvider;
 
@@ -53,7 +58,7 @@ public class ApiController {
     }
     
     @GetMapping
-    public List<Tool> listAllTools() {
+    public List<Tool> listAllTools() { 
     	return toolDao.getAllTools();
     }
     
@@ -73,8 +78,8 @@ public class ApiController {
 	}
 	
 	@GetMapping("/brands")
-	public List<String> getListOfBrandNames() throws Exception {
-		List<String> brands = toolDao.getListOfBrandNames();
+	public List<Brand> getListOfBrandNames() throws Exception {
+		List<Brand> brands = brandDao.getAllBrands();
 		if(brands != null) {
 			return brands;
 		} else {
@@ -83,8 +88,8 @@ public class ApiController {
 	}
 	
 	@GetMapping("/brand/{brand}")
-	public List<Tool> getToolByBrand(@PathVariable String brandName) throws Exception {
-		List<Tool> tools = toolDao.getToolsByBrand(brandName);
+	public List<Tool> getToolByBrand(@PathVariable long brandId) throws Exception {
+		List<Tool> tools = toolDao.getToolsByBrandId(brandId);
 		if(tools != null) {
 			return tools;
 		} else {
@@ -105,6 +110,16 @@ public class ApiController {
 	@GetMapping("/available")
 	public List<Tool> listAvailableTools() {
 		return toolDao.getAllAvailableTools();
+	}
+	
+	@GetMapping("/loan-history")
+	public List<Reservation> listEntireReservationHistory() throws Exception {
+		List<Reservation> reservations = reservationDao.getAllReservations();
+		if(reservations != null) {
+			return reservations;
+		} else {
+			throw new Exception("There have never been any reservations");
+		}
 	}
 	
 	@GetMapping("/loans/user/{name}")
@@ -146,6 +161,4 @@ public class ApiController {
 			throw new Exception("There are no tools currently on loan");
 		}
 	}
-	
-	
 }
