@@ -1,5 +1,7 @@
 package com.techelevator.model;
 
+import java.util.List;
+
 import org.hibernate.validator.constraints.NotBlank;
 
 public class Tool {
@@ -16,6 +18,9 @@ public class Tool {
 	
 	@NotBlank(message = "Tool brand required, if uknown please select OTHER")
 	private long toolBrandId;
+	
+	private List<Long> toolCategories;
+
 
 	public long getToolId() {
 		return toolId;
@@ -55,6 +60,14 @@ public class Tool {
 
 	public void setToolBrandId(long toolBrandId) {
 		this.toolBrandId = toolBrandId;
+	}
+	
+	public List<Long> getToolCategories() {
+		return toolCategories;
+	}
+
+	public void setToolCategories(List<Long> toolCategories) {
+		this.toolCategories = toolCategories;
 	}
 	
 }
