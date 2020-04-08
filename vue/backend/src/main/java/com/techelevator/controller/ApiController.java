@@ -48,7 +48,7 @@ public class ApiController {
     }
     
     @GetMapping
-    public List<Tool> listAllTools() {
+    public List<Tool> listAllTools() { 
     	return toolDao.getAllTools();
     }
     
@@ -137,6 +137,4 @@ public class ApiController {
 			throw new Exception("There are no tools currently on loan");
 		}
 	}
-	
-	
 }

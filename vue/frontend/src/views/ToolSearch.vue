@@ -13,26 +13,54 @@ export default {
   name: 'tool-search',
   data() {
     return {
-      brand: ,
-      category: 
-      keyword: 
+      brands: [],
+      categories: [],
+      brand: -1,
+      category: -1,
+      keyword: ''
     }
   },
   computed: {
-    toolsMatchingKeyword(vm) {
-
-    },
-    toolsInCategory(vm) {
-
-    },
-    toolsByBrand(vm) {
-
+    filteredTools(){
+      return getMatchingTools();
     }
   }, 
   methods: {
     //method to get brands
+    getBrands(){
+      fetch(process.env.MOCK_API + "/brands")
+        .then( response => {
+                    return response.json();
+                })
+                .then( data => {
+                    this.brands = data;
+                })
+                .catch( err => { console.error(err) });
+    },
     //method to get categories
-    //method to
+    getCategories() {
+      fetch(process.env.MOCK_API + "/categories")
+        .then( response => {
+                    return response.json();
+                })
+                .then( data => {
+                    this.categories = data;
+                })
+                .catch( err => { console.error(err) });
+    },
+    //method to get list of matching tools
+    getMatchingTools(){
+      if (brand > 0){
+
+      }
+    }
+
+  },
+  created() {
+    this.getBrands();
+    this.getCategories();
+
+
   }
 }
 </script>
