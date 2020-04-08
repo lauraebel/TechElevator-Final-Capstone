@@ -62,7 +62,7 @@ public class ApiController {
 		}
 	}
 	
-	@GetMapping("/brand")
+	@GetMapping("/brands")
 	public List<String> getListOfBrandNames() throws Exception {
 		List<String> brands = toolDao.getListOfBrandNames();
 		if(brands != null) {
@@ -72,7 +72,7 @@ public class ApiController {
 		}
 	}
 	
-	@GetMapping("/{brand}")
+	@GetMapping("/brand/{brand}")
 	public List<Tool> getToolByBrand(@PathVariable String brandName) throws Exception {
 		List<Tool> tools = toolDao.getToolsByBrand(brandName);
 		if(tools != null) {
@@ -82,7 +82,7 @@ public class ApiController {
 		}
 	}
 	
-	@GetMapping("/{keyword}")
+	@GetMapping("/search/{keyword}")
 	public List<Tool> getToolsByKeyword(@PathVariable String keyword) throws Exception {
 		List<Tool> tools = toolDao.getToolsByKeyword(keyword);
 		if(tools != null) {
@@ -98,7 +98,7 @@ public class ApiController {
 	}
 	
 	
-	@GetMapping("/{name}")
+	@GetMapping("/loans/user/{name}")
 	public List<Reservation> listReservationsByBorrowerName(@PathVariable String name) throws Exception {
 		List<Reservation> reservations = reservationDao.getReservationByBorrowerName(name);
 		if(reservations != null) {
@@ -108,7 +108,7 @@ public class ApiController {
 		}
 	}
 	
-	@GetMapping("/{licenseNumber}")
+	@GetMapping("/loans/user/{licenseNumber}")
 	public List<Reservation> listReservationsByLicenseNumber(@PathVariable String licenseNumber) throws Exception {
 		List<Reservation> reservations = reservationDao.getReservationByLicenseNumber(licenseNumber);
 		if(reservations != null) {
@@ -118,7 +118,7 @@ public class ApiController {
 		}
 	}
 	
-	@GetMapping("/{toolId}")
+	@GetMapping("/loans/tool/{toolId}")
 	public List<Reservation> listReservationsByToolId(@PathVariable long toolId) throws Exception {
 		List<Reservation> reservations = reservationDao.getReservationByToolId(toolId);
 		if(reservations != null) {
