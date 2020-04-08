@@ -20,8 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
  * ApiController
  */
 @RestController
-@RequestMapping("/api")
-
+@RequestMapping("/api/tools")
 public class ApiController {
 
 	@Autowired
@@ -63,9 +62,11 @@ public class ApiController {
 		}
 	}
 	
-	@GetMapping("/{name}")
-	public List<Tool> getToolsByName(@PathVariable String name) throws Exception {
-		List<Tool> tools = toolDao.getToolsByName(name);
+	
+	
+	@GetMapping("/{keyword}")
+	public List<Tool> getToolsByKeyword(@PathVariable String keyword) throws Exception {
+		List<Tool> tools = toolDao.getToolsByName(keyword);
 		if(tools != null) {
 			return tools;
 		} else {
@@ -73,10 +74,11 @@ public class ApiController {
 		}
 	}
 	
-	@GetMapping
+	@GetMapping("/available")
 	public List<Tool> listAvailableTools() {
 		return toolDao.getAllAvailableTools();
 	}
+	
 	
 	@GetMapping("/{name}")
 	public List<Reservation> listReservationsByBorrowerName(@PathVariable String name) throws Exception {
@@ -108,7 +110,7 @@ public class ApiController {
 		}
 	}
 	
-	@GetMapping()
+	@GetMapping("/loaned")
 	public List<Tool> listCheckedOutToolsAndDueDates() {
 		return toolDao.getAllCheckedOutTools();
 	}
