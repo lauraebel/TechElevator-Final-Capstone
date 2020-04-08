@@ -15,7 +15,7 @@ public class Tool {
 	private String toolImgName;
 	
 	@NotBlank(message = "Tool brand required, if uknown please select OTHER")
-	private String toolBrand;
+	private long toolBrandId;
 
 	public long getToolId() {
 		return toolId;
@@ -49,12 +49,12 @@ public class Tool {
 		this.toolImgName = toolImgName;
 	}
 
-	public String getToolBrand() {
-		return toolBrand;
+	public long getToolBrandId() {
+		return toolBrandId;
 	}
 
-	public void setToolBrand(String toolBrand) {
-		this.toolBrand = toolBrand;
+	public void setToolBrandId(long toolBrandId) {
+		this.toolBrandId = toolBrandId;
 	}
 	
 }

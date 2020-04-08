@@ -2,6 +2,8 @@ package com.techelevator.controller;
 
 import com.techelevator.authentication.AuthProvider;
 import com.techelevator.authentication.UnauthorizedException;
+import com.techelevator.model.Category;
+import com.techelevator.model.CategoryDAO;
 import com.techelevator.model.Reservation;
 import com.techelevator.model.ReservationDAO;
 import com.techelevator.model.Tool;
@@ -29,6 +31,9 @@ public class ApiController {
 	@Autowired
 	private ReservationDAO reservationDao;
 	
+	@Autowired
+	private CategoryDAO categoryDao;
+	
     @Autowired
     private AuthProvider authProvider;
 
@@ -50,6 +55,11 @@ public class ApiController {
     @GetMapping
     public List<Tool> listAllTools() { 
     	return toolDao.getAllTools();
+    }
+    
+    @GetMapping
+    public List<Category> listAllCategories() {
+    	return categoryDao.getAllCategories();
     }
     
 	@GetMapping("/{id}")
@@ -96,7 +106,6 @@ public class ApiController {
 	public List<Tool> listAvailableTools() {
 		return toolDao.getAllAvailableTools();
 	}
-	
 	
 	@GetMapping("/loans/user/{name}")
 	public List<Reservation> listReservationsByBorrowerName(@PathVariable String name) throws Exception {
