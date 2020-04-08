@@ -33,9 +33,42 @@ public class JdbcBrandDAO implements BrandDAO {
 	
 	private Brand mapRowToBrand(SqlRowSet row) {
 		Brand brand = new Brand();
-		brand.setBrandId(row.getLong("brands.id"));
-		brand.setBrandName(row.getString("brands.name"));
+		brand.setBrandId(row.getLong("id"));
+		brand.setBrandName(row.getString("name"));
 		return brand;
+	}
+
+	@Override
+	public void addBrand(Brand newBrand) {
+		Long brandId = getNextBrandId();
+		String sqlInsertBrand = "INSERT INTO brands(id, name) VALUES (?, ?)";
+		jdbcTemplate.update(sqlInsertBrand, brandId, newBrand.getBrandName());
+		newBrand.setBrandId(brandId);	
+	}
+
+	@Override
+	public Brand findBrandById(long id) {
+		Brand brand = null;
+		String sql = "SELECT id, name FROM brands WHERE id = ? ";
+		SqlRowSet rows = jdbcTemplate.queryForRowSet(sql, id);
+		
+		if (rows.next()) {
+			brand = mapRowToBrand(rows);
+		}
+		return brand;
+	}
+	
+	
+	private Long getNextBrandId() {
+		String sqlSelectNextId = "SELECT NEXTVAL('brands_id_seq')";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectNextId);
+		Long brandId = null;
+		if(results.next()) {
+			brandId = results.getLong(1);
+		} else {
+			throw new RuntimeException("Unable to get next Brand Id");
+		}
+		return brandId;
 	}
 
 }

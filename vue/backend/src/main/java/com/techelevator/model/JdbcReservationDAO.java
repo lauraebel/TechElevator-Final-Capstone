@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 public class JdbcReservationDAO implements ReservationDAO {
 
 	private static final String SQL_SELECT_RESERVATION = "SELECT reservations.id, reservations.user_id, "
-			+ "reservatuins.loaned_on, reservations.due_on, reservations.returned_on, tools.id, tools.name, "
+			+ "reservations.loaned_on, reservations.due_on, reservations.returned_on, tools.id, tools.name, "
 			+ "tools.description, tools.img_name, brands.name "
 			+ "FROM reservations JOIN tools ON reservation.tool_id=tools.id JOIN brands ON tools.brand_id=brands.id ";
 
