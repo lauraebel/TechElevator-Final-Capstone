@@ -40,15 +40,9 @@ public interface ToolDAO {
      * @param name the entered tool name
      * @return a List of tool objects
      */
-    public List <Tool> getToolsByName(String name);
+    public List <Tool> getToolsByKeyword(String keyword);
     
-    /**
-     * View all checked out tools and when they will
-     * be available next.
-     * 
-     * @return a List of tool objects
-     */
-    public List <Tool> getAllCheckedOutTools();
+    public List <String> getListOfBrandNames();
 
    /**
     * Save a new tool to the database. Category & Brand will be cross-referenced
