@@ -58,7 +58,7 @@ public class ApiController {
     }
     
     @GetMapping
-    public List<Category> listAllCategories() {
+    public List<Category> listAllCategories() { 
     	return categoryDao.getAllCategories();
     }
     
