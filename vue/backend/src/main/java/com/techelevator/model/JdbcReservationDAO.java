@@ -132,7 +132,7 @@ public class JdbcReservationDAO implements ReservationDAO {
 		reservationTool.setToolName(row.getString("tools.name"));
 		reservationTool.setToolDescription(row.getString("tools.description"));
 		reservationTool.setToolImgName(row.getString("tools.img_name"));
-		reservationTool.setToolBrand(row.getString("brands.name"));
+		reservationTool.setToolBrandId(row.getLong("tools.brand_id"));
 		
 		Reservation reservation = new Reservation();
 		reservation.setReservationId(row.getLong("id"));
