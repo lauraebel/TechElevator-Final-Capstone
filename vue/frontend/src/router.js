@@ -1,12 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import auth from './auth'
+
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Register from './views/Register.vue'
+
+import ToolsList from './views/ToolsList.vue'
+
 import ToolSearch from './views/ToolSearch.vue'
-import Tools from './views/Tools.vue'
-import ToolDetail from './views/ToolDetail.vue'
+import Tool from './views/Tool.vue'
 import Reserve from './views/Reserve.vue'
 import Cart from './views/Cart.vue'
 import Credits from './views/Credits.vue'
@@ -55,7 +58,7 @@ const router = new Router({
       }
     },
     {
-      path: "/toolsearch",
+      path: "/search",
       name: "tool-search",
       component: ToolSearch,
       meta: {
@@ -69,7 +72,7 @@ const router = new Router({
     {
       path: '/tools',
       name: 'tools',
-      component: Tools,
+      component: ToolsList,
       meta: {
         // correct setting
         // requiresAuth: true
@@ -80,8 +83,8 @@ const router = new Router({
     },
     {
       path: '/tools/:id',
-      name: 'tool-detail',
-      component: ToolDetail,
+      name: 'tool',
+      component: Tool,
       meta: {
         // correct setting
         // requiresAuth: true

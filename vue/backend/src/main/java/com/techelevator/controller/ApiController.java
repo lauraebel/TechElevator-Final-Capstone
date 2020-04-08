@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
  * ApiController
  */
 @RestController
-@RequestMapping("/api/tools")
+@RequestMapping("/tools")
 public class ApiController {
 
 	@Autowired
