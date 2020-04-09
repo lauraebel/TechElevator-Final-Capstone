@@ -9,6 +9,7 @@ import Register from './views/Register.vue'
 import ToolSearch from './views/ToolSearch.vue'
 import Tool from './views/Tool.vue'
 import Reserve from './views/Reserve.vue'
+import MyLoans from './views/MyLoans.vue'
 import Cart from './views/Cart.vue'
 import Credits from './views/Credits.vue'
 
@@ -83,6 +84,18 @@ const router = new Router({
       path: '/cart',
       name: 'cart',
       component: Cart,
+      meta: {
+        // correct setting
+        // requiresAuth: true
+
+        // temporary for development
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/loans',
+      name: 'user-loans',
+      component: MyLoans,
       meta: {
         // correct setting
         // requiresAuth: true

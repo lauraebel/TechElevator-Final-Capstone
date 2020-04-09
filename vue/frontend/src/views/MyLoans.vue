@@ -14,22 +14,22 @@ export default {
         return {
             apiURL: "https://5e8dd4e822d8cd0016a79b3f.mockapi.io/",
             allLoans: [],
-            returnedOn: ''
+            returnedOn: '',
+            id: 1
         }
     },
   methods: {
     getLoans() {
-
-    fetch(this.apiURL + "/loans" + id)
-    .then(response => {
+        fetch(this.apiURL + "/loans")
+        .then(response => {
         return response.json();
-    })
-    .then(data => {
+        })
+        .then(data => {
         this.allLoans = data;
-    })
-    .catch(err => {console.error(err)};)
-    }
-  },
+        })
+        .catch(err => {console.error(err)});
+        }
+    },
   computed: {
     currentLoans() {
         let loanList;
@@ -42,5 +42,5 @@ export default {
         this.getLoans();
     }
   }
-}
+ }
 </script>
