@@ -6,12 +6,12 @@ import org.junit.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 
-import com.techelevator.model.JdbcReservationDAO;
-import com.techelevator.model.ReservationDAO;
+import com.techelevator.model.dao.JdbcLoanDAO;
+import com.techelevator.model.dao.LoanDAO;
 
-public class JdbcReservationDAOIntegrationTest {
+public class JdbcLoanDAOIntegrationTest {
 	
-	private ReservationDAO dao;
+	private LoanDAO dao;
 	private static SingleConnectionDataSource dataSource;
 	private JdbcTemplate jdbcTemplate;
 	private static final String TEST_RESERVATION = "Fake Reservation";
@@ -38,8 +38,25 @@ public class JdbcReservationDAOIntegrationTest {
 	
 	@Before
 	public void setup() {
-		dao = new JdbcReservationDAO(dataSource);
+		dao = new JdbcLoanDAO(dataSource);
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
+	
+	//getAllLoans()
+	//test when normal table -> returns list of correct length
+	//test when table empty
+	
+	//getAllActiveLoans()
+	//test when normal table
+	//test when table empty
+	
+	//addLoan()
+	//test when loan is good
+	//test when invalid data
+	//test when empty
+	
+	//renewLoan()
+	
+	//returnLoan()
 
 }

@@ -12,6 +12,12 @@ INSERT INTO users (id, username, password, salt, role, first_name, last_name, li
 INSERT INTO users (id, username, password, salt, role, first_name, last_name, license_number)    
     VALUES (DEFAULT, 'rachellerauth', 'password4', 'salt', (SELECT id FROM roles WHERE name = 'admin'), 'rachelle', 'rauth', '01011990');
 
+INSERT INTO user_cart (user_id) VALUES ((SELECT id FROM users WHERE username = 'katherinelillemoen'));
+INSERT INTO user_cart (user_id) VALUES ((SELECT id FROM users WHERE username = 'lauraebel'));
+INSERT INTO user_cart (user_id) VALUES ((SELECT id FROM users WHERE username = 'marthaweisheimer'));
+INSERT INTO user_cart (user_id) VALUES ((SELECT id FROM users WHERE username = 'brianlauvray'));
+INSERT INTO user_cart (user_id) VALUES ((SELECT id FROM users WHERE username = 'rachellerauth'));
+
 INSERT INTO brands (id, name) 
     VALUES (DEFAULT, 'black & decker');
 INSERT INTO brands (id, name) 

@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.DatatypeConverter;
 
-import com.techelevator.model.User;
-import com.techelevator.model.UserDao;
+import com.techelevator.model.beans.User;
+import com.techelevator.model.dao.UserDao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMethod;
