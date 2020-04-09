@@ -73,6 +73,8 @@ INSERT INTO cart_items (cart_id, tool_id) VALUES ((SELECT id FROM carts WHERE us
 INSERT INTO cart_items (cart_id, tool_id) VALUES ((SELECT id FROM carts WHERE user_id = (SELECT id FROM users WHERE username = 'rachellerauth')), 5);
 INSERT INTO cart_items (cart_id, tool_id) VALUES ((SELECT id FROM carts WHERE user_id = (SELECT id FROM users WHERE username = 'rachellerauth')), 1);
     
+INSERT INTO loans (id, user_id, tool_id, loaned_on, due_on, returned_on)
+    VALUES (DEFAULT, 1, 5, '2019-10-10', '2020-05-20', NULL);
 -- INSERT INTO loans (id, user_id, tool_id, loaned_on, due_on, returned_on) 
 --     VALUES ();
 
