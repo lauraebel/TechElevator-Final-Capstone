@@ -16,10 +16,10 @@ public class Tool {
 	
 	private String toolImgName;
 	
-	@NotBlank(message = "Tool brand required, if uknown please select OTHER")
+	@NotBlank(message = "Tool brand required, if unknown please select OTHER")
 	private long toolBrandId;
 	
-	private List<Long> toolCategories;
+	private List<Long> toolCategoryIds;
 
 
 	public long getToolId() {
@@ -62,12 +62,12 @@ public class Tool {
 		this.toolBrandId = toolBrandId;
 	}
 	
-	public List<Long> getToolCategories() {
-		return toolCategories;
+	public List<Long> getToolCategoryIds() {
+		return toolCategoryIds;
 	}
 
-	public void setToolCategories(List<Long> toolCategories) {
-		this.toolCategories = toolCategories;
+	public void setToolCategoryIds(List<Long> toolCategoryIds) {
+		this.toolCategoryIds = toolCategoryIds;
 	}
 	
 }

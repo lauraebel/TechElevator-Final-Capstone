@@ -52,6 +52,6 @@ public interface ToolDAO {
     * @param category selected from list of available categories
     * @return the new tool object
     */
-    public Tool addTool(String toolName, String description, long brandId, String imgName, List<Long> toolCategories);
+    public Tool addTool(Tool newTool);
 	
 }

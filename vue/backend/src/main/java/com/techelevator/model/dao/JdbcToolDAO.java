@@ -96,9 +96,9 @@ public class JdbcToolDAO implements ToolDAO {
 	}
 
 	@Override
-	public Tool addTool(String toolName, String description, long brandId, String imgName, List<Long> toolCategories) {
+	public Tool addTool(Tool newTool) {
 
-		String sql = "INSERT INTO tools(name, description, img_name, brand_id) " + "VALUES (?, ?, ?, ?) RETURNING id";
+		String sql = "INSERT INTO tools(id, name, description, img_name, brand_id) " + "VALUES (?, ?, ?, ?) RETURNING id";
 		SqlRowSet row = jdbcTemplate.queryForRowSet(sql, toolName, description, brandId, imgName);
 		row.next();
 		long newToolId = row.getLong("id");
@@ -108,7 +108,6 @@ public class JdbcToolDAO implements ToolDAO {
 			jdbcTemplate.update(sql, newToolId, toolCategory);
 		}
 		
-
 		Tool newTool = new Tool();
 		newTool.setToolId(newToolId);
 		newTool.setToolName(toolName);
@@ -127,6 +126,7 @@ public class JdbcToolDAO implements ToolDAO {
 		tool.setToolDescription(row.getString("tools.description"));
 		tool.setToolImgName(row.getString("tools.img_name"));
 		tool.setToolBrandId(row.getLong("tools.brand_id"));
+		tool.setToolCategoryIds(row.getLong(columnIndex));
 		return tool;
 	}
 
