@@ -1,6 +1,11 @@
 <template>
   <div class="tool-search">
     <h1>Tool Search</h1>
+    <div class="filters">
+      <button v-on:click="resetSearch()">Reset Search</button>
+      <v-select placeholder="Filter by Brand" label="brandName" v-model="brand" :options="allBrands" :reduce="brandName => brandName.brandId" ></v-select>
+      <v-select placeholder="Filter by Category" label="categoryName" v-model="category" :options="allCategories" :reduce="categoryName => categoryName.categoryId"></v-select>  
+    </div>
 
     <div class="tools">
       <div class="tool" v-for="tool in filteredTools" v-bind:key="tool.toolId">{{tool.toolName}}</div>
@@ -19,12 +24,12 @@ export default {
   name: 'tool-search',
   data() {
     return {
-      apiURL: "https://5e8dd4e822d8cd0016a79b3f.mockapi.io/",
+      apiURL: "https://5e8dd4e822d8cd0016a79b3f.mockapi.io/", 
       allTools: [],
       allBrands: [],
       allCategories: [],
-      brand: -1,
-      category: -1,
+      brand: '',
+      category: '',
       keyword: ''
     }
   },
@@ -61,6 +66,11 @@ export default {
                 })
                 .catch( err => { console.error(err) });
     },
+    resetSearch(){
+      this.brand = '';
+      this.category = '';
+      this.keyword = '';
+    },
     //method to get list of matching tools
     matchesBrand(tool){
       if (tool.toolBrand === this.brand){
@@ -71,18 +81,18 @@ export default {
     },
     matchesCategory(tool){
       const categoryList = tool.toolCategories;
+      const selectedCategory = this.category;
 
-      if (this.category > 0){
-        for (let i = 0; i < categoryList.length; i++){
-          if (category === categoryList[i]){
-            return true;
-          }
+      // console.log(tool.toolName);
+      // console.log('Tool category is' + category);
+      // console.log('Selected category is' + selectedCategory);
+      // console.log(category === selectedCategory);
+      
+      tool.toolCategories.forEach(category => {
+        if (category === selectedCategory){
+          return true;
         }
-
-        return false;
-      } else {
-        return false;
-      }
+      });
     },
     containsKeyword(tools){
       const filter = new RegExp(this.keyword, "i");
@@ -92,41 +102,30 @@ export default {
         const description = tool.toolDescription;
 
         return (name.match(filter) || description.match(filter));
-      })
-    },
-    inList(tool, toolList){
-      const id = tool.toolId;
-      for (let i = 0; i < toolList.length; i++){
-        const arrayToolId = toolList[i];
-        if (id === arrayToolId){
-          return true;
-        }
-      }
-      return false;
+      });
     },
     getMatchingTools(){
-      if (this.brand=== -1 && this.category === -1 && this.keyword === ''){
+      if (this.brand === '' && this.category === '' && this.keyword === ''){
         return this.allTools;
       }
 
-      let filtered = [];
+      let filtered = new Set();
       
       if (this.keyword !== ''){
         filtered = containsKeyword(allTools);
       } 
       
       this.allTools.forEach(tool => {
-        if (this.brand > 0 && this.matchesBrand(tool)){
-          if (!this.inList(tool, filtered)){
-            filtered.push(tool);
-          }
+        console.log(tool.toolName);
+        console.log(this.matchesCategory(tool));
+        if (this.brand !== '' && this.matchesBrand(tool)){ 
+          filtered.add(tool);
         }
-        if (this.category > 0 && this.matchesCategory(tool)){
-          if (!this.inList(tool, filtered)){
-            filtered.push(tool);
-          }
+        if (this.category !== '' && this.matchesCategory(tool)){
+          filtered.add(tool);
         }
       });
+
       return filtered;
     }
   },

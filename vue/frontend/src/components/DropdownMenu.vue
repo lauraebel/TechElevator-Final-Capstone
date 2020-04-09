@@ -3,8 +3,7 @@
     <!-- add to display user menu if is gen user: v-if="role === 0" -->
     <transition name="fade">
       <div v-if="isVisible">
-        <router-link :to="{name: 'tools'}">Available Tools</router-link>
-        <router-link :to="{name: 'tool-search'}">Find a Tool</router-link>
+        <router-link :to="{name: 'tools'}">Find a Tool</router-link>
         <router-link :to="{name: 'user-loans'}">My Loans</router-link>
         <router-link :to="{name: 'tools'}">Sign Out</router-link>
         <!-- change to button to sign out ^ -->
