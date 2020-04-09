@@ -29,7 +29,8 @@ export default {
   data (){
     return {
       visible: false,
-      addedToCart: false
+      addedToCart: false,
+      isAvailable: true
     }
   },
   methods: {
