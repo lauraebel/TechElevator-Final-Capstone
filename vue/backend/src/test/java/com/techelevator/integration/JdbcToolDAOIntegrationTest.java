@@ -8,11 +8,9 @@ import org.junit.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 
-import com.techelevator.model.Brand;
-import com.techelevator.model.JdbcBrandDAO;
-import com.techelevator.model.JdbcToolDAO;
-import com.techelevator.model.Tool;
-import com.techelevator.model.ToolDAO;
+import com.techelevator.model.dao.JdbcToolDAO;
+import com.techelevator.model.dao.ToolDAO;
+import com.techelevator.model.beans.Tool;
 
 public class JdbcToolDAOIntegrationTest {
 	
@@ -54,7 +52,7 @@ public class JdbcToolDAOIntegrationTest {
 //		
 //		Assert.assertNotEquals(0, tool.getToolId());
 //	}
-	
+//	
 //	private Tool getTool(String name, String description, long brandId, String img, List<Long> categories) {
 //		Tool selectedTool = new Tool();
 //		selectedTool.setToolName("name");
@@ -64,7 +62,7 @@ public class JdbcToolDAOIntegrationTest {
 //		selectedTool.setToolCategories(categories);
 //		return selectedTool;
 //	}
-	
+
 
 
 }

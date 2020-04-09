@@ -58,6 +58,8 @@ INSERT INTO tool_category (tool_id, category_id)
 INSERT INTO tool_category (tool_id, category_id) 
     VALUES ((SELECT id FROM tools WHERE name = 'socket wrench'), (SELECT id FROM category WHERE name = 'automotive'));
     
+INSERT INTO loans (id, user_id, tool_id, loaned_on, due_on, returned_on)
+    VALUES (DEFAULT, 1, 5, '2019-10-10', '2020-05-20', NULL);
 -- INSERT INTO loans (id, user_id, tool_id, loaned_on, due_on, returned_on) 
 --     VALUES ();
 
