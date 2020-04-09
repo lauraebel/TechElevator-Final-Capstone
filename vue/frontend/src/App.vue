@@ -36,7 +36,7 @@ export default {
     handleMenu() {
       this.visible = !this.visible;
     },
-    AddToCart() {
+    addToCart() {
       this.addedToCart = !this.addedToCart;
     }
   }
