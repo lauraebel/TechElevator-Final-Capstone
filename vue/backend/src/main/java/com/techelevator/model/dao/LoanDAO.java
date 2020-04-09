@@ -17,7 +17,7 @@ public interface LoanDAO {
 	 * @param userId based on signed in user or id entered by administrator
 	 * @return void
 	 */
-	public void addLoan(long toolId, long userId);
+	public Loan addLoan(Long userId);
 	
 	/**
 	 * Renew an existing reservation by adding an additional 
@@ -27,7 +27,7 @@ public interface LoanDAO {
 	 * @param loanId
 	 * @return Loan object
 	 */
-	public void renewLoan(long loanId);
+	public Loan renewLoan(long loanId);
 	
 	/**
 	 * Return a tool. Must be done by administrator. Puts
@@ -36,6 +36,6 @@ public interface LoanDAO {
 	 * 
 	 * @param loanId
 	 */
-	public void returnLoan(long loanId);
+	public Loan returnLoan(long loanId);
 	
 }

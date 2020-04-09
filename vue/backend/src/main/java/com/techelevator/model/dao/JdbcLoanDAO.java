@@ -66,25 +66,38 @@ public class JdbcLoanDAO implements LoanDAO {
 	}
 	
 	@Override
-	public void addLoan(long toolId, long userId) {
-		String sql = "INSERT INTO loans(tool_id, user_id, loaned_on, due_on) "
-				+ "VALUES (?, ?, ?, ?) RETURNING id";
+	public Loan addLoan(long toolId, long userId) {
+		//refactor so takes userID, gets all tool ids associated with that user's cart id, and creates new row for each item
+		String sql = "INSERT INTO loans(tool_id, user_id, loaned_on, due_on) VALUES (?, ?, ?, ?) RETURNING *";
 		
-		jdbcTemplate.update(sql, toolId, userId, LocalDate.now(),
-				LocalDate.now().plusDays(LOAN_PERIOD));
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, toolId, userId, LocalDate.now(), LocalDate.now().plusDays(LOAN_PERIOD));
+		
+		results.next();
+		
+		return mapRowToLoan(results);
 	}
 
 	@Override
-	public void renewLoan(long loanId) {
+	public Loan renewLoan(long loanId) {
 		LocalDate newDueDate = LocalDate.now().plusDays(LOAN_PERIOD);
-		String sql = "UPDATE loan SET due_on = ? WHERE id = ?";
-		jdbcTemplate.update(sql, newDueDate, loanId);
+		
+		String sql = "UPDATE loans SET due_on = ? WHERE id = ? RETURNING *";
+		
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, newDueDate, loanId);
+		results.next();
+		
+		return mapRowToLoan(results);
 	}
 
 	@Override
-	public void returnLoan(long reservationId) {
-		String sql = "UPDATE reservations SET returned_on = ? WHERE id = ?";
-		jdbcTemplate.update(sql, LocalDate.now(), reservationId);
+	public Loan returnLoan(long reservationId) {
+		String sql = "UPDATE loans SET returned_on = ? WHERE id = ? RETURNING *";
+		
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, LocalDate.now(), reservationId);
+
+		results.next();
+
+		return mapRowToLoan(results);
 	}
 
 	private Loan mapRowToLoan(SqlRowSet row) {

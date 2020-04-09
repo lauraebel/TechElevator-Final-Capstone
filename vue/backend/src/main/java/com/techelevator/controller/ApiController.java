@@ -96,7 +96,7 @@ public class ApiController {
 		if (brands != null) {
 			return brands;
 		} else {
-			throw new Exception("No tool brands available");
+			throw new Exception("No brands found.");
 		}
 	}
 
@@ -106,8 +106,20 @@ public class ApiController {
 		if (loans != null) {
 			return loans;
 		} else {
-			throw new Exception("There have never been any reservations");
+			throw new Exception("No loans found.");
 		}
+	}
+	
+	@GetMapping("/carts")
+	public List<Cart> listAllCarts() throws Exception {
+		List<Cart> carts = cartDao.getCarts();
+		
+		if (carts != null) {
+			return carts;
+		} else {
+			throw new Exception("No carts found.");
+		}
+		
 	}
 
 	@PutMapping("/cart/{userId}")

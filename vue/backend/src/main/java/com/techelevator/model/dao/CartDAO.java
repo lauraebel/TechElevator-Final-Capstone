@@ -10,4 +10,5 @@ public interface CartDAO {
 	
 	public Cart getCartByUser(long userId);
 	
+	public Cart updateCart(Cart cart);
 }
