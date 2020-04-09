@@ -1,5 +1,5 @@
 <template>
-    <div class="my-loans">
+    <div class="user-loans">
     <h1>My Loans</h1>
     
     <div class="loan" v-for="loan in currentLoans" v-bind:key="loan.loanId">{{loan.toolId}}</div>
@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'my-loans',
+  name: 'user-loans',
   data() {
         return {
             apiURL: "https://5e8dd4e822d8cd0016a79b3f.mockapi.io/",
@@ -20,7 +20,7 @@ export default {
   methods: {
     getLoans() {
 
-    fetch(this.apiURL + "/loans")
+    fetch(this.apiURL + "/loans" + id)
     .then(response => {
         return response.json();
     })
