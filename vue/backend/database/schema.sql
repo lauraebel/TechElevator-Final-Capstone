@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS brands;
 DROP TABLE IF EXISTS tools;
 DROP TABLE IF EXISTS category;
 DROP TABLE IF EXISTS tool_category;
-DROP TABLE IF EXISTS reservations;
+DROP TABLE IF EXISTS loans;
 DROP TABLE IF EXISTS user_cart;
 
 CREATE TABLE roles (
@@ -56,7 +56,7 @@ CREATE TABLE tool_category (
   CONSTRAINT fk_tc_category_id FOREIGN KEY (category_id) REFERENCES category(id)
 );
 
-CREATE TABLE reservations (
+CREATE TABLE loans (
   id serial PRIMARY KEY,
   user_id int NOT NULL,
   tool_id int NOT NULL, 
@@ -64,8 +64,8 @@ CREATE TABLE reservations (
   due_on DATE NOT NULL,
   returned_on DATE,
 
-  CONSTRAINT fk_r_user_id FOREIGN KEY (user_id) REFERENCES users(id),
-  CONSTRAINT fk_r_tool_id FOREIGN KEY (tool_id) REFERENCES tools(id)
+  CONSTRAINT fk_l_user_id FOREIGN KEY (user_id) REFERENCES users(id),
+  CONSTRAINT fk_l_tool_id FOREIGN KEY (tool_id) REFERENCES tools(id)
 );
 
 CREATE TABLE user_cart (

@@ -6,6 +6,7 @@
       <div class="tool" v-for="tool in filteredTools" v-bind:key="tool.toolId">{{tool.toolName}}</div>
     </div>
 
+    
     <!-- dropdown for brand -->
     <!-- dropdown for category  -->
     <!-- button to show/hide keyword input -->
@@ -22,7 +23,7 @@ export default {
       allTools: [],
       allBrands: [],
       allCategories: [],
-      brand: 1,
+      brand: -1,
       category: -1,
       keyword: ''
     }

@@ -52,7 +52,7 @@ INSERT INTO tool_category (tool_id, category_id)
 INSERT INTO tool_category (tool_id, category_id) 
     VALUES ((SELECT id FROM tools WHERE name = 'socket wrench'), (SELECT id FROM category WHERE name = 'automotive'));
     
--- INSERT INTO reservations (id, user_id, tool_id, loaned_on, due_on, returned_on) 
+-- INSERT INTO loans (id, user_id, tool_id, loaned_on, due_on, returned_on) 
 --     VALUES ();
 
 -- INSERT INTO user_cart (user_id, tool0, tool1) 
