@@ -2,7 +2,7 @@
     <div class="user-loans">
     <h1>My Loans</h1>
     
-    <div class="loan" v-for="loan in currentLoans" v-bind:key="loan.loanId">{{loan.toolId}}</div>
+    <div class="loan" v-for="loan in loans" v-bind:key="loan.loanId">{{loan.tool}}</div>
     </div>
 
 </template>
@@ -29,18 +29,18 @@ export default {
         })
         .catch(err => {console.error(err)});
         }
-    },
-  computed: {
-    currentLoans() {
-        let loanList;
-
-        if(this.returnedOn == null) {
-            loanList = this.allLoans;
-        }
-    },
-    created() {
-        this.getLoans();
     }
-  }
+//   computed: {
+//     currentLoans() {
+//         let loanList;
+
+//         if(this.returnedOn == null) {
+//             loanList = this.allLoans;
+//         }
+//     },
+//     created() {
+//         this.getLoans();
+//     }
+//   }
  }
 </script>
