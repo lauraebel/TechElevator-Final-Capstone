@@ -6,8 +6,6 @@ import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Register from './views/Register.vue'
 
-import ToolsList from './views/ToolsList.vue'
-
 import ToolSearch from './views/ToolSearch.vue'
 import Tool from './views/Tool.vue'
 import Reserve from './views/Reserve.vue'
@@ -58,21 +56,9 @@ const router = new Router({
       }
     },
     {
-      path: "/search",
-      name: "tool-search",
-      component: ToolSearch,
-      meta: {
-        // correct setting
-        // requiresAuth: true
-
-        // temporary for development
-        requiresAuth: false
-      }
-    },
-    {
       path: '/tools',
       name: 'tools',
-      component: ToolsList,
+      component: ToolSearch,
       meta: {
         // correct setting
         // requiresAuth: true

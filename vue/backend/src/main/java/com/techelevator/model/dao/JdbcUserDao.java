@@ -1,4 +1,4 @@
-package com.techelevator.model;
+package com.techelevator.model.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import com.techelevator.authentication.PasswordHasher;
+import com.techelevator.model.beans.User;
 
 import org.bouncycastle.util.encoders.Base64;
 import org.springframework.beans.factory.annotation.Autowired;

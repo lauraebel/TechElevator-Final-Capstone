@@ -6,11 +6,11 @@ import org.junit.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 
-import com.techelevator.model.Brand;
-import com.techelevator.model.BrandDAO;
-import com.techelevator.model.Category;
-import com.techelevator.model.JdbcBrandDAO;
-import com.techelevator.model.JdbcCategoryDAO;
+import com.techelevator.model.beans.Brand;
+import com.techelevator.model.beans.Category;
+import com.techelevator.model.dao.BrandDAO;
+import com.techelevator.model.dao.JdbcBrandDAO;
+import com.techelevator.model.dao.JdbcCategoryDAO;
 
 public class JdbcBrandDAOIntegrationTest {
 	

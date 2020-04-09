@@ -1,22 +1,22 @@
-package com.techelevator.model;
+package com.techelevator.model.beans;
 
 import java.time.LocalDate;
 
-public class Reservation {
+public class Loan {
 	
-	private long reservationId;	
+	private long loanId;	
 	private long userId;	
 	private Tool tool;	
 	private LocalDate dateLoaned;	
 	private LocalDate dateReturned;	
 	private LocalDate dueDate;
 
-	public long getReservationId() {
-		return reservationId;
+	public long getLoanId() {
+		return loanId;
 	}
 	
-	public void setReservationId(long reservationId) {
-		this.reservationId = reservationId;
+	public void setLoanId(long loanId) {
+		this.loanId = loanId;
 	}
 	
 	public long getUserId() {

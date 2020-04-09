@@ -1,11 +1,19 @@
 <template>
   <div class="tool-search">
     <h1>Tool Search</h1>
+    <div class="filters">
+      <button v-on:click="resetSearch()">Clear Filters</button>
+      <input type="text" placeholder="Search by Keyword" v-model="keyword"/>
+      <span v-if="onlyAvailable">Available Tools</span><span v-else>All Tools</span><toggle-button v-model="onlyAvailable" />
+      <v-select placeholder="Filter by Brand" label="brandName" v-model="brand" :options="allBrands" :reduce="brandName => brandName.brandId" ></v-select>
+      <v-select placeholder="Filter by Category" label="categoryName" v-model="category" :options="allCategories" :reduce="categoryName => categoryName.categoryId"></v-select>  
+    </div>
 
     <div class="tools">
       <div class="tool" v-for="tool in filteredTools" v-bind:key="tool.toolId">{{tool.toolName}}</div>
     </div>
 
+    
     <!-- dropdown for brand -->
     <!-- dropdown for category  -->
     <!-- button to show/hide keyword input -->
@@ -18,18 +26,20 @@ export default {
   name: 'tool-search',
   data() {
     return {
-      apiURL: "https://5e8dd4e822d8cd0016a79b3f.mockapi.io/",
+      apiURL: "https://5e8dd4e822d8cd0016a79b3f.mockapi.io/", 
       allTools: [],
+      availableTools: [],
       allBrands: [],
       allCategories: [],
-      brand: 1,
-      category: -1,
-      keyword: ''
+      brand: '',
+      category: '',
+      keyword: '',
+      onlyAvailable: false
     }
   },
   methods: {
-    getAllTools(){
-      fetch(this.apiURL + "/tools")
+    getTools(){
+      fetch(this.apiURL + "/tools") 
                 .then( response => {
                     return response.json();
                 })
@@ -37,6 +47,15 @@ export default {
                     this.allTools = data;
                 })
                 .catch( err => { console.error(err) });
+      fetch(this.apiURL + "/available")
+                .then( response => {
+                    return response.json();
+                })
+                .then( data => {
+                    this.availableTools = data;
+                })
+                .catch( err => { console.error(err) });
+                
     },
     //method to get brands
     getBrands(){
@@ -60,6 +79,11 @@ export default {
                 })
                 .catch( err => { console.error(err) });
     },
+    resetSearch(){
+      this.brand = '';
+      this.category = '';
+      this.keyword = '';
+    },
     //method to get list of matching tools
     matchesBrand(tool){
       if (tool.toolBrand === this.brand){
@@ -70,18 +94,15 @@ export default {
     },
     matchesCategory(tool){
       const categoryList = tool.toolCategories;
+      const selectedCategory = this.category;
+      let matches = false;
 
-      if (this.category > 0){
-        for (let i = 0; i < categoryList.length; i++){
-          if (category === categoryList[i]){
-            return true;
-          }
+      categoryList.forEach(category => {
+        if (category === selectedCategory){
+          matches = true;
         }
-
-        return false;
-      } else {
-        return false;
-      }
+      });
+      return matches;
     },
     containsKeyword(tools){
       const filter = new RegExp(this.keyword, "i");
@@ -91,51 +112,50 @@ export default {
         const description = tool.toolDescription;
 
         return (name.match(filter) || description.match(filter));
-      })
-    },
-    inList(tool, toolList){
-      const id = tool.toolId;
-      for (let i = 0; i < toolList.length; i++){
-        const arrayToolId = toolList[i];
-        if (id === arrayToolId){
-          return true;
-        }
-      }
-      return false;
-    },
-    getMatchingTools(){
-      if (this.brand=== -1 && this.category === -1 && this.keyword === ''){
-        return this.allTools;
-      }
-
-      let filtered = [];
-      
-      if (this.keyword !== ''){
-        filtered = containsKeyword(allTools);
-      } 
-      
-      this.allTools.forEach(tool => {
-        if (this.brand > 0 && this.matchesBrand(tool)){
-          if (!this.inList(tool, filtered)){
-            filtered.push(tool);
-          }
-        }
-        if (this.category > 0 && this.matchesCategory(tool)){
-          if (!this.inList(tool, filtered)){
-            filtered.push(tool);
-          }
-        }
       });
-      return filtered;
     }
   },
   computed: {
     filteredTools(){
-      return this.getMatchingTools();
+      let toolList;
+
+      if (this.onlyAvailable){
+        toolList = this.availableTools;
+      } else {
+        toolList = this.allTools;
+      }
+
+      if (this.brand === '' && this.category === '' && this.keyword === ''){
+        return toolList;
+      }
+
+      let filtered = new Set();
+      
+      if (this.keyword !== ''){
+        filtered = this.containsKeyword(toolList);
+      } 
+      
+      toolList.forEach(tool => {
+        if (this.brand !== '' && this.category !== ''){
+          if (this.matchesBrand(tool) && this.matchesCategory(tool)){
+            filtered.add(tool);
+          }
+        } else if (this.brand !== '' && this.category == ''){
+          if (this.matchesBrand(tool)){ 
+            filtered.add(tool);
+          }
+        } else {
+          if (this.matchesCategory(tool)){
+            filtered.add(tool);
+          }
+        }
+      });
+
+      return filtered;
     }
   }, 
   created() {
-    this.getAllTools();
+    this.getTools();
     this.getBrands();
     this.getCategories();
   }
