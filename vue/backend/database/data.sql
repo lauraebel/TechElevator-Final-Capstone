@@ -22,7 +22,7 @@ INSERT INTO brands (id, name)
     VALUES (DEFAULT, 'stanley');
 
 INSERT INTO tools (id, name, description, img_name, brand_id) 
-    VALUES (DEFAULT, 'power drill', 'a really cool drill', 'power-drill.jpg', (SELECT id FROM brands WHERE name = 'black & decker'));
+    VALUES (DEFAULT, 'power drill', 'a really cool drill', 'powerdrill.jpg', (SELECT id FROM brands WHERE name = 'black & decker'));
 INSERT INTO tools (id, name, description, img_name, brand_id) 
     VALUES (DEFAULT, 'hammer', 'a really cool hammer', 'hammer.jpg', (SELECT id FROM brands WHERE name = 'husky'));
 INSERT INTO tools (id, name, description, img_name, brand_id) 
@@ -30,7 +30,7 @@ INSERT INTO tools (id, name, description, img_name, brand_id)
 INSERT INTO tools (id, name, description, img_name, brand_id) 
     VALUES (DEFAULT, 'shovel', 'a really cool shovel', 'shovel.jpg', (SELECT id FROM brands WHERE name = 'dewalt'));
 INSERT INTO tools (id, name, description, img_name, brand_id) 
-    VALUES (DEFAULT, 'socket wrench', 'a really cool socket wrench', 'socket-wrench.jpg', (SELECT id FROM brands WHERE name = 'black & decker'));
+    VALUES (DEFAULT, 'socket wrench', 'a really cool socket wrench', 'wrench.jpg', (SELECT id FROM brands WHERE name = 'black & decker'));
 
 INSERT INTO category (id, name) 
     VALUES (DEFAULT, 'power tool');
