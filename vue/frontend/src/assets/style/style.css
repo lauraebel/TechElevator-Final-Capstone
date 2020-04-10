@@ -110,6 +110,8 @@ div#app {
 .dropdown {
   order: 4;
   width: 100%;
+
+  margin-bottom: 4vw;
 } 
 
 .content {
@@ -188,7 +190,6 @@ div#app {
   margin: 1vw;
   margin-bottom: 0;
   grid-area: photo;
-  border: 2px solid var(--nav-background);
 }
 
 .tool-img {
@@ -205,6 +206,10 @@ div#app {
 
 .add-to-cart {
   margin-left: 1vw;
+}
+
+.desktop-add-to-cart-icon {
+  display: none;
 }
 
 .filters {
@@ -268,6 +273,10 @@ div.v-select {
 
 @media only screen and (min-width: 760px) {     
   
+  h1.page-title {
+    font-size: 8vw;
+  }
+
   .mobile-logo {
     display: none;
   }
@@ -288,6 +297,10 @@ div.v-select {
   .menu {
     margin-top: 5vw;
   }
+
+  /* .dropdown a {
+    font-size: 6vw;
+  } */
 
   .mobile-menu-icon {
     display: none;
@@ -323,54 +336,29 @@ div.v-select {
   .tools {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
   }
 
-  .tile {
+  .tile.tool {
     width: 30%;
-    height: 30vw;
+    height: 40vw;
+    padding: 0.5vw;
   }
   
   .tool-info {
     max-width: 100%;
-    height: 80%;
-    background-color: white;
-    display: grid;
-  
-    grid-template-areas:
-      "photo"
-      "name"
-    ;
-  
-    justify-items: center;
-    
+    height: 35vw;
   }
   
   .tool-name {
     grid-area: name;
-  
-    text-transform: capitalize;
-    text-emphasis: bolder;
-    font-size: 4vw;  
-    color: var(--nav-background);
+    height: 5vw;    
+    font-size: 4vw; 
+    align-self: flex-end; 
   }
-  
-  .img-container {
-    margin: 1vw;
-    margin-bottom: 0;
-    grid-area: photo;
-    border: 2px solid var(--nav-background);
-  }
-  
-  .tool-img {
-    max-width: 100%;
-  } 
   
   .add {
-    margin-top: 1vw;
-    display: flex;
-  
-    justify-content: center;
-    align-items: center;
+    margin-top: 1.5vw;
   }
   
   .add-to-cart {
@@ -448,6 +436,8 @@ div.v-select {
   .dropdown {
     grid-area: dropdown;
     width: 100%;
+
+    align-self: flex-start;
   }
 
   dropdown div {
@@ -483,6 +473,104 @@ div.v-select {
     grid-area: footer;
     font-size: 1vw;
   }
+
+  .page-title{
+    text-align: left;
+  }
+
+  .tile.tool {
+    width: 100%;
+    height: 25vw;
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .tool-info{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    background-color: var(--nav-background);
+  }
+
+  .tool-name {
+    order: 2;
+    align-self: center;
+    color: white;
+  }
+
+  .img-container {
+    width: 35%;
+    display: flex;
+    height: 100%;
+    background-color: white;
+    order: 1;
+    align-items: center;
+
+    border-radius: 10px;
+  }
+
+  .add-to-cart-icon {
+    display: none;
+  }
+
+  .desktop-add-to-cart-icon {
+    display: block;
+  }
+
+  .add span {
+    display: none;
+  }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+  
+    margin-bottom: 2vw;
+  }
+  
+  .reset {
+    width: 25%;
+    background-color: white;
+    margin: 1vw;
+    padding: 1vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    border-radius: 10px;
+    font-size: 2.2vw;
+  
+    order: 3;
+  }
+  
+  div.v-select {
+    width: 46%;
+    background-color: white;
+    border-radius: 10px;
+    font-size: 2.2vw;
+    order: 4;
+  }
+  
+  .keyword {
+    width: 65%;
+    border-radius: 10px;
+    font-size: 2.2vw;
+    order: 2;
+  }
+  
+  .toggle {
+    order: 1;
+    width: 100%;
+    margin-left: 2vw;
+    justify-content: flex-start;
+  }
+  
+  .toggle span {
+    font-size: 2vw;
+    margin-left: 1vw;
+    order: 99;
+  }
+  
 }
   
 

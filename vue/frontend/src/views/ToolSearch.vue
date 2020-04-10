@@ -1,6 +1,6 @@
 <template>
   <div class="tool-search">
-    <h1>Tool Search</h1>
+    <h1 class="page-title">Tool Search</h1>
     <div class="filters">
       <button v-on:click="resetSearch()" class="reset">Clear Filters</button>
       <input
