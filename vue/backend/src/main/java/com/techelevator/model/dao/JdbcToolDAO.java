@@ -21,26 +21,26 @@ public class JdbcToolDAO implements ToolDAO {
 	public JdbcToolDAO(DataSource dataSource) {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
-	
+
 	@Override
 	public List<Tool> getAllTools() {
 		List<Tool> tools = new ArrayList<Tool>();
-		String sql = "SELECT tools.id, tools.name, tools.description, tools.img_name, tools.brand_id "
-				+ "tool_category.catetory_id JOIN tool_category ON tools.id=tool_category.tool_id FROM tools";
+		String sql = "SELECT tools.id, tools.name, tools.description, tools.img_name, tools.brand_id, "
+				+ "tool_category.catetory_id FROM tools JOIN tool_category ON tools.id=tool_category.tool_id";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
 		while (result.next()) {
 			tools.add(mapRowToTool(result));
 		}
 		for (Tool tool : tools) {
 			List<Long> categories = new ArrayList<Long>();
-			sql = "SELECT category.id JOIN tool_category ON category.id=tool_category.category_id "
-					+ "FROM category WHERE tool_category.tool_id=?";
+			sql = "SELECT category.id FROM category JOIN tool_category ON category.id=tool_category.category_id "
+					+ "WHERE tool_category.tool_id=?";
 			result = jdbcTemplate.queryForRowSet(sql, tool.getToolId());
 			while (result.next()) {
 				categories.add(result.getLong("category.id"));
 			}
 			tool.setToolCategories(categories);
-		}		
+		}
 		return tools;
 	}
 
@@ -57,35 +57,35 @@ public class JdbcToolDAO implements ToolDAO {
 		}
 		for (Tool tool : tools) {
 			List<Long> categories = new ArrayList<Long>();
-			sql = "SELECT category.id JOIN tool_category ON category.id=tool_category.category_id "
-					+ "FROM category WHERE tool_category.tool_id=?";
+			sql = "SELECT category.id FROM category JOIN tool_category ON category.id=tool_category.category_id "
+					+ "WHERE tool_category.tool_id=?";
 			result = jdbcTemplate.queryForRowSet(sql, tool.getToolId());
 			while (result.next()) {
 				categories.add(result.getLong("category.id"));
 			}
 			tool.setToolCategories(categories);
 		}
-		return tools;		
+		return tools;
 	}
-	
+
 	@Override
 	public Tool getToolById(long id) {
 		Tool tool = null;
 		String sql = "SELECT id, name, description, img_name, brand_id FROM tools WHERE id = ?";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
-		if(result.next()) {
+		if (result.next()) {
 			tool = mapRowToTool(result);
 		}
-		
+
 		List<Long> categories = new ArrayList<Long>();
-		sql = "SELECT category.id JOIN tool_category ON category.id=tool_category.category_id "
-			+ "FROM category WHERE tool_category.tool_id=?";
+		sql = "SELECT category.id FROM category JOIN tool_category ON category.id=tool_category.category_id "
+				+ "WHERE tool_category.tool_id=?";
 		result = jdbcTemplate.queryForRowSet(sql, tool.getToolId());
 		while (result.next()) {
 			categories.add(result.getLong("category.id"));
 		}
 		tool.setToolCategories(categories);
-		
+
 		return tool;
 	}
 
@@ -101,7 +101,6 @@ public class JdbcToolDAO implements ToolDAO {
 			sql = "INSERT INTO tool_category(tool_id, category_id) VALUES (?, ?)";
 			jdbcTemplate.update(sql, newToolId, toolCategory);
 		}
-		
 
 		Tool newTool = new Tool();
 		newTool.setToolId(newToolId);
@@ -113,7 +112,7 @@ public class JdbcToolDAO implements ToolDAO {
 		return newTool;
 	}
 
-	private Tool mapRowToTool(SqlRowSet row) {				
+	private Tool mapRowToTool(SqlRowSet row) {
 		Tool tool = new Tool();
 		tool.setToolId(row.getLong("tools.id"));
 		tool.setToolName(row.getString("tools.name"));
@@ -122,6 +121,5 @@ public class JdbcToolDAO implements ToolDAO {
 		tool.setToolBrandId(row.getLong("tools.brand_id"));
 		return tool;
 	}
-
 
 }

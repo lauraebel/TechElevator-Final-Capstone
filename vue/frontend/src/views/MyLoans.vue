@@ -1,18 +1,23 @@
 <template>
     <div class="user-loans">
     <h1>My Loans</h1>
-    
+    <loan-info />
     <div class="loan" v-for="loan in loans" v-bind:key="loan.loanId">{{loan.tool}}</div>
     </div>
 
 </template>
 
 <script>
+import LoanInfo from "../components/LoanInfo";
+
 export default {
   name: 'user-loans',
+  components: {
+      LoanInfo
+  },
   data() {
         return {
-            apiURL: "https://5e8dd4e822d8cd0016a79b3f.mockapi.io/",
+            apiURL: "http://localhost:8080/AuthenticationApplication/api/loans",
             allLoans: [],
             returnedOn: '',
             id: 1

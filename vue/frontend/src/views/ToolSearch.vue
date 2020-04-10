@@ -19,7 +19,7 @@
         label="brandName"
         v-model="brand"
         :options="allBrands"
-        :reduce="brandName => brandName.brandId"ß
+        :reduce="brandName => brandName.brandId"
       ></v-select>
       <v-select
         placeholder="Filter by Category"
@@ -51,7 +51,7 @@ export default {
   },
   data() {
     return {
-      apiURL: "https://5e8dd4e822d8cd0016a79b3f.mockapi.io",
+      apiURL: "http://localhost:8080/AuthenticationApplication/api/tools",
       allTools: [],
       availableTools: [],
       allBrands: [],
