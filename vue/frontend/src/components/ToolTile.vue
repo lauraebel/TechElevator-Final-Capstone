@@ -1,36 +1,45 @@
 <template>
-  <div class="tool">
-      <router-link :to="{name:'tool', params: {id: tool.toolId}}" >
+  <div class="tool" v-if="this.tool.toolId != null">
+      
+      <router-link :to="{name:'tool', params: {id: this.tool.toolId}}" >
         <h1 class="tool-name">{{tool.name}}</h1>
-        <img v-bind:src="('@/assets/images/' + tool.img_name)" class="tool-img"/>
+        <div class="tool-img">
+            <img src="'@/assets/images/product-img/' + this.tool.toolImgName" :alt="'image of ' + this.tool.toolName" />
+        </div>
       </router-link>
+      <add-to-cart v-on:clickedCart="addToCart" />
   </div>
 </template>
 
 <script>
+import AddToCart from './AddToCart'
+
 export default {
     name: 'tool-tile',
     props: {
-        apiUrl: String,
-        id: Number
+        tool: Object,
+    },
+    components: {
+        AddToCart
     },
     data() {
-        tool: {}
+        return {
+            addedToCart: false,
+            isAvailable: true,
+        }
     },
     methods: {
-        getTool(id){
-            fetch(this.apiUrl + "/" + id)
+        addToCart() {
+            fetch(this.apiURL + "/cart/{userId}")
                 .then( response => {
                     return response.json();
                 })
                 .then( data => {
-                    this.tool = data;
+                    this.userCart = data;
+                    console.log(this.userCart);
                 })
                 .catch( err => { console.error(err) });
         }
-    }, 
-    created(){
-        this.getTool(this.id)();
     }
 }
 </script>
