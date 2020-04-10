@@ -33,7 +33,7 @@ public class JdbcToolDAO implements ToolDAO {
 		}
 		for (Tool tool : tools) {
 			List<Long> categories = new ArrayList<Long>();
-			sql = "SELECT category.id FROM category JOIN tool_category ON category.id=tool_category.category_id "
+			sql = "SELECT id FROM category JOIN tool_category ON category.id=tool_category.category_id "
 					+ "WHERE tool_category.tool_id=?";
 			result = jdbcTemplate.queryForRowSet(sql, tool.getToolId());
 			while (result.next()) {
