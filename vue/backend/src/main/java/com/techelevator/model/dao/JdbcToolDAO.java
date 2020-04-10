@@ -26,18 +26,18 @@ public class JdbcToolDAO implements ToolDAO {
 	public List<Tool> getAllTools() {
 		List<Tool> tools = new ArrayList<Tool>();
 		String sql = "SELECT tools.id, tools.name, tools.description, tools.img_name, tools.brand_id, "
-				+ "tool_category.catetory_id FROM tools JOIN tool_category ON tools.id=tool_category.tool_id";
+				+ "tool_category.category_id FROM tools JOIN tool_category ON tools.id=tool_category.tool_id";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
 		while (result.next()) {
 			tools.add(mapRowToTool(result));
 		}
 		for (Tool tool : tools) {
 			List<Long> categories = new ArrayList<Long>();
-			sql = "SELECT category.id FROM category JOIN tool_category ON category.id=tool_category.category_id "
+			sql = "SELECT id FROM category JOIN tool_category ON category.id=tool_category.category_id "
 					+ "WHERE tool_category.tool_id=?";
 			result = jdbcTemplate.queryForRowSet(sql, tool.getToolId());
 			while (result.next()) {
-				categories.add(result.getLong("category.id"));
+				categories.add(result.getLong("id"));
 			}
 			tool.setToolCategories(categories);
 		}
@@ -114,11 +114,11 @@ public class JdbcToolDAO implements ToolDAO {
 
 	private Tool mapRowToTool(SqlRowSet row) {
 		Tool tool = new Tool();
-		tool.setToolId(row.getLong("tools.id"));
-		tool.setToolName(row.getString("tools.name"));
-		tool.setToolDescription(row.getString("tools.description"));
-		tool.setToolImgName(row.getString("tools.img_name"));
-		tool.setToolBrandId(row.getLong("tools.brand_id"));
+		tool.setToolId(row.getLong("id"));
+		tool.setToolName(row.getString("name"));
+		tool.setToolDescription(row.getString("description"));
+		tool.setToolImgName(row.getString("img_name"));
+		tool.setToolBrandId(row.getLong("brand_id"));
 		return tool;
 	}
 
