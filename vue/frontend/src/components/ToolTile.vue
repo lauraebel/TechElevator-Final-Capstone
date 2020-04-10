@@ -30,7 +30,15 @@ export default {
     },
     methods: {
         addToCart() {
-            this.addedToCart = !this.addedToCart;
+            fetch(this.apiURL + "/cart/{userId}")
+                .then( response => {
+                    return response.json();
+                })
+                .then( data => {
+                    this.userCart = data;
+                    console.log(this.userCart);
+                })
+                .catch( err => { console.error(err) });
         }
     }
 }
