@@ -6,7 +6,7 @@
 
         <button v-if="!isAvailable" :disabled='isDisabled'><img src="@/assets/images/icons/add-to-cart.png" class="can-not-add-to-cart-icon" /></button>
 
-        <button v-if="addedToCart" v-on:click="clickedCart"><img src="@/assets/images/icons/in-cart.png" class="in-cart-icon" /></button>
+        <button v-if="addedToCart" v-on:click="clickedCart"><img src="@/assets/images/icons/in-cart.png" class="mobile-in-cart-icon" /><img src="@/assets/images/icons/desktop-in-cart.png" class="desktop-in-cart-icon" /></button>
 
     </transition> 
   </div>

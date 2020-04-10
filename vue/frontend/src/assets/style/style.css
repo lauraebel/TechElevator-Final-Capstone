@@ -107,6 +107,10 @@ div#app {
   display: none;
 }
 
+.desktop-in-cart-icon {
+  display: none;
+}
+
 .dropdown {
   order: 4;
   width: 100%;
@@ -294,13 +298,17 @@ div.v-select {
     display: none;
   }
   
+  .mobile-in-cart-icon {
+    display: none;
+  }
+  
+  .desktop-in-cart-icon {
+    display: block;
+  }
+
   .menu {
     margin-top: 5vw;
   }
-
-  /* .dropdown a {
-    font-size: 6vw;
-  } */
 
   .mobile-menu-icon {
     display: none;
