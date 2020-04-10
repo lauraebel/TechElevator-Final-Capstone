@@ -19,7 +19,7 @@
         label="brandName"
         v-model="brand"
         :options="allBrands"
-        :reduce="brandName => brandName.brandId"ß
+        :reduce="brandName => brandName.brandId"
       ></v-select>
       <v-select
         placeholder="Filter by Category"
