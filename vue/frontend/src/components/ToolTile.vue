@@ -26,32 +26,30 @@
 import AddToCart from "./AddToCart";
 
 export default {
-  name: "tool-tile",
-  props: {
-    tool: Object
-  },
-  components: {
-    AddToCart
-  },
-  data() {
-    return {
-      addedToCart: false,
-      isAvailable: true
-    };
-  },
-  methods: {
-    addToCart() {
-      fetch(this.apiURL + "/cart/{userId}")
-        .then(response => {
-          return response.json();
-        })
-        .then(data => {
-          this.userCart = data;
-          console.log(this.userCart);
-        })
-        .catch(err => {
-          console.error(err);
-        });
+    name: 'tool-tile',
+    props: {
+        tool: Object,
+    },
+    components: {
+        AddToCart
+    },
+    data() {
+        return {
+            addedToCart: false,
+            isAvailable: true,
+        }
+    },
+    methods: {
+        addToCart() {
+            fetch(this.apiURL + "/cart/{userId}")
+                .then( response => {
+                    return response.json();
+                })
+                .then( data => {
+                    this.userCart = data;
+                })
+                .catch( err => { console.error(err) });
+        }
     }
   }
 };

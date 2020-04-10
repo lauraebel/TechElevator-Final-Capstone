@@ -10,9 +10,11 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import com.techelevator.model.beans.Cart;
 
+@Component
 public class JdbcCartDAO implements CartDAO {
 
 	private JdbcTemplate jdbc;
