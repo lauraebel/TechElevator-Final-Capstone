@@ -10,7 +10,9 @@
     </div>
 
     <div class="tools">
-      <div class="tool" v-for="tool in filteredTools" v-bind:key="tool.toolId">{{tool.toolName}}</div>
+      <div class="tool" v-for="tool in filteredTools" v-bind:key="tool.toolId" >{{tool.toolName}}
+        <tool-tile v-bind:tool="tool"/>
+      </div>
     </div>
 
     
@@ -22,8 +24,13 @@
 </template>
 
 <script>
+import ToolTile from '../components/ToolTile'
+
 export default {
   name: 'tool-search',
+  components: {
+    ToolTile
+  },
   data() {
     return {
       apiURL: "https://5e8dd4e822d8cd0016a79b3f.mockapi.io/", 
