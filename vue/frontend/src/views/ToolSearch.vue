@@ -52,7 +52,8 @@ export default {
   data() {
     return {
       //apiURL: "http://localhost:8080/AuthenticationApplication/api/tools",
-      apiURL: "http://localhost:8080/AuthenticationApplication/api",
+      // apiURL: "http://localhost:8080/AuthenticationApplication/api",
+      apiURL: "https://5e8dd4e822d8cd0016a79b3f.mockapi.io",
       allTools: [],
       availableTools: [],
       allBrands: [],
