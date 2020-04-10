@@ -2,8 +2,7 @@
   <div class="tile" v-if="this.tool.toolId != null">
     <router-link
       :to="{ name: 'tool', params: { id: this.tool.toolId } }"
-      class="tool-info"
-    >
+      class="tool-info">
       <h1 class="tool-name">{{ tool.toolName }}</h1>
       <div class="img-container">
         <img
