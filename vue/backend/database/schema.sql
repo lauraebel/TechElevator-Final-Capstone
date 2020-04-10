@@ -69,19 +69,12 @@ CREATE TABLE loans (
   CONSTRAINT fk_l_tool_id FOREIGN KEY (tool_id) REFERENCES tools(id)
 );
 
-CREATE TABLE carts (
-  id serial PRIMARY KEY,
-  user_id int,
-
-  CONSTRAINT fk_c_user_id FOREIGN KEY (user_id) REFERENCES users(id)
-);
-
 CREATE TABLE cart_items (
   id serial PRIMARY KEY,
-  cart_id int NOT NULL,
+  user_id int NOT NULL,
   tool_id int NOT NULL,
   
-  CONSTRAINT fk_ci_cart_id FOREIGN KEY (cart_id) REFERENCES carts(id),
+  CONSTRAINT fk_ci_user_id FOREIGN KEY (user_id) REFERENCES users(id),
   CONSTRAINT fk_ci_tool_id FOREIGN KEY (tool_id) REFERENCES tools(id)
 );
 

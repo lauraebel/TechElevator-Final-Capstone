@@ -2,6 +2,7 @@ package com.techelevator.model.dao;
 
 import java.util.List;
 
+import com.techelevator.model.beans.Cart;
 import com.techelevator.model.beans.Loan;
 
 public interface LoanDAO {
@@ -17,7 +18,7 @@ public interface LoanDAO {
 	 * @param userId based on signed in user or id entered by administrator
 	 * @return void
 	 */
-	public Loan addLoan(Long userId);
+	public Loan addLoan(Cart cart);
 	
 	/**
 	 * Renew an existing reservation by adding an additional 

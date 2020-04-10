@@ -12,12 +12,6 @@ INSERT INTO users (id, username, password, salt, role, first_name, last_name, li
 INSERT INTO users (id, username, password, salt, role, first_name, last_name, license_number)    
     VALUES (DEFAULT, 'rachellerauth', 'password4', 'salt', (SELECT id FROM roles WHERE name = 'admin'), 'rachelle', 'rauth', '01011990');
 
-INSERT INTO carts (user_id) VALUES ((SELECT id FROM users WHERE username = 'katherinelillemoen'));
-INSERT INTO carts (user_id) VALUES ((SELECT id FROM users WHERE username = 'lauraebel'));
-INSERT INTO carts (user_id) VALUES ((SELECT id FROM users WHERE username = 'marthaweisheimer'));
-INSERT INTO carts (user_id) VALUES ((SELECT id FROM users WHERE username = 'brianlauvray'));
-INSERT INTO carts (user_id) VALUES ((SELECT id FROM users WHERE username = 'rachellerauth'));
-
 INSERT INTO brands (id, name) 
     VALUES (DEFAULT, 'black & decker');
 INSERT INTO brands (id, name) 
@@ -58,23 +52,24 @@ INSERT INTO tool_category (tool_id, category_id)
 INSERT INTO tool_category (tool_id, category_id) 
     VALUES ((SELECT id FROM tools WHERE name = 'socket wrench'), (SELECT id FROM category WHERE name = 'automotive'));
     
-INSERT INTO cart_items (cart_id, tool_id) VALUES ((SELECT id FROM carts WHERE user_id = (SELECT id FROM users WHERE username = 'katherinelillemoen')), 1);
-INSERT INTO cart_items (cart_id, tool_id) VALUES ((SELECT id FROM carts WHERE user_id = (SELECT id FROM users WHERE username = 'katherinelillemoen')), 2);
+INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'katherinelillemoen'), 1);
+INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'katherinelillemoen'), 2);
 
-INSERT INTO cart_items (cart_id, tool_id) VALUES ((SELECT id FROM carts WHERE user_id = (SELECT id FROM users WHERE username = 'lauraebel')), 3);
-INSERT INTO cart_items (cart_id, tool_id) VALUES ((SELECT id FROM carts WHERE user_id = (SELECT id FROM users WHERE username = 'lauraebel')), 4);
+INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'lauraebel'), 3);
+INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'lauraebel'), 4);
 
-INSERT INTO cart_items (cart_id, tool_id) VALUES ((SELECT id FROM carts WHERE user_id = (SELECT id FROM users WHERE username = 'marthaweisheimer')), 1);
-INSERT INTO cart_items (cart_id, tool_id) VALUES ((SELECT id FROM carts WHERE user_id = (SELECT id FROM users WHERE username = 'marthaweisheimer')), 2);
+INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'marthaweisheimer'), 1);
+INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'marthaweisheimer'), 2);
 
-INSERT INTO cart_items (cart_id, tool_id) VALUES ((SELECT id FROM carts WHERE user_id = (SELECT id FROM users WHERE username = 'brianlauvray')), 3);
-INSERT INTO cart_items (cart_id, tool_id) VALUES ((SELECT id FROM carts WHERE user_id = (SELECT id FROM users WHERE username = 'brianlauvray')), 4);
+INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'brianlauvray'), 3);
+INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'brianlauvray'), 4);
 
-INSERT INTO cart_items (cart_id, tool_id) VALUES ((SELECT id FROM carts WHERE user_id = (SELECT id FROM users WHERE username = 'rachellerauth')), 5);
-INSERT INTO cart_items (cart_id, tool_id) VALUES ((SELECT id FROM carts WHERE user_id = (SELECT id FROM users WHERE username = 'rachellerauth')), 1);
+INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'rachellerauth'), 5);
+INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'rachellerauth'), 1);
     
 INSERT INTO loans (id, user_id, tool_id, loaned_on, due_on, returned_on)
     VALUES (DEFAULT, 1, 5, '2019-10-10', '2020-05-20', NULL);
+
 -- INSERT INTO loans (id, user_id, tool_id, loaned_on, due_on, returned_on) 
 --     VALUES ();
 
