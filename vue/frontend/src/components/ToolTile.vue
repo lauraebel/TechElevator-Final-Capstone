@@ -4,7 +4,7 @@
       <router-link :to="{name:'tool', params: {id: this.tool.toolId}}" >
         <h1 class="tool-name">{{tool.name}}</h1>
         <div class="tool-img">
-            <img v-bind:src="('@/assets/images/product-img/' + this.tool.toolImgName)" :alt="this.tool.toolName" />
+            <img src="'@/assets/images/product-img/' + this.tool.toolImgName" :alt="'image of ' + this.tool.toolName" />
         </div>
       </router-link>
       <add-to-cart v-on:clickedCart="addToCart" />

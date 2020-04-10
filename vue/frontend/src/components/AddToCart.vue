@@ -29,3 +29,13 @@ export default {
   }
 };
 </script>
+
+<style>
+#can-not-add-to-cart-icon {
+    background: black;
+}
+
+#add-to-cart-icon {
+    color: #EC2F3B; 
+}
+</style>
