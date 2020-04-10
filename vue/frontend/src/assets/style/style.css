@@ -33,6 +33,15 @@ body {
   padding: 1vw;
 }
 
+h1 {
+  color: white;
+  text-align: center;
+}
+
+span {
+  color: white;
+}
+
 a {
   color: white;
   text-decoration: none;
@@ -54,9 +63,14 @@ div#app {
   margin-top: 4vw;
   background-color: var(--nav-background);
 }
-.menu-icon {
-  display: inline;
+
+.mobile-menu-icon {
+  display: block;
 }
+
+.menu-icon{
+  display: none;
+} 
 
 .branding {
   color: white;
@@ -144,16 +158,144 @@ div#app {
   align-self: flex-end;
 }
 
+.tile {
+  margin-bottom: 2vw;
+}
+
+.tool-info {
+  width: 100%;
+  background-color: white;
+  display: grid;
+
+  grid-template-areas:
+    "photo"
+    "name"
+  ;
+
+  justify-items: center;
+}
+
+.tool-name {
+  grid-area: name;
+
+  text-transform: capitalize;
+  text-emphasis: bolder;
+  font-size: 8vw;  
+  color: var(--nav-background);
+}
+
+.img-container {
+  margin: 1vw;
+  margin-bottom: 0;
+  grid-area: photo;
+  border: 2px solid var(--nav-background);
+}
+
+.tool-img {
+  width: 100%;
+}
+
+.add {
+  margin-top: 1vw;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.add-to-cart {
+  margin-left: 1vw;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+
+  margin-bottom: 2vw;
+}
+
+.reset {
+  background-color: white;
+  margin: 1vw;
+  padding: 1vw;
+  padding-left: 4vw;
+  padding-right: 4vw;
+  border-radius: 4px;
+  font-size: 4vw;
+
+  order: 2;
+}
+
+div.v-select {
+  width: 46%;
+  display: inline-block;
+  margin:1vw;
+  background-color: white;
+  border-radius: 4px;
+  font-size: 3.5vw;
+  text-transform: capitalize;
+  order: 3;
+}
+
+.keyword {
+  width: 95%;
+  border-radius: 4px;
+  font-size: 4vw;
+  padding: 1vw;
+  margin: 1vw;
+  order: 3;
+}
+
+.toggle {
+  order: 1;
+  margin: 1vw;
+  width: 48%;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toggle span {
+  font-size: 3.9vw;
+}
+
+.desktop-toggle {
+  display: none;
+}
+
 @media only screen and (min-width: 760px) {     
-  .cart-icon {
-    display: inline;
+  
+  .mobile-logo {
+    display: none;
   }
   
-  .cart {
-    margin-top: 3vw;
-    margin-right: 3vw;
+  .logo {
+    display: block;
+  }
+  
+  .cart-icon {
+    display: block;
+    margin-top: 2vw;
   }
 
+  .mobile-cart-icon {
+    display: none;
+  }
+  
+  .menu {
+    margin-top: 5vw;
+  }
+
+  .mobile-menu-icon {
+    display: none;
+  }
+  
+  .menu-icon{
+    display: block;
+  } 
 
   #footer {
     font-size: 3vw;
@@ -176,6 +318,67 @@ div#app {
 
   #icons {
     text-align: right;
+  }
+
+  .tools {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tile {
+    width: 30%;
+    height: 30vw;
+  }
+  
+  .tool-info {
+    max-width: 100%;
+    height: 80%;
+    background-color: white;
+    display: grid;
+  
+    grid-template-areas:
+      "photo"
+      "name"
+    ;
+  
+    justify-items: center;
+    
+  }
+  
+  .tool-name {
+    grid-area: name;
+  
+    text-transform: capitalize;
+    text-emphasis: bolder;
+    font-size: 4vw;  
+    color: var(--nav-background);
+  }
+  
+  .img-container {
+    margin: 1vw;
+    margin-bottom: 0;
+    grid-area: photo;
+    border: 2px solid var(--nav-background);
+  }
+  
+  .tool-img {
+    max-width: 100%;
+  } 
+  
+  .add {
+    margin-top: 1vw;
+    display: flex;
+  
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .add-to-cart {
+    margin-left: 1vw;
+  }
+
+  .toggle span {
+    font-size: 5vw;
   }
 }
 

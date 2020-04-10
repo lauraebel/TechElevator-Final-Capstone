@@ -1,7 +1,6 @@
 <template>
   <div class="menu">
-    <button v-on:click="clickedMenu"><img src="@/assets/images/icons/menu.png" class="menu-icon" /></button>
-  </div>
+    <button v-on:click="clickedMenu"><img src="@/assets/images/icons/mobile-menu.png" class="mobile-menu-icon" /><img src="@/assets/images/icons/menu.png" class="menu-icon" /></button>  </div>
 </template>
 
 <script>
