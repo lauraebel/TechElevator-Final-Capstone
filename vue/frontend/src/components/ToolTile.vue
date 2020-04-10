@@ -36,7 +36,6 @@ export default {
                 })
                 .then( data => {
                     this.userCart = data;
-                    console.log(this.userCart);
                 })
                 .catch( err => { console.error(err) });
         }

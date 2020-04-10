@@ -10,7 +10,7 @@ export default {
   name: 'cart',
   data() {
     return {
-      apiURL: "https://5e8dd4e822d8cd0016a79b3f.mockapi.io/", 
+      apiURL: "https://5e8dd4e822d8cd0016a79b3f.mockapi.io/",
       allCarts: [],
       userCart: [],
       allBrands: [],
