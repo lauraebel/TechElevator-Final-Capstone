@@ -371,7 +371,7 @@ div.v-select {
 }
 
 @media only screen and (min-width: 1024px) { 
-  
+
   div#app {
     display: grid;
     grid-template-columns: 1fr 8fr 1fr;
@@ -476,6 +476,7 @@ div.v-select {
 
   .page-title{
     text-align: left;
+    font-size: 4vw;
   }
 
   .tile.tool {

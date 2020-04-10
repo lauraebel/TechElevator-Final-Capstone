@@ -51,7 +51,8 @@ export default {
   },
   data() {
     return {
-      apiURL: "http://localhost:8080/AuthenticationApplication/api/tools",
+      //apiURL: "http://localhost:8080/AuthenticationApplication/api/tools",
+      apiURL: "http://localhost:8080/AuthenticationApplication/api",
       allTools: [],
       availableTools: [],
       allBrands: [],
