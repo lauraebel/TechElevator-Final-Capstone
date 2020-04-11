@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,23 +35,22 @@ public class ApiController {
 
 	@Autowired
 	private AuthProvider authProvider;
-	
+
 	@Autowired
 	private BrandDAO brandDao;
-	
+
 	@Autowired
 	private CartDAO cartDao;
-	
+
 	@Autowired
 	private CategoryDAO categoryDao;
-	
+
 	@Autowired
 	private LoanDAO loanDao;
-	
+
 	@Autowired
 	private ToolDAO toolDao;
 
-	
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public String authorizedOnly() throws UnauthorizedException {
 		/*
@@ -68,7 +66,7 @@ public class ApiController {
 		return "Success";
 	}
 
-	@GetMapping("/tools" )
+	@GetMapping("/tools")
 	public List<Tool> listAllTools() {
 		return toolDao.getAllTools();
 	}
@@ -77,7 +75,7 @@ public class ApiController {
 	public List<Tool> listAvailableTools() {
 		return toolDao.getAllAvailableTools();
 	}
-	
+
 	@GetMapping("/tools{id}")
 	public Tool getToolById(@PathVariable long id) throws Exception {
 		Tool tool = toolDao.getToolById(id);
@@ -87,7 +85,7 @@ public class ApiController {
 			throw new Exception("Tool not found");
 		}
 	}
-	
+
 	@GetMapping("/categories")
 	public List<Category> listAllCategories() {
 		return categoryDao.getAllCategories();
@@ -112,19 +110,19 @@ public class ApiController {
 			throw new Exception("No loans found.");
 		}
 	}
-	
+
 	@GetMapping("/carts")
 	public List<Cart> listAllCarts() throws Exception {
 		List<Cart> carts = cartDao.getCarts();
-		
+
 		if (carts != null) {
 			return carts;
 		} else {
 			throw new Exception("No carts found.");
 		}
-		
+
 	}
-	
+
 	@GetMapping("/cart/{userId}")
 	public Cart listUserCart(@PathVariable long userId) {
 		Cart cart = cartDao.getCartByUser(userId);
@@ -138,15 +136,5 @@ public class ApiController {
 			cartDao.updateCart(cart);
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

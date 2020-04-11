@@ -52,9 +52,10 @@ export default {
   },
   data() {
     return {
-      //apiURL: "http://localhost:8080/AuthenticationApplication/api/tools",
+      authApiURL: "http://localhost:8080/AuthenticationApplication/api/tools",
+      apiURL: "http://localhost:8080/AuthenticationApplication/api",
       // apiURL: "http://localhost:8080/AuthenticationApplication/api",
-      apiURL: "https://5e8dd4e822d8cd0016a79b3f.mockapi.io",
+      // apiURL: "https://5e8dd4e822d8cd0016a79b3f.mockapi.io",
       allTools: [],
       availableTools: [],
       allBrands: [],
@@ -170,15 +171,15 @@ export default {
         });
     },
     addToCart(toolId) {
-      this.userCart.items.push(toolId);
+      var tempCart = JSON.parse(JSON.stringify(this.userCart));
+      console.log(tempCart);
+      tempCart.items.push(toolId);
       fetch(this.apiURL + "/cart/{userId}", {
         method: 'PUT',
-        body: JSON.stringify(this.userCart)
+        body: JSON.stringify(tempCart)
         })
         .then( (response) => {
-          if (response.ok) {
-            this.$router.push({ path: '/carts/{userId}'})
-          }
+          return response.json();
         })
         .then( data => {
            this.userCart = data;
