@@ -1,7 +1,22 @@
 <template>
   <div class="cart">
-    <h1>Tool Library Cart</h1>
-    <div class="cartContents" v-for="tool in this.userCart" :key="tool.toolId">{{tool.toolName}} </div>
+    <h1 class="page-title">Tool Library Cart</h1>
+    <div class="cartContents" v-for="tool in this.userCart" :key="tool.toolId"> 
+      <router-link
+        :to="{ name: 'tool', params: { id: this.tool.toolId } }"
+        class="tool-info">
+        <h1 class="tool-name">{{ tool.toolName }}</h1>
+        <div class="img-container">
+          <img
+            v-bind:src="
+              require('../assets/images/product-img/' + tool.toolImgName)
+            "
+            :alt="'image of ' + this.tool.toolName"
+            class="tool-img"
+          />
+        </div>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -10,7 +25,8 @@ export default {
   name: 'cart',
   data() {
     return {
-      apiURL: "http://localhost:8080/AuthenticationApplication/api/tools",
+      // apiURL: "http://localhost:8080/AuthenticationApplication/api/tools",
+      apiURL: "https://5e8dd4e822d8cd0016a79b3f.mockapi.io",
       allCarts: [],
       userCart: [],
       allBrands: [],

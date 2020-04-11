@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -123,15 +124,20 @@ public class ApiController {
 		}
 		
 	}
+	
+	@GetMapping("/cart/{userId}")
+	public Cart listUserCart(@PathVariable long userId) {
+		Cart cart = cartDao.getCartByUser(userId);
+		return cart;
+	}
 
 	@PutMapping("/cart/{userId}")
 	public void update(@RequestBody Cart cart, @PathVariable long userId) {
 		Cart requestedCart = cartDao.getCartByUser(userId);
 		if (requestedCart != null) {
-			
+			cartDao.updateCart(cart);
 		}
 	}
-	
 	
 	
 	

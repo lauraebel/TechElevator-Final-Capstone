@@ -36,6 +36,7 @@
         v-for="tool in filteredTools"
         v-bind:key="tool.toolId"
         v-bind:tool="tool"
+        v-on:clickedCart="addToCart"
       />
     </div>
   </div>
@@ -61,7 +62,8 @@ export default {
       brand: "",
       category: "",
       keyword: "",
-      onlyAvailable: false
+      onlyAvailable: false,
+      userCart: {}
     };
   },
   methods: {
@@ -147,7 +149,42 @@ export default {
 
         return name.match(filter) || description.match(filter);
       });
-    }
+    },
+    getCart() {
+      // TODO replace with actual userid
+      fetch(this.apiURL + "/carts")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          let carts = data;
+          for(var i = 0; i < carts.length; i++) {
+            if (carts[i] == 1) {
+              this.userCart = carts[i];
+            }
+          }
+          console.log(this.userCart);
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    },
+    addToCart(toolId) {
+      this.userCart.items.push(toolId);
+      fetch(this.apiURL + "/cart/{userId}", {
+        method: 'PUT',
+        body: JSON.stringify(this.userCart)
+        })
+        .then( (response) => {
+          if (response.ok) {
+            this.$router.push({ path: '/carts/{userId}'})
+          }
+        })
+        .then( data => {
+           this.userCart = data;
+        })
+          .catch( err => { console.error(err) });
+        }
   },
   computed: {
     filteredTools() {
@@ -192,6 +229,7 @@ export default {
     this.getTools();
     this.getBrands();
     this.getCategories();
+    this.getCart();
   }
 };
 </script>

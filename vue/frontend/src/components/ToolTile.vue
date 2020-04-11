@@ -16,7 +16,7 @@
     </router-link>
     <div class="add">
         <span>Add to Cart</span>
-        <add-to-cart v-on:clickedCart="addToCart" />
+        <add-to-cart v-on:clickedCart="clickedCart" />
     </div>
   </div>
 </template>
@@ -39,16 +39,10 @@ export default {
         }
     },
     methods: {
-        addToCart() {
-            fetch(this.apiURL + "/cart/{userId}")
-                .then( response => {
-                    return response.json();
-                })
-                .then( data => {
-                    this.userCart = data;
-                })
-                .catch( err => { console.error(err) });
-        }
+      clickedCart() {
+      this.addedToCart = !this.addedToCart;
+      this.$emit('clickedCart', this.tool.toolId);
+    }  
     }
   
 };
