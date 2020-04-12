@@ -32,13 +32,10 @@
 
     <div class="tools" >
       <div class="tool" v-for="tool in filteredTools" v-bind:key="tool.toolId">
-        <tool-tile
-          class="tool"
-          v-bind:tool="tool"
-        />
-        <div class="add">
-          <span>Add to Cart</span>
-          <add-to-cart v-on:clickedCart="clickedCart" />
+        <tool-tile class="tool" v-bind:tool="tool" />
+        <div class="add" v-on:click="clickedCart(tool.toolId)">
+          <span class="add" >Add to Cart</span>
+          <add-to-cart/>
         </div>
       </div>
     </div>
@@ -156,6 +153,9 @@ export default {
 
         return name.match(filter) || description.match(filter);
       });
+    },
+    clickedCart(toolId){
+      this.$emit('clickedAddToCart', toolId);
     }
   },
   computed: {

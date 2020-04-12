@@ -4,7 +4,7 @@
     <cart-icon />
     <menu-icon v-on:clickedMenu="handleMenu" />
     <dropdown-menu v-bind:isVisible="visible"/>
-    <router-view class="content"/>
+    <router-view class="content" v-on:clickedAddToCart="handleCart" v-bind:cart="cart" />
     <router-link :to="{name: 'credits'}" id="footer" >Credits</router-link>
   </div>
 </template>
@@ -25,12 +25,19 @@ export default {
     },
   data (){
     return {
-      visible: false
+      visible: false,
+      cart: {
+        user: '',
+        items: [1,2,3,4,5]
+      }
     }
   },
   methods: {
     handleMenu() {
       this.visible = !this.visible;
+    },
+    handleCart(event) {
+      this.cart.items.push(event);
     }
   }
 }

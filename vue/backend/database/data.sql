@@ -2,7 +2,7 @@ INSERT INTO roles (id, name) VALUES (DEFAULT, 'admin');
 INSERT INTO roles (id, name) VALUES (DEFAULT, 'user');
 
 INSERT INTO users (id, username, password, salt, role, first_name, last_name, license_number) 
-    VALUES (DEFAULT, 'katherinelillemoen', 'password', 'salt', (SELECT id FROM roles WHERE name = 'user'), 'katherine', 'lillemoen', '09281999');
+    VALUES (DEFAULT, 'katherinelillemoen', 'password', 'salt', (SELECT id FROM roles WHERE name = 'admin'), 'katherine', 'lillemoen', '09281999');
 INSERT INTO users (id, username, password, salt, role, first_name, last_name, license_number)
     VALUES (DEFAULT, 'lauraebel', 'password1', 'salt', (SELECT id FROM roles WHERE name = 'user'), 'laura', 'ebel', '10291991');
 INSERT INTO users (id, username, password, salt, role, first_name, last_name, license_number)    

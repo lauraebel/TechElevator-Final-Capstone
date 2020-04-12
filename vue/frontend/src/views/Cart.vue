@@ -1,100 +1,65 @@
 <template>
-  <div class="cart">
-    <h1 class="page-title">Tool Library Cart</h1>
-    <div class="cartContents" v-for="item in this.userCart" :key="cart.tool_id"> 
-      <router-link
-        :to="{ name: 'tool', params: { id: this.tool.toolId } }"
-        class="tool-info">
-        <h1 class="tool-name">{{ tool.toolName }}</h1>
-        <div class="img-container">
-          <img
-            v-bind:src="
-              require('../assets/images/product-img/' + tool.toolImgName)
-            "
-            :alt="'image of ' + this.tool.toolName"
-            class="tool-img"
-          />
-        </div>
-      </router-link>
-    </div>
+  <div class="cart-contents">
+    <h1 class="page-title">Cart</h1>
+    <tool-tile class="cart-item" v-for="item in tools" v-bind:key="item" v-bind:tool="item" />
   </div>
 </template>
 
 <script>
+import ToolTile from "../components/ToolTile";
 import auth from '../auth';
 
 export default {
-  name: 'userCart',
+  name: "cart",
+  components: {
+    ToolTile
+  },
+  props: {
+    cart: Object
+  }, 
   data() {
     return {
       apiURL: "http://localhost:8080/AuthenticationApplication/api",
-      // apiURL: "https://5e8dd4e822d8cd0016a79b3f.mockapi.io",
-      user: {},
-      allCarts: [],
-      userCart: [],
-      allTools: []
+      tools: [],
+      user: {}
     }
   },
   methods: {
-    getCurrentUser(username) {
-      username = this.user.sub;
-      fetch(this.apiURL + "/users/" + username )
+    getTools(){
+      for (let i = 0; i < this.cart.items.length; i++){
+        let item = this.cart.items[i];
+
+        fetch(this.apiURL + "/tools/" + item)
         .then(response => {
           return response.json();
         })
-        .then(data => {
-          this.user = data;
+        .then (data => {
+          this.tools.push(data);
         })
         .catch(err => {
           console.error(err);
         });
+      }
     },
-    // method to get all carts
-    getCarts(){
-      fetch(this.apiURL + "/cart")
-        .then( response => {
-          return response.json();
-        })
-        .then( data => {
-          this.allCarts = data;
-        })
-        .catch( err => { console.error(err) });
+    getUser(){
+      this.user = auth.getUser();
     },
-    // method to get only current user cart
-    getUserCart(){
-      fetch(this.apiURL + "/cart/" + this.user.id)
-        .then( response => {
-          return response.json();
-        })
-        .then( data => {
-          this.userCart = data;
-        })
-        .catch( err => { console.error(err) });
-    },
-    // method to get all tools
-    getTools() {
-      fetch(this.apiURL + "/tools")
+    getCart(){
+      fetch(process.env.VUE_APP_TOOLS_API + "/cart/" + this.user.iat)
         .then(response => {
           return response.json();
         })
-        .then(data => {
-          this.allTools = data;
+        .then (data => {
+          this.cart = data; 
         })
         .catch(err => {
           console.error(err);
         });
     }
   },
-  computed: {
-      isAdmin(vm) {
-        return this.user.rol === 'admin';
-      }
-  },
   created() {
-    this.getCarts();
-    this.getUserCart();
-    this.getCurrentUser();
-    this.user = auth.getUser();
+    this.getTools();
+    this.getUser();
   }
 }
 </script>

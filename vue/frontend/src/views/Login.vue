@@ -50,11 +50,13 @@ export default {
   },
   methods: {
     login() {
-      fetch(`${process.env.AUTH_API}/login`, {
+      fetch(`${process.env.VUE_APP_AUTH_API}/login`, {
+        mode: 'no-cors',
         method: 'POST',
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'http://localhost:8080/AuthenticationApplication/auth/login'
         },
         body: JSON.stringify(this.user),
       })

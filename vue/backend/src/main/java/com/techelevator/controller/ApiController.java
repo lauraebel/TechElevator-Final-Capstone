@@ -81,7 +81,7 @@ public class ApiController {
 		return toolDao.getAllAvailableTools();
 	}
 
-	@GetMapping("/tools{id}")
+	@GetMapping("/tools/{id}")
 	public Tool getToolById(@PathVariable long id) throws Exception {
 		Tool tool = toolDao.getToolById(id);
 		if (tool != null) {
