@@ -45,13 +45,13 @@
 <script>
 import ToolTile from "../components/ToolTile";
 import auth from '../auth';
-import Cart from './Cart'
+// import Cart from './Cart'
 
 export default {
   name: "tool-search",
   components: {
     ToolTile,
-    Cart
+    // Cart
   },
   data() {
     return {
@@ -213,9 +213,9 @@ export default {
 
       return filtered;
     },
-    isAdmin(vm) {
-      return this.user.rol === 'admin';
-    }
+    // isAdmin(vm) {
+    //   return this.user.rol === 'admin';
+    // }
   },
   created() {
     this.getTools();
