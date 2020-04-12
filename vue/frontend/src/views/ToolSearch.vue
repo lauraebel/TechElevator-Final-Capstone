@@ -30,14 +30,17 @@
       ></v-select>
     </div>
 
-    <div class="tools">
-      <tool-tile
-        class="tool"
-        v-for="tool in filteredTools"
-        v-bind:key="tool.toolId"
-        v-bind:tool="tool"
-        v-on:clickedCart="addToCart"
-      />
+    <div class="tools" >
+      <div class="tool" v-for="tool in filteredTools" v-bind:key="tool.toolId">
+        <tool-tile
+          class="tool"
+          v-bind:tool="tool"
+        />
+        <div class="add">
+          <span>Add to Cart</span>
+          <add-to-cart v-on:clickedCart="clickedCart" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -153,26 +156,7 @@ export default {
 
         return name.match(filter) || description.match(filter);
       });
-    },
-    
-    addToCart(toolId) {
-      var tempCart = JSON.parse(JSON.stringify(this.userCart));
-      tempCart.items.push(toolId);
-      fetch(this.apiURL + "/cart/" + this.user.getId , {
-        method: 'PUT',
-        body: JSON.stringify(tempCart)
-        })
-        .then( (response) => {
-          return response.json();
-        })
-        .then( data => {
-           this.userCart = data;
-        })
-        .catch( err => { 
-          console.error(err) 
-        });
-    },
-    
+    }
   },
   computed: {
     filteredTools() {

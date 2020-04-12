@@ -19,15 +19,13 @@
 </template>
 
 <script>
-import AddToCart from "./AddToCart";
-
 export default {
     name: 'tool-tile',
     props: {
         tool: Object,
     },
     components: {
-        AddToCart
+
     },
     data() {
         return {
