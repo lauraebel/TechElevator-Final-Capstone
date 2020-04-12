@@ -14,23 +14,18 @@
         />
       </div>
     </router-link>
-    <div class="add">
-        <span>Add to Cart</span>
-        <add-to-cart v-on:clickedCart="clickedCart" />
-    </div>
+    
   </div>
 </template>
 
 <script>
-import AddToCart from "./AddToCart";
-
 export default {
     name: 'tool-tile',
     props: {
         tool: Object,
     },
     components: {
-        AddToCart
+
     },
     data() {
         return {
