@@ -1,7 +1,7 @@
 <template>
   <div class="cart">
     <h1 class="page-title">Tool Library Cart</h1>
-    <div class="cartContents" v-for="tool in this.userCart" :key="tool.toolId"> 
+    <div class="cartContents" v-for="item in this.userCart" :key="cart.tool_id"> 
       <router-link
         :to="{ name: 'tool', params: { id: this.tool.toolId } }"
         class="tool-info">
@@ -21,24 +21,37 @@
 </template>
 
 <script>
+import auth from '../auth';
+
 export default {
-  name: 'cart',
+  name: 'userCart',
   data() {
     return {
-      apiURL: "http://localhost:8080/AuthenticationApplication/api/tools",
+      apiURL: "http://localhost:8080/AuthenticationApplication/api",
       // apiURL: "https://5e8dd4e822d8cd0016a79b3f.mockapi.io",
+      user: {},
       allCarts: [],
       userCart: [],
-      allBrands: [],
-      allCategories: [],
-      allTools: [],
-      brand: '',
-      category: '',
+      allTools: []
     }
   },
   methods: {
+    getCurrentUser(username) {
+      username = this.user.sub;
+      fetch(this.apiURL + "/users/" + username )
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          this.user = data;
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    },
+    // method to get all carts
     getCarts(){
-      fetch(this.apiURL + "/carts")
+      fetch(this.apiURL + "/cart")
         .then( response => {
           return response.json();
         })
@@ -47,8 +60,9 @@ export default {
         })
         .catch( err => { console.error(err) });
     },
+    // method to get only current user cart
     getUserCart(){
-      fetch(this.apiURL + "/cart/{userId}")
+      fetch(this.apiURL + "/cart/" + this.user.id)
         .then( response => {
           return response.json();
         })
@@ -56,10 +70,31 @@ export default {
           this.userCart = data;
         })
         .catch( err => { console.error(err) });
+    },
+    // method to get all tools
+    getTools() {
+      fetch(this.apiURL + "/tools")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          this.allTools = data;
+        })
+        .catch(err => {
+          console.error(err);
+        });
     }
   },
   computed: {
-      
+      isAdmin(vm) {
+        return this.user.rol === 'admin';
+      }
+  },
+  created() {
+    this.getCarts();
+    this.getUserCart();
+    this.getCurrentUser();
+    this.user = auth.getUser();
   }
 }
 </script>

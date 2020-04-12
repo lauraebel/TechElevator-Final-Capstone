@@ -19,11 +19,13 @@ import com.techelevator.model.beans.Cart;
 import com.techelevator.model.beans.Category;
 import com.techelevator.model.beans.Loan;
 import com.techelevator.model.beans.Tool;
+import com.techelevator.model.beans.User;
 import com.techelevator.model.dao.BrandDAO;
 import com.techelevator.model.dao.CartDAO;
 import com.techelevator.model.dao.CategoryDAO;
 import com.techelevator.model.dao.LoanDAO;
 import com.techelevator.model.dao.ToolDAO;
+import com.techelevator.model.dao.UserDao;
 
 /**
  * ApiController
@@ -50,6 +52,9 @@ public class ApiController {
 
 	@Autowired
 	private ToolDAO toolDao;
+	
+	@Autowired
+	private UserDao userDao;
 
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public String authorizedOnly() throws UnauthorizedException {
@@ -135,6 +140,27 @@ public class ApiController {
 		if (requestedCart != null) {
 			cartDao.updateCart(cart);
 		}
+	}
+	
+	@GetMapping("/users")
+	public List<User> listAllUsers() throws Exception {
+		List<User> allUsers = userDao.getAllUsers();
+		if (allUsers != null) {
+			return allUsers;
+		} else {
+			throw new Exception("No users found.");
+		}
+	}
+	
+	@GetMapping("/users/{username}")
+	public User getCurrentUser(@RequestBody String username) throws Exception{
+		User user = userDao.getUserByUsername(username);
+		if (user != null) {
+			return user;
+		} else {
+			throw new Exception ("No user found.");
+		}
+		
 	}
 
 }

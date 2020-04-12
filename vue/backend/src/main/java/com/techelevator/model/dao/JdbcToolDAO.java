@@ -48,22 +48,12 @@ public class JdbcToolDAO implements ToolDAO {
 	public List<Tool> getAllAvailableTools() {
 		List<Tool> tools = new ArrayList<Tool>();
 		String sql = "SELECT tools.id, tools.name, tools.description, tools.img_name, tools.brand_id "
-				+ "FROM tools JOIN reservations ON tools.id=reservations.tool_id "
-				+ "WHERE tools.id NOT IN (SELECT tools.id FROM reservations JOIN tools ON "
-				+ "reservation.tool_id=tools.id WHERE reservations.returned_on IS NULL)";
+				+ "FROM tools FULL JOIN loans ON tools.id=loans.tool_id "
+				+ "WHERE tools.id NOT IN (SELECT tools.id FROM tools JOIN loans ON "
+				+ "loans.tool_id=tools.id WHERE loans.returned_on IS NULL)";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
 		while (result.next()) {
 			tools.add(mapRowToTool(result));
-		}
-		for (Tool tool : tools) {
-			List<Long> categories = new ArrayList<Long>();
-			sql = "SELECT category.id FROM category JOIN tool_category ON category.id=tool_category.category_id "
-					+ "WHERE tool_category.tool_id=?";
-			result = jdbcTemplate.queryForRowSet(sql, tool.getToolId());
-			while (result.next()) {
-				categories.add(result.getLong("id"));
-			}
-			tool.setToolCategories(categories);
 		}
 		return tools;
 	}

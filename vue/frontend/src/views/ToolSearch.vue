@@ -10,8 +10,8 @@
         class="keyword"
       />
       <div class="toggle">
-        <span v-if="onlyAvailable">Available Tools</span
-        ><span v-else>All Tools</span>
+        <span v-if="onlyAvailable">Available Tools</span>
+        <span v-else>All Tools</span>
         <toggle-button v-model="onlyAvailable" color="#FFD58E" />
       </div>
       <v-select
@@ -44,18 +44,21 @@
 
 <script>
 import ToolTile from "../components/ToolTile";
+import auth from '../auth';
+import Cart from './Cart'
 
 export default {
   name: "tool-search",
   components: {
-    ToolTile
+    ToolTile,
+    Cart
   },
   data() {
     return {
-      authApiURL: "http://localhost:8080/AuthenticationApplication/api/tools",
       apiURL: "http://localhost:8080/AuthenticationApplication/api",
-      // apiURL: "http://localhost:8080/AuthenticationApplication/api",
       // apiURL: "https://5e8dd4e822d8cd0016a79b3f.mockapi.io",
+      user: {},
+      username: "",
       allTools: [],
       availableTools: [],
       allBrands: [],
@@ -151,30 +154,12 @@ export default {
         return name.match(filter) || description.match(filter);
       });
     },
-    getCart() {
-      // TODO replace with actual userid
-      fetch(this.apiURL + "/carts")
-        .then(response => {
-          return response.json();
-        })
-        .then(data => {
-          let carts = data;
-          for(var i = 0; i < carts.length; i++) {
-            if (carts[i] == 1) {
-              this.userCart = carts[i];
-            }
-          }
-          console.log(this.userCart);
-        })
-        .catch(err => {
-          console.error(err);
-        });
-    },
+    
     addToCart(toolId) {
       var tempCart = JSON.parse(JSON.stringify(this.userCart));
       console.log(tempCart);
       tempCart.items.push(toolId);
-      fetch(this.apiURL + "/cart/{userId}", {
+      fetch(this.apiURL + "/cart/" + this.user.getId , {
         method: 'PUT',
         body: JSON.stringify(tempCart)
         })
@@ -184,8 +169,11 @@ export default {
         .then( data => {
            this.userCart = data;
         })
-          .catch( err => { console.error(err) });
-        }
+        .catch( err => { 
+          console.error(err) 
+        });
+    },
+    
   },
   computed: {
     filteredTools() {
@@ -224,6 +212,9 @@ export default {
       });
 
       return filtered;
+    },
+    isAdmin(vm) {
+      return this.user.rol === 'admin';
     }
   },
   created() {
@@ -231,6 +222,7 @@ export default {
     this.getBrands();
     this.getCategories();
     this.getCart();
+    this.user = auth.getUser();
   }
 };
 </script>
