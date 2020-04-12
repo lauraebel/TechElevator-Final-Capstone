@@ -34,10 +34,10 @@ const router = new Router({
       component: Home,
       meta: {
         // correct setting
-        // requiresAuth: true
+        requiresAuth: true
 
         // temporary for development
-        requiresAuth: false
+        // requiresAuth: false
       }
     },
     {
@@ -62,10 +62,10 @@ const router = new Router({
       component: ToolSearch,
       meta: {
         // correct setting
-        // requiresAuth: true
+        requiresAuth: true
 
         // temporary for development
-        requiresAuth: false
+        // requiresAuth: false
       }
     },
     {
@@ -74,10 +74,10 @@ const router = new Router({
       component: Tool,
       meta: {
         // correct setting
-        // requiresAuth: true
+        requiresAuth: true
 
         // temporary for development
-        requiresAuth: false
+        // requiresAuth: false
       }
     },
     {
@@ -110,10 +110,10 @@ const router = new Router({
       component: MyLoans,
       meta: {
         // correct setting
-        // requiresAuth: true
+        requiresAuth: true
 
         // temporary for development
-        requiresAuth: false
+        // requiresAuth: false
       }
     },
     {
@@ -122,10 +122,10 @@ const router = new Router({
       component: Reserve,
       meta: {
         // correct setting
-        // requiresAuth: true
+        requiresAuth: true
         
         // temporary for development
-        requiresAuth: false
+        // requiresAuth: false
       }
     },
     {
@@ -133,10 +133,6 @@ const router = new Router({
       name: 'credits',
       component: Credits,
       meta: {
-        // correct setting
-        // requiresAuth: true
-        
-        // temporary for development
         requiresAuth: false
       }
     }

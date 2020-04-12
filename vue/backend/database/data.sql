@@ -1,16 +1,16 @@
 INSERT INTO roles (id, name) VALUES (DEFAULT, 'admin');
 INSERT INTO roles (id, name) VALUES (DEFAULT, 'user');
 
-INSERT INTO users (id, username, password, salt, role, first_name, last_name, license_number) 
-    VALUES (DEFAULT, 'katherinelillemoen', 'password', 'salt', (SELECT id FROM roles WHERE name = 'admin'), 'katherine', 'lillemoen', '09281999');
-INSERT INTO users (id, username, password, salt, role, first_name, last_name, license_number)
-    VALUES (DEFAULT, 'lauraebel', 'password1', 'salt', (SELECT id FROM roles WHERE name = 'user'), 'laura', 'ebel', '10291991');
-INSERT INTO users (id, username, password, salt, role, first_name, last_name, license_number)    
-    VALUES (DEFAULT, 'marthaweisheimer', 'password2', 'salt', (SELECT id FROM roles WHERE name = 'user'), 'martha', 'weisheimer', '05301985');
-INSERT INTO users (id, username, password, salt, role, first_name, last_name, license_number)    
-    VALUES (DEFAULT, 'brianlauvray', 'password3', 'salt', (SELECT id FROM roles WHERE name = 'admin'), 'brian', 'lauvray', '01011980');
-INSERT INTO users (id, username, password, salt, role, first_name, last_name, license_number)    
-    VALUES (DEFAULT, 'rachellerauth', 'password4', 'salt', (SELECT id FROM roles WHERE name = 'admin'), 'rachelle', 'rauth', '01011990');
+-- INSERT INTO users (id, username, password, salt, role, first_name, last_name, license_number) 
+--     VALUES (DEFAULT, 'katherinelillemoen', 'password', 'salt', (SELECT id FROM roles WHERE name = 'admin'), 'katherine', 'lillemoen', '09281999');
+-- INSERT INTO users (id, username, password, salt, role, first_name, last_name, license_number)
+--     VALUES (DEFAULT, 'lauraebel', 'password1', 'salt', (SELECT id FROM roles WHERE name = 'user'), 'laura', 'ebel', '10291991');
+-- INSERT INTO users (id, username, password, salt, role, first_name, last_name, license_number)    
+--     VALUES (DEFAULT, 'marthaweisheimer', 'password2', 'salt', (SELECT id FROM roles WHERE name = 'user'), 'martha', 'weisheimer', '05301985');
+-- INSERT INTO users (id, username, password, salt, role, first_name, last_name, license_number)    
+--     VALUES (DEFAULT, 'brianlauvray', 'password3', 'salt', (SELECT id FROM roles WHERE name = 'admin'), 'brian', 'lauvray', '01011980');
+-- INSERT INTO users (id, username, password, salt, role, first_name, last_name, license_number)    
+--     VALUES (DEFAULT, 'rachellerauth', 'password4', 'salt', (SELECT id FROM roles WHERE name = 'admin'), 'rachelle', 'rauth', '01011990');
 
 INSERT INTO brands (id, name) 
     VALUES (DEFAULT, 'black & decker');
@@ -52,23 +52,23 @@ INSERT INTO tool_category (tool_id, category_id)
 INSERT INTO tool_category (tool_id, category_id) 
     VALUES ((SELECT id FROM tools WHERE name = 'socket wrench'), (SELECT id FROM category WHERE name = 'automotive'));
     
-INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'katherinelillemoen'), 1);
-INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'katherinelillemoen'), 2);
+-- INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'katherinelillemoen'), 1);
+-- INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'katherinelillemoen'), 2);
 
-INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'lauraebel'), 3);
-INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'lauraebel'), 4);
+-- INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'lauraebel'), 3);
+-- INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'lauraebel'), 4);
 
-INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'marthaweisheimer'), 1);
-INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'marthaweisheimer'), 2);
+-- INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'marthaweisheimer'), 1);
+-- INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'marthaweisheimer'), 2);
 
-INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'brianlauvray'), 3);
-INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'brianlauvray'), 4);
+-- INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'brianlauvray'), 3);
+-- INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'brianlauvray'), 4);
 
-INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'rachellerauth'), 5);
-INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'rachellerauth'), 1);
+-- INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'rachellerauth'), 5);
+-- INSERT INTO cart_items (user_id, tool_id) VALUES ((SELECT id FROM users WHERE username = 'rachellerauth'), 1);
     
-INSERT INTO loans (id, user_id, tool_id, loaned_on, due_on, returned_on)
-    VALUES (DEFAULT, 1, 5, '2019-10-10', '2020-05-20', NULL);
+-- INSERT INTO loans (id, user_id, tool_id, loaned_on, due_on, returned_on)
+--     VALUES (DEFAULT, 1, 5, '2019-10-10', '2020-05-20', NULL);
 
 -- INSERT INTO loans (id, user_id, tool_id, loaned_on, due_on, returned_on) 
 --     VALUES ();
@@ -76,10 +76,10 @@ INSERT INTO loans (id, user_id, tool_id, loaned_on, due_on, returned_on)
 -- INSERT INTO carts (user_id, tool0, tool1) 
 --     VALUES ();
 
--- Password for this user is 'greatwall'
--- INSERT INTO users ('username', 'password', 'salt', 'role') VALUES
+--Password for this user is 'greatwall'
+-- INSERT INTO users (username, password, salt, role, first_name, last_name, license_number) VALUES
 -- ('user',
 -- 'FjZDm+sndmsdEDwNtfr6NA==',
 -- 'kidcasB0te7i0jK0fmRIGHSm0mYhdLTaiGkEAiEvLp7dAEHWnuT8n/5bd2V/mqjstQ198iImm1xCmEFu+BHyOz1Mf7vm4LILcrr17y7Ws40Xyx4FOCt8jD03G+jEafpuVJnPiDmaZQXJEpEfekGOvhKGOCtBnT5uatjKEuVWuDA=',
--- 'user');
+-- 1, 'test', 'test', '12345');
 

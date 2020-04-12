@@ -56,20 +56,20 @@ public class ApiController {
 	@Autowired
 	private UserDao userDao;
 
-	@RequestMapping(path = "/", method = RequestMethod.GET)
-	public String authorizedOnly() throws UnauthorizedException {
-		/*
-		 * You can lock down which roles are allowed by checking if the current user has
-		 * a role.
-		 * 
-		 * In this example, if the user does not have the admin role we send back an
-		 * unauthorized error.
-		 */
-		if (!authProvider.userHasRole(new String[] { "admin" })) {
-			throw new UnauthorizedException();
-		}
-		return "Success";
-	}
+//	@RequestMapping(path = "/", method = RequestMethod.GET)
+//	public String authorizedOnly() throws UnauthorizedException {
+//		/*
+//		 * You can lock down which roles are allowed by checking if the current user has
+//		 * a role.
+//		 * 
+//		 * In this example, if the user does not have the admin role we send back an
+//		 * unauthorized error.
+//		 */
+//		if (!authProvider.userHasRole(new Long[] { 1l, 2l })) {
+//			throw new UnauthorizedException();
+//		}
+//		return "Success";
+//	}
 
 	@GetMapping("/tools")
 	public List<Tool> listAllTools() {
@@ -126,15 +126,16 @@ public class ApiController {
 		}
 	}
 
-	@GetMapping("/cart/{userId}")
-	public Cart listUserCart(@PathVariable long userId) {
-		Cart cart = cartDao.getCartByUser(userId);
+	@GetMapping("/cart/{username}")
+	public Cart listUserCart(@PathVariable String username) {
+		User user = userDao.getUserByUsername(username);
+		Cart cart = cartDao.getCartByUser(user.getId());
 		return cart;
 	}
 
-	@PutMapping("/cart/{userId}")
-	public void update(@RequestBody Cart cart, @PathVariable long userId) {
-		Cart requestedCart = cartDao.getCartByUser(userId);
+	@PutMapping("/cart/{username}")
+	public void update(@RequestBody Cart cart) {
+		Cart requestedCart = cartDao.getCartByUser(cart.getId());
 		if (requestedCart != null) {
 			cartDao.updateCart(cart);
 		}

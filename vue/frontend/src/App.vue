@@ -4,12 +4,13 @@
     <cart-icon />
     <menu-icon v-on:clickedMenu="handleMenu" />
     <dropdown-menu v-bind:isVisible="visible"/>
-    <router-view class="content" v-on:clickedAddToCart="handleCart" v-bind:cart="cart" />
+    <router-view class="content" v-on:clickedAddToCart="handleCart" v-bind:user="user" />
     <router-link :to="{name: 'credits'}" id="footer" >Credits</router-link>
   </div>
 </template>
 
 <script>
+import auth from './auth';
 import MenuIcon from './components/MenuIcon'
 import DropdownMenu from './components/DropdownMenu'
 import Branding from './components/Branding'
@@ -25,11 +26,8 @@ export default {
     },
   data (){
     return {
+      user: {},
       visible: false,
-      cart: {
-        user: '',
-        items: [1,2,3,4,5]
-      }
     }
   },
   methods: {
@@ -38,7 +36,13 @@ export default {
     },
     handleCart(event) {
       this.cart.items.push(event);
-    }
+    }, 
+    getUser() {
+      this.user = auth.getUser();
+    },
+  },
+  created() {
+      this.getUser();
   }
 }
 </script>

@@ -45,18 +45,14 @@
 <script>
 import ToolTile from "../components/ToolTile";
 import auth from '../auth';
-// import Cart from './Cart'
 
 export default {
   name: "tool-search",
   components: {
-    ToolTile,
-    // Cart
+    ToolTile
   },
   data() {
     return {
-      apiURL: "http://localhost:8080/AuthenticationApplication/api",
-      // apiURL: "https://5e8dd4e822d8cd0016a79b3f.mockapi.io",
       user: {},
       username: "",
       allTools: [],
@@ -72,7 +68,11 @@ export default {
   },
   methods: {
     getTools() {
-      fetch(this.apiURL + "/tools")
+      fetch(`${process.env.VUE_APP_REMOTE_API}/api/tools`, {
+        headers: {
+          Authorization: `Bearer ${auth.getToken()}`
+        }
+      })
         .then(response => {
           return response.json();
         })
@@ -82,7 +82,11 @@ export default {
         .catch(err => {
           console.error(err);
         });
-      fetch(this.apiURL + "/available")
+      fetch( `${process.env.VUE_APP_REMOTE_API}/api/available`, {
+        headers: {
+          Authorization: `Bearer ${auth.getToken()}`
+        }
+      })
         .then(response => {
           return response.json();
         })
@@ -93,9 +97,12 @@ export default {
           console.error(err);
         });
     },
-    //method to get brands
     getBrands() {
-      fetch(this.apiURL + "/brands")
+      fetch( `${process.env.VUE_APP_REMOTE_API}/api/brands`, {
+        headers: {
+          Authorization: `Bearer ${auth.getToken()}`
+        }
+      })
         .then(response => {
           return response.json();
         })
@@ -106,9 +113,12 @@ export default {
           console.error(err);
         });
     },
-    //method to get categories
     getCategories() {
-      fetch(this.apiURL + "/categories")
+      fetch( `${process.env.VUE_APP_REMOTE_API}/api/categories`, {
+        headers: {
+          Authorization: `Bearer ${auth.getToken()}`
+        }
+      })
         .then(response => {
           return response.json();
         })
@@ -124,7 +134,6 @@ export default {
       this.category = "";
       this.keyword = "";
     },
-    //method to get list of matching tools
     matchesBrand(tool) {
       if (tool.toolBrand === this.brand) {
         return true;
@@ -195,10 +204,7 @@ export default {
       });
 
       return filtered;
-    },
-    // isAdmin(vm) {
-    //   return this.user.rol === 'admin';
-    // }
+    }
   },
   created() {
     this.getTools();

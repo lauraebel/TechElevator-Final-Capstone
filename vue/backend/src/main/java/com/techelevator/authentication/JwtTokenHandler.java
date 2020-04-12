@@ -30,7 +30,7 @@ public class JwtTokenHandler {
     @Autowired
     private UserDao dao;
 
-    public String createToken(String username, String role) {
+    public String createToken(String username, Long role) {
         Date now = new Date();
 
         // We will sign our JWT with our ApiKey secret

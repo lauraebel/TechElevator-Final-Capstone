@@ -13,11 +13,15 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import com.techelevator.model.beans.Cart;
+import com.techelevator.model.beans.Tool;
 
 @Component
 public class JdbcCartDAO implements CartDAO {
 
 	private JdbcTemplate jdbc;
+	
+	@Autowired
+	private ToolDAO toolDao;
 	
 	@Autowired
 	public JdbcCartDAO(DataSource dataSource) {
@@ -57,7 +61,7 @@ public class JdbcCartDAO implements CartDAO {
 		cart.setId(userId);
 		
 		while(results.next()) {
-			cart.addItem(results.getLong("tool_id"));
+			cart.addItem(toolDao.getToolById(results.getLong("tool_id")));
 		}
 		
 		return cart;
@@ -65,22 +69,24 @@ public class JdbcCartDAO implements CartDAO {
 
 	@Override
 	public Cart updateCart(Cart cart) {
-		Set<Long> items = new HashSet<Long>();
+		Set<Tool> items = new HashSet<Tool>();
 		
-		for (Long item : cart.getItems()) {
+		for (Tool item : cart.getItems()) {
 			items.add(item);
 		}
 		
 		clearCart(cart.getId());
 		
-		for (Long item : items) {
-			addToCart(cart.getId(), item);
+		for (Tool item : items) {
+			addToCart(cart.getId(), item.getToolId());
 		}
 		
 		Cart updatedCart = getCartByUser(cart.getId());
 		
 		return updatedCart;
 	}
+	
+	
 	
 	private void clearCart(Long userId) {
 		String sql = "DELETE FROM cart_items WHERE user_id = ?";

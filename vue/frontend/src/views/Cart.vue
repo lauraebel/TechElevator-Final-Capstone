@@ -15,42 +15,25 @@ export default {
     ToolTile
   },
   props: {
-    cart: Object
+    user: Object,
   }, 
   data() {
     return {
-      apiURL: "http://localhost:8080/AuthenticationApplication/api",
-      tools: [],
-      user: {}
+       cart: {}
     }
   },
   methods: {
-    getTools(){
-      for (let i = 0; i < this.cart.items.length; i++){
-        let item = this.cart.items[i];
-
-        fetch(this.apiURL + "/tools/" + item)
-        .then(response => {
-          return response.json();
-        })
-        .then (data => {
-          this.tools.push(data);
-        })
-        .catch(err => {
-          console.error(err);
-        });
-      }
-    },
-    getUser(){
-      this.user = auth.getUser();
-    },
     getCart(){
-      fetch(process.env.VUE_APP_TOOLS_API + "/cart/" + this.user.iat)
+      fetch(`${process.env.VUE_APP_REMOTE_API}/cart/${this.user.sub}`, {
+        headers: {
+          Authorization: `Bearer ${auth.getToken()}`
+        }
+      })
         .then(response => {
           return response.json();
         })
-        .then (data => {
-          this.cart = data; 
+        .then(data => {
+          this.cart = data;
         })
         .catch(err => {
           console.error(err);
@@ -58,8 +41,7 @@ export default {
     }
   },
   created() {
-    this.getTools();
-    this.getUser();
+    this.getCart();
   }
 }
 </script>

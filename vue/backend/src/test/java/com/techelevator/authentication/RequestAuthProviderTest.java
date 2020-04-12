@@ -78,9 +78,9 @@ public class RequestAuthProviderTest {
 
     @Test
     public void registerTest() {
-        sut.register("TEST", "TESTPASS", "TESTROLE");
+        sut.register("First Name", "Last Name", "LicenseNo", "TEST", "TESTPASS", 1l);
 
-        verify(mockedDao).saveUser("TEST", "TESTPASS", "TESTROLE");
+        verify(mockedDao).saveUser("First Name", "Last Name", "LicenseNo", "TEST", "TESTPASS", 1l);
     }
 
     @Test
@@ -145,11 +145,11 @@ public class RequestAuthProviderTest {
         User testUser = new User();
         testUser.setId(0);
         testUser.setUsername("TEST");
-        testUser.setRole("user");
+        testUser.setRole(1l);
 
         when(mockedRequest.getAttribute(RequestAuthProvider.USER_KEY)).thenReturn(testUser);
 
-        assertTrue(sut.userHasRole(new String[] { "user" }));
+        assertTrue(sut.userHasRole(new Long[] { 1l }));
     }
 
     @Test
@@ -157,11 +157,11 @@ public class RequestAuthProviderTest {
         User testUser = new User();
         testUser.setId(0);
         testUser.setUsername("TEST");
-        testUser.setRole("user");
+        testUser.setRole(2l);
 
         when(mockedRequest.getAttribute(RequestAuthProvider.USER_KEY)).thenReturn(testUser);
 
-        assertFalse(sut.userHasRole(new String[] { "admin" }));
+        assertFalse(sut.userHasRole(new Long[] { 1l }));
     }
 
     @Test
@@ -169,11 +169,11 @@ public class RequestAuthProviderTest {
         User testUser = new User();
         testUser.setId(0);
         testUser.setUsername("TEST");
-        testUser.setRole("user");
+        testUser.setRole(2l);
 
         when(mockedRequest.getAttribute(RequestAuthProvider.USER_KEY)).thenReturn(testUser);
 
-        assertTrue(sut.userHasRole(new String[] { "admin", "user", "editor" }));
+        assertTrue(sut.userHasRole(new Long[] { 1l, 2l}));
     }
 
     @Test
@@ -181,11 +181,11 @@ public class RequestAuthProviderTest {
         User testUser = new User();
         testUser.setId(0);
         testUser.setUsername("TEST");
-        testUser.setRole("user");
+        testUser.setRole(2l);
 
         when(mockedRequest.getAttribute(RequestAuthProvider.USER_KEY)).thenReturn(testUser);
 
-        assertFalse(sut.userHasRole(new String[] { "admin", "manager", "editor" }));
+        assertFalse(sut.userHasRole(new Long[] { 1l, 3l, 4l }));
     }
 
     @Test
@@ -193,7 +193,7 @@ public class RequestAuthProviderTest {
         User testUser = new User();
         testUser.setId(0);
         testUser.setUsername("TEST");
-        testUser.setRole("user");
+        testUser.setRole(1l);
 
         when(mockedRequest.getAttribute(RequestAuthProvider.USER_KEY)).thenReturn(testUser);
 
@@ -205,10 +205,10 @@ public class RequestAuthProviderTest {
         User testUser = new User();
         testUser.setId(0);
         testUser.setUsername("TEST");
-        testUser.setRole("user");
+        testUser.setRole(1l);
 
         when(mockedRequest.getAttribute(RequestAuthProvider.USER_KEY)).thenReturn(testUser);
 
-        assertFalse(sut.userHasRole(new String[] {}));
+        assertFalse(sut.userHasRole(new Long[] {}));
     }
 }

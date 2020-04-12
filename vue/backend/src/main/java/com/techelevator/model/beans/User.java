@@ -1,6 +1,7 @@
 package com.techelevator.model.beans;
 
 import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -11,8 +12,17 @@ public class User {
     @NotBlank(message = "Username is required")
     private String username;
 
-    @NotBlank(message = "Role is required")
-    private String role;
+    @NotBlank(message = "First name is required")
+    private String firstname;
+    
+    @NotBlank(message = "Last name is required")
+    private String lastname;
+    
+    @NotBlank(message = "License number is required")
+    private String licenseno;
+    
+    @Min(value=0, message = "Role is required")
+    private long roleID;
     private long id;
 
     @NotBlank(message = "Password is required")
@@ -61,17 +71,17 @@ public class User {
     /**
      * @return the role
      */
-    public String getRole() {
-        return role;
+    public long getRoleID() {
+        return roleID;
     }
 
     /**
      * @param role the role to set
      */
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoleID(long roleID) {
+        this.roleID = roleID;
     }
-
+    
     /**
      * @param username the username to set
      */
@@ -86,4 +96,28 @@ public class User {
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
     }
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public String getLicenseno() {
+		return licenseno;
+	}
+
+	public void setLicenseno(String licenseno) {
+		this.licenseno = licenseno;
+	}
 }
