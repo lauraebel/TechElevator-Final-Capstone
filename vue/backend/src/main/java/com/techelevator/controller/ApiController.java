@@ -119,13 +119,11 @@ public class ApiController {
 	@GetMapping("/carts")
 	public List<Cart> listAllCarts() throws Exception {
 		List<Cart> carts = cartDao.getCarts();
-
 		if (carts != null) {
 			return carts;
 		} else {
 			throw new Exception("No carts found.");
 		}
-
 	}
 
 	@GetMapping("/cart/{userId}")

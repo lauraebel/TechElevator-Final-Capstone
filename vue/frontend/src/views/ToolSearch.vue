@@ -157,7 +157,6 @@ export default {
     
     addToCart(toolId) {
       var tempCart = JSON.parse(JSON.stringify(this.userCart));
-      console.log(tempCart);
       tempCart.items.push(toolId);
       fetch(this.apiURL + "/cart/" + this.user.getId , {
         method: 'PUT',
@@ -213,9 +212,9 @@ export default {
 
       return filtered;
     },
-    isAdmin(vm) {
-      return this.user.rol === 'admin';
-    }
+    // isAdmin(vm) {
+    //   return this.user.rol === 'admin';
+    // }
   },
   created() {
     this.getTools();

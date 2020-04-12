@@ -14,10 +14,7 @@
         />
       </div>
     </router-link>
-    <div class="add">
-        <span>Add to Cart</span>
-        <add-to-cart v-on:clickedCart="clickedCart" />
-    </div>
+    
   </div>
 </template>
 
