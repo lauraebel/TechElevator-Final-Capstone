@@ -10,8 +10,8 @@
         class="keyword"
       />
       <div class="toggle">
-        <span v-if="onlyAvailable">Available Tools</span
-        ><span v-else>All Tools</span>
+        <span v-if="onlyAvailable">Available Tools</span>
+        <span v-else>All Tools</span>
         <toggle-button v-model="onlyAvailable" color="#FFD58E" />
       </div>
       <v-select
@@ -36,6 +36,7 @@
         v-for="tool in filteredTools"
         v-bind:key="tool.toolId"
         v-bind:tool="tool"
+        v-on:clickedCart="addToCart"
       />
     </div>
   </div>
@@ -43,17 +44,21 @@
 
 <script>
 import ToolTile from "../components/ToolTile";
+import auth from '../auth';
+import Cart from './Cart'
 
 export default {
   name: "tool-search",
   components: {
-    ToolTile
+    ToolTile,
+    Cart
   },
   data() {
     return {
-      //apiURL: "http://localhost:8080/AuthenticationApplication/api/tools",
-      // apiURL: "http://localhost:8080/AuthenticationApplication/api",
-      apiURL: "https://5e8dd4e822d8cd0016a79b3f.mockapi.io",
+      apiURL: "http://localhost:8080/AuthenticationApplication/api",
+      // apiURL: "https://5e8dd4e822d8cd0016a79b3f.mockapi.io",
+      user: {},
+      username: "",
       allTools: [],
       availableTools: [],
       allBrands: [],
@@ -61,7 +66,8 @@ export default {
       brand: "",
       category: "",
       keyword: "",
-      onlyAvailable: false
+      onlyAvailable: false,
+      userCart: {}
     };
   },
   methods: {
@@ -147,7 +153,27 @@ export default {
 
         return name.match(filter) || description.match(filter);
       });
-    }
+    },
+    
+    addToCart(toolId) {
+      var tempCart = JSON.parse(JSON.stringify(this.userCart));
+      console.log(tempCart);
+      tempCart.items.push(toolId);
+      fetch(this.apiURL + "/cart/" + this.user.getId , {
+        method: 'PUT',
+        body: JSON.stringify(tempCart)
+        })
+        .then( (response) => {
+          return response.json();
+        })
+        .then( data => {
+           this.userCart = data;
+        })
+        .catch( err => { 
+          console.error(err) 
+        });
+    },
+    
   },
   computed: {
     filteredTools() {
@@ -186,12 +212,17 @@ export default {
       });
 
       return filtered;
+    },
+    isAdmin(vm) {
+      return this.user.rol === 'admin';
     }
   },
   created() {
     this.getTools();
     this.getBrands();
     this.getCategories();
+    this.getCart();
+    this.user = auth.getUser();
   }
 };
 </script>

@@ -19,11 +19,13 @@ import com.techelevator.model.beans.Cart;
 import com.techelevator.model.beans.Category;
 import com.techelevator.model.beans.Loan;
 import com.techelevator.model.beans.Tool;
+import com.techelevator.model.beans.User;
 import com.techelevator.model.dao.BrandDAO;
 import com.techelevator.model.dao.CartDAO;
 import com.techelevator.model.dao.CategoryDAO;
 import com.techelevator.model.dao.LoanDAO;
 import com.techelevator.model.dao.ToolDAO;
+import com.techelevator.model.dao.UserDao;
 
 /**
  * ApiController
@@ -35,23 +37,25 @@ public class ApiController {
 
 	@Autowired
 	private AuthProvider authProvider;
-	
+
 	@Autowired
 	private BrandDAO brandDao;
-	
+
 	@Autowired
 	private CartDAO cartDao;
-	
+
 	@Autowired
 	private CategoryDAO categoryDao;
-	
+
 	@Autowired
 	private LoanDAO loanDao;
-	
+
 	@Autowired
 	private ToolDAO toolDao;
-
 	
+	@Autowired
+	private UserDao userDao;
+
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public String authorizedOnly() throws UnauthorizedException {
 		/*
@@ -67,7 +71,7 @@ public class ApiController {
 		return "Success";
 	}
 
-	@GetMapping("/tools" )
+	@GetMapping("/tools")
 	public List<Tool> listAllTools() {
 		return toolDao.getAllTools();
 	}
@@ -76,7 +80,7 @@ public class ApiController {
 	public List<Tool> listAvailableTools() {
 		return toolDao.getAllAvailableTools();
 	}
-	
+
 	@GetMapping("/tools{id}")
 	public Tool getToolById(@PathVariable long id) throws Exception {
 		Tool tool = toolDao.getToolById(id);
@@ -86,7 +90,7 @@ public class ApiController {
 			throw new Exception("Tool not found");
 		}
 	}
-	
+
 	@GetMapping("/categories")
 	public List<Category> listAllCategories() {
 		return categoryDao.getAllCategories();
@@ -111,36 +115,52 @@ public class ApiController {
 			throw new Exception("No loans found.");
 		}
 	}
-	
+
 	@GetMapping("/carts")
 	public List<Cart> listAllCarts() throws Exception {
 		List<Cart> carts = cartDao.getCarts();
-		
+
 		if (carts != null) {
 			return carts;
 		} else {
 			throw new Exception("No carts found.");
 		}
-		
+
+	}
+
+	@GetMapping("/cart/{userId}")
+	public Cart listUserCart(@PathVariable long userId) {
+		Cart cart = cartDao.getCartByUser(userId);
+		return cart;
 	}
 
 	@PutMapping("/cart/{userId}")
 	public void update(@RequestBody Cart cart, @PathVariable long userId) {
 		Cart requestedCart = cartDao.getCartByUser(userId);
 		if (requestedCart != null) {
-			
+			cartDao.updateCart(cart);
 		}
 	}
 	
+	@GetMapping("/users")
+	public List<User> listAllUsers() throws Exception {
+		List<User> allUsers = userDao.getAllUsers();
+		if (allUsers != null) {
+			return allUsers;
+		} else {
+			throw new Exception("No users found.");
+		}
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@GetMapping("/users/{username}")
+	public User getCurrentUser(@RequestBody String username) throws Exception{
+		User user = userDao.getUserByUsername(username);
+		if (user != null) {
+			return user;
+		} else {
+			throw new Exception ("No user found.");
+		}
+		
+	}
+
 }
