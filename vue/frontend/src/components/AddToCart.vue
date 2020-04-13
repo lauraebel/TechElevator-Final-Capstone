@@ -1,9 +1,9 @@
 <template>
   <div class="add-to-cart" >
     <transition name="fade">
-        <button v-if="isAvailable && !addedToCart" v-on:click="clickedCart"><img src="@/assets/images/icons/add-to-cart.png" class="add-to-cart-icon" /><img src="@/assets/images/icons/desktop-add-to-cart.png" class="desktop-add-to-cart-icon" /></button>
+        <button v-if="isAvailable && !inCart" v-on:click="clickedCart"><img src="@/assets/images/icons/add-to-cart.png" class="add-to-cart-icon" /><img src="@/assets/images/icons/desktop-add-to-cart.png" class="desktop-add-to-cart-icon" /></button>
         <button v-if="!isAvailable" :disabled='isDisabled'><img src="@/assets/images/icons/add-to-cart.png" class="can-not-add-to-cart-icon" /></button>
-        <button v-if="addedToCart" v-on:click="clickedCart"><img src="@/assets/images/icons/in-cart.png" class="mobile-in-cart-icon" /><img src="@/assets/images/icons/desktop-in-cart.png" class="desktop-in-cart-icon" /></button>
+        <button v-if="inCart"><img src="@/assets/images/icons/in-cart.png" class="mobile-in-cart-icon" /><img src="@/assets/images/icons/desktop-in-cart.png" class="desktop-in-cart-icon" /></button>
     </transition> 
   </div>
 </template>
@@ -14,37 +14,69 @@ import auth from '../auth';
 export default {
   name: "add-to-cart",
   props: {
-    toolId,
-    userId
+    tool: Object,
+    isAvailable: Boolean
   },
   data (){
     return {
-        addedToCart: false,
-        isAvailable: true
+      cart: {}
     }
   }, 
   methods: {
-    clickedCart() {
-      this.addedToCart = !this.addedToCart;
-      this.$emit('clickedCart', this.addedToCart);
-    },
-    addToCart(toolId) {
-      var tempCart = JSON.parse(JSON.stringify(this.userCart));
-      tempCart.items.push(toolId);
-      fetch(this.apiURL + "/cart/" + this.user.getId , {
-        method: 'PUT',
-        body: JSON.stringify(tempCart)
-        })
-        .then( (response) => {
+    getCart(){
+      fetch( `${process.env.VUE_APP_REMOTE_API}/api/cart/${auth.getUser().sub}`, {
+        headers: {
+          Authorization: `Bearer ${auth.getToken()}`
+        }
+      })
+        .then(response => {
           return response.json();
         })
-        .then( data => {
-           this.userCart = data;
+        .then(data => {
+          this.cart = data;
         })
-        .catch( err => { 
-          console.error(err) 
+        .catch(err => {
+          console.error(err);
         });
+    },
+    clickedCart() {
+      fetch(`${process.env.VUE_APP_REMOTE_API}/api/cart/add/${this.cart.id}`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${auth.getToken()}`,
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({"toolId": this.tool.toolId})
+      })
+        .then(response => {
+          if (response.ok) {
+            this.cart.items.push(this.tool);
+          }
+        })
+        .catch(err => console.error(err));
+    },
+  },
+  computed: {
+    inCart(){
+      if (this.cart.items.length === 0){
+        return false;
+      } else {
+        const items = this.cart.items;
+        let added = false;
+
+        items.forEach(item => {
+          if (item.toolId === this.tool.toolId){
+            added = true;
+          }
+        });
+        
+        return added;
+      }
     }
+  },
+  created() {
+    this.getCart();
   }
 };
 </script>

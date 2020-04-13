@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,9 @@ import com.techelevator.model.dao.CategoryDAO;
 import com.techelevator.model.dao.LoanDAO;
 import com.techelevator.model.dao.ToolDAO;
 import com.techelevator.model.dao.UserDao;
+import com.techelevator.model.exceptions.AddToCartException;
+import com.techelevator.model.exceptions.FetchUserLoansException;
+import com.techelevator.model.exceptions.RemoveFromCartException;
 
 /**
  * ApiController
@@ -133,12 +137,51 @@ public class ApiController {
 		return cart;
 	}
 
-	@PutMapping("/cart/{username}")
-	public void update(@RequestBody Cart cart) {
-		Cart requestedCart = cartDao.getCartByUser(cart.getId());
-		if (requestedCart != null) {
-			cartDao.updateCart(cart);
+	@PostMapping("/cart/add/{userId}")
+	public void add(@RequestBody Tool tool, @PathVariable long userId) throws AddToCartException {
+		Cart cart = cartDao.getCartByUser(userId);
+		
+		if (cart != null) {
+			cartDao.addToCart(userId, tool.getToolId());
+		} else {
+			throw new AddToCartException();
 		}
+		
+	}
+	
+	@PostMapping("/cart/remove")
+	public void remove(@RequestBody Long userId, Long toolId) throws RemoveFromCartException {
+		Cart cart = cartDao.getCartByUser(userId);
+
+		if (cart != null) {
+			cartDao.removeFromCart(userId, toolId);
+		} else {
+			throw new RemoveFromCartException();
+		}
+	}
+	
+	@PostMapping("/cart/checkout/{username}")
+	public void checkout(@PathVariable String username) {
+		User user = userDao.getUserByUsername(username);
+		Cart cart = cartDao.getCartByUser(user.getId());
+		
+		loanDao.addLoan(cart);
+		
+		cartDao.clearCart(cart.getId());
+	}
+	
+	@GetMapping("/loans/{username}")
+	public List<Loan> getActiveLoans(@PathVariable String username) throws FetchUserLoansException {
+		User user = userDao.getUserByUsername(username);
+		
+		if (user != null) {
+			List<Loan> loans = loanDao.getLoansByUser(user.getId());
+			
+			return loans;
+		} else {
+			throw new FetchUserLoansException();
+		}
+		
 	}
 	
 	@GetMapping("/users")

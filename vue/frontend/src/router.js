@@ -92,18 +92,6 @@ const router = new Router({
         // requiresAuth: false
       }
     },
-    // {
-    //   path: '/cart/:id',
-    //   name: 'userCart',
-    //   component: Cart,
-    //   meta: {
-    //     // correct setting
-    //     // requiresAuth: true
-
-    //     // temporary for development
-    //     requiresAuth: false
-    //   }
-    // },
     {
       path: '/loans',
       name: 'user-loans',

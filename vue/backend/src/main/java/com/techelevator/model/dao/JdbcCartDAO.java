@@ -51,7 +51,7 @@ public class JdbcCartDAO implements CartDAO {
 	}
 
 	@Override
-	public Cart getCartByUser(long userId) {
+	public Cart getCartByUser(Long userId) {
 		
 		String sql = "SELECT tool_id FROM cart_items WHERE user_id = ?";
 		
@@ -66,37 +66,31 @@ public class JdbcCartDAO implements CartDAO {
 		
 		return cart;
 	}
-
+	
 	@Override
-	public Cart updateCart(Cart cart) {
-		Set<Tool> items = new HashSet<Tool>();
-		
-		for (Tool item : cart.getItems()) {
-			items.add(item);
-		}
-		
-		clearCart(cart.getId());
-		
-		for (Tool item : items) {
-			addToCart(cart.getId(), item.getToolId());
-		}
-		
-		Cart updatedCart = getCartByUser(cart.getId());
-		
-		return updatedCart;
-	}
-	
-	
-	
-	private void clearCart(Long userId) {
-		String sql = "DELETE FROM cart_items WHERE user_id = ?";
-		
-		jdbc.update(sql, userId);
-	}
-	
-	private void addToCart(Long userId, Long toolId) {
+	public Cart addToCart(Long userId, Long toolId) {
 		String sql = "INSERT INTO cart_items (user_id, tool_id) VALUES (?, ?)";
 		
 		jdbc.update(sql, userId, toolId);
+		
+		return getCartByUser(userId);
+	}
+	
+	@Override
+	public Cart removeFromCart(Long userId, Long toolId) {
+		String sql = "DELETE FROM cart_items WHERE user_id = ? AND tool_id = ?";
+		
+		jdbc.update(sql, userId, toolId);
+		
+		return getCartByUser(userId);
+	}
+	
+	@Override
+	public Cart clearCart(Long userId) {
+		String sql = "DELETE FROM cart_items WHERE user_id = ?";
+		
+		jdbc.update(sql, userId);
+		
+		return getCartByUser(userId);
 	}
 }

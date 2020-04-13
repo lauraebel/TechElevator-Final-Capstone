@@ -1,18 +1,21 @@
 <template>
   <div class="cart-contents">
     <h1 class="page-title">Cart</h1>
-    <tool-tile class="cart-item" v-for="item in tools" v-bind:key="item" v-bind:tool="item" />
+    <tool-tile class="cart-item" v-for="item in cart.items" v-bind:key="item.toolId" v-bind:tool="item" />
+    <checkout />
   </div>
 </template>
 
 <script>
 import ToolTile from "../components/ToolTile";
+import Checkout from "../components/Checkout";
 import auth from '../auth';
 
 export default {
   name: "cart",
   components: {
-    ToolTile
+    ToolTile,
+    Checkout
   },
   props: {
     user: Object,
@@ -24,7 +27,7 @@ export default {
   },
   methods: {
     getCart(){
-      fetch(`${process.env.VUE_APP_REMOTE_API}/cart/${this.user.sub}`, {
+      fetch( `${process.env.VUE_APP_REMOTE_API}/api/cart/${auth.getUser().sub}`, {
         headers: {
           Authorization: `Bearer ${auth.getToken()}`
         }
@@ -38,7 +41,7 @@ export default {
         .catch(err => {
           console.error(err);
         });
-    }
+    },
   },
   created() {
     this.getCart();

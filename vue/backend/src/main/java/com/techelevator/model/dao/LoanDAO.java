@@ -11,6 +11,7 @@ public interface LoanDAO {
 	
 	public List <Loan> getAllActiveLoans();
 		
+	public List<Loan> getLoansByUser(Long userId);
 	/**
 	 * Add a loan to the database.
 	 * 
@@ -18,7 +19,7 @@ public interface LoanDAO {
 	 * @param userId based on signed in user or id entered by administrator
 	 * @return void
 	 */
-	public Loan addLoan(Cart cart);
+	public void addLoan(Cart cart);
 	
 	/**
 	 * Renew an existing reservation by adding an additional 

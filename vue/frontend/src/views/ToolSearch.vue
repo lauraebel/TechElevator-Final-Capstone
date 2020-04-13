@@ -33,9 +33,9 @@
     <div class="tools" >
       <div class="tool" v-for="tool in filteredTools" v-bind:key="tool.toolId">
         <tool-tile class="tool" v-bind:tool="tool" />
-        <div class="add" v-on:click="clickedCart(tool.toolId)">
+        <div class="add">
           <span class="add" >Add to Cart</span>
-          <add-to-cart/>
+          <add-to-cart v-bind:tool="tool"  v-bind:isAvailable="inAvailableResults(tool.toolId)"/>
         </div>
       </div>
     </div>
@@ -44,16 +44,17 @@
 
 <script>
 import ToolTile from "../components/ToolTile";
+import AddToCart from "../components/AddToCart";
 import auth from '../auth';
 
 export default {
   name: "tool-search",
   components: {
-    ToolTile
+    ToolTile,
+    AddToCart
   },
   data() {
     return {
-      user: {},
       username: "",
       allTools: [],
       availableTools: [],
@@ -63,7 +64,6 @@ export default {
       category: "",
       keyword: "",
       onlyAvailable: false,
-      userCart: {}
     };
   },
   methods: {
@@ -163,8 +163,16 @@ export default {
         return name.match(filter) || description.match(filter);
       });
     },
-    clickedCart(toolId){
-      this.$emit('clickedAddToCart', toolId);
+    inAvailableResults(toolId){
+      let bool = false;
+
+      this.availableTools.forEach(tool => {
+        if (tool.toolId === toolId){
+          bool = true;
+        }
+      });
+
+      return bool;
     }
   },
   computed: {
@@ -210,8 +218,6 @@ export default {
     this.getTools();
     this.getBrands();
     this.getCategories();
-    this.getCart();
-    this.user = auth.getUser();
   }
 };
 </script>

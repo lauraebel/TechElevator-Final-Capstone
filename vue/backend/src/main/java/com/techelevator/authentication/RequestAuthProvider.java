@@ -76,7 +76,7 @@ public class RequestAuthProvider implements AuthProvider {
     public boolean userHasRole(Long[] roles) {
         User currentUser = getCurrentUser();
         if (currentUser != null && roles != null) {
-            return Arrays.asList(roles).contains(currentUser.getRole());
+            return Arrays.asList(roles).contains(currentUser.getRoleID());
         } else {
             return false;
         }
