@@ -5,6 +5,36 @@
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         There were problems registering this user.
       </div>
+      <label for="firstname" class="sr-only">First Name</label>
+      <input
+        type="text"
+        id="firstname"
+        class="form-control"
+        placeholder="First Name"
+        v-model="user.firstname"
+        required
+        autofocus
+      />
+      <label for="lastname" class="sr-only">Last Name</label>
+      <input
+        type="text"
+        id="lastname"
+        class="form-control"
+        placeholder="First Name"
+        v-model="user.lastname"
+        required
+        autofocus
+      />
+      <label for="licenseno" class="sr-only">Driver License Number</label>
+      <input
+        type="text"
+        id="licenseno"
+        class="form-control"
+        placeholder="Driver License Number"
+        v-model="user.licenseno"
+        required
+        autofocus
+      />
       <label for="username" class="sr-only">Username</label>
       <input
         type="text"
@@ -44,41 +74,46 @@
 
 <script>
 export default {
-  name: 'register',
+  name: "register",
   data() {
     return {
       user: {
-        username: '',
-        password: '',
-        confirmPassword: '',
-        role: 'user',
+        firstname: "",
+        lastname: "",
+        licenseno: "",
+        username: "",
+        password: "",
+        confirmPassword: "",
+        roleID: 2
       },
-      registrationErrors: false,
+      registrationErrors: false
     };
   },
   methods: {
     register() {
-      fetch(`${process.env.AUTH_API}/register`, {
-        method: 'POST',
+      fetch(`${process.env.VUE_APP_REMOTE_API}/register`, {
+        method: "POST",
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify(this.user),
+        body: JSON.stringify(this.user)
       })
-        .then((response) => {
+        .then(response => {
           if (response.ok) {
-            this.$router.push({ path: '/login', query: { registration: 'success' } });
+            this.$router.push({
+              path: "/login",
+              query: { registration: "success" }
+            });
           } else {
             this.registrationErrors = true;
           }
         })
 
-        .then((err) => console.error(err));
-    },
-  },
+        .then(err => console.error(err));
+    }
+  }
 };
 </script>
 
-<style>
-</style>
+<style></style>

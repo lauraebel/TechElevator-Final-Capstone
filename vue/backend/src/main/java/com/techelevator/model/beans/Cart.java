@@ -6,10 +6,10 @@ import java.util.Set;
 public class Cart {
 
 	private Long id;
-	private Set<Long> items;
+	private Set<Tool> items;
 	
 	public Cart() {
-		items = new HashSet<Long>();
+		items = new HashSet<Tool>();
 	}
 	
 	public Long getId() {
@@ -18,14 +18,14 @@ public class Cart {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Set<Long> getItems() {
+	public Set<Tool> getItems() {
 		return items;
 	}
-	public void setItems(Set<Long> items) {
+	public void setItems(Set<Tool> items) {
 		this.items = items;
 	}
 	
-	public void addItem(Long item) {
+	public void addItem(Tool item) {
 		items.add(item);
 	}
 
@@ -59,6 +59,5 @@ public class Cart {
 			return false;
 		return true;
 	}
-	
-	
+
 }

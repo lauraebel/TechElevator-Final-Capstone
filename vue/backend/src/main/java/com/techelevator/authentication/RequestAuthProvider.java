@@ -68,15 +68,15 @@ public class RequestAuthProvider implements AuthProvider {
     }
 
     @Override
-    public void register(String username, String password, String role) {
-        dao.saveUser(username, password, role);
+    public void register(String firstname, String lastname, String licenseno, String username, String password, Long roleID) {
+        dao.saveUser(firstname, lastname, licenseno, username, password, roleID);
     }
 
     @Override
-    public boolean userHasRole(String[] roles) {
+    public boolean userHasRole(Long[] roles) {
         User currentUser = getCurrentUser();
         if (currentUser != null && roles != null) {
-            return Arrays.asList(roles).contains(currentUser.getRole());
+            return Arrays.asList(roles).contains(currentUser.getRoleID());
         } else {
             return false;
         }

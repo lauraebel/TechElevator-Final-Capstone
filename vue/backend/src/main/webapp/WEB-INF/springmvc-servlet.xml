@@ -20,20 +20,20 @@
 	
 	<mvc:annotation-driven />
 	
-<!-- 	<mvc:interceptors> -->
-<!-- 		<mvc:interceptor> -->
-<!-- 			<mvc:mapping path="/**" /> -->
-<!-- 			<bean class="com.techelevator.authentication.JwtAuthInterceptor"> -->
-<!-- 				<property name="excludedUrls"> -->
-<!-- 					<list> -->
-<!-- 						Every url in the app must be authenticated except /login -->
-<!-- 						<value>/login</value> -->
-<!-- 						<value>/register</value> -->
-<!-- 					</list> -->
-<!-- 				</property> -->
-<!-- 			</bean> -->
-<!-- 		</mvc:interceptor> -->
-<!-- 	</mvc:interceptors> -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.techelevator.authentication.JwtAuthInterceptor">
+				<property name="excludedUrls">
+					<list>
+						<!-- Every url in the app must be authenticated except /login -->
+						<value>/login</value>
+						<value>/register</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 	
 	<mvc:cors>
 		<mvc:mapping path="/**" allowed-methods="*" />

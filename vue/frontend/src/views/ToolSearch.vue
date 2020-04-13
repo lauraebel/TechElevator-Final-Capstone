@@ -32,13 +32,10 @@
 
     <div class="tools" >
       <div class="tool" v-for="tool in filteredTools" v-bind:key="tool.toolId">
-        <tool-tile
-          class="tool"
-          v-bind:tool="tool"
-        />
+        <tool-tile class="tool" v-bind:tool="tool" />
         <div class="add">
-          <span>Add to Cart</span>
-          <add-to-cart v-on:clickedCart="clickedCart" />
+          <span class="add" >Add to Cart</span>
+          <add-to-cart v-bind:tool="tool"  v-bind:isAvailable="inAvailableResults(tool.toolId)"/>
         </div>
       </div>
     </div>
@@ -47,20 +44,17 @@
 
 <script>
 import ToolTile from "../components/ToolTile";
+import AddToCart from "../components/AddToCart";
 import auth from '../auth';
-import Cart from './Cart'
 
 export default {
   name: "tool-search",
   components: {
     ToolTile,
-    Cart
+    AddToCart
   },
   data() {
     return {
-      apiURL: "http://localhost:8080/AuthenticationApplication/api",
-      // apiURL: "https://5e8dd4e822d8cd0016a79b3f.mockapi.io",
-      user: {},
       username: "",
       allTools: [],
       availableTools: [],
@@ -70,12 +64,15 @@ export default {
       category: "",
       keyword: "",
       onlyAvailable: false,
-      userCart: {}
     };
   },
   methods: {
     getTools() {
-      fetch(this.apiURL + "/tools")
+      fetch(`${process.env.VUE_APP_REMOTE_API}/api/tools`, {
+        headers: {
+          Authorization: `Bearer ${auth.getToken()}`
+        }
+      })
         .then(response => {
           return response.json();
         })
@@ -85,7 +82,11 @@ export default {
         .catch(err => {
           console.error(err);
         });
-      fetch(this.apiURL + "/available")
+      fetch( `${process.env.VUE_APP_REMOTE_API}/api/available`, {
+        headers: {
+          Authorization: `Bearer ${auth.getToken()}`
+        }
+      })
         .then(response => {
           return response.json();
         })
@@ -96,9 +97,12 @@ export default {
           console.error(err);
         });
     },
-    //method to get brands
     getBrands() {
-      fetch(this.apiURL + "/brands")
+      fetch( `${process.env.VUE_APP_REMOTE_API}/api/brands`, {
+        headers: {
+          Authorization: `Bearer ${auth.getToken()}`
+        }
+      })
         .then(response => {
           return response.json();
         })
@@ -109,9 +113,12 @@ export default {
           console.error(err);
         });
     },
-    //method to get categories
     getCategories() {
-      fetch(this.apiURL + "/categories")
+      fetch( `${process.env.VUE_APP_REMOTE_API}/api/categories`, {
+        headers: {
+          Authorization: `Bearer ${auth.getToken()}`
+        }
+      })
         .then(response => {
           return response.json();
         })
@@ -127,7 +134,6 @@ export default {
       this.category = "";
       this.keyword = "";
     },
-    //method to get list of matching tools
     matchesBrand(tool) {
       if (tool.toolBrand === this.brand) {
         return true;
@@ -156,6 +162,17 @@ export default {
 
         return name.match(filter) || description.match(filter);
       });
+    },
+    inAvailableResults(toolId){
+      let bool = false;
+
+      this.availableTools.forEach(tool => {
+        if (tool.toolId === toolId){
+          bool = true;
+        }
+      });
+
+      return bool;
     }
   },
   computed: {
@@ -195,17 +212,12 @@ export default {
       });
 
       return filtered;
-    },
-    // isAdmin(vm) {
-    //   return this.user.rol === 'admin';
-    // }
+    }
   },
   created() {
     this.getTools();
     this.getBrands();
     this.getCategories();
-    this.getCart();
-    this.user = auth.getUser();
   }
 };
 </script>

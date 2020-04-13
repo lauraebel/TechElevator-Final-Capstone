@@ -5,7 +5,11 @@
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
-      <div class="alert alert-success" role="alert" v-if="this.$route.query.registration">
+      <div
+        class="alert alert-success"
+        role="alert"
+        v-if="this.$route.query.registration"
+      >
         Thank you for registering, please sign in.
       </div>
       <label for="username" class="sr-only">Username</label>
@@ -34,52 +38,50 @@
 </template>
 
 <script>
-import auth from '../auth';
+import auth from "../auth";
 
 export default {
-  name: 'login',
-
+  name: "login",
+  components: {},
   data() {
     return {
       user: {
-        username: '',
-        password: '',
+        username: "",
+        password: ""
       },
-      invalidCredentials: false,
+      invalidCredentials: false
     };
   },
   methods: {
     login() {
-      fetch(`${process.env.AUTH_API}/login`, {
-        method: 'POST',
+      fetch(`${process.env.VUE_APP_REMOTE_API}/login`, {
+        method: "POST",
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify(this.user),
+        body: JSON.stringify(this.user)
       })
-        .then((response) => {
+        .then(response => {
           if (response.ok) {
             return response.text();
           } else {
             this.invalidCredentials = true;
           }
         })
-        .then((token) => {
+        .then(token => {
           if (token != undefined) {
             if (token.includes('"')) {
-              token = token.replace(/"/g, '');
+              token = token.replace(/"/g, "");
             }
             auth.saveToken(token);
-            this.$router.push('/');
+            this.$router.push("/");
           }
         })
-        .catch((err) => console.error(err));
-    },
-  },
+        .catch(err => console.error(err));
+    }
+  }
 };
 </script>
 
-<style>
-  
-</style>
+<style></style>

@@ -1,51 +1,47 @@
 <template>
-    <div class="user-loans">
-    <h1>My Loans</h1>
-    <loan-info />
-    <div class="loan" v-for="loan in loans" v-bind:key="loan.loanId">{{loan.tool}}</div>
-    </div>
-
+  <div class="user-loans">
+    <h1 class="page-title">My Loans</h1>
+    <!-- <div v-for="loan in loans" v-bind:key="loan.loanId">{{loan.loanId}}</div> -->
+    <loan-info v-for="loan in loans" v-bind:key="loan.loanId" v-bind:loan="loan" />
+  </div>
 </template>
 
 <script>
-import LoanInfo from "../components/LoanInfo";
+import auth from '../auth';
+import LoanInfo from '../components/LoanInfo';
 
 export default {
-  name: 'user-loans',
+  name: "user-loans",
   components: {
       LoanInfo
   },
   data() {
-        return {
-            apiURL: "http://localhost:8080/AuthenticationApplication/api/loans",
-            allLoans: [],
-            returnedOn: '',
-            id: 1
-        }
-    },
+    return {
+      loans: []
+    };
+  },
   methods: {
     getLoans() {
-        fetch(this.apiURL + "/loans")
+        fetch(`${process.env.VUE_APP_REMOTE_API}/api/loans/${auth.getUser().sub}`, {
+        headers: {
+          Authorization: `Bearer ${auth.getToken()}`
+        }
+      })
         .then(response => {
-        return response.json();
+          return response.json();
         })
         .then(data => {
-        this.allLoans = data;
+          this.loans = data;
         })
-        .catch(err => {console.error(err)});
-        }
+        .catch(err => {
+          console.error(err);
+        });
     }
-//   computed: {
-//     currentLoans() {
-//         let loanList;
-
-//         if(this.returnedOn == null) {
-//             loanList = this.allLoans;
-//         }
-//     },
-//     created() {
-//         this.getLoans();
-//     }
-//   }
- }
+  },
+  created() {
+      this.getLoans();
+  }
+};
 </script>
+
+<style></style>
