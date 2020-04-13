@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import com.techelevator.model.beans.Cart;
 import com.techelevator.model.beans.Loan;
 import com.techelevator.model.beans.Tool;
 
