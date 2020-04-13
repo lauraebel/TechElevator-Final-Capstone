@@ -1,10 +1,9 @@
 <template>
   <div class="add-to-cart" >
-    <transition name="fade">
-        <button v-if="isAvailable && !inCart" v-on:click="clickedCart"><img src="@/assets/images/icons/add-to-cart.png" class="add-to-cart-icon" /><img src="@/assets/images/icons/desktop-add-to-cart.png" class="desktop-add-to-cart-icon" /></button>
-        <button v-if="!isAvailable" :disabled='isDisabled'><img src="@/assets/images/icons/add-to-cart.png" class="can-not-add-to-cart-icon" /></button>
-        <button v-if="inCart"><img src="@/assets/images/icons/in-cart.png" class="mobile-in-cart-icon" /><img src="@/assets/images/icons/desktop-in-cart.png" class="desktop-in-cart-icon" /></button>
-    </transition> 
+        <button v-if="isAvailable" v-on:click="clickedCart" :disabled="disabled"><img src="@/assets/images/icons/add-to-cart.png" class="add-to-cart-icon" /><img src="@/assets/images/icons/desktop-add-to-cart.png" class="desktop-add-to-cart-icon" /></button>
+        <button v-else><img src="@/assets/images/icons/not-available.png" /></button>
+        <!-- <button v-if="!isAvailable" :disabled='isDisabled'><img src="@/assets/images/icons/add-to-cart.png" class="can-not-add-to-cart-icon" /></button>
+        <button v-if="inCart"><img src="@/assets/images/icons/in-cart.png" class="mobile-in-cart-icon" /><img src="@/assets/images/icons/desktop-in-cart.png" class="desktop-in-cart-icon" /></button> -->
   </div>
 </template>
 
@@ -19,7 +18,8 @@ export default {
   },
   data (){
     return {
-      cart: {}
+      cart: {},
+      disabled: false
     }
   }, 
   methods: {
@@ -52,6 +52,7 @@ export default {
         .then(response => {
           if (response.ok) {
             this.cart.items.push(this.tool);
+            this.disabled = true;
           }
         })
         .catch(err => console.error(err));

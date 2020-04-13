@@ -1,7 +1,8 @@
 <template>
   <div class="user-loans">
     <h1 class="page-title">My Loans</h1>
-    <div v-for="loan in loans" v-bind:key="loan.loanId">{{loan.loanId}}</div>
+    <!-- <div v-for="loan in loans" v-bind:key="loan.loanId">{{loan.loanId}}</div> -->
+    <loan-info v-for="loan in loans" v-bind:key="loan.loanId" v-bind:loan="loan" />
   </div>
 </template>
 
