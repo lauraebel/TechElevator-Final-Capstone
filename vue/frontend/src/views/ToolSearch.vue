@@ -260,12 +260,12 @@ export default {
   },
   created() {
     // real data
-    // this.getTools();
-    // this.getBrands();
-    // this.getCategories();
+    this.getTools();
+    this.getBrands();
+    this.getCategories();
 
     // mock data
-    this.getMockData();
+    // this.getMockData();
   }
 };
 </script>
