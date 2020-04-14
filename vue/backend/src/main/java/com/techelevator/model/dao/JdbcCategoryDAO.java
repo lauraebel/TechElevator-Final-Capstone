@@ -34,11 +34,9 @@ public class JdbcCategoryDAO implements CategoryDAO {
 	}
 
 	@Override
-	public void addCategory(Category newCategory) {
-		Long categoryId = getNextCategoryId();
-		String sqlInsertCategory = "INSERT INTO category(id, name) VALUES (?, ?)";
-		jdbcTemplate.update(sqlInsertCategory, categoryId, newCategory.getCategoryName());
-		newCategory.setCategoryId(categoryId);
+	public void addCategory(String categoryName) {
+		String sqlInsertCategory = "INSERT INTO category (name) VALUES (?)";
+		jdbcTemplate.update(sqlInsertCategory, categoryName);
 	}
 	
 	@Override
@@ -58,18 +56,6 @@ public class JdbcCategoryDAO implements CategoryDAO {
 		category.setCategoryId(row.getLong("id"));
 		category.setCategoryName(row.getString("name"));
 		return category;
-	}
-
-	private Long getNextCategoryId() {
-		String sqlSelectNextId = "SELECT NEXTVAL('category_id_seq')";
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectNextId);
-		Long categoryId = null;
-		if(results.next()) {
-			categoryId = results.getLong(1);
-		} else {
-			throw new RuntimeException("Unable to get next Category Id");
-		}
-		return categoryId;
 	}
 
 }

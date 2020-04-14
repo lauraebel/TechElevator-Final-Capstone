@@ -1,0 +1,83 @@
+[
+  {
+    "loanId": 1,
+    "userId": 1,
+    "tool": {
+      "toolName": "hammer",
+      "toolDescription": "really cool hammer",
+      "toolImgName": "estwing-hammer.jpg",
+      "toolId": 1,
+      "toolBrand": 1,
+      "toolCategories": [1]
+    },
+    "dateLoaned": {
+      "month": "APRIL",
+      "dayOfMonth": "1",
+      "year": "2020"
+    },
+    "dateReturned": {
+      "month": "",
+      "dayOfMonth": "",
+      "year": ""
+    },
+    "dueDate": {
+      "month": "APRIL",
+      "dayOfMonth": "8",
+      "year": "2020"
+    }
+  },
+  {
+    "loanId": 2,
+    "userId": 1,
+    "tool": {
+      "toolName": "screwdriver",
+      "toolDescription": "really cool screwdriver",
+      "toolImgName": "kleintools-flatheadscrewdriver.jpg",
+      "toolId": 2,
+      "toolBrand": 2,
+      "toolCategories": [2]
+    },
+    "dateLoaned": {
+      "month": "APRIL",
+      "dayOfMonth": "1",
+      "year": "2020"
+    },
+    "dateReturned": {
+      "month": "",
+      "dayOfMonth": "",
+      "year": ""
+    },
+    "dueDate": {
+      "month": "APRIL",
+      "dayOfMonth": "8",
+      "year": "2020"
+    }
+  },
+  {
+    "loanId": 3,
+    "userId": 1,
+    "tool": {
+      "toolName": "shovel",
+      "toolDescription": "really cool shovel",
+      "toolImgName": "ryobi-solderingiron.jpg",
+      "toolId": 3,
+      "toolBrand": 2,
+      "toolCategories": [3]
+    },
+    "dateLoaned": {
+      "month": "APRIL",
+      "dayOfMonth": "1",
+      "year": "2020"
+    },
+    "dateReturned": {
+      "month": "",
+      "dayOfMonth": "",
+      "year": ""
+    },
+    "dueDate": {
+      "month": "APRIL",
+      "dayOfMonth": "8",
+      "year": "2020"
+    }
+  }
+]

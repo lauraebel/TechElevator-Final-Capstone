@@ -21,6 +21,18 @@ export default {
     };
   },
   methods: {
+    getMockLoans(){
+      fetch("https://5e8dd4e822d8cd0016a79b3f.mockapi.io/loans")
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          this.loans = data;
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    },
     getLoans() {
         fetch(`${process.env.VUE_APP_REMOTE_API}/api/loans/${auth.getUser().sub}`, {
         headers: {
@@ -39,7 +51,11 @@ export default {
     }
   },
   created() {
-      this.getLoans();
+      // real data
+      // this.getLoans();
+
+      //mock data
+      this.getMockLoans();
   }
 };
 </script>
