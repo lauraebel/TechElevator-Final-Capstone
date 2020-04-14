@@ -42,6 +42,16 @@ public class JdbcLoanDAOIntegrationTest {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
+	@Test
+	public void get_all_loans() {
+		
+	}
+	
+	private void truncateLoans() {
+		String sql = "TRUNCATE loans CASCADE";
+		jdbcTemplate.update(sql);
+	}
+	
 	//getAllLoans()
 	//test when normal table -> returns list of correct length
 	//test when table empty

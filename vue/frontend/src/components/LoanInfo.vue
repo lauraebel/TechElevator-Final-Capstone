@@ -2,8 +2,7 @@
   <div class="loan-info">
     <h1 class="tool-name">{{loan.tool.toolName}}</h1>
     <img v-bind:src="require(`@/assets/images/product-img/${loan.tool.toolImgName}`)" class="tool-img"/>
-    <p class="loaned-on">Loaned On: {{getDate(loan.dateLoaned)}}</p>
-    <p class="due-on">Due: {{getDate(loan.dueDate)}}</p>
+    <p class="dates">Loaned On: {{getDate(loan.dateLoaned)}}<br />Due: {{getDate(loan.dueDate)}}</p>
   </div>
 </template>
 
