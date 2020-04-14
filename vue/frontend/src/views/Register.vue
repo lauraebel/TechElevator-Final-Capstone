@@ -20,7 +20,7 @@
         type="text"
         id="lastname"
         class="form-control"
-        placeholder="First Name"
+        placeholder="Last Name"
         v-model="user.lastname"
         required
         autofocus

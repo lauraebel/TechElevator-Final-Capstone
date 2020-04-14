@@ -1,14 +1,22 @@
 <template>
-  <div class="add-to-cart" >
-        <button v-if="isAvailable" v-on:click="clickedCart" :disabled="disabled"><img src="@/assets/images/icons/add-to-cart.png" class="add-to-cart-icon" /><img src="@/assets/images/icons/desktop-add-to-cart.png" class="desktop-add-to-cart-icon" /></button>
-        <button v-else><img src="@/assets/images/icons/not-available.png" /></button>
-        <!-- <button v-if="!isAvailable" :disabled='isDisabled'><img src="@/assets/images/icons/add-to-cart.png" class="can-not-add-to-cart-icon" /></button>
+  <div class="add-to-cart" v-on:click="clickedCart" :disabled="disabled">
+    <span v-if="isAvailable" class="add">Add to Cart</span><span v-else class="add">Unavailable</span>
+    <div class="icon">
+      <img
+        v-if="isAvailable"
+        src="@/assets/images/icons/add-to-cart.png"
+        class="add-to-cart-icon"
+      />
+      <img v-else src="@/assets/images/icons/not-available.png" class="not-available-icon"/> 
+    </div>
+
+    <!-- <button v-if="!isAvailable" :disabled='isDisabled'><img src="@/assets/images/icons/add-to-cart.png" class="can-not-add-to-cart-icon" /></button>
         <button v-if="inCart"><img src="@/assets/images/icons/in-cart.png" class="mobile-in-cart-icon" /><img src="@/assets/images/icons/desktop-in-cart.png" class="desktop-in-cart-icon" /></button> -->
   </div>
 </template>
 
 <script>
-import auth from '../auth';
+import auth from "../auth";
 
 export default {
   name: "add-to-cart",
@@ -16,19 +24,22 @@ export default {
     tool: Object,
     isAvailable: Boolean
   },
-  data (){
+  data() {
     return {
       cart: {},
       disabled: false
-    }
-  }, 
+    };
+  },
   methods: {
-    getCart(){
-      fetch( `${process.env.VUE_APP_REMOTE_API}/api/cart/${auth.getUser().sub}`, {
-        headers: {
-          Authorization: `Bearer ${auth.getToken()}`
+    getCart() {
+      fetch(
+        `${process.env.VUE_APP_REMOTE_API}/api/cart/${auth.getUser().sub}`,
+        {
+          headers: {
+            Authorization: `Bearer ${auth.getToken()}`
+          }
         }
-      })
+      )
         .then(response => {
           return response.json();
         })
@@ -45,9 +56,9 @@ export default {
         headers: {
           Authorization: `Bearer ${auth.getToken()}`,
           Accept: "application/json",
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify({"toolId": this.tool.toolId})
+        body: JSON.stringify({ toolId: this.tool.toolId })
       })
         .then(response => {
           if (response.ok) {
@@ -56,22 +67,22 @@ export default {
           }
         })
         .catch(err => console.error(err));
-    },
+    }
   },
   computed: {
-    inCart(){
-      if (this.cart.items.length === 0){
+    inCart() {
+      if (this.cart.items.length === 0) {
         return false;
       } else {
         const items = this.cart.items;
         let added = false;
 
         items.forEach(item => {
-          if (item.toolId === this.tool.toolId){
+          if (item.toolId === this.tool.toolId) {
             added = true;
           }
         });
-        
+
         return added;
       }
     }

@@ -1,7 +1,12 @@
 <template>
   <div class="cart-contents">
     <h1 class="page-title">Cart</h1>
-    <tool-tile class="cart-item" v-for="item in cart.items" v-bind:key="item.toolId" v-bind:tool="item" />
+    <tool-tile
+      class="cart-item"
+      v-for="item in cart.items"
+      v-bind:key="item.toolId"
+      v-bind:tool="item"
+    />
     <checkout />
   </div>
 </template>
@@ -9,7 +14,7 @@
 <script>
 import ToolTile from "../components/ToolTile";
 import Checkout from "../components/Checkout";
-import auth from '../auth';
+import auth from "../auth";
 
 export default {
   name: "cart",
@@ -18,20 +23,16 @@ export default {
     Checkout
   },
   props: {
-    user: Object,
-  }, 
+    user: Object
+  },
   data() {
     return {
-       cart: {}
-    }
+      cart: {}
+    };
   },
   methods: {
-    getCart(){
-      fetch( `${process.env.VUE_APP_REMOTE_API}/api/cart/${auth.getUser().sub}`, {
-        headers: {
-          Authorization: `Bearer ${auth.getToken()}`
-        }
-      })
+    getMockCart() {
+      fetch("https://5e8dd4e822d8cd0016a79b3f.mockapi.io/carts/1")
         .then(response => {
           return response.json();
         })
@@ -41,14 +42,37 @@ export default {
         .catch(err => {
           console.error(err);
         });
+
+        
     },
+    getCart() {
+      fetch(
+        `${process.env.VUE_APP_REMOTE_API}/api/cart/${auth.getUser().sub}`,
+        {
+          headers: {
+            Authorization: `Bearer ${auth.getToken()}`
+          }
+        }
+      )
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          this.cart = data;
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    }
   },
   created() {
-    this.getCart();
+    // real data
+    // this.getCart();
+
+    //mock data
+    this.getMockCart();
   }
-}
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

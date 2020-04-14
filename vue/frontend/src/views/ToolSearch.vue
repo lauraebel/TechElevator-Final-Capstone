@@ -15,14 +15,14 @@
         <toggle-button v-model="onlyAvailable" color="#FFD58E" />
       </div>
       <v-select
-        placeholder="Filter by Brand"
+        placeholder="Brand"
         label="brandName"
         v-model="brand"
         :options="allBrands"
         :reduce="brandName => brandName.brandId"
       ></v-select>
       <v-select
-        placeholder="Filter by Category"
+        placeholder="Category"
         label="categoryName"
         v-model="category"
         :options="allCategories"
@@ -30,13 +30,13 @@
       ></v-select>
     </div>
 
-    <div class="tools" >
+    <div class="tools">
       <div class="tool" v-for="tool in filteredTools" v-bind:key="tool.toolId">
-        <tool-tile class="tool" v-bind:tool="tool" />
-        <div class="add">
-          <span class="add" >Add to Cart</span>
-          <add-to-cart v-bind:tool="tool"  v-bind:isAvailable="inAvailableResults(tool.toolId)"/>
-        </div>
+        <tool-tile v-bind:tool="tool" />
+        <add-to-cart
+          v-bind:tool="tool"
+          v-bind:isAvailable="inAvailableResults(tool.toolId)"
+        />
       </div>
     </div>
   </div>
@@ -45,7 +45,7 @@
 <script>
 import ToolTile from "../components/ToolTile";
 import AddToCart from "../components/AddToCart";
-import auth from '../auth';
+import auth from "../auth";
 
 export default {
   name: "tool-search",
@@ -63,10 +63,54 @@ export default {
       brand: "",
       category: "",
       keyword: "",
-      onlyAvailable: false,
+      onlyAvailable: false
     };
   },
   methods: {
+    getMockData() {
+      fetch(`https://5e8dd4e822d8cd0016a79b3f.mockapi.io/tools`)
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          this.allTools = data;
+        })
+        .catch(err => {
+          console.error(err);
+        });
+      fetch(`https://5e8dd4e822d8cd0016a79b3f.mockapi.io/available`)
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          this.availableTools = data;
+        })
+        .catch(err => {
+          console.error(err);
+        });
+
+      fetch(`https://5e8dd4e822d8cd0016a79b3f.mockapi.io/brands`)
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          this.allBrands = data;
+        })
+        .catch(err => {
+          console.error(err);
+        });
+
+      fetch(`https://5e8dd4e822d8cd0016a79b3f.mockapi.io/categories`)
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          this.allCategories = data;
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    },
     getTools() {
       fetch(`${process.env.VUE_APP_REMOTE_API}/api/tools`, {
         headers: {
@@ -82,7 +126,7 @@ export default {
         .catch(err => {
           console.error(err);
         });
-      fetch( `${process.env.VUE_APP_REMOTE_API}/api/available`, {
+      fetch(`${process.env.VUE_APP_REMOTE_API}/api/available`, {
         headers: {
           Authorization: `Bearer ${auth.getToken()}`
         }
@@ -98,7 +142,7 @@ export default {
         });
     },
     getBrands() {
-      fetch( `${process.env.VUE_APP_REMOTE_API}/api/brands`, {
+      fetch(`${process.env.VUE_APP_REMOTE_API}/api/brands`, {
         headers: {
           Authorization: `Bearer ${auth.getToken()}`
         }
@@ -114,7 +158,7 @@ export default {
         });
     },
     getCategories() {
-      fetch( `${process.env.VUE_APP_REMOTE_API}/api/categories`, {
+      fetch(`${process.env.VUE_APP_REMOTE_API}/api/categories`, {
         headers: {
           Authorization: `Bearer ${auth.getToken()}`
         }
@@ -163,11 +207,11 @@ export default {
         return name.match(filter) || description.match(filter);
       });
     },
-    inAvailableResults(toolId){
+    inAvailableResults(toolId) {
       let bool = false;
 
       this.availableTools.forEach(tool => {
-        if (tool.toolId === toolId){
+        if (tool.toolId === toolId) {
           bool = true;
         }
       });
@@ -215,9 +259,13 @@ export default {
     }
   },
   created() {
-    this.getTools();
-    this.getBrands();
-    this.getCategories();
+    // real data
+    // this.getTools();
+    // this.getBrands();
+    // this.getCategories();
+
+    // mock data
+    this.getMockData();
   }
 };
 </script>
