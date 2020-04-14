@@ -793,6 +793,43 @@ span.add {
 }
 
 /* --------------------------- LOANS --------------------------- */
+.loan-info .tool-name {
+  color: white;
+  width: 100%;
+  background-color: var(--nav-background);
+  border-radius: 7px 7px 0px 0px;
+  margin: 1.5vw;
+}
+
+.loan-info {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: white;
+  border-radius: 10px;
+  justify-content: center;
+  margin: 1vw;
+}
+
+.user-loans .page-title {
+  margin-bottom: 1.5vw;
+}
+
+.loan-info p {
+  color: white;
+  background-color: var(--nav-background);
+  width: 100%;
+  margin-left: 1.5vw;
+  margin-right: 1.5vw;
+  padding: 1vw;
+  text-transform: capitalize;
+ 
+}
+
+.loan-info p:last-of-type {
+  margin-bottom: 1.5vw;
+  border-radius: 0px 0px 7px 7px;
+}
+
 @media only screen and (min-width: 760px) {
 }
 
