@@ -58,5 +58,9 @@
 	{
 		"brandId": 15,
 		"brandName": "Ames"	
+	},
+	{
+		"brandId": 16,
+		"brandName": "Fiskars"		
 	}
 ]
