@@ -773,6 +773,95 @@ span.add {
 @media only screen and (min-width: 1024px) {
 }
 
+/* --------------------------- REGISTER --------------------------- */
+.sr-only {
+  display: block;
+  text-align: center;
+  color: white;
+  margin-top: 1rem;
+}
+
+.form-control {
+  display: block;
+  width: 50%;
+  margin: auto;
+  padding: .2rem;
+  border-radius: .2rem;
+  margin-top: .1rem;
+  margin-bottom: .5rem;
+}
+
+.btn.btn-lg.btn-primary.btn-block {
+  display: block;
+  width: 35%;
+  margin: auto;
+  border-radius: .2rem;
+  padding: .2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.form-register > a {
+  color: lightgray;
+  display: block;
+  text-align: center;
+  margin: 1rem;
+}
+
+@media only screen and (min-width: 760px) {
+  .form-control {
+    width: 30%;
+  }
+
+  .btn.btn-lg.btn-primary.btn-block {
+    width: 20%;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .form-register {
+    display: block;
+    margin-top: 10rem;
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    text-size-adjust: ;
+  }
+  .sr-only {
+    display: block;
+    text-align: center;
+    color: white;
+    margin-top: 1rem;
+  }
+  
+  .form-control {
+    display: block;
+    width: 50%;
+    margin: auto;
+    padding: .2rem;
+    border-radius: .2rem;
+    margin-top: .1rem;
+    margin-bottom: .5rem;
+  }
+  
+  .btn.btn-lg.btn-primary.btn-block {
+    display: block;
+    width: 35%;
+    margin: auto;
+    border-radius: .2rem;
+    padding: .2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .form-register > a {
+    color: lightgray;
+    display: block;
+    text-align: center;
+    margin: 1rem;
+  }
+}
+
 /* --------------------------- CREDITS --------------------------- */
 #credits {
   width: 100%;
