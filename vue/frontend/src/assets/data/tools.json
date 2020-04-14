@@ -1,58 +1,482 @@
 [
 	{
-	"toolName": "hammer",
-	"toolDescription": "really cool hammer",
-	"toolImgName": "hammer.jpg",
+	"toolName": "Claw Hammer",
+	"toolDescription": "This 12 oz. curved claw nail hammer is forged in 1-piece solid steel, and fully polished. Balance and temper are unsurpassed. It has a bonded and molded on Shock Reduction Grip that reduces shock up to 70%.",
+	"toolImgName": "estwing-hammer.jpg",
 	"toolId": 1,
 	"toolBrand": 1,
 	"toolCategories": [1]
 	},
 	{
-	"toolName": "screwdriver",
-	"toolDescription": "really cool screwdriver",
-	"toolImgName": "screwdriver.jpg",
+	"toolName": "Hack Saw",
+	"toolDescription": "The Stanley 12 in. High-Tension Hack Saw includes an additional mini hack saw and features 45 and 90° cutting angles for versatility. A heavy-duty, steel-reinforced core increases cutting speed, while a contoured handle offers comfort and control. Its impact-resistant composite frame absorbs shock and has a quick-release lever that allows for blade changes in less than 15 seconds.",
+	"toolImgName": "stanley-hacksaw.jpg",
 	"toolId": 2,
 	"toolBrand": 2,
-	"toolCategories": [2]
+	"toolCategories": [1,2]
 	},
 	{
-	"toolName": "shovel",
-	"toolDescription": "really cool shovel",
-	"toolImgName": "shovel.jpg",
+	"toolName": "Snips",
+	"toolDescription": "Cut more metal than ever with Milwaukee Aviation Snips. The forged blades deliver up to 10X more cuts than cast blades. Bolt Lock prevents the blades from loosening and a durable chrome plating provides rust resistance. A metal lock secures the tool for storage and easily operates with 1 hand. Perfect for straight cuts.",
+	"toolImgName": "milwaukee-snips.jpg",
 	"toolId": 3,
-	"toolBrand": 2,
-	"toolCategories": [3]
-	},
-	{
-	"toolName": "wrench",
-	"toolDescription": "really cool wrench",
-	"toolImgName": "wrench.jpg",
-	"toolId": 4,
 	"toolBrand": 3,
-	"toolCategories": [2,4]
+	"toolCategories": [1,2]
 	},
 	{
-	"toolName": "power drill",
-	"toolDescription": "really cool drill",
-	"toolImgName": "powerdrill.jpg",
+	"toolName": "Hand Saw",
+	"toolDescription": "The Dewalt 15 in. Hand Saw with Blade Armor features ToughCoat, a long-lasting, low-friction coating that helps reduce drag, and induction-hardened teeth that stay sharp for a long time. This saw is great for framers, woodworkers and general contractors.",
+	"toolImgName": "dewalt-handsaw.jpg",
+	"toolId": 4,
+	"toolBrand": 4,
+	"toolCategories": [1,2]
+	},
+	{
+	"toolName": "Axe",
+	"toolDescription": "Estwing’s 16 in. camper's axe is the ideal axe for camping, hunting and farm use. It has a forged steel head with has a bonded and molded Shock Reduction Grip that reduces shock up to 70%.",
+	"toolImgName": "estwing-axe.jpg",
 	"toolId": 5,
+	"toolBrand": 1,
+	"toolCategories": [1,2]
+	},
+	{
+	"toolName": "Torque Wrench",
+	"toolDescription": "The Husky 1/4 in. Drive Torque Wrench covers a torque range of 40-200 in. lbs. This low-end range of torque is perfect for precision work with smaller fastener sizes. This 1/4 in. drive toruqe wrench is ideal for the DIYer or professional working on small engines, motorcycles, electronics and more.",
+	"toolImgName": "husky-torquewrench.jpg",
+	"toolId": 6,
+	"toolBrand": 5,
+	"toolCategories": [1]
+	},
+	{
+	"toolName": "Pipe Wrench",
+	"toolDescription": "Milwaukee 14 in. Steel Pipe Wrench has been designed from the ground up to offer maximum productivity to the user. The 14 in. Steel Pipe Wrench features and overbite jaw design offering the largest gripping surface. Dual coil springs offer maximum durability and tool life and the ergonomic handle form has been designed for maximum comfort and won't dig into the palms.",
+	"toolImgName": "milwaukee-pipewrench.jpg",
+	"toolId": 7,
 	"toolBrand": 3,
 	"toolCategories": [1]
 	},
 	{
-	"toolName": "pliers",
-	"toolDescription": "really cool pliers",
-	"toolImgName": "pliers.jpg",
-	"toolId": 6,
-	"toolBrand": 4,
-	"toolCategories": [2,4]
+	"toolName": "Adjustable Wrench",
+	"toolDescription": "Crescent Adjustable Wrenches feature a large knurl for easy adjustment and a tight jaw fit. Its hex jaw design helps reduce slippage and tightly grips the fastener for solid, secure operation, while the corrosion-resistant chrome finish helps prevent rusting. A wide handle design provides comfort and reduces fatigue during extended use. The Crescent adjustable wrenches are ideal for both pros and do-it-yourself enthusiasts.",
+	"toolImgName": "crescent-adjustablewrench.jpg",
+	"toolId": 8,
+	"toolBrand": 6,
+	"toolCategories": [1]
 	},
 	{
-	"toolName": "saw",
-	"toolDescription": "really cool saw",
-	"toolImgName": "saw.jpg",
-	"toolId": 7,
+	"toolName": "Ratcheting Wrench Set",
+	"toolDescription": "The dual-pawl technology on the Husky 100-Position Double Ratcheting SAE Wrench Set provides access to engage fasteners where other wrenches can't with its ultra-narrow, 3.6-degree arch swing box-end. Its 10% longer beam provides increased reach for accessing hard-to-reach fasteners and improves overall leverage. The innovative open-end ratcheting design improves the speed of ratcheting and allows access of an open-end without ever removing the wrench from the fastener.",
+	"toolImgName": "husky-ratchetingwrenchset.jpg",
+	"toolId": 9,
+	"toolBrand": 5,
+	"toolCategories": [1,3]
+	},
+	{
+	"toolName": "Ratcheting Screwdriver",
+	"toolDescription": "This 12-in-1 Quick-load Ratcheting Screwdriver with 6 Driver Blades in Handle is a must have for any toolbox. It accepts all 1/4 in. blades including power groove, straight and double-ended. It is designed for single handed loading of all bits and blades.",
+	"toolImgName": "husky-ratchetingscrewdriver.jpg",
+	"toolId": 10,
+	"toolBrand": 5,
+	"toolCategories": [1]
+	},
+	{
+	"toolName": "Screwdriver Set",
+	"toolDescription": "This DEWALT 10-Piece Screwdriver Set includes a variety of handle sizes and tip types to help you complete a number of fastening projects. The tips range from a minimum size of 1/8 in. to a maximum size of a 1/4 in. and are magnetic to hold screws securely. The soft color-coded handles offer great torque and comfort for jobs.",
+	"toolImgName": "dewalt-screwdriverset.jpg",
+	"toolId": 11,
 	"toolBrand": 4,
-	"toolCategories": [2]
+	"toolCategories": [1,3]
+	},
+	{
+	"toolName": "Flat Head Screwdriver",
+	"toolDescription": "The 5/16 in. keystone tip of the Klein Tools 6 in. Flat Head Screwdriver is precision machined for an exact fit. Designed for demanding applications, the screwdriver features a chrome-plated shaft for a smooth feel and corrosion resistance. The durable handle has a cushioned grip and integral flanges that provide a solid, twist-resistant blade anchor.",
+	"toolImgName": "kleintools-flatheadscrewdriver.jpg",
+	"toolId": 12,
+	"toolBrand": 7,
+	"toolCategories": [1]
+	},
+	{
+	"toolName": "Phillips Head Screwdriver",
+	"toolDescription": "Cushion Grip handle allows for greater torque and comfort. Integral flanges inside handle provide solid, twist resistant blade anchor. Special heat treated shafts. Precision machined tip for exact fit. Premium chrome plated for smooth feel and corrosion resistance.",
+	"toolImgName": "kleintools-phillipsheadscrewdriver.jpg",
+	"toolId": 13,
+	"toolBrand": 7,
+	"toolCategories": [1]
+	},
+	{
+	"toolName": "Ratchet",
+	"toolDescription": "The Husky 1/2 in. Full-Polish Ratchet is made of alloy steel to provide excellent durability. The finish provides resistance to corrosion. This ratchet has a 1/2 in. drive and a teardrop-style head with a low profile to allow for excellent access to nuts and bolts in tight locations.",
+	"toolImgName": "husky-ratchet.jpg",
+	"toolId": 14,
+	"toolBrand": 5,
+	"toolCategories": [1]	
+	},
+	{
+	"toolName": "Bit Socket Set",
+	"toolDescription": "Husky 37-Piece 3/8 in. drive all-in-one bit socket set features 6 different styles of bit heads and is perfect to complete your socket collection. Alloy steel construction of both the socket and the bit provides durability and long lasting performance. All 37 bit sockets come in a durable plastic case for easy organization and storage.",
+	"toolImgName": "husky-bitsocketset.jpg",
+	"toolId": 15,
+	"toolBrand": 5,
+	"toolCategories": [1,3]		
+	},
+	{
+	"toolName": "C-Clamp",
+	"toolDescription": "The Milwaukee 6-inch Torque Lock Locking C-Clamp Regular Jaws provides users with faster tool setup and more locking force. The locking clamp's unique thumb screw provides users with a more convenient geometry for hand force while providing clearance to generate more torque with the screwdriver through-hole design. The c-clamp's hardened jaws give users increased gripping power and they are made of forged alloy steel for maximum durability, perfect for the toughest of jobsites.",
+	"toolImgName": "milwaukee-cclamp.jpg",
+	"toolId": 16,
+	"toolBrand": 3,
+	"toolCategories": [1]
+	},
+	{
+	"toolName": "Cutting Pliers",
+	"toolDescription": "Klein Tools specializes in making some of the world's finest pliers. The high-leverage design of these 8 in. Diagonal-Cutting pliers provides 36% greater cutting power than other pliers. The hot-riveted joint ensures smooth action with no handle wobble.",
+	"toolImgName": "kleintools-cuttingpliers.jpg",
+	"toolId": 17,
+	"toolBrand": 7,
+	"toolCategories": [1]	
+	},
+	{
+	"toolName": "Locking Pliers Set",
+	"toolDescription": "The Husky 3-Piece Locking Pliers Set includes one 6.5 in. Long Nose, one 7 in. Curved Jaw and one 10 in. Curved Jaw. These locking pliers enable hands-free operation when used as a clamp to hold two pieces of material together until they are permanently joined, or to hold materials for welding and similar applications. The locking device also makes it easy to hold oddly shaped objects for added versatility, making these a handy must-have for any professional or do-it-yourselfer.",
+	"toolImgName": "husky-lockingpliersset.jpg",
+	"toolId": 18,
+	"toolBrand": 5,
+	"toolCategories": [1,3]		
+	},
+	{
+	"toolName": "Needle Nose Pliers",
+	"toolDescription": "They Husky 6 in. High Leverage Long Needle Nose Pliers can be used for a multitude of tasks. They are ideal for getting into tight spots. They can also be used for bending or shaping or cutting wire.",
+	"toolImgName": "husky-needlenosepliers.jpg",
+	"toolId": 19,
+	"toolBrand": 5,
+	"toolCategories": [1]	
+	},
+	{
+	"toolName": "Tongue and Groove Pliers",
+	"toolDescription": "The Crescent plier line has tongue and groove, slip joint and solid joint styles all in the most common sizes. They are made from alloy steel providing the strength and durability needed for professional, industrial and at home uses. The tongue and groove and solid joint styles both have a non-slip grip allowing for user safety and hand comfort. The Crescent line of pliers are made for gripping, twisting, cutting, stripping or bending wire and cable in professional, industrial and at home uses.",
+	"toolImgName": "crescent-tongueandgroovepliers.jpg",
+	"toolId": 20,
+	"toolBrand": 6,
+	"toolCategories": [1]	
+	},
+	{
+	"toolName": "Rubber Mallet",
+	"toolDescription": "Estwing's 12 oz. Deadhead Rubber Mallet comes with a hickory (Carya) handle to create an all-around, premium quality tool. The hickory handle is extremely hard, dense and shock resistant, while the rubber head offers sturdy control, accurate strikes and great results. This rubber mallet is also bounce resistant and features a 2.3 in. face diameter with a head length of 4-1/4 in., the perfect tool for safely smoothing while protecting your finishing surfaces.",
+	"toolImgName": "estwing-rubbermallet.jpg",
+	"toolId": 21,
+	"toolBrand": 1,
+	"toolCategories": [1]	
+	},
+	{
+	"toolName": "Wood Chisel Set",
+	"toolDescription": "The Stanley 3-piece wood chisel set features carbon-steel blades for strength and durability. Blades are hardened and tempered for edge retention and re-sharpening. The durable and ergonomic polypropylene handle is designed for comfort with contoured grooves to aid grip and slip resistance. Set includes 1/2 in., 3/4 in. and 1 in. chisels.",
+	"toolImgName": "stanley-woodchiselset.jpg",
+	"toolId": 22,
+	"toolBrand": 2,
+	"toolCategories": [1,3]
+	},
+	{
+	"toolName": "Safety Glasses",
+	"toolDescription": "3M Over-the-Glass Eyewear are designed to be worn over most prescription eyewear. Designed with polycarbonate lenses - the strongest, most impact-resistant eyewear lens material available. 3M Over-the-Glass Eyewear are a great choice in eye protection for both the professional and the DIYer who wear prescription eyewear.",
+	"toolImgName": "3m-safetyglasses.jpg",
+	"toolId": 23,
+	"toolBrand": 8,
+	"toolCategories": [4]	
+	},
+	{
+	"toolName": "Hard Hat",
+	"toolDescription": "3M Hard Hats are engineered to provide comfort, protection, balance, and stability to help keep DIYers and professionals safe. 3M Non-vented Hard Hat with Pin-Lock Adjustment is worn to help protect the head from possible impact. Comfortable suspension sits lower on head to reduce pressure points and increase security. Features a pin-lock system for easy size adjustment.",
+	"toolImgName": "3m-hardhat.jpg",
+	"toolId": 24,
+	"toolBrand": 8,
+	"toolCategories": [4]		
+	},
+	{
+	"toolName": "Earmuffs",
+	"toolDescription": "3M Workwear Hearing Protector is used to help protect hearing against noises at or exceeding 85 decibels. Designed in a high-visibility green color for workers in low light conditions. Providing secure fit comfort, 3M Workwear Hearing Protector is a great choice in hearing protection for both the professional and the DIYer.",
+	"toolImgName": "3m-earmuffs.jpg",
+	"toolId": 25,
+	"toolBrand": 8,
+	"toolCategories": [4]	
+	},
+	{
+	"toolName": "Safety Vest",
+	"toolDescription": "The Milwaukee ANSI Type R Class 2 High Visibility Performance Safety Vest is designed to carry more. The high visibility safety vest has 15 pockets including a clear ID holder, rear tablet pocket, and 3 internal pockets, equipping users with added storage. All front pockets are reinforced with durable 600D tear resistant materials capable of withstanding rough job site conditions. To reduce pressure around the neck, comfortable padding was incorporated around the collar. The safety vest features a quick internal size adjustment providing users with a better fit.",
+	"toolImgName": "milwaukee-safetyvest.jpg",
+	"toolId": 26,
+	"toolBrand": 3,
+	"toolCategories": [4]		
+	},
+	{
+	"toolName": "Work Gloves",
+	"toolDescription": "This premium grain cowhide Leather Driver Glove from Husky is great for heavy-duty work. Its water-resistant properties enable you to work in wet and damp conditions, allowing your hands to stay dry and comfortable. Crafted with 100% grain cowhide, it provides long-lasting durability and superior protection with an elastic wrist and strong keystone thumb.",
+	"toolImgName": "husky-workgloves.jpg",
+	"toolId": 27,
+	"toolBrand": 5,
+	"toolCategories": [4]	
+	},
+	{
+	"toolName": "Knee Pads",
+	"toolDescription": "The Husky Soft Cap Gel Kneepads feature a tough, nylon shell that provides protection against impacts. Real gel padding provides comfort to prevent sore knees. Single strap is wide to prevent bunching and binding.",
+	"toolImgName": "husky-kneepads.jpg",
+	"toolId": 28,
+	"toolBrand": 5,
+	"toolCategories": [4]		
+	},
+	{
+	"toolName": "Respirator",
+	"toolDescription": "3M Professional Multipurpose Respirator with Drop-down Feature is used for the removal of certain mold, lead and sprays from coatings and sealants. Featuring a balanced design for more comfort and sweptback cartridges for improved visibility, the 3M Professional Multipurpose Respirator is designed and constructed for performance and comfort.",
+	"toolImgName": "3m-respirator.jpg",
+	"toolId": 29,
+	"toolBrand": 8,
+	"toolCategories": [4]	
+	},
+	{
+	"toolName": "Drill",
+	"toolDescription": "The DEWALT Drill Driver is ideal for most drilling and fastening applications on the jobsite or home. This drill features a DEWALT brushless motor delivers up to 57% more run time over brushed. Includes a kit box, 2 battery packs and a charger.",
+	"toolImgName": "dewalt-drill.jpg",
+	"toolId": 30,
+	"toolBrand": 4,
+	"toolCategories": [5]	
+	},
+	{
+	"toolName": "Circular Saw",
+	"toolDescription": "The provides the end user with the power and depth of cut they receive in a corded circular saw with the portability and convenience of cordless. DEWALT brushless motor technology delivers excellent performance and runtime. Ideal for cross cutting 2x material and ripping sheet goods.",
+	"toolImgName": "dewalt-circularsaw.jpg",
+	"toolId": 31,
+	"toolBrand": 4,
+	"toolCategories": [2,5]
+	},
+	{
+	"toolName": "Reciprocating Saw",
+	"toolDescription": "RYOBI 18-Volt ONE+ Cordless Brushless Reciprocating Saw with Blade. This brushless reciprocating saw provides more runtime, faster cutting, more power, and longer motor life. The adjustable, pivoting shoe allows depth-of-cut control and more efficient use of the blade. A variable-speed trigger provides easy starts and cut control.",
+	"toolImgName": "ryobi-reciprocatingsaw.jpg",
+	"toolId": 32,
+	"toolBrand": 9,
+	"toolCategories": [2,5]	
+	},
+	{
+	"toolName": "Jig Saw",
+	"toolDescription": "RYOBI 18-Volt ONE+ Cordless Brushless Jig Saw. This jig saw combines precision and power without the cord. The brushless motor provides more runtime, faster cutting, more power, and longer motor life. When paired with LITHIUM+ HP batteries, you can get up to 3,350 strokes per minute on one battery charge. The ONE+ Brushless Jig Saw has a cast aluminum no mar shoe for maximum durability, a sight-line blower that clears debris for accurate cutting, and an LED work light to increase visibility while cutting.",
+	"toolImgName": "ryobi-jogsaw.jpg",
+	"toolId": 33,
+	"toolBrand": 9,
+	"toolCategories": [2,5]	
+	},
+	{
+	"toolName": "Miter Saw",
+	"toolDescription": "RYOBI 15 Amp 10 in. Sliding Compound Miter Saw. This saw features a 15 Amp, 4,600 RPM motor and has a 12 in. cross cut capacity. The LED Cutline Indicator and work-light illuminates material to help improve accuracy of the cut and visibility. The extended miter range from 47° left and right provides versatility for all DIY and professional projects by accommodating a wide variety of cuts.",
+	"toolImgName": "ryobi-mitersaw.jpg",
+	"toolId": 34,
+	"toolBrand": 9,
+	"toolCategories": [2,5]		
+	},
+	{
+	"toolName": "Angle Grinder",
+	"toolDescription": "Designed for heavy-duty use in demanding conditions, this 13 Amp small angle grinder from Milwaukee maintains speed under load to power through tough jobs. Undeterred by industrial-grade materials, this 5 in. grinder spins up to 11,000 RPM with enhanced circuitry to prevent overloading or overheating.",
+	"toolImgName": "milwaukee-anglegrinder.jpg",
+	"toolId": 35,
+	"toolBrand": 3,
+	"toolCategories": [5]	
+	},
+	{
+	"toolName": "Orbit Sander",
+	"toolDescription": "RYOBI 18-Volt ONE+ 5 in. Random Orbit Sander, an excellent choice to deliver optimal results for a wide variety of sanding applications. The Random Orbit Sander delivers 10,000 orbits per minute (OPM) for a smooth, swirl-free finish on your work surface.",
+	"toolImgName": "ryobi-orbitsander.jpg",
+	"toolId": 36,
+	"toolBrand": 9,
+	"toolCategories": [5]	
+	},
+	{
+	"toolName": "Drill Press",
+	"toolDescription": "RYOBI 10 in. Drill Press with Laser. This tabletop 10 in. drill press features a 1/4 HP induction motor offering five speed settings supplying 620-3100 no-load RPM to complete a variety of drilling procedures. A depth stop ensures the drill bit descends to a preset level while the work table swivels 360° and tilts up to 45°. It's outfitted with an LED light to illuminate the work area and features an EXACTLINE Laser Alignment System to precisely execute drilling maneuvers with every turn of the feed handle.",
+	"toolImgName": "ryobi-drillpress.jpg",
+	"toolId": 37,
+	"toolBrand": 9,
+	"toolCategories": [5]	
+	},
+	{
+	"toolName": "Nail Gun",
+	"toolDescription": "The M18 FUEL 16-Gauge Straight Finish Nailer brings the best of the best to your worksite, combining the comfort, control and efficiency of a pneumatic gun with unmatched driving power, speed and accuracy of both nail placement and drive depth.",
+	"toolImgName": "milwaukee-nailgun.jpg",
+	"toolId": 38,
+	"toolBrand": 3,
+	"toolCategories": [5]		
+	},
+	{
+	"toolName": "Floor Jack",
+	"toolDescription": "The Husky 3-Ton Low Profile Floor Jack with Speedy Lift has a dual-pump design for a quick and hassle-free lift whenever you need it. It will lift up to 3 tos (6000 lbs.) with a minimum height of 3-1/8 in. to a maximum height of 19-3/4 in. Rear swivel caster wheels offer easy positioning under cars, trucks, and SUVs.",
+	"toolImgName": "husky-floorjack.jpg",
+	"toolId": 39,
+	"toolBrand": 5,
+	"toolCategories": [6]		
+	},
+	{
+	"toolName": "Scissor Jack",
+	"toolDescription": "The Husky 1-1/2 Ton Scissor Jack is the perfect emergency roadside assistance jack. Light in weight and small in size, it can be easily stored in the trunk of your vehicle. It has a lifting range of 4.125 in. up to 15.125 in. so you can make a tire repair. The precision threaded shaft means the jack should not lock up as you lift your vehicle.",
+	"toolImgName": "husky-scissorjack.jpg",
+	"toolId": 40,
+	"toolBrand": 5,
+	"toolCategories": [6]	
+	},
+	{
+	"toolName": "Farm Jack",
+	"toolDescription": "The Big Red 48 in. Farm Jack is great for lifting, pulling, clamping and spreading on tractors and 4-wheel-drive vehicles. The jack features an all-steel construction to help ensure strength and has an adjustable top clamp clevis that can be moved to any position on the upright standard.",
+	"toolImgName": "bigred-farmjack.jpg",
+	"toolId": 41,
+	"toolBrand": 10,
+	"toolCategories": [6]	
+	},
+	{
+	"toolName": "Mechanic's Creeper",
+	"toolDescription": "The Big Red 200 lb. 6-Wheel Shop Creeper features a thick vinyl pad and a backrest lift for added comfort during use. It has a heavy-duty steel frame to help ensure strength and comes with 6 casters for mobility.This creeper is sturdy and easy to maneuver with six 2.5in. swivel casters.",
+	"toolImgName": "bigred-mechanicscreeper.jpg",
+	"toolId": 42,
+	"toolBrand": 10,
+	"toolCategories": [6]		
+	},
+	{
+	"toolName": "Standing Work Light",
+	"toolDescription": "Fixture uses two 500-Watt quartz halogen bulb that are included. The bulbs emit brighter, whiter light and use less energy. The stand allows use at the job site, in the workshop or in the garage.",
+	"toolImgName": "ktoolinternational-standingworklight.jpg",
+	"toolId": 43,
+	"toolBrand": 11,
+	"toolCategories": [6,7]		
+	},
+	{
+	"toolName": "Hanging Work Light",
+	"toolDescription": "Switch and outlet are located in the handle. Heavy duty industrial cage features 360° rotating hanging hook for maximum flexibility. Ideal for use in workshops or garages.",
+	"toolImgName": "ktoolinternational-hangingworklight.jpg",
+	"toolId": 44,
+	"toolBrand": 11,
+	"toolCategories": [6,7]		
+	},
+	{
+	"toolName": "Funnel Set",
+	"toolDescription": "These easy to use multi-purpose funnels come in a variety of sizes. The 3 piece assorted funnel set helps to pour fuels and other liquids from one container to another without messy and wasteful spilling. The funnels are made of durable high-density polyethylene, making them rust- and dent-proof.",
+	"toolImgName": "ktoolinternational-funnelset.jpg",
+	"toolId": 45,
+	"toolBrand": 11,
+	"toolCategories": [3,6,7]		
+	},
+	{
+	"toolName": "Siphon Transfer Pump",
+	"toolDescription": "This K-Tool Deluxe Siphon Transfer Pump has multiple uses and transfers most liquids. If can be used for various applications such as changing oil, siphoning gas, inflating sports balls and beach toys. Includes two 51 in. siphon hoses, 35 in. dipstick hose and adapter (for changing oil) and 17 in. air pressure hose.",
+	"toolImgName": "ktoolinternational-siphontransferpump.jpg",
+	"toolId": 46,
+	"toolBrand": 11,
+	"toolCategories": [6,7]		
+	},
+	{
+	"toolName": "Oil Dispenser",
+	"toolDescription": "This 6 Qt. oil dispenser is made of translucent polyethylene material, that enables the user to read the liquid level on the container. Marked in both quarts and liters. The 8 in. pouring spout enables easy transfer of liquid.",
+	"toolImgName": "lisle-oildispenser.jpg",
+	"toolId": 47,
+	"toolBrand": 12,
+	"toolCategories": [6]		
+	},
+	{
+	"toolName": "Spark Plug Tester",
+	"toolDescription": "Provides an easy way to check ignition systems with coil-on plugs. Applications include: Ford, Chrysler, Mitsubishi, Nissan and More. It is the quickest way to test for no-start conditions.",
+	"toolImgName": "lisle-sparkplugtester.jpg",
+	"toolId": 48,
+	"toolBrand": 12,
+	"toolCategories": [6]		
+	},
+	{
+	"toolName": "Filter Wrench",
+	"toolDescription": "3.5 in. - 3.875 in. (88.9 - 98.4 mm) range fits most popular 3.625 in. standard filters. Tension adjusting nut allows swivel pressure to be regulated no more floppy filter wrenches. Patent pending coating process adds many additional gripping points to securely grab the filter.",
+	"toolImgName": "lisle-filterwrench.jpg",
+	"toolId": 49,
+	"toolBrand": 12,
+	"toolCategories": [1,6]	
+	},
+	{
+	"toolName": "Serpentine Belt Tool Kit",
+	"toolDescription": "For removing and installing serpentine belts on vehicles with spring-loaded belt tensioners. Includes accessories for specific vehicle applications, including GM, Ford, Chrysler, SAAB, VW and Volvo.",
+	"toolImgName": "powerbuilt-serpentinebelttoolkit.jpg",
+	"toolId": 50,
+	"toolBrand": 13,
+	"toolCategories": [1,3,6]		
+	},
+	{
+	"toolName": "Exhaust Pipe Tool Kit",
+	"toolDescription": "For servicing, installing and repairing exhaust pipes, including cutting pipe up to 3-1/2 in. diameter, flaring and dent removal.",
+	"toolImgName": "powerbuilt-exhaustpipetoolkit.jpg",
+	"toolId": 51,
+	"toolBrand": 13,
+	"toolCategories": [1,3,6]		
+	},
+	{
+	"toolName": "Rubber Strap Bungee Cords",
+	"toolDescription": "EPDM rubber is crack, abrasion and rot resistant. 2 steel hooks each that won't bend or break. Stretches to 1-1/2 times its length without losing flexibility.",
+	"toolImgName": "ktoolinternational-rubberstraps.jpg",
+	"toolId": 52,
+	"toolBrand": 11,
+	"toolCategories": [6,7]		
+	},
+	{
+	"toolName": "Tubing Cutter",
+	"toolDescription": "Easy-to-use mini-cutter features all nylon construction. For all types of metal tubing. Completely non-corrosive.",
+	"toolImgName": "lisle-tubingcutter.jpg",
+	"toolId": 53,
+	"toolBrand": 12,
+	"toolCategories": [6,7]		
+	},
+	{
+	"toolName": "Fork Kit",
+	"toolDescription": "For separating tie rod, ball joints and pitman arms. Works with hand hammers and air hammers.",
+	"toolImgName": "powerbuilt-forkkit.jpg",
+	"toolId": 54,
+	"toolBrand": 13,
+	"toolCategories": [1,3,6,7]	
+	},
+	{
+	"toolName": "Wire Terminal Tool Kit",
+	"toolDescription": "Includes all essentials for removing wires from terminals. Aluminum construction for longevity",
+	"toolImgName": "lisle-wireterminaltoolkit.jpg",
+	"toolId": 55,
+	"toolBrand": 12,
+	"toolCategories": [3,6,7]		
+	},
+	{
+	"toolName": "Tie Tightening Tool",
+	"toolDescription": "The K-Tool Wire Tie Tightening Tool grips nylon cable ties and tightens with a very secure grip. The handle grips provide added comfort. Made of hardened steel for strength and durability.",
+	"toolImgName": "ktoolinternational-tietighteningtool.jpg",
+	"toolId": 56,
+	"toolBrand": 11,
+	"toolCategories": [1,6,7]		
+	},
+	{
+	"toolName": "Welding Accessory Kit",
+	"toolDescription": "Contains all the basic welding accessories you need to get started: Bandit Flip Front Welding Helmet with fully adjustable ratcheting headgear, leather welding gloves, chipping hammer with anti shock handle, and carbon steel scratch brush.",
+	"toolImgName": "forney-weldingaccessorykit.jpg",
+	"toolId": 57,
+	"toolBrand": 14,
+	"toolCategories": [3,8]			
+	},
+	{
+	"toolName": "Soldering Iron",
+	"toolDescription": "RYOBI 18-Volt ONE+ 40-Watt Soldering Iron. This innovative tool provides ultimate mobility, allowing you to take it directly to your work space. It can quickly reach a temperature up to 900°F and has an iron holder for safe storage. The LED status indicator lets you know when the tool is heating up, when it's reached its maximum temperature, and when it's cooling down.",
+	"toolImgName": "ryobi-solderingiron.jpg",
+	"toolId": 58,
+	"toolBrand": 9,
+	"toolCategories": [8]			
+	},
+	{
+	"toolName": "Propane Torch",
+	"toolDescription": "Forney Industries soldering line features high quality, industry standard products to accomplish any job. The materials are consistent and reliable, allowing precise metal fusing and better results.",
+	"toolImgName": "forney-propanetorch.jpg",
+	"toolId": 59,
+	"toolBrand": 14,
+	"toolCategories": [8]	
+	},
+	{
+	"toolName": "Welder",
+	"toolDescription": "The Forney Easy Weld 140 MP Multi Process machine utilizes 3 different processes MIG/DC TIG and Stick welding. It can weld up to 1/4 in. and uses up to 1/8 in. welding rod. This unit can use gas, or no gas based on the type of MIG wire selected. Create something new or repair something old with Forney's 140 MP welder.",
+	"toolImgName": "forney-welder.jpg",
+	"toolId": 60,
+	"toolBrand": 14,
+	"toolCategories": [8]		
 	}
 ]

@@ -1,18 +1,58 @@
 [
 	{
 		"brandId": 1,
-		"brandName": "black & decker"
+		"brandName": "Estwing"
 	},
 	{
 		"brandId": 2,
-		"brandName": "stanley"
+		"brandName": "Stanley"
 	},
 	{
 		"brandId": 3,
-		"brandName": "huskey"
+		"brandName": "Milwaukee"
 	},
 	{
 		"brandId": 4,
-		"brandName": "dewalt"
+		"brandName": "Dewalt"
+	},
+	{
+		"brandId": 5,
+		"brandName": "Husky"
+	},
+	{
+		"brandId": 6,
+		"brandName": "Crescent"
+	},
+	{
+		"brandId": 7,
+		"brandName": "Klein Tools"	
+	},
+	{
+		"brandId": 8,
+		"brandName": "3M"	
+	},
+	{
+		"brandId": 9,
+		"brandName": "Ryobi"		
+	},
+	{
+		"brandId": 10,
+		"brandName": "Big Red"	
+	},
+	{
+		"brandId": 11,
+		"brandName": "K Tool International"		
+	},
+	{
+		"brandId": 12,
+		"brandName": "Lisle"			
+	},
+	{
+		"brandId": 13,
+		"brandName": "Powerbuilt"		
+	},
+	{
+		"brandId": 14,
+		"brandName": "Forney"		
 	}
 ]
