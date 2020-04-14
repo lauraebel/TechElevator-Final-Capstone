@@ -44,37 +44,41 @@ public class JdbcCategoryDAOIntegrationTest {
 	
 	@Test
 	public void insert_new_category() {
-		Category category = getCategory("name");
-		dao.addCategory(category);
+		truncateCategory();
+		Assert.assertEquals(0, dao.getAllCategories().size());
 		
-		Assert.assertNotEquals(0, category.getCategoryId());
+		dao.addCategory(TEST_CATEGORY);
 		
-		Category newCategory = dao.findCategoryById(category.getCategoryId());
-		
-		Assert.assertNotNull(newCategory);
-		Assert.assertEquals(category.getCategoryId(), newCategory.getCategoryId());
-		Assert.assertEquals(category.getCategoryName(), newCategory.getCategoryName());
-	}
-	
-	private Category getCategory(String name) {
-		Category selectedCategory = new Category();
-		selectedCategory.setCategoryName("name");
-		return selectedCategory;
+		Assert.assertEquals(1, dao.getAllCategories().size());
 	}
 	
 	@Test
-	public void lists_all_categories() {
-		String sqlListAllCategories = "INSERT INTO category(id, name) VALUES (1000, ?) ";
+	public void returns_5_categories_when_5_added() {
+		truncateCategory();
 		
-		jdbcTemplate.update(sqlListAllCategories, TEST_CATEGORY);
-		boolean listsCategories = false;
+		String sqlListAllCategories = "INSERT INTO category(id, name) VALUES (?, ?) ";
 		
-		for(Category categories : dao.getAllCategories()) {
-			String example = categories.getCategoryName();
-			if(example.equals("Fake Category")) {
-				listsCategories = true;
-			}
-		}
-		Assert.assertTrue(listsCategories);
+		jdbcTemplate.update(sqlListAllCategories, 1000, TEST_CATEGORY + "1");
+		jdbcTemplate.update(sqlListAllCategories, 1001, TEST_CATEGORY + "2");
+		jdbcTemplate.update(sqlListAllCategories, 1002, TEST_CATEGORY + "3");
+		jdbcTemplate.update(sqlListAllCategories, 1003, TEST_CATEGORY + "4");
+		jdbcTemplate.update(sqlListAllCategories, 1004, TEST_CATEGORY + "5");
+		
+		Assert.assertEquals(5, dao.getAllCategories().size());;
+	}
+	
+	@Test
+	public void find_category_by_id() {
+		truncateCategory();
+		
+		String sqlListAllCategories = "INSERT INTO category(id, name) VALUES (?, ?) ";
+		jdbcTemplate.update(sqlListAllCategories, 1000, TEST_CATEGORY + "1");
+		
+		Assert.assertEquals("Fake Category1", dao.findCategoryById(1000).getCategoryName());
+	}
+	
+	private void truncateCategory() {
+		String sql = "TRUNCATE category CASCADE";
+		jdbcTemplate.update(sql);
 	}
 }
