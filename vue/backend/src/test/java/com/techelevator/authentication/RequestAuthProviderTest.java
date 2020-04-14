@@ -145,7 +145,7 @@ public class RequestAuthProviderTest {
         User testUser = new User();
         testUser.setId(0);
         testUser.setUsername("TEST");
-        testUser.setRole(1l);
+        testUser.setRoleID(1l);
 
         when(mockedRequest.getAttribute(RequestAuthProvider.USER_KEY)).thenReturn(testUser);
 
@@ -157,7 +157,7 @@ public class RequestAuthProviderTest {
         User testUser = new User();
         testUser.setId(0);
         testUser.setUsername("TEST");
-        testUser.setRole(2l);
+        testUser.setRoleID(2l);
 
         when(mockedRequest.getAttribute(RequestAuthProvider.USER_KEY)).thenReturn(testUser);
 
@@ -169,7 +169,7 @@ public class RequestAuthProviderTest {
         User testUser = new User();
         testUser.setId(0);
         testUser.setUsername("TEST");
-        testUser.setRole(2l);
+        testUser.setRoleID(2l);
 
         when(mockedRequest.getAttribute(RequestAuthProvider.USER_KEY)).thenReturn(testUser);
 
@@ -181,7 +181,7 @@ public class RequestAuthProviderTest {
         User testUser = new User();
         testUser.setId(0);
         testUser.setUsername("TEST");
-        testUser.setRole(2l);
+        testUser.setRoleID(2l);
 
         when(mockedRequest.getAttribute(RequestAuthProvider.USER_KEY)).thenReturn(testUser);
 
@@ -193,7 +193,7 @@ public class RequestAuthProviderTest {
         User testUser = new User();
         testUser.setId(0);
         testUser.setUsername("TEST");
-        testUser.setRole(1l);
+        testUser.setRoleID(1l);
 
         when(mockedRequest.getAttribute(RequestAuthProvider.USER_KEY)).thenReturn(testUser);
 
@@ -205,7 +205,7 @@ public class RequestAuthProviderTest {
         User testUser = new User();
         testUser.setId(0);
         testUser.setUsername("TEST");
-        testUser.setRole(1l);
+        testUser.setRoleID(1l);
 
         when(mockedRequest.getAttribute(RequestAuthProvider.USER_KEY)).thenReturn(testUser);
 

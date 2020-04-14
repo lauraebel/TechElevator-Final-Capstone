@@ -1,18 +1,38 @@
 [
 	{
 		"categoryId": 1,
-		"categoryName": "power tool"
+		"categoryName": "Hand Tools"
 	},
 	{
 		"categoryId": 2,
-		"categoryName": "hand tool"
+		"categoryName": "Cutting Tools"
 	},
 	{
 		"categoryId": 3,
-		"categoryName": "garden"
+		"categoryName": "Tool Sets/Kits"
 	},
 	{
 		"categoryId": 4,
-		"categoryName": "automotive"
+		"categoryName": "Safety Gear"
+	},
+	{
+		"categoryId": 5,
+		"categoryName": "Power Tools"	
+	},
+	{
+		"categoryId": 6,
+		"categoryName": "Automotive Tools"		
+	},
+	{
+		"categoryId": 7,
+		"categoryName": "Miscellaneous"		
+	},
+	{
+		"categoryId": 8,
+		"categoryName": "Welding/Soldering"		
+	},
+	{
+		"categoryId": 9,
+		"categoryName": "Gardening Tools"		
 	}
 ]
