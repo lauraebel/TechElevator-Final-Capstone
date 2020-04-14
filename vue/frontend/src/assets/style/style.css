@@ -773,6 +773,47 @@ span.add {
 @media only screen and (min-width: 1024px) {
 }
 
+.user-loans > h1 {
+  text-align: center;
+}
+
+.loan-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 
+  "title title"
+  "img loaned"
+  "img due"
+  "img returned";
+  border: solid white;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.tool-name {
+  grid-area: title;
+  padding-bottom: 50px;
+  font-size: 30px;
+}
+
+.tool-img {
+  grid-area: img;
+  width: 50%;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
+
+.loaned-on {
+  grid-area: loaned;
+  font-size: 20px;
+}
+
+.due-on {
+  grid-area: due;
+  font-size: 20px;
+}
+
 /* --------------------------- CREDITS --------------------------- */
 #credits {
   width: 100%;
