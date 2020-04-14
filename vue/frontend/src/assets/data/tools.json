@@ -510,5 +510,29 @@
 	"toolId": 64,
 	"toolBrand": 15,
 	"toolCategories": [9]		
+	},
+	{
+	"toolName": "Garden Hoe",
+	"toolDescription": "The Ames garden hoe is ideal for chopping, weeding and clearing garden growth. The blade is serrated at the edges for cleaner cutting.",
+	"toolImgName": "ames-gardenhoe.jpg",
+	"toolId": 65,
+	"toolBrand": 15,
+	"toolCategories": [9]	
+	},
+	{
+	"toolName": "Pruning Shears",
+	"toolDescription": "The Fiskars Pruner is ideal for working with cut flowers, as well as tasks essential to encouraging healthy growth, such as cutting, light pruning and deadheading. Featuring a small bypass pruner blade design with a cut capacity up to 1/2 in., this pruner has fully hardened, precision-ground, steel blades that stay sharp through heavy use – great for pruning florals and green growth like roses or berry bushes. A low-friction coating helps the blade glide through cuts, preventing it from gumming up with sap and debris and helping it resist rust.",
+	"toolImgName": "fiskars-shears.jpg",
+	"toolId": 66,
+	"toolBrand": 16,
+	"toolCategories": [1,9]	
+	},
+	{
+	"toolName": "Shovel",
+	"toolDescription": "This Ames long handle round point shovel is suitable for digging and gardening, particularly in hard, rocky soil. This is a heavy-use tool with a fiberglass handle and tempered steel blade ideal for frequent jobs and yard maintenance.",
+	"toolImgName": "ames-shovel.jpg",
+	"toolId": 67,
+	"toolBrand": 15,
+	"toolCategories": [9]	
 	}
 ]
