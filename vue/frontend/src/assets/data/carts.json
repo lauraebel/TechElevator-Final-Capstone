@@ -1,22 +1,39 @@
 [
-	{
-		"id": 1,
-		"items": [2, 5]
-	},
-	{
-		"id": 2,
-		"items": [1]
-	},
-	{
-		"id": 3,
-		"items": [3,6]
-	},
-	{
-		"id": 4,
-		"items": [7]
-	},
-	{
-		"id": 5,
-		"items": [4]
-	}	
+  {
+    "id": "1",
+    "items": [
+      {
+        "toolName": "hammer",
+        "toolDescription": "really cool hammer",
+        "toolImgName": "hammer.jpg",
+        "toolId": 1,
+        "toolBrand": 1,
+        "toolCategories": [1]
+      },
+      {
+        "toolName": "screwdriver",
+        "toolDescription": "really cool screwdriver",
+        "toolImgName": "screwdriver.jpg",
+        "toolId": 2,
+        "toolBrand": 2,
+        "toolCategories": [2]
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "items": []
+  },
+  {
+    "id": "3",
+    "items": []
+  },
+  {
+    "id": "4",
+    "items": []
+  },
+  {
+    "id": "5",
+    "items": []
+  }
 ]

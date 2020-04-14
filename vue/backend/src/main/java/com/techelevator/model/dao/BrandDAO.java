@@ -11,7 +11,7 @@ public interface BrandDAO {
 	
 	public List<Brand> getAllBrands();
 	
-	public void addBrand(Brand newBrand);
+	public void addBrand(String brandName);
 	
 	public Brand findBrandById(long id);
 

@@ -93,4 +93,14 @@ public class JdbcCartDAO implements CartDAO {
 		
 		return getCartByUser(userId);
 	}
+
+	public ToolDAO getToolDao() {
+		return toolDao;
+	}
+
+	public void setToolDao(ToolDAO toolDao) {
+		this.toolDao = toolDao;
+	}
+	
+	
 }
