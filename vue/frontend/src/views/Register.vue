@@ -62,12 +62,12 @@
         v-model="user.confirmPassword"
         required
       />
-      <router-link :to="{ name: 'login' }">
-        Have an account?
-      </router-link>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
       </button>
+      <router-link :to="{ name: 'login' }">
+        Have an account?
+      </router-link>
     </form>
   </div>
 </template>
