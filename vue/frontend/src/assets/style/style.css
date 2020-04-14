@@ -374,6 +374,7 @@ h1.page-title {
 
 @media only screen and (min-width: 1024px) {
   h1.page-title {
+    width: 100%;
     text-align: left;
     font-size: 4vw;
   }
@@ -451,6 +452,7 @@ div.vs__dropdown-toggle {
 
 .tool-info {
   width: 100%;
+  border-radius: 4px;
   display: grid;
   grid-template-areas:
     "photo"
@@ -701,17 +703,17 @@ span.add {
   margin-bottom: 1vw;
 }
 
-.cart-item .tool-name{
+.cart-item .tool-name {
   height: 100%;
   width: 80%;
-  padding: 5vw;
+  padding-top: 6.5vw;
   border-radius: 5px;
   order: 2;
   color: white;
   background-color: var(--nav-background);
 }
 
-.cart-item .img-container{
+.cart-item .img-container {
   height: 25vw;
   width: 25vw;
   padding: 0;
@@ -719,7 +721,7 @@ span.add {
   order: 1;
 }
 
-.cart-item .img-container img{
+.cart-item .img-container img {
   height: 100%;
   padding: 1vw;
   background-color: white;
@@ -730,40 +732,64 @@ span.add {
   border: 2px solid white;
   order: 99;
   font-size: 5vw;
+  text-emphasis: 5px;
+  text-transform: uppercase;
   color: white;
   background-color: var(--nav-background);
 }
 
 @media only screen and (min-width: 760px) {
-  
+  .cart-item .tool-name {
+    padding-top: 9vw;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
   .cart-contents {
+    height: fit-content;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: start;
   }
-  
+
+  .cart-contents .page-title {
+    width: 77%;
+    padding-left: 0.5vw;
+  }
+
   .cart-item {
-    height: 6vw;
+    height: 5vw;
     width: 100%;
+    margin: 1vw;
+    padding: 0.5vw;
+    align-self: flex-start;
   }
 
   .cart-item .tool-name {
+    margin: 0;
     padding: 0;
     padding-top: 1vw;
-    margin: 0;
+    width: 100%;
   }
 
-  .cart-item .img-container{
-    height: 6vw;
-    width: 25%;
+  .cart-item .img-container {
+    height: 5vw;
+    width: 5vw;
   }
 
-  /* .cart-item .img-container img{}
+  .cart-item .img-container img {
+    padding: 0;
+  }
 
-  .checkout {} */
-
+  .checkout {
+    padding: 0.75vw 0.5vw 0.75vw 0.5vw;
+    order: 1;
+    justify-self: end;
+    font-size: 2.5vw;
+    color: var(--nav-background);
+    background-color: white;
+  }
 }
 
 /* --------------------------- LOANS --------------------------- */
@@ -773,7 +799,49 @@ span.add {
 @media only screen and (min-width: 1024px) {
 }
 
+.user-loans > h1 {
+  text-align: center;
+}
+
+.loan-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 
+  "title title"
+  "img loaned"
+  "img due"
+  "img returned";
+  border: solid white;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.tool-name {
+  grid-area: title;
+  padding-bottom: 50px;
+  font-size: 30px;
+}
+
+.tool-img {
+  grid-area: img;
+  width: 50%;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
+
+.loaned-on {
+  grid-area: loaned;
+  font-size: 20px;
+}
+
+.due-on {
+  grid-area: due;
+  font-size: 20px;
+}
+
 /* --------------------------- REGISTER --------------------------- */
+
 .sr-only {
   display: block;
   text-align: center;
@@ -825,7 +893,6 @@ span.add {
     width: 50%;
     margin-right: auto;
     margin-left: auto;
-    text-size-adjust: ;
   }
   .sr-only {
     display: block;
