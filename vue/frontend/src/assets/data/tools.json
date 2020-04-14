@@ -478,5 +478,37 @@
 	"toolId": 60,
 	"toolBrand": 14,
 	"toolCategories": [8]		
+	},
+	{
+	"toolName": "Leaf Rake",
+	"toolDescription": "The Ames 22-Tine steel leaf rake is used for clearing leaves and debris from lawns and paved surfaces such as driveways and sidewalks. This rake can also be used for pulling out thatch for a healthier lawn. The steel head is bolted to the handle with a strong coil spring for a secure connection and smooth raking action.",
+	"toolImgName": "ames-leafrake.jpg",
+	"toolId": 61,
+	"toolBrand": 15,
+	"toolCategories": [9]	
+	},
+	{
+	"toolName": "Bow Rake",
+	"toolDescription": "The Ames Double Play Bow Rake is designed to loosen and level soil. The 16 steel tines work hard to break up hard, compacted soil or mulch and spread the material evenly.",
+	"toolImgName": "ames-bowrake.jpg",
+	"toolId": 62,
+	"toolBrand": 15,
+	"toolCategories": [9]		
+	},
+	{
+	"toolName": "Hand Trowel",
+	"toolDescription": "The ergo gel grip hand trowel is used for planting, transplanting, weeding, moving and smoothing soil. The trowel features an ergonomic handle design with a soft gel grip insert that cushions the hand and provides maximum comfort. The blade is made of strong stainless steel for the most durability. Great for gardening in tight spaces, as well as open gardens.",
+	"toolImgName": "ames-handtrowel.jpg",
+	"toolId": 63,
+	"toolBrand": 15,
+	"toolCategories": [1,9]	
+	},
+	{
+	"toolName": "Cultivator",
+	"toolDescription": "The Ames 4-Tine cultivator is better for tilling and aerating in hard rocky soil. The sharp pointed tines dig deep into the soil.",
+	"toolImgName": "ames-cultivator.jpg",
+	"toolId": 64,
+	"toolBrand": 15,
+	"toolCategories": [9]		
 	}
 ]
