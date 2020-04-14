@@ -45,22 +45,19 @@ public class JdbcBrandDAOIntegrationTest {
 	
 	@Test
 	public void insert_new_brand() {
-		Brand brand = getBrand("name");
-		dao.addBrand(brand);
+		truncateBrands();
+		Assert.assertEquals(0, dao.getAllBrands().size());
 		
-		Assert.assertNotEquals(0, brand.getBrandId());
+		dao.addBrand("name");
 		
-		Brand newBrand = dao.findBrandById(brand.getBrandId());
-		
-		Assert.assertNotNull(newBrand);
-		Assert.assertEquals(brand.getBrandId(), newBrand.getBrandId());
-		Assert.assertEquals(brand.getBrandName(), newBrand.getBrandName());
+		Assert.assertEquals(1, dao.getAllBrands().size());
 	}
 	
 	@Test
 	public void lists_all_brands() {
-		String sqlListAllBrands = "INSERT INTO brands(id, name) VALUES (1000, ?) ";
+		truncateBrands();
 		
+		String sqlListAllBrands = "INSERT INTO brands(id, name) VALUES (1000, ?) ";		
 		jdbcTemplate.update(sqlListAllBrands, TEST_BRAND);
 		boolean listsBrands = false;
 		
@@ -73,11 +70,32 @@ public class JdbcBrandDAOIntegrationTest {
 		Assert.assertTrue(listsBrands);
 	}
 	
-	private Brand getBrand(String name) {
-		Brand selectedBrand = new Brand();
-		selectedBrand.setBrandName("name");
-		return selectedBrand;
+	@Test
+	public void returns_5_when_5_brands_added() {
+		truncateBrands();
+		
+		dao.addBrand("Brand 1");
+		dao.addBrand("Brand 2");
+		dao.addBrand("Brand 3");
+		dao.addBrand("Brand 4");
+		dao.addBrand("Brand 5");
+		
+		Assert.assertEquals(5, dao.getAllBrands().size());
 	}
 	
+	@Test
+	public void find_brand_by_id() {
+		truncateBrands();
+		
+		String sql = "INSERT INTO brands (id, name) VALUES (1000, ?) ";		
+		jdbcTemplate.update(sql, TEST_BRAND);
+
+		Assert.assertEquals("Fake Brand", dao.findBrandById(1000).getBrandName());
+	}
+	
+	private void truncateBrands() {
+		String sql = "TRUNCATE brands CASCADE";
+		jdbcTemplate.update(sql);
+	}
 
 }
