@@ -11,8 +11,17 @@
       "toolCategories": [1]
     },
     "dateLoaned": {
+      "chronology": {
+        "calendarType": "iso8601",
+        "id": "ISO"
+      },
+      "dayOfMonth": 14,
+      "dayOfWeek": "TUESDAY",
+      "dayOfYear": 105,
+      "era": "CE",
+      "leapYear": true,
       "month": "APRIL",
-      "dayOfMonth": "1",
+      "monthValue": 4,
       "year": "2020"
     },
     "dateReturned": {
@@ -21,8 +30,17 @@
       "year": ""
     },
     "dueDate": {
+      "chronology": {
+        "calendarType": "iso8601",
+        "id": "ISO"
+      },
+      "dayOfMonth": 14,
+      "dayOfWeek": "TUESDAY",
+      "dayOfYear": 105,
+      "era": "CE",
+      "leapYear": true,
       "month": "APRIL",
-      "dayOfMonth": "8",
+      "monthValue": 4,
       "year": "2020"
     }
   },
@@ -38,8 +56,17 @@
       "toolCategories": [2]
     },
     "dateLoaned": {
+      "chronology": {
+        "calendarType": "iso8601",
+        "id": "ISO"
+      },
+      "dayOfMonth": 14,
+      "dayOfWeek": "TUESDAY",
+      "dayOfYear": 105,
+      "era": "CE",
+      "leapYear": true,
       "month": "APRIL",
-      "dayOfMonth": "1",
+      "monthValue": 4,
       "year": "2020"
     },
     "dateReturned": {
@@ -48,8 +75,17 @@
       "year": ""
     },
     "dueDate": {
+      "chronology": {
+        "calendarType": "iso8601",
+        "id": "ISO"
+      },
+      "dayOfMonth": 14,
+      "dayOfWeek": "TUESDAY",
+      "dayOfYear": 105,
+      "era": "CE",
+      "leapYear": true,
       "month": "APRIL",
-      "dayOfMonth": "8",
+      "monthValue": 4,
       "year": "2020"
     }
   },
@@ -65,8 +101,17 @@
       "toolCategories": [3]
     },
     "dateLoaned": {
+      "chronology": {
+        "calendarType": "iso8601",
+        "id": "ISO"
+      },
+      "dayOfMonth": 14,
+      "dayOfWeek": "TUESDAY",
+      "dayOfYear": 105,
+      "era": "CE",
+      "leapYear": true,
       "month": "APRIL",
-      "dayOfMonth": "1",
+      "monthValue": 4,
       "year": "2020"
     },
     "dateReturned": {
@@ -75,8 +120,17 @@
       "year": ""
     },
     "dueDate": {
+      "chronology": {
+        "calendarType": "iso8601",
+        "id": "ISO"
+      },
+      "dayOfMonth": 14,
+      "dayOfWeek": "TUESDAY",
+      "dayOfYear": 105,
+      "era": "CE",
+      "leapYear": true,
       "month": "APRIL",
-      "dayOfMonth": "8",
+      "monthValue": 4,
       "year": "2020"
     }
   }
