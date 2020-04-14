@@ -1013,13 +1013,12 @@ div.alert.alert-danger {
   text-align: center;
   padding: .5rem;
   border-radius: 3px;
-  border: 1px solid white;
-  order: 99;
+  border: 1px solid yellow;
   font-size: 5vw;
-  text-emphasis: 5px;
+  font-weight: bold;
   text-transform: uppercase;
-  color: white;
-  background-color: var(--nav-background);
+  color: var(--nav-background);
+  background-color:orange;
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
