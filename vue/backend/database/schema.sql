@@ -9,6 +9,7 @@ DROP TABLE IF EXISTS tool_category;
 DROP TABLE IF EXISTS loans;
 DROP TABLE IF EXISTS carts;
 DROP TABLE IF EXISTS cart_items;
+DROP TABLE IF EXISTS reservations;
 
 CREATE TABLE roles (
   id serial PRIMARY KEY,
@@ -76,6 +77,16 @@ CREATE TABLE cart_items (
   
   CONSTRAINT fk_ci_user_id FOREIGN KEY (user_id) REFERENCES users(id),
   CONSTRAINT fk_ci_tool_id FOREIGN KEY (tool_id) REFERENCES tools(id)
+);
+
+CREATE TABLE reservations (
+  id serial PRIMARY KEY,
+  user_id int NOT NULL,
+  tool_id int NOT NULL,
+  cancel_date DATE NOT NULL,
+  
+  CONSTRAINT fk_res_user_id FOREIGN KEY (user_id) REFERENCES users(id),
+  CONSTRAINT fk_res_tool_id FOREIGN KEY (tool_id) REFERENCES tools(id)
 );
 
 COMMIT TRANSACTION;
