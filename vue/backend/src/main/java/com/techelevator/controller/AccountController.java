@@ -45,7 +45,7 @@ public class AccountController {
             }
             throw new UserCreationException(errorMessages);
         }
-        auth.register(user.getFirstname(), user.getLastname(), user.getLicenseno(), user.getUsername(), user.getPassword(), user.getRoleID());
+        auth.register(user.getFirstname(), user.getLastname(), user.getEmail(), user.getUsername(), user.getPassword(), user.getRoleID());
         return "{\"success\":true}";
     }
 }
