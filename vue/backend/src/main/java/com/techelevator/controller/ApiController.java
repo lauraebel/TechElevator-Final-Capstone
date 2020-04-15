@@ -1,5 +1,6 @@
 package com.techelevator.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -170,6 +171,12 @@ public class ApiController {
 		User user = userDao.getUserByUsername(username);
 		Cart cart = cartDao.getCartByUser(user.getId());
 		
+		for (Tool item : cart.getItems()) {
+			if (reservationDao.getReservationByIds(user.getId(), item.getToolId()) != null) {
+				reservationDao.removeReservation(user.getId(), item.getToolId());
+			}
+		}
+		
 		loanDao.addLoan(cart);
 		
 		cartDao.clearCart(cart.getId());
@@ -218,6 +225,34 @@ public class ApiController {
 		} else {
 			throw new Exception ("No reservations found.");
 		}
+	}
+	
+	@GetMapping("/reservations/{userId}")
+	public List<Reservation> listUserReservations(@RequestBody String username) throws Exception {
+		User user = userDao.getUserByUsername(username);
+		List<Reservation> userReservations = new ArrayList<Reservation>();
+		List<Reservation> allReservations = reservationDao.getAllReservations();
+		if(allReservations != null) {
+			for (Reservation reservation : allReservations) {
+				if(reservation.getUserId() == user.getId()) {
+					userReservations.add(reservation);
+				}
+			}
+			return userReservations;
+		} else {
+			throw new Exception ("No reservations found.");
+		}
+	}
+	
+	@PostMapping("/reservations/add/{userId}")
+	public void addReservation (@RequestBody Tool tool, @PathVariable long userId) throws Exception {
+		long toolId = tool.getToolId();	
+		if ((Long) toolId != null && (Long) userId != null) {
+			reservationDao.addReservation(userId, toolId);
+		} else {
+			throw new Exception("Unable to add reservation.");
+		}
+		
 	}
 
 }
