@@ -1,6 +1,7 @@
 <template>
-  <div class="add-to-cart clickable" v-on:click="clickedCart" :disabled="disabled">
-    <span v-if="isAvailable" class="add">Add to Cart</span><span v-else class="add">Unavailable</span>
+  <div class="add-to-cart">
+    <span v-if="isAvailable" v-on:click="clickedCart" class="add">Add to Cart</span>
+    <span v-else v-on:click="clickedReserve" class="reserve">Reserve Tool</span>
     <div class="icon">
       <img
         v-if="isAvailable"
@@ -26,8 +27,7 @@ export default {
   },
   data() {
     return {
-      cart: {},
-      disabled: false
+      cart: {}
     };
   },
   methods: {
@@ -67,6 +67,9 @@ export default {
           }
         })
         .catch(err => console.error(err));
+    },
+    clickedReserve() {
+      fetch
     }
   },
   computed: {

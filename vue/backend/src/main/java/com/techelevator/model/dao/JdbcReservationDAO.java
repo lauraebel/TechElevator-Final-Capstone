@@ -32,6 +32,17 @@ public class JdbcReservationDAO implements ReservationDAO{
 		}		
 		return reservations;
 	}
+	
+	@Override
+	public Reservation getReservationByIds(long userId, long toolId) {
+		Reservation reservation = new Reservation();
+		String sql = "SELECT user_id, tool_id, cancel_date FROM reservations "
+				+ "WHERE user_id = ? AND tool_id = ?";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId, toolId);
+		
+		reservation = mapRowToReservation(results);
+		return reservation;
+	}
 
 	@Override
 	public void addReservation(long userId, long toolId) {
