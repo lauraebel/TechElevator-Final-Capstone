@@ -83,7 +83,7 @@ CREATE TABLE reservations (
   id serial PRIMARY KEY,
   user_id int NOT NULL,
   tool_id int NOT NULL,
-  cancel_date DATE NOT NULL,
+  cancel_date DATE,
   
   CONSTRAINT fk_res_user_id FOREIGN KEY (user_id) REFERENCES users(id),
   CONSTRAINT fk_res_tool_id FOREIGN KEY (tool_id) REFERENCES tools(id)

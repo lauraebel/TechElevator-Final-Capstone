@@ -51,7 +51,7 @@ public class JdbcToolDAO implements ToolDAO {
 				+ "FULL JOIN reservations ON tools.id=reservations.tool_id "
 				+ "WHERE tools.id NOT IN (SELECT tools.id FROM tools JOIN loans ON "
 				+ "loans.tool_id=tools.id WHERE loans.returned_on IS NULL) AND tools.id NOT IN (SELECT tools.id "
-				+ "FROM tools JOIN reservations ON tools.id=reservations.tool_id";
+				+ "FROM tools JOIN reservations ON tools.id=reservations.tool_id)";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
 		while (result.next()) {
 			tools.add(mapRowToTool(result));
