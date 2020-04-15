@@ -13,3 +13,4 @@ python insert_roles.py
 python insert_brands.py 
 python insert_categories.py
 python insert_tools.py
+python test-data.py

@@ -30,16 +30,6 @@ public class JdbcToolDAO implements ToolDAO {
 		while (result.next()) {
 			tools.add(mapRowToTool(result));
 		}
-		for (Tool tool : tools) {
-			List<Long> categories = new ArrayList<Long>();
-			sql = "SELECT id FROM category JOIN tool_category ON category.id=tool_category.category_id "
-					+ "WHERE tool_category.tool_id=?";
-			result = jdbcTemplate.queryForRowSet(sql, tool.getToolId());
-			while (result.next()) {
-				categories.add(result.getLong("id"));
-			}
-			tool.setToolCategories(categories);
-		}
 		return tools;
 	}
 
@@ -57,6 +47,87 @@ public class JdbcToolDAO implements ToolDAO {
 		return tools;
 	}
 
+	@Override
+	public List<Tool> getfilteredTools(boolean onlyAvailable, long categoryId, long brandId){
+		List<Tool> tools = new ArrayList<Tool>();
+		
+		boolean checkCategory = categoryId != 0;
+		boolean checkBrand = brandId != 0;
+		
+		String main = "SELECT "
+							+ "tools.id, "
+							+ "tools.name, "
+							+ "tools.description, "
+							+ "tools.img_name, "
+							+ "tools.brand_id "
+					+ "FROM tools";
+		
+		String groupBy = " GROUP BY tools.id";
+				
+		String availableJoin = " LEFT JOIN loans ON tools.id = loans.tool_id";
+		String categoryJoin = " JOIN tool_category ON tools.id = tool_category.tool_id";
+		String brandJoin = " JOIN brands ON tools.brand_id = brands.id";
+		
+		String availableClause =" tools.id NOT IN (SELECT tool_id FROM loans WHERE returned_on IS NULL)";
+		String categoryClause = " tool_category.category_id = ?";
+		String brandClause = " brands.id = ?";
+				
+		SqlRowSet results;
+		
+		if (onlyAvailable && checkCategory && checkBrand) {
+			main = main 
+					+ availableJoin + categoryJoin + brandJoin 
+					+ " WHERE" + availableClause + " AND" + categoryClause + " AND" + brandClause + groupBy;
+			
+			results = jdbcTemplate.queryForRowSet(main, categoryId, brandId);
+			
+		} else if (onlyAvailable && checkCategory && checkBrand == false) {
+			main = main 
+					+ availableJoin + categoryJoin  
+					+ " WHERE" + availableClause + " AND" + categoryClause + groupBy;
+			results = jdbcTemplate.queryForRowSet(main, categoryId);
+			
+		} else if (onlyAvailable && checkCategory == false && checkBrand) {
+			main = main 
+					+ availableJoin + brandJoin 
+					+ " WHERE" + availableClause + " AND" + brandClause + groupBy;
+			results = jdbcTemplate.queryForRowSet(main, brandId);
+			
+		} else if (onlyAvailable == false && checkCategory && checkBrand) {
+			main = main 
+					+ categoryJoin + brandJoin 
+					+ " WHERE" + categoryClause + " AND" + brandClause + groupBy;
+			results = jdbcTemplate.queryForRowSet(main, categoryId, brandId);
+			
+		} else if (onlyAvailable && checkCategory == false && checkBrand == false) {
+			main = main 
+					+ availableJoin  
+					+ " WHERE" + availableClause + groupBy;
+			results = jdbcTemplate.queryForRowSet(main);
+			
+		} else if (onlyAvailable == false && checkCategory && checkBrand == false) {
+			main = main 
+					+ categoryJoin  
+					+ " WHERE" + categoryClause + groupBy;
+			results = jdbcTemplate.queryForRowSet(main, categoryId);
+			
+		} else if (onlyAvailable == false && checkCategory == false && checkBrand) {
+			main = main 
+					+ brandJoin 
+					+ " WHERE" + brandClause + groupBy;
+			results = jdbcTemplate.queryForRowSet(main, brandId);
+			
+		}  else {
+			results = jdbcTemplate.queryForRowSet(main);
+		}
+		
+		while (results.next()) {
+			tools.add(mapRowToTool(results));
+		}
+		
+		return tools;
+	}
+	
 	@Override
 	public Tool getToolById(long id) {
 		Tool tool = null;
@@ -103,11 +174,23 @@ public class JdbcToolDAO implements ToolDAO {
 
 	private Tool mapRowToTool(SqlRowSet row) {
 		Tool tool = new Tool();
+		
 		tool.setToolId(row.getLong("id"));
 		tool.setToolName(row.getString("name"));
 		tool.setToolDescription(row.getString("description"));
 		tool.setToolImgName(row.getString("img_name"));
 		tool.setToolBrandId(row.getLong("brand_id"));
+		
+		List<Long> categories = new ArrayList<Long>();
+		String sql = "SELECT id FROM category JOIN tool_category ON category.id=tool_category.category_id "
+				+ "WHERE tool_category.tool_id=?";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, tool.getToolId());
+		while (results.next()) {
+			categories.add(results.getLong("id"));
+		}
+		
+		tool.setToolCategories(categories);
+		
 		return tool;
 	}
 

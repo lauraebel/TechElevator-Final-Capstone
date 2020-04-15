@@ -5,7 +5,7 @@
     <menu-icon v-on:clickedMenu="handleMenu" />
     <dropdown-menu v-bind:isVisible="visible" />
     <router-view class="content" />
-    <router-link :to="{ name: 'credits' }" id="footer">Credits</router-link>
+    <credits id="footer" />
   </div>
 </template>
 
@@ -15,6 +15,7 @@ import MenuIcon from './components/MenuIcon'
 import DropdownMenu from './components/DropdownMenu'
 import Branding from './components/Branding'
 import CartIcon from './components/CartIcon'
+import Credits from './components/Credits'
 
 export default {
   name: 'app',
@@ -22,7 +23,8 @@ export default {
     Branding,
     CartIcon,
     DropdownMenu,
-    MenuIcon
+    MenuIcon,
+    Credits
     },
   data (){
     return {
@@ -34,17 +36,17 @@ export default {
     handleMenu() {
       this.visible = !this.visible;
     },
-    handleLoggedIn(event){
-      this.userRole = event;
-    },
-    getRole() {
-      if (auth.getUser() !== null){
-      this.userRole = auth.getUser().rol;
-      }
-    }
+    // handleLoggedIn(event){
+    //   this.userRole = event;
+    // },
+    // getRole() {
+    //   if (auth.getUser() !== null){
+    //   this.userRole = auth.getUser().rol;
+    //   }
+    // }
   },
   created() {
-    this.getRole();
+    //this.getRole();
   }
 }
 </script>

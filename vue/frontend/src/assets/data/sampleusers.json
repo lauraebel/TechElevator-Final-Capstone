@@ -1,0 +1,74 @@
+[
+	{
+		"firstName": "test",
+		"lastName": "test",
+		"username": "test1",
+		"email": "test@test.com",
+		"password": "password",
+		"salt":"salt",
+		"role": 2
+	},
+	{
+		"firstName": "test",
+		"lastName": "test",
+		"username": "test2",
+		"email": "test@test.com",
+		"password": "password",
+		"salt":"salt",
+		"role": 2
+	},
+	{
+		"firstName": "test",
+		"lastName": "test",
+		"username": "test3",
+		"email": "test@test.com",
+		"password": "password",
+		"salt":"salt",
+		"role": 2
+	},
+	{
+		"firstName": "test",
+		"lastName": "test",
+		"username": "test4",
+		"email": "test@test.com",
+		"password": "password",
+		"salt":"salt",
+		"role": 2
+	},
+	{
+		"firstName": "test",
+		"lastName": "test",
+		"username": "test5",
+		"email": "test@test.com",
+		"password": "password",
+		"salt":"salt",
+		"role": 2
+	},
+	{
+		"firstName": "test",
+		"lastName": "test",
+		"username": "test6",
+		"email": "test@test.com",
+		"password": "password",
+		"salt":"salt",
+		"role": 2
+	},
+	{
+		"firstName": "test",
+		"lastName": "test",
+		"username": "test7",
+		"email": "test@test.com",
+		"password": "password",
+		"salt":"salt",
+		"role": 2
+	},
+	{
+		"firstName": "test",
+		"lastName": "test",
+		"username": "test8",
+		"email": "test@test.com",
+		"password": "password",
+		"salt":"salt",
+		"role": 2
+	}
+]

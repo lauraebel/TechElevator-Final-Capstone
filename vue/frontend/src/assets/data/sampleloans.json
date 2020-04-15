@@ -1,0 +1,94 @@
+[
+	{
+		"userId": 1,
+		"toolId": 1,
+		"loanedyear": 2020,
+		"loanedmonth": 1,
+		"loanedday": 1,
+		"dueyear": 2020,
+		"duemonth": 1,
+		"dueday": 8,
+		"returnyear": 2020,
+		"returnmonth": 1,
+		"returnday": 2
+	  },
+	  {
+		"userId": 2,
+		"toolId": 2,
+		"loanedyear": 2020,
+		"loanedmonth": 1,
+		"loanedday": 1,
+		"dueyear": 2020,
+		"duemonth": 1,
+		"dueday": 8,
+		"returnyear": 2020,
+		"returnmonth": 1,
+		"returnday": 2
+	  },
+	  {
+		"userId": 3,
+		"toolId": 3,
+		"loanedyear": 2020,
+		"loanedmonth": 1,
+		"loanedday": 1,
+		"dueyear": 2020,
+		"duemonth": 1,
+		"dueday": 8,
+		"returnyear": 2020,
+		"returnmonth": 1,
+		"returnday": 2
+	  },
+	  {
+		"userId": 4,
+		"toolId": 4,
+		"loanedyear": 2020,
+		"loanedmonth": 1,
+		"loanedday": 1,
+		"dueyear": 2020,
+		"duemonth": 1,
+		"dueday": 8,
+		"returnyear": 2020,
+		"returnmonth": 1,
+		"returnday": 2
+	  },
+	  {
+		"userId": 5,
+		"toolId": 5,
+		"loanedyear": 2020,
+		"loanedmonth": 4,
+		"loanedday": 10,
+		"dueyear": 2020,
+		"duemonth": 4,
+		"dueday": 17
+	  },
+	  {
+		"userId": 6,
+		"toolId": 6,
+		"loanedyear": 2020,
+		"loanedmonth": 4,
+		"loanedday": 10,
+		"dueyear": 2020,
+		"duemonth": 4,
+		"dueday": 17
+	  },
+	  {
+		"userId": 7,
+		"toolId": 7,
+		"loanedyear": 2020,
+		"loanedmonth": 4,
+		"loanedday": 10,
+		"dueyear": 2020,
+		"duemonth": 4,
+		"dueday": 17
+	  },
+	  {
+		"userId": 8,
+		"toolId": 8,
+		"loanedyear": 2020,
+		"loanedmonth": 4,
+		"loanedday": 10,
+		"dueyear": 2020,
+		"duemonth": 4,
+		"dueday": 17
+	  }
+]

@@ -4,6 +4,7 @@
   --div-background: #ff9b5a;
   --div-header: #f26249;
   --nav-background: #ec2f3b;
+  --nav-background-but-like-lighter: #f16d75;
 }
 
 @font-face {
@@ -50,8 +51,8 @@ a {
   text-decoration: none;
 }
 
-img {
-  background-color: var(--nav-background);
+a:hover {
+  cursor: hand;
 }
 
 span {
@@ -87,8 +88,25 @@ div#app {
   padding-left: 1vw;
   order: 5;
   align-self: flex-end;
-  text-align: right;
+  display: flex;
+  flex-wrap: wrap;
 }
+
+#footer div {
+  width: 100%;
+  text-align: center;
+  font-size: 2.1vw;
+  color: white;
+}
+
+div#author {
+  order: 1;
+}
+
+div#icons {
+  order: 2;
+}
+
 
 @media only screen and (min-width: 760px) {
   #footer {
@@ -128,6 +146,12 @@ div#app {
     grid-area: footer;
     font-size: 1.5vw;
     margin: 1vw;
+    margin-bottom: 0.5vw;
+    flex-wrap: nowrap;
+  }
+
+  #footer div {
+    font-size: 1.2vw;
   }
 }
 
@@ -211,10 +235,12 @@ div#app {
 
 .mobile-menu-icon {
   display: block;
+  background-color: var(--nav-background);
 }
 
 .menu-icon {
   display: none;
+  background-color: var(--nav-background);
 }
 
 .dropdown {
@@ -493,6 +519,14 @@ div.vs__dropdown-toggle {
 .add-to-cart {
   display: flex;
   justify-content: center;
+}
+
+.add-to-cart:hover {
+  background-color: var(--nav-background-but-like-lighter);
+}
+
+.add-to-cart-icon:hover {
+  background-color: var(--nav-background-but-like-lighter);
 }
 
 span.add {

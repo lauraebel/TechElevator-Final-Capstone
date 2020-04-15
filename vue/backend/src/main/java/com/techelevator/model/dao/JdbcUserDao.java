@@ -44,13 +44,13 @@ public class JdbcUserDao implements UserDao {
      * @return the new user
      */
     @Override
-    public User saveUser(String firstname, String lastname, String licenseno, String username, String password, Long roleID) {
+    public User saveUser(String firstname, String lastname, String email, String username, String password, Long roleID) {
         byte[] salt = passwordHasher.generateRandomSalt();
         String hashedPassword = passwordHasher.computeHash(password, salt);
         String saltString = new String(Base64.encode(salt));
         long newId = jdbcTemplate.queryForObject(
-                "INSERT INTO users(first_name, last_name, license_number, username, password, salt, role) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id", Long.class,
-                firstname, lastname, licenseno, username, hashedPassword, saltString, roleID);
+                "INSERT INTO users(first_name, last_name, email, username, password, salt, role) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id", Long.class,
+                firstname, lastname, email, username, hashedPassword, saltString, roleID);
 
         User newUser = new User();
         newUser.setId(newId);
