@@ -18,7 +18,7 @@ try:
 	
 	for user in users:
 		cur.execute("INSERT INTO users (first_name, last_name, email, username, password, salt, role) VALUES (%s, %s, %s, %s, %s, %s, %s)", (user['firstName'], user['lastName'], user['email'], user['username'], user['password'], user['salt'], user['role'],))
-	print("successfully inserted users");
+	print("successfully inserted test users");
 
 except psycopg2.Error as e:
 	raise
@@ -38,7 +38,7 @@ try:
 			cur.execute("INSERT INTO loans (user_id, tool_id, loaned_on, due_on, returned_on) VALUES (%s, %s, %s, %s, %s)", (loan['userId'], loan['toolId'], datetime.date(loan['loanedyear'], loan['loanedmonth'], loan['loanedday']), datetime.date(loan['dueyear'], loan['duemonth'], loan['dueday']), datetime.date(loan['returnyear'], loan['returnmonth'], loan['returnday']),))
 		else:
 			cur.execute("INSERT INTO loans (user_id, tool_id, loaned_on, due_on) VALUES (%s, %s, %s, %s)", (loan['userId'], loan['toolId'], datetime.date(loan['loanedyear'], loan['loanedmonth'], loan['loanedday']), datetime.date(loan['dueyear'], loan['duemonth'], loan['dueday']),))
-	print("successfully inserted loans");
+	print("successfully inserted test loans");
 
 except psycopg2.Error as e:
 	raise

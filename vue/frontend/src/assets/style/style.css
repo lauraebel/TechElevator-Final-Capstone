@@ -59,6 +59,10 @@ span {
   color: white;
 }
 
+.clickable:hover {
+  cursor: pointer;
+}
+
 @media only screen and (min-width: 760px) {
 }
 
@@ -111,7 +115,7 @@ div#icons {
 @media only screen and (min-width: 760px) {
   #footer {
     font-size: 3vw;
-    position: fixed;
+    position: relative;
     bottom: 0;
     right: 0;
   }
@@ -123,6 +127,7 @@ div#icons {
 
 @media only screen and (min-width: 1024px) {
   div#app {
+    min-height: 100%;
     display: grid;
     grid-template-columns: 1fr 8fr 1fr;
     grid-template-rows: 6vw 6vw auto 2vw;

@@ -70,7 +70,7 @@ public class JdbcToolDAO implements ToolDAO {
 		String categoryJoin = " JOIN tool_category ON tools.id = tool_category.tool_id";
 		String brandJoin = " JOIN brands ON tools.brand_id = brands.id";
 		
-		String availableClause =" tools.id NOT IN (SELECT tool_id FROM loans WHERE returned_on IS NULL)";
+		String availableClause =" tools.id NOT IN (SELECT tool_id FROM loans WHERE returned_on IS NULL) AND tools.id NOT IN (SELECT tool_id FROM reservations)";
 		String categoryClause = " tool_category.category_id = ?";
 		String brandClause = " brands.id = ?";
 				

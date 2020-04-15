@@ -1,5 +1,5 @@
 <template>
-  <div class="add-to-cart" v-on:click="clickedCart" :disabled="disabled">
+  <div class="add-to-cart clickable" v-on:click="clickedCart" :disabled="disabled">
     <span v-if="isAvailable" class="add">Add to Cart</span><span v-else class="add">Unavailable</span>
     <div class="icon">
       <img

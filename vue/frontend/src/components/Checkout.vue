@@ -1,5 +1,5 @@
 <template>
-	<button class="checkout" v-on:click="checkout">Check Out</button>
+	<button class="checkout clickable" v-on:click="checkout">Check Out</button>
 </template>
 
 <script>

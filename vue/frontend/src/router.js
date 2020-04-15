@@ -11,6 +11,7 @@ import Tool from './views/Tool.vue'
 import Reserve from './views/Reserve.vue'
 import MyLoans from './views/MyLoans.vue'
 import Cart from './views/Cart.vue'
+import About from './views/About.vue'
 
 Vue.use(Router)
 
@@ -113,6 +114,14 @@ const router = new Router({
         
         // temporary for development
         // requiresAuth: false
+      }
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: About,
+      meta: {
+        requiresAuth: false
       }
     }
   ]

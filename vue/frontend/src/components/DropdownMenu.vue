@@ -1,17 +1,13 @@
 <template>
   <div class="dropdown" >
     <transition name="fade">
-      <div v-if="isVisible">
-        <router-link class="clickable" :to="{name: 'tools'}">Find a Tool</router-link>
-        <router-link class="clickable" :to="{name: 'user-loans'}">My Loans</router-link> 
+      <div>
+        <router-link class="clickable" v-if="isVisible" :to="{name: 'tools'}">Find a Tool</router-link>
+        <router-link class="clickable" v-if="isVisible" :to="{name: 'user-loans'}">My Loans</router-link> 
+        <router-link class="clickable" :to="{name: 'about'}">About</router-link> 
         <div class="sign-out clickable" v-on:click="signOut()">Sign Out</div>
       </div>
     </transition>
-
-    <!-- conditionally show components based on role > works  -->
-    <!-- <div v-if="isAdmin()">I am an admin</div>
-    <div v-if="isUser()">I am a user</div> -->
-    
     <!-- admin menu, uncomment when login is implemented -->
     <!-- add to display admin menu if user is admin: v-else-if="role === 1" -->
     <!-- <transition name="fade">  
