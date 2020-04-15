@@ -20,12 +20,14 @@ import com.techelevator.model.beans.Brand;
 import com.techelevator.model.beans.Cart;
 import com.techelevator.model.beans.Category;
 import com.techelevator.model.beans.Loan;
+import com.techelevator.model.beans.Reservation;
 import com.techelevator.model.beans.Tool;
 import com.techelevator.model.beans.User;
 import com.techelevator.model.dao.BrandDAO;
 import com.techelevator.model.dao.CartDAO;
 import com.techelevator.model.dao.CategoryDAO;
 import com.techelevator.model.dao.LoanDAO;
+import com.techelevator.model.dao.ReservationDAO;
 import com.techelevator.model.dao.ToolDAO;
 import com.techelevator.model.dao.UserDao;
 import com.techelevator.model.exceptions.AddToCartException;
@@ -60,6 +62,9 @@ public class ApiController {
 	
 	@Autowired
 	private UserDao userDao;
+	
+	@Autowired
+	private ReservationDAO reservationDao;
 
 //	@RequestMapping(path = "/", method = RequestMethod.GET)
 //	public String authorizedOnly() throws UnauthorizedException {
@@ -216,6 +221,16 @@ public class ApiController {
 			throw new Exception ("No user found.");
 		}
 		
+	}
+	
+	@GetMapping("/reservations")
+	public List<Reservation> listAllReservations() throws Exception {
+		List<Reservation> allReservations = reservationDao.getAllReservations();
+		if(allReservations != null) {
+			return allReservations;
+		} else {
+			throw new Exception ("No reservations found.");
+		}
 	}
 
 }
