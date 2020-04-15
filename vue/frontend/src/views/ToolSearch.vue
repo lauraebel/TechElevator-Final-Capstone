@@ -233,24 +233,30 @@ export default {
         return toolList;
       }
 
-      let filtered = new Set();
+      let filtered = new Map();
 
       if (this.keyword !== "") {
-        filtered = this.containsKeyword(toolList);
+        toolList = this.containsKeyword(toolList);
       }
 
       toolList.forEach(tool => {
         if (this.brand !== "" && this.category !== "") {
           if (this.matchesBrand(tool) && this.matchesCategory(tool)) {
-            filtered.add(tool);
+            if (!filtered.has(tool.toolId)){
+              filtered.add(tool.toolId, tool);
+            }
           }
         } else if (this.brand !== "" && this.category == "") {
           if (this.matchesBrand(tool)) {
-            filtered.add(tool);
+            if (!filtered.has(tool.toolId)){
+              filtered.add(tool.toolId, tool);
+            }
           }
         } else {
           if (this.matchesCategory(tool)) {
-            filtered.add(tool);
+            if (!filtered.has(tool.toolId)){
+              filtered.add(tool.toolId, tool);
+            }
           }
         }
       });
