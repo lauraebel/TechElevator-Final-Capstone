@@ -18,8 +18,8 @@ public class User {
     @NotBlank(message = "Last name is required")
     private String lastname;
     
-    @NotBlank(message = "License number is required")
-    private String licenseno;
+    @NotBlank(message = "Email address is required")
+    private String email;
     
     @Min(value=0, message = "Role is required")
     private long roleID;
@@ -113,11 +113,11 @@ public class User {
 		this.lastname = lastname;
 	}
 
-	public String getLicenseno() {
-		return licenseno;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setLicenseno(String licenseno) {
-		this.licenseno = licenseno;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

@@ -25,13 +25,13 @@
         required
         autofocus
       />
-      <label for="licenseno" class="sr-only">Driver License Number</label>
+      <label for="email" class="sr-only">Email Address</label>
       <input
         type="text"
-        id="licenseno"
+        id="email"
         class="form-control"
-        placeholder="Driver License Number"
-        v-model="user.licenseno"
+        placeholder="Email Address"
+        v-model="user.email"
         required
         autofocus
       />
@@ -80,7 +80,7 @@ export default {
       user: {
         firstname: "",
         lastname: "",
-        licenseno: "",
+        email: "",
         username: "",
         password: "",
         confirmPassword: "",

@@ -23,7 +23,7 @@ CREATE TABLE users (
   role int NOT NULL default(1),
   first_name varchar(30) NOT NULL,
   last_name varchar(30) NOT NULL,
-  license_number varchar(10) NOT NULL,
+  email varchar(60) NOT NULL,
 
   CONSTRAINT fk_role_id FOREIGN KEY (role) REFERENCES roles (id)
 );
