@@ -53,9 +53,9 @@ export default {
     };
   },
   methods: {
-    updateAuthorized(){
-      this.$emit('userRole', auth.getUser().rol);
-    },
+    // updateAuthorized(){
+    //   this.$emit('userRole', auth.getUser().rol);
+    // },
     login() {
       fetch(`${process.env.VUE_APP_REMOTE_API}/login`, {
         method: "POST",
@@ -78,7 +78,7 @@ export default {
               token = token.replace(/"/g, "");
             }
             auth.saveToken(token);
-            this.updateAuthorized();
+            //this.updateAuthorized();
             this.$router.push("/");
           }
         })

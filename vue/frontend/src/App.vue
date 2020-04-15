@@ -3,8 +3,8 @@
     <branding />
     <cart-icon />
     <menu-icon v-on:clickedMenu="handleMenu" />
-    <dropdown-menu v-bind:isVisible="visible" v-bind:role="userRole" />
-    <router-view class="content" v-on:userRole="handleLoggedIn" />
+    <dropdown-menu v-bind:isVisible="visible" />
+    <router-view class="content" />
     <router-link :to="{ name: 'credits' }" id="footer">Credits</router-link>
   </div>
 </template>

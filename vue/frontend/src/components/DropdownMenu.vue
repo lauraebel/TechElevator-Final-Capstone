@@ -31,7 +31,7 @@ import auth from '../auth';
 export default {
   name: "dropdown-menu",
   props: {
-    role: Number,
+    //role: Number,
     isVisible: Boolean
   },
   data(){
