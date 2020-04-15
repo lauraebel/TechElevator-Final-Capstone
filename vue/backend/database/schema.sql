@@ -17,7 +17,7 @@ CREATE TABLE roles (
 
 CREATE TABLE users (
   id serial PRIMARY KEY,
-  username varchar(255) NOT NULL UNIQUE,     -- Username
+  username varchar(35) NOT NULL UNIQUE,     -- Username
   password varchar(32) NOT NULL,      -- Password
   salt varchar(256) NOT NULL,          -- Password Salt
   role int NOT NULL default(1),
@@ -35,9 +35,9 @@ CREATE TABLE brands (
 
 CREATE TABLE tools (
   id serial PRIMARY KEY,
-  name varchar(25) NOT NULL,
-  description varchar(255),
-  img_name varchar(25),
+  name varchar(40) NOT NULL,
+  description varchar(1000),
+  img_name varchar(100),
   brand_id int NOT NULL,
 
   CONSTRAINT fk_t_brand_id FOREIGN KEY (brand_id) references brands(id)

@@ -25,8 +25,7 @@ public class JdbcToolDAO implements ToolDAO {
 	@Override
 	public List<Tool> getAllTools() {
 		List<Tool> tools = new ArrayList<Tool>();
-		String sql = "SELECT tools.id, tools.name, tools.description, tools.img_name, tools.brand_id, "
-				+ "tool_category.category_id FROM tools JOIN tool_category ON tools.id=tool_category.tool_id";
+		String sql = "SELECT tools.id, tools.name, tools.description, tools.img_name, tools.brand_id FROM tools";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
 		while (result.next()) {
 			tools.add(mapRowToTool(result));

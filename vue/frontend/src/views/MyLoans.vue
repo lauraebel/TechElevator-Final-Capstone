@@ -52,10 +52,10 @@ export default {
   },
   created() {
       // real data
-      // this.getLoans();
+      this.getLoans();
 
       //mock data
-      this.getMockLoans();
+      // this.getMockLoans();
   }
 };
 </script>

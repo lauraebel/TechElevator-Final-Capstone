@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import com.techelevator.model.dao.JdbcToolDAO;
 import com.techelevator.model.dao.ToolDAO;
@@ -44,25 +45,82 @@ public class JdbcToolDAOIntegrationTest {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-//	@Test
-//	public void insert_new_tool() {
-//		List<Long> categories;
-//		Tool tool = new Tool("name", "description", 100, "img", categories);
-//		dao.addTool(tool);
-//		
-//		Assert.assertNotEquals(0, tool.getToolId());
-//	}
-//	
-//	private Tool getTool(String name, String description, long brandId, String img, List<Long> categories) {
-//		Tool selectedTool = new Tool();
-//		selectedTool.setToolName("name");
-//		selectedTool.setToolDescription("description");
-//		selectedTool.setToolBrandId(100);
-//		selectedTool.setToolImgName("img");
-//		selectedTool.setToolCategories(categories);
-//		return selectedTool;
-//	}
+	@Test
+	public void get_all_tools() {
+		truncateTool();
+		Assert.assertEquals(0, dao.getAllTools().size());
+		
+		List<Long> categoryList = new ArrayList<Long>();
+		categoryList.add(1l);
+		long toolId = 50l;
+		String toolName = "Hammer";
+		String description = "It's a banger";
+		String imgName = "hammer.png";
+		long brandId = 1l;
 
+		String sql = "INSERT INTO tools(id, name, description, img_name, brand_id) VALUES (?, ?, ?, ?, ?)";
+		jdbcTemplate.update(sql, toolId, toolName, description, imgName, brandId);
+		
+		Assert.assertEquals(1, dao.getAllTools().size());
+	}
+	
+	@Test
+	public void insert_tool_and_get_by_id() {
+		truncateTool();
+		Assert.assertEquals(0, dao.getAllTools().size());
+		
+		List<Long> categoryList = new ArrayList<Long>();
+		categoryList.add(1l);
+		long toolId = 50l;
+		String toolName = "Hammer";
+		String description = "It's a banger";
+		String imgName = "hammer.png";
+		long brandId = 1l;
 
+		String sql = "INSERT INTO tools(id, name, description, img_name, brand_id) VALUES (?, ?, ?, ?, ?)";
+		jdbcTemplate.update(sql, toolId, toolName, description, imgName, brandId);
+		
+		Assert.assertEquals(1l, dao.getToolById(50l).getToolBrandId());
+	}
+	
+	@Test
+	public void get_all_available_tools() {
+		truncateTool();
+		
+		List<Long> categoryList = new ArrayList<Long>();
+		categoryList.add(1l);
+		long toolId = 101051l;
+		String toolName = "Hammer";
+		String description = "It's a banger";
+		String imgName = "hammer.png";
+		long brandId = 1l;
+
+		String sql = "INSERT INTO tools(id, name, description, img_name, brand_id) VALUES (?, ?, ?, ?, ?)";
+		jdbcTemplate.update(sql, toolId, toolName, description, imgName, brandId);
+		
+		Assert.assertEquals(1, dao.getAllAvailableTools().size());
+	}
+	
+	@Test
+	public void add_tool() {
+		truncateTool();
+		
+		List<Long> categoryList = new ArrayList<Long>();
+		categoryList.add(1l);
+		String toolName = "Hammer";
+		String description = "It's a banger";
+		String imgName = "hammer.png";
+		long brandId = 1l;
+		
+		dao.addTool(toolName, description, (int) brandId, imgName, categoryList);
+		
+		Assert.assertEquals(1, dao.getAllTools().size());
+		
+	}
+	
+	private void truncateTool() {
+		String sql = "TRUNCATE tools CASCADE";
+		jdbcTemplate.update(sql);
+	}
 
 }
