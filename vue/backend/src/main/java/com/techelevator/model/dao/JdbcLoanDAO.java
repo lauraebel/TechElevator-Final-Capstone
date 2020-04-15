@@ -107,10 +107,10 @@ public class JdbcLoanDAO implements LoanDAO {
 	}
 
 	@Override
-	public Loan returnLoan(long reservationId) {
+	public Loan returnLoan(long loanId) {
 		String sql = "UPDATE loans SET returned_on = ? WHERE id = ? RETURNING *";
 
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, LocalDate.now(), reservationId);
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, LocalDate.now(), loanId);
 
 		results.next();
 
