@@ -37,7 +37,7 @@
 	"toolImgName": "estwing-axe.jpg",
 	"toolId": 5,
 	"toolBrand": 1,
-	"toolCategories": [1,2]
+	"toolCategories": [1]
 	},
 	{
 	"toolName": "Torque Wrench",
@@ -45,7 +45,7 @@
 	"toolImgName": "husky-torquewrench.jpg",
 	"toolId": 6,
 	"toolBrand": 5,
-	"toolCategories": [1]
+	"toolCategories": [1, 9]
 	},
 	{
 	"toolName": "Pipe Wrench",
@@ -53,7 +53,7 @@
 	"toolImgName": "milwaukee-pipewrench.jpg",
 	"toolId": 7,
 	"toolBrand": 3,
-	"toolCategories": [1]
+	"toolCategories": [1, 9]
 	},
 	{
 	"toolName": "Adjustable Wrench",
@@ -69,7 +69,7 @@
 	"toolImgName": "husky-ratchetingwrenchset.jpg",
 	"toolId": 9,
 	"toolBrand": 5,
-	"toolCategories": [1,3]
+	"toolCategories": [1,3,9]
 	},
 	{
 	"toolName": "Ratcheting Screwdriver",
@@ -109,7 +109,7 @@
 	"toolImgName": "husky-ratchet.jpg",
 	"toolId": 14,
 	"toolBrand": 5,
-	"toolCategories": [1]	
+	"toolCategories": [1, 9]	
 	},
 	{
 	"toolName": "Bit Socket Set",
@@ -133,7 +133,7 @@
 	"toolImgName": "kleintools-cuttingpliers.jpg",
 	"toolId": 17,
 	"toolBrand": 7,
-	"toolCategories": [1]	
+	"toolCategories": [1,2]	
 	},
 	{
 	"toolName": "Locking Pliers Set",
@@ -325,7 +325,7 @@
 	"toolImgName": "bigred-farmjack.jpg",
 	"toolId": 41,
 	"toolBrand": 10,
-	"toolCategories": [6]	
+	"toolCategories": [9]	
 	},
 	{
 	"toolName": "Mechanic's Creeper",
@@ -333,7 +333,7 @@
 	"toolImgName": "bigred-mechanicscreeper.jpg",
 	"toolId": 42,
 	"toolBrand": 10,
-	"toolCategories": [6]		
+	"toolCategories": [9]		
 	},
 	{
 	"toolName": "Standing Work Light",
@@ -341,7 +341,7 @@
 	"toolImgName": "ktoolinternational-standingworklight.jpg",
 	"toolId": 43,
 	"toolBrand": 11,
-	"toolCategories": [6,7]		
+	"toolCategories": [10]		
 	},
 	{
 	"toolName": "Hanging Work Light",
@@ -349,7 +349,7 @@
 	"toolImgName": "ktoolinternational-hangingworklight.jpg",
 	"toolId": 44,
 	"toolBrand": 11,
-	"toolCategories": [6,7]		
+	"toolCategories": [10]		
 	},
 	{
 	"toolName": "Funnel Set",
@@ -357,7 +357,7 @@
 	"toolImgName": "ktoolinternational-funnelset.jpg",
 	"toolId": 45,
 	"toolBrand": 11,
-	"toolCategories": [3,6,7]		
+	"toolCategories": [3,9]		
 	},
 	{
 	"toolName": "Siphon Transfer Pump",
@@ -365,7 +365,7 @@
 	"toolImgName": "ktoolinternational-siphontransferpump.jpg",
 	"toolId": 46,
 	"toolBrand": 11,
-	"toolCategories": [6,7]		
+	"toolCategories": [9]		
 	},
 	{
 	"toolName": "Oil Dispenser",
@@ -373,7 +373,7 @@
 	"toolImgName": "lisle-oildispenser.jpg",
 	"toolId": 47,
 	"toolBrand": 12,
-	"toolCategories": [6]		
+	"toolCategories": [9]		
 	},
 	{
 	"toolName": "Spark Plug Tester",
@@ -381,7 +381,7 @@
 	"toolImgName": "lisle-sparkplugtester.jpg",
 	"toolId": 48,
 	"toolBrand": 12,
-	"toolCategories": [6]		
+	"toolCategories": [9]		
 	},
 	{
 	"toolName": "Filter Wrench",
@@ -389,7 +389,7 @@
 	"toolImgName": "lisle-filterwrench.jpg",
 	"toolId": 49,
 	"toolBrand": 12,
-	"toolCategories": [1,6]	
+	"toolCategories": [1,9]	
 	},
 	{
 	"toolName": "Serpentine Belt Tool Kit",
@@ -397,7 +397,7 @@
 	"toolImgName": "powerbuilt-serpentinebelttoolkit.jpg",
 	"toolId": 50,
 	"toolBrand": 13,
-	"toolCategories": [1,3,6]		
+	"toolCategories": [1,3,9]		
 	},
 	{
 	"toolName": "Exhaust Pipe Tool Kit",
@@ -405,7 +405,7 @@
 	"toolImgName": "powerbuilt-exhaustpipetoolkit.jpg",
 	"toolId": 51,
 	"toolBrand": 13,
-	"toolCategories": [1,3,6]		
+	"toolCategories": [1,3,9]		
 	},
 	{
 	"toolName": "Rubber Strap Bungee Cords",
@@ -413,7 +413,7 @@
 	"toolImgName": "ktoolinternational-rubberstraps.jpg",
 	"toolId": 52,
 	"toolBrand": 11,
-	"toolCategories": [6,7]		
+	"toolCategories": [6]		
 	},
 	{
 	"toolName": "Tubing Cutter",
@@ -421,7 +421,7 @@
 	"toolImgName": "lisle-tubingcutter.jpg",
 	"toolId": 53,
 	"toolBrand": 12,
-	"toolCategories": [6,7]		
+	"toolCategories": [2]		
 	},
 	{
 	"toolName": "Fork Kit",
@@ -429,7 +429,7 @@
 	"toolImgName": "powerbuilt-forkkit.jpg",
 	"toolId": 54,
 	"toolBrand": 13,
-	"toolCategories": [1,3,6,7]	
+	"toolCategories": [1,3,9]	
 	},
 	{
 	"toolName": "Wire Terminal Tool Kit",
@@ -437,7 +437,7 @@
 	"toolImgName": "lisle-wireterminaltoolkit.jpg",
 	"toolId": 55,
 	"toolBrand": 12,
-	"toolCategories": [3,6,7]		
+	"toolCategories": [3,7]		
 	},
 	{
 	"toolName": "Tie Tightening Tool",
@@ -445,7 +445,7 @@
 	"toolImgName": "ktoolinternational-tietighteningtool.jpg",
 	"toolId": 56,
 	"toolBrand": 11,
-	"toolCategories": [1,6,7]		
+	"toolCategories": [6]		
 	},
 	{
 	"toolName": "Welding Accessory Kit",
@@ -453,7 +453,7 @@
 	"toolImgName": "forney-weldingaccessorykit.jpg",
 	"toolId": 57,
 	"toolBrand": 14,
-	"toolCategories": [3,8]			
+	"toolCategories": [3,7]			
 	},
 	{
 	"toolName": "Soldering Iron",
@@ -461,7 +461,7 @@
 	"toolImgName": "ryobi-solderingiron.jpg",
 	"toolId": 58,
 	"toolBrand": 9,
-	"toolCategories": [8]			
+	"toolCategories": [7]			
 	},
 	{
 	"toolName": "Propane Torch",
@@ -469,7 +469,7 @@
 	"toolImgName": "forney-propanetorch.jpg",
 	"toolId": 59,
 	"toolBrand": 14,
-	"toolCategories": [8]	
+	"toolCategories": [7]	
 	},
 	{
 	"toolName": "Welder",
@@ -477,7 +477,7 @@
 	"toolImgName": "forney-welder.jpg",
 	"toolId": 60,
 	"toolBrand": 14,
-	"toolCategories": [8]		
+	"toolCategories": [7]		
 	},
 	{
 	"toolName": "Leaf Rake",
@@ -485,7 +485,7 @@
 	"toolImgName": "ames-leafrake.jpg",
 	"toolId": 61,
 	"toolBrand": 15,
-	"toolCategories": [9]	
+	"toolCategories": [8]	
 	},
 	{
 	"toolName": "Bow Rake",
@@ -493,7 +493,7 @@
 	"toolImgName": "ames-bowrake.jpg",
 	"toolId": 62,
 	"toolBrand": 15,
-	"toolCategories": [9]		
+	"toolCategories": [8]		
 	},
 	{
 	"toolName": "Hand Trowel",
@@ -501,7 +501,7 @@
 	"toolImgName": "ames-handtrowel.jpg",
 	"toolId": 63,
 	"toolBrand": 15,
-	"toolCategories": [1,9]	
+	"toolCategories": [1,8]	
 	},
 	{
 	"toolName": "Cultivator",
@@ -509,7 +509,7 @@
 	"toolImgName": "ames-cultivator.jpg",
 	"toolId": 64,
 	"toolBrand": 15,
-	"toolCategories": [9]		
+	"toolCategories": [8]		
 	},
 	{
 	"toolName": "Garden Hoe",
@@ -517,7 +517,7 @@
 	"toolImgName": "ames-gardenhoe.jpg",
 	"toolId": 65,
 	"toolBrand": 15,
-	"toolCategories": [9]	
+	"toolCategories": [8]	
 	},
 	{
 	"toolName": "Pruning Shears",
@@ -525,7 +525,7 @@
 	"toolImgName": "fiskars-shears.jpg",
 	"toolId": 66,
 	"toolBrand": 16,
-	"toolCategories": [1,9]	
+	"toolCategories": [1,8]	
 	},
 	{
 	"toolName": "Shovel",
@@ -533,6 +533,6 @@
 	"toolImgName": "ames-shovel.jpg",
 	"toolId": 67,
 	"toolBrand": 15,
-	"toolCategories": [9]	
+	"toolCategories": [8]	
 	}
 ]
