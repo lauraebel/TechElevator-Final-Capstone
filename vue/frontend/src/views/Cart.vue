@@ -67,10 +67,10 @@ export default {
   },
   created() {
     // real data
-    // this.getCart();
+    this.getCart();
 
     //mock data
-    this.getMockCart();
+    // this.getMockCart();
   }
 };
 </script>

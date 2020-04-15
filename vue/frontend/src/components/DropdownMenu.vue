@@ -1,14 +1,17 @@
 <template>
-  <div class="dropdown">
-    <!-- add to display user menu if is gen user: v-if="role === 0" -->
+  <div class="dropdown" >
     <transition name="fade">
       <div v-if="isVisible">
         <router-link class="clickable" :to="{name: 'tools'}">Find a Tool</router-link>
-        <router-link class="clickable" :to="{name: 'user-loans'}">My Loans</router-link>
+        <router-link class="clickable" :to="{name: 'user-loans'}">My Loans</router-link> 
         <div class="sign-out clickable" v-on:click="signOut()">Sign Out</div>
-        <!-- change to button to sign out ^ -->
       </div>
     </transition>
+
+    <!-- conditionally show components based on role > works  -->
+    <!-- <div v-if="isAdmin()">I am an admin</div>
+    <div v-if="isUser()">I am a user</div> -->
+    
     <!-- admin menu, uncomment when login is implemented -->
     <!-- add to display admin menu if user is admin: v-else-if="role === 1" -->
     <!-- <transition name="fade">  
@@ -30,8 +33,19 @@ export default {
   props: {
     role: Number,
     isVisible: Boolean
-  }, 
+  },
+  data(){
+    return {
+      
+    }
+  },
   methods: {
+    isUser(){
+      return this.role > 0;
+    },
+    isAdmin() {
+      return this.role == 1;
+    },
     signOut(){
       auth.logout();
       this.$router.go('/login');
