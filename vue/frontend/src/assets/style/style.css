@@ -1245,7 +1245,9 @@ div.alert.alert-danger {
     color: white;
     font-size: 4vw;
   }
-
+  .martha > img {
+    height: 52vw;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -1289,6 +1291,7 @@ div.alert.alert-danger {
 
   .martha > img {
     width: 20vw;
+    height: 24vw;
   }
 
   .laura > h3 {
