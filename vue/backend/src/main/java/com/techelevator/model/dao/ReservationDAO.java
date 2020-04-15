@@ -10,6 +10,8 @@ public interface ReservationDAO {
 	
 	public Reservation getReservationByIds(long userId, long toolId);
 	
+	public Reservation getFirstReservationByToolId(long toolId);
+	
 	public void addReservation(long userId, long toolId);
 	
 	public void removeReservation(long userId, long toolId);

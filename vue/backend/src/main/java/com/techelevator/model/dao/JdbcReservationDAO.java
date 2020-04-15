@@ -1,5 +1,6 @@
 package com.techelevator.model.dao;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +44,21 @@ public class JdbcReservationDAO implements ReservationDAO{
 		reservation = mapRowToReservation(results);
 		return reservation;
 	}
+	
+	@Override
+	public Reservation getFirstReservationByToolId(long toolId) {
+		Reservation reservation = new Reservation();
+		String sql = "SELECT user_id, tool_id, cancel_date FROM reservations "
+				+ "WHERE tool_id = ? ORDER BY id LIMIT 1";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, toolId);
+		reservation = mapRowToReservation(results);
+		
+		LocalDate cancelDate = LocalDate.now().plusDays(2l);
+		sql = "UPDATE reservations SET cancel_date = ? WHERE tool_id = ? AND user_id = ?";
+		jdbcTemplate.update(sql, cancelDate, toolId, reservation.getUserId());
+		
+		return reservation;
+	}
 
 	@Override
 	public void addReservation(long userId, long toolId) {
@@ -64,5 +80,5 @@ public class JdbcReservationDAO implements ReservationDAO{
 		reservation.setCancelDate(row.getDate("cancel_date").toLocalDate());
 		return reservation;
 	}
-
+	
 }
