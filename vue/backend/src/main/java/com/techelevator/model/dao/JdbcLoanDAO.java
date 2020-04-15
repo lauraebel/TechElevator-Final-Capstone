@@ -95,26 +95,19 @@ public class JdbcLoanDAO implements LoanDAO {
 	}
 
 	@Override
-	public Loan renewLoan(long loanId) {
+	public void renewLoan(long loanId) {
 		LocalDate newDueDate = LocalDate.now().plusDays(LOAN_PERIOD);
 
-		String sql = "UPDATE loans SET due_on = ? WHERE id = ? RETURNING *";
+		String sql = "UPDATE loans SET due_on = ? WHERE id = ?";
 
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, newDueDate, loanId);
-		results.next();
-
-		return mapRowToLoan(results);
+		jdbcTemplate.update(sql, newDueDate, loanId);
 	}
 
 	@Override
-	public Loan returnLoan(long loanId) {
-		String sql = "UPDATE loans SET returned_on = ? WHERE id = ? RETURNING *";
+	public void returnLoan(long loanId) {
+		String sql = "UPDATE loans SET returned_on = ? WHERE id = ?";
 
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, LocalDate.now(), loanId);
-
-		results.next();
-
-		return mapRowToLoan(results);
+		jdbcTemplate.update(sql, LocalDate.now(), loanId);
 	}
 
 	private Loan mapRowToLoan(SqlRowSet row) {

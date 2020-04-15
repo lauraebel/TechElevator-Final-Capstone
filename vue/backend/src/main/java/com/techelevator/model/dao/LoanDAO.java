@@ -29,15 +29,15 @@ public interface LoanDAO {
 	 * @param loanId
 	 * @return Loan object
 	 */
-	public Loan renewLoan(long loanId);
+	public void renewLoan(long loanId);
 	
 	/**
-	 * Return a tool. Must be done by administrator. Puts
+	 * Must be done by administrator. Puts
 	 * tool back into available tools unless a hold has been
 	 * placed on the tool.
 	 * 
 	 * @param loanId
 	 */
-	public Loan returnLoan(long loanId);
+	public void returnLoan(long loanId);
 	
 }
