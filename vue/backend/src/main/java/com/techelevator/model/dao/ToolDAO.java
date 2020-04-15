@@ -13,6 +13,8 @@ public interface ToolDAO {
 
     public List <Tool> getAllAvailableTools();
     
+    public List<Tool> getfilteredTools(boolean onlyAvailable, long categoryId, long brandId);
+    
     public Tool getToolById(long id);
 
    /**

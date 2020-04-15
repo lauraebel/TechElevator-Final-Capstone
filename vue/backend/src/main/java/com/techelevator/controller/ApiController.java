@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.techelevator.authentication.AuthProvider;
@@ -91,6 +92,18 @@ public class ApiController {
 		return toolDao.getAllAvailableTools();
 	}
 
+	@GetMapping("/tools/filtered")
+	public List<Tool> getFilteredToolResults(@RequestParam boolean onlyAvailable, @RequestParam long categoryId, @RequestParam long brandId) throws Exception{
+		List<Tool> tools = toolDao.getfilteredTools(onlyAvailable, categoryId, brandId);
+		
+		if (tools != null) {
+			return tools;
+		} else {
+			throw new Exception("Error occurred while searching for tools");
+		}
+		
+	}
+	
 	@GetMapping("/tools/{id}")
 	public Tool getToolById(@PathVariable long id) throws Exception {
 		Tool tool = toolDao.getToolById(id);
