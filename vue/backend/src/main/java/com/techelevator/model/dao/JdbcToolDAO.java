@@ -48,8 +48,10 @@ public class JdbcToolDAO implements ToolDAO {
 		List<Tool> tools = new ArrayList<Tool>();
 		String sql = "SELECT tools.id, tools.name, tools.description, tools.img_name, tools.brand_id "
 				+ "FROM tools FULL JOIN loans ON tools.id=loans.tool_id "
+				+ "FULL JOIN reservations ON tools.id=reservations.tool_id "
 				+ "WHERE tools.id NOT IN (SELECT tools.id FROM tools JOIN loans ON "
-				+ "loans.tool_id=tools.id WHERE loans.returned_on IS NULL)";
+				+ "loans.tool_id=tools.id WHERE loans.returned_on IS NULL) AND tools.id NOT IN (SELECT tools.id "
+				+ "FROM tools JOIN reservations ON tools.id=reservations.tool_id";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
 		while (result.next()) {
 			tools.add(mapRowToTool(result));
