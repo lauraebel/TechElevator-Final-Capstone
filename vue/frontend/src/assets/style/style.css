@@ -936,6 +936,15 @@ p.dates {
   background-color: var(--nav-background);
 }
 
+button.return.clickable {
+  border-radius: 1vw;
+  border: .5vw solid white;
+  font-size: 5vw;
+  color: white;
+  background-color: var(--nav-background);
+  padding: 1.5vw;
+}
+
 @media only screen and (min-width: 760px) {
   .user-loans {
     display: flex;
@@ -956,6 +965,15 @@ p.dates {
     margin-left: 1vw;
     margin-right: 1vw;
     margin-bottom: 1vw;
+  }
+
+  button.return.clickable {
+    border-radius: 1vw;
+    border: .3vw solid white;
+    font-size: 3vw;
+    color: white;
+    background-color: var(--nav-background);
+    padding: 1vw;
   }
 }
 
@@ -1000,6 +1018,16 @@ p.dates {
     height: 100%;
     text-align: left;
     border-radius: 6px;
+  }
+
+  button.return.clickable {
+    border-radius: .5vw;
+    border: .15vw solid white;
+    font-size: 1.5vw;
+    color: white;
+    background-color: var(--nav-background);
+    height: 3vw;
+    padding: .5vw;
   }
 
   /* .user-loans > h1 {
