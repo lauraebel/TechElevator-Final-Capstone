@@ -1031,6 +1031,83 @@ button.return.clickable {
   }
 }
 
+/* --------------------------- RESERVATIONS --------------------------- */
+.reservation-info {
+  margin: 2vw;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: white;
+}
+
+.user-reservations > .page-title {
+  padding-bottom: 3vw;
+  padding-top: 2vw;
+  width: 100%;
+  font-size: 8.5vw;
+}
+
+.reservation-info > .tool-name {
+  margin: 1.5vw;
+  width: 100%;
+  border-radius: 7px 7px 0px 0px;
+  color: white;
+  background-color: var(--nav-background);
+}
+
+.description {
+  padding: 2vw;
+  margin: 1.5vw;
+  width: 100%;
+  border-radius: 0px 0px 7px 7px;
+  color: white;
+  background-color: var(--nav-background);
+  font-size: 4.3vw;
+}
+
+.tool-img {
+  width: 65vw;
+}
+
+@media only screen and (min-width: 760px) {
+  .user-reservations > .page-title {
+    font-size: 7.5vw;
+  }
+
+  .reservation-info > .tool-name {
+    font-size: 6vw;
+    height: 8vw;
+  }
+
+  .tool-img {
+    width: 50vw;
+  }
+
+  .description {
+    font-size: 3.5vw;
+  }
+
+}
+
+@media only screen and (min-width: 1024px) {
+  .user-reservations > .page-title {
+    font-size: 6vw;
+  }
+
+  .description {
+    font-size: 2vw;
+  }
+
+  .reservation-info > .tool-name {
+    order: 1;
+  }
+
+
+
+
+}
+
 /* --------------------------- REGISTER --------------------------- */
 
 .sr-only {

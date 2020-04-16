@@ -8,7 +8,7 @@
       class="tool-img"
     />
     <p class="description">
-      Description: {{ tool.toolDescription }}
+       {{ tool.toolDescription }}
     </p>
   </div>
 </template>
