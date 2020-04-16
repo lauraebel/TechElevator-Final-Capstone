@@ -3,9 +3,8 @@
     <branding />
     <cart-icon />
     <menu-icon v-on:clickedMenu="handleMenu" />
-    <dropdown-menu v-bind:isVisible="visible" />
+    <dropdown-menu v-on:clickedLink="handleMenu" v-bind:isVisible="visible" />
     <router-view class="content" />
-    <credits id="footer" />
   </div>
 </template>
 
@@ -15,7 +14,6 @@ import MenuIcon from './components/MenuIcon'
 import DropdownMenu from './components/DropdownMenu'
 import Branding from './components/Branding'
 import CartIcon from './components/CartIcon'
-import Credits from './components/Credits'
 
 export default {
   name: 'app',
@@ -24,7 +22,6 @@ export default {
     CartIcon,
     DropdownMenu,
     MenuIcon,
-    Credits
     },
   data (){
     return {
@@ -35,27 +32,9 @@ export default {
   methods: {
     handleMenu() {
       this.visible = !this.visible;
-    },
-    testEmail(){
-      fetch(`${process.env.VUE_APP_REMOTE_API}/api/email`, {
-        headers: {
-          Authorization: `Bearer ${auth.getToken()}`,
-        },
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          return data;
-        })
-        .catch((err) => {
-          console.error(err);
-        });
     }
   },
   created() {
-    //this.getRole();
-    //this.testEmail();
   }
 }
 </script>
