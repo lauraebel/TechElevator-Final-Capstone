@@ -420,7 +420,8 @@ div.sign-out {
 
   .home > h1 {
     padding-bottom: 3vw;
-    font-size: 5vw;
+    font-size: 3.8vw;
+    padding-top: 0;
   }
   
   .home > h2 {
@@ -430,7 +431,7 @@ div.sign-out {
   
   .home > h3 {
     padding-top: 5vw;
-    padding-bottom: 15vw;
+    padding-bottom: 0vw;
     font-size: 2vw;
   }
   
@@ -1502,7 +1503,8 @@ div.alert.alert-danger {
 
   #authors > h2 {
     grid-area: title;
-    padding-top: 10vw;
+    padding-top: 1vw;
+
     font-size: 3.5vw;
   }
 
