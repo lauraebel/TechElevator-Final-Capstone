@@ -84,7 +84,7 @@ div#app {
 .content {
   width: 100%;
   order: 5;
-  align-self: stretch;
+  min-height: 80%;
 }
 
 #footer {
@@ -130,12 +130,11 @@ div#icons {
     min-height: 100%;
     display: grid;
     grid-template-columns: 1fr 8fr 1fr;
-    grid-template-rows: 6vw 6vw auto 2vw;
+    grid-template-rows: 6vw 6vw auto;
     grid-template-areas:
       "header . cart"
       "header content menu"
-      "header content dropdown"
-      "footer footer footer";
+      "header content dropdown";
     gap: 1vw;
     justify-items: center;
     justify-content: stretch;
@@ -145,18 +144,7 @@ div#icons {
   .content {
     grid-area: content;
     padding: 1vw;
-  }
-
-  #footer {
-    grid-area: footer;
-    font-size: 1.5vw;
-    margin: 1vw;
-    margin-bottom: 0.5vw;
-    flex-wrap: nowrap;
-  }
-
-  #footer div {
-    font-size: 1.2vw;
+    height: 100%;
   }
 }
 
@@ -633,7 +621,7 @@ span.add {
 
   .tool-name {
     grid-area: name;
-    height: 5vw;
+    height: 100%;
     font-size: 3vw;
     align-self: flex-end;
   }
@@ -734,11 +722,11 @@ span.add {
 
   /* ------ ADD TO CART ------ */
   .add-to-cart {
-    height: 12%;
+    height: 15%;
     width: 100%;
-    margin-top: 1vw;
+    margin-top: 0.5vw;
     padding: 0.25vw;
-    border: 4px solid white;
+    border: 0.5vw solid white;
     border-radius: 5px;
     grid-area: addtocart;
     display: flex;
@@ -766,18 +754,23 @@ span.add {
   span.add {
     height: 2vw;
     margin: 0;
+    margin-top: 0.20vw;
     padding: 0;
     border: 0;
     border-radius: 5px;
-    font-size: 1.4vw;
+    font-size: 1.5vw;
     text-align: center;
   }
 }
 
-@media only screen and (min-width: 1500px) {
+@media only screen and (min-width: 1400px) {
   .tool {
     height: 18vw;
     width: 20%;
+  }
+
+  .tool-info{
+    padding: 0.25vw;
   }
 
   .tool-name {
@@ -802,6 +795,7 @@ span.add {
 
 .cart-item {
   height: 25vw;
+  margin-bottom: 2vw;
   padding: 1vw;
   border-radius: 5px;
   order: 3;
@@ -809,7 +803,6 @@ span.add {
   flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
-  margin-bottom: 1vw;
 }
 
 .cart-item .tool-name {
@@ -851,6 +844,10 @@ span.add {
   .cart-item .tool-name {
     padding-top: 9vw;
   }
+
+  .cart-item {
+    margin-top: 1vw;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -868,9 +865,11 @@ span.add {
   }
 
   .cart-item {
-    height: 5vw;
+    height: 7vw;
     width: 100%;
     margin: 1vw;
+    margin-left: 0;
+    margin-right: 0;
     padding: 0.5vw;
     align-self: flex-start;
   }
@@ -878,13 +877,14 @@ span.add {
   .cart-item .tool-name {
     margin: 0;
     padding: 0;
-    padding-top: 1vw;
+    padding-top: 2vw;
     width: 100%;
+    font-size: 1.8vw;
   }
 
   .cart-item .img-container {
-    height: 5vw;
-    width: 5vw;
+    height: 7vw;
+    width: 7vw;
   }
 
   .cart-item .img-container img {
@@ -892,6 +892,7 @@ span.add {
   }
 
   .checkout {
+    margin-bottom: 1.5vw;
     padding: 0.75vw 0.5vw 0.75vw 0.5vw;
     order: 1;
     justify-self: end;
@@ -909,6 +910,14 @@ span.add {
   flex-wrap: wrap;
   justify-content: center;
   background-color: white;
+}
+
+.no-loans {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  font-size: 2vw;
+  color: white;
 }
 
 .user-loans .page-title {
