@@ -8,7 +8,7 @@ import Register from './views/Register.vue'
 
 import ToolSearch from './views/ToolSearch.vue'
 import Tool from './views/Tool.vue'
-import Reserve from './views/Reserve.vue'
+import Reservations from './views/Reservations.vue'
 import MyLoans from './views/MyLoans.vue'
 import Cart from './views/Cart.vue'
 import About from './views/About.vue'
@@ -105,9 +105,9 @@ const router = new Router({
       }
     },
     {
-      path: '/reserve',
-      name: 'reserve',
-      component: Reserve,
+      path: '/reservations',
+      name: 'reservations',
+      component: Reservations,
       meta: {
         // correct setting
         requiresAuth: true

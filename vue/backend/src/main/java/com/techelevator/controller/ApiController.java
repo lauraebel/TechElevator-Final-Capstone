@@ -262,7 +262,7 @@ public class ApiController {
 			}
 			return userReservations;
 		} else {
-			throw new Exception ("No reservations found.");
+			throw new Exception ("No reservations found for that user.");
 		}
 	}
 	

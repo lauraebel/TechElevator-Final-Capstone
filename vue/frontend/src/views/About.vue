@@ -15,7 +15,7 @@
         <img src="../assets/images/authors/martha.jpg" alt="martha-headshot" />
       </div>
     </div>
-    <div id="credits">
+    <!-- <div id="credits">
       <div id="icons">
         Icons made by
         <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons"
@@ -36,7 +36,7 @@
           >www.flaticon.com</a
         >
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 

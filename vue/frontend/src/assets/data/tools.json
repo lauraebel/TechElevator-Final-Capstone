@@ -37,7 +37,7 @@
 	"toolImgName": "estwing-axe.jpg",
 	"toolId": 5,
 	"toolBrand": 1,
-	"toolCategories": [1]
+	"toolCategories": [1,2]
 	},
 	{
 	"toolName": "Torque Wrench",
@@ -45,7 +45,7 @@
 	"toolImgName": "husky-torquewrench.jpg",
 	"toolId": 6,
 	"toolBrand": 5,
-	"toolCategories": [1, 9]
+	"toolCategories": [1]
 	},
 	{
 	"toolName": "Pipe Wrench",
@@ -53,7 +53,7 @@
 	"toolImgName": "milwaukee-pipewrench.jpg",
 	"toolId": 7,
 	"toolBrand": 3,
-	"toolCategories": [1, 9]
+	"toolCategories": [1]
 	},
 	{
 	"toolName": "Adjustable Wrench",
@@ -69,7 +69,7 @@
 	"toolImgName": "husky-ratchetingwrenchset.jpg",
 	"toolId": 9,
 	"toolBrand": 5,
-	"toolCategories": [1,3,9]
+	"toolCategories": [1,3]
 	},
 	{
 	"toolName": "Ratcheting Screwdriver",
@@ -109,7 +109,7 @@
 	"toolImgName": "husky-ratchet.jpg",
 	"toolId": 14,
 	"toolBrand": 5,
-	"toolCategories": [1, 9]	
+	"toolCategories": [1]	
 	},
 	{
 	"toolName": "Bit Socket Set",
@@ -309,7 +309,7 @@
 	"toolImgName": "husky-floorjack.jpg",
 	"toolId": 39,
 	"toolBrand": 5,
-	"toolCategories": [6]		
+	"toolCategories": [9]		
 	},
 	{
 	"toolName": "Scissor Jack",
@@ -317,7 +317,7 @@
 	"toolImgName": "husky-scissorjack.jpg",
 	"toolId": 40,
 	"toolBrand": 5,
-	"toolCategories": [6]	
+	"toolCategories": [9]	
 	},
 	{
 	"toolName": "Farm Jack",
@@ -408,7 +408,7 @@
 	"toolCategories": [1,3,9]		
 	},
 	{
-	"toolName": "Rubber Strap Bungee Cords",
+	"toolName": "Rubber Strap Bungees",
 	"toolDescription": "EPDM rubber is crack, abrasion and rot resistant. 2 steel hooks each that won't bend or break. Stretches to 1-1/2 times its length without losing flexibility.",
 	"toolImgName": "ktoolinternational-rubberstraps.jpg",
 	"toolId": 52,
@@ -421,7 +421,7 @@
 	"toolImgName": "lisle-tubingcutter.jpg",
 	"toolId": 53,
 	"toolBrand": 12,
-	"toolCategories": [2]		
+	"toolCategories": [2,6,9]		
 	},
 	{
 	"toolName": "Fork Kit",
@@ -437,7 +437,7 @@
 	"toolImgName": "lisle-wireterminaltoolkit.jpg",
 	"toolId": 55,
 	"toolBrand": 12,
-	"toolCategories": [3,7]		
+	"toolCategories": [3,9]		
 	},
 	{
 	"toolName": "Tie Tightening Tool",
@@ -445,7 +445,7 @@
 	"toolImgName": "ktoolinternational-tietighteningtool.jpg",
 	"toolId": 56,
 	"toolBrand": 11,
-	"toolCategories": [6]		
+	"toolCategories": [1,6]		
 	},
 	{
 	"toolName": "Welding Accessory Kit",

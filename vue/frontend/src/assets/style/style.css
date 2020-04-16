@@ -405,6 +405,15 @@ h1.page-title {
   text-align: center;
 }
 
+.home {
+  text-align: center;
+  color: white;
+}
+
+.home > h3 {
+  padding-bottom: 30vw;
+}
+
 @media only screen and (min-width: 760px) {
   h1.page-title {
     font-size: 7vw;
@@ -553,6 +562,10 @@ span.add {
   display: none;
 }
 
+.in-cart-icon {
+  display: none;
+}
+
 @media only screen and (min-width: 760px) {
   /* ------ FILTERS ------ */
   .toggle span {
@@ -698,6 +711,11 @@ span.add {
   }
 
   .not-available-icon {
+    display: block;
+    height: 100%;
+  }
+
+  .in-cart-icon {
     display: block;
     height: 100%;
   }
@@ -1179,6 +1197,139 @@ div.alert.alert-danger {
     font-size: 2.3vw;
   }
 }
+
+/* --------------------------- ABOUT --------------------------- */
+
+#authors {
+  display: block;
+  text-align: center;
+}
+
+#authors > h2 {
+  color: white;
+  padding-bottom: 5vw;
+}
+
+.laura > img {
+  width: 50vw;
+  padding-bottom: 7vw;
+}
+
+.kate > img {
+  width: 50vw;
+  padding-bottom: 7vw;
+}
+
+.martha > img {
+  width: 50vw;
+  padding-bottom: 7vw;
+}
+
+.laura > h3 {
+  color: white;
+  font-size: 4vw;
+  padding-bottom: 1vw;
+}
+
+.kate > h3 {
+  color: white;
+  font-size: 4vw;
+  padding-bottom: 1vw;
+}
+
+.martha > h3 {
+  color: white;
+  font-size: 4vw;
+  padding-bottom: 1vw;
+}
+
+@media only screen and (min-width: 760px) {
+  #authors > h2 {
+    color: white;
+    padding-bottom: 5vw;
+    font-size: 5vw;
+  }
+  .laura > h3 {
+    color: white;
+    font-size: 4vw;
+  }
+  
+  .kate > h3 {
+    color: white;
+    font-size: 4vw;
+  }
+  
+  .martha > h3 {
+    color: white;
+    font-size: 4vw;
+  }
+  .martha > img {
+    height: 52vw;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  #authors {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "title title title"
+    "laura kate martha";
+  }
+
+  #authors > h2 {
+    grid-area: title;
+    padding-top: 10vw;
+    font-size: 3.5vw;
+  }
+
+  .laura {
+    grid-area: laura;
+  }
+
+  .kate {
+    grid-area: kate;
+  }
+
+  .martha{
+    grid-area: martha;
+  }
+
+  .laura > img {
+    width: 21vw;
+    height: 24vw;
+    padding-right: 3vw;
+  }
+
+  .kate > img {
+    width: 21vw;
+    height: 24vw;
+    padding-right: 3vw;
+  }
+
+  .martha > img {
+    width: 20vw;
+    height: 24vw;
+  }
+
+  .laura > h3 {
+    font-size: 2vw;
+    padding-bottom: 1vw;
+    padding-right: 3vw;
+  }
+
+  .kate > h3 {
+    font-size: 2vw;
+    padding-bottom: 1vw;
+    padding-right: 3vw;
+  }
+
+  .martha > h3 {
+    font-size: 2vw;
+    padding-bottom: 1vw;
+  }
+}
+
 
 /* --------------------------- CREDITS --------------------------- */
 #credits {

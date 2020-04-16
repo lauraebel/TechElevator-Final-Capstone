@@ -1,18 +1,14 @@
 <template>
   <div class="add-to-cart">
-    <span v-if="isAvailable" v-on:click="clickedCart" class="add">Add to Cart</span>
-    <span v-else v-on:click="clickedReserve" class="reserve">Reserve Tool</span>
-    <div class="icon">
-      <img
-        v-if="isAvailable"
-        src="@/assets/images/icons/add-to-cart.png"
-        class="add-to-cart-icon"
-      />
-      <img v-else src="@/assets/images/icons/not-available.png" class="not-available-icon"/> 
-    </div>
+    <span v-if="!isAvailable && !inCart" v-on:click="clickedReserve" class="reserve">Reserve Tool</span>
+    <span v-if="isAvailable && !inCart" v-on:click="clickedCart" class="add">Add to Cart</span>
+    <span v-if="inCart" :disabled='isDisabled' class="in-cart">In your Cart!</span>
 
-    <!-- <button v-if="!isAvailable" :disabled='isDisabled'><img src="@/assets/images/icons/add-to-cart.png" class="can-not-add-to-cart-icon" /></button>
-        <button v-if="inCart"><img src="@/assets/images/icons/in-cart.png" class="mobile-in-cart-icon" /><img src="@/assets/images/icons/desktop-in-cart.png" class="desktop-in-cart-icon" /></button> -->
+    <div class="icon">
+      <img v-if="!isAvailable && !inCart" src="@/assets/images/icons/not-available.png" class="not-available-icon" />
+      <img v-if="isAvailable && !inCart" src="@/assets/images/icons/add-to-cart.png" class="add-to-cart-icon" />
+      <img v-if="inCart" src="@/assets/images/icons/in-cart.png" class="in-cart-icon" />
+    </div>
   </div>
 </template>
 
@@ -27,7 +23,8 @@ export default {
   },
   data() {
     return {
-      cart: {}
+      cart: {},
+      isDisabled: false
     };
   },
   methods: {
@@ -63,18 +60,33 @@ export default {
         .then(response => {
           if (response.ok) {
             this.cart.items.push(this.tool);
-            this.disabled = true;
+            this.isDisabled = true;
           }
         })
         .catch(err => console.error(err));
     },
     clickedReserve() {
-      fetch
+      fetch(`${process.env.VUE_APP_REMOTE_API}/api/reservations/add/${this.user.id}`, {
+        method: "POST",
+        HEADERS: {
+          Authorization: `Bearer ${auth.getToken()}`,
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ toolId: this.tool.toolId })
+      })
+        .then(response => {
+          if (response.ok) {
+            this.cart.items.push(this.tool);
+            this.isDisabled = true;
+          }
+        })
+        .catch(err => console.error(err));
     }
   },
   computed: {
     inCart() {
-      if (this.cart.items.length === 0) {
+      if (this.cart.items.size === 0) {
         return false;
       } else {
         const items = this.cart.items;
