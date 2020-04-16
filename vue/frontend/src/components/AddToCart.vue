@@ -23,7 +23,7 @@ export default {
   data() {
     return {
       cart: {},
-      disabled: false
+      isDisabled: false
     };
   },
   methods: {
