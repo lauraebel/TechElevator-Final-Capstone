@@ -1255,6 +1255,7 @@ div.alert.alert-danger {
 .laura > img {
   width: 50vw;
   padding-bottom: 7vw;
+  
 }
 
 .kate > img {
@@ -1338,20 +1339,20 @@ div.alert.alert-danger {
   }
 
   .laura > img {
-    width: 21vw;
-    height: 24vw;
-    padding-right: 3vw;
+    width: 23vw;
+    height: 27vw;
+    padding-right: 4vw;
   }
 
   .kate > img {
-    width: 21vw;
-    height: 24vw;
+    width: 23vw;
+    height: 27vw;
     padding-right: 3vw;
   }
 
   .martha > img {
-    width: 20vw;
-    height: 24vw;
+    width: 21vw;
+    height: 27vw;
   }
 
   .laura > h3 {
