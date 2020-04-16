@@ -1,13 +1,40 @@
 <template>
   <div class="add-to-cart">
-    <span v-if="!isAvailable() && !inCart" v-on:click="clickedReserve" class="reserve">Reserve Tool</span>
-    <span v-if="isAvailable() && !inCart" v-on:click="clickedCart" class="add">Add to Cart</span>
-    <span v-if="inCart" :disabled='isDisabled' class="in-cart">In your Cart!</span>
+    <span
+      v-if="!isAvailable && !inCart && !reserved"
+      v-on:click="clickedReserve"
+      class="add"
+      >Reserve Tool</span
+    >
+    <span
+      v-if="!isAvailable && !inCart && reserved"
+      v-on:click="clickedReserve"
+      class="add"
+      >Reserved</span
+    >
+    <span v-if="isAvailable && !inCart" v-on:click="clickedCart" class="add"
+      >Add to Cart</span
+    >
+    <span v-if="inCart" :disabled="isDisabled" class="add"
+      >In your Cart!</span
+    >
 
     <div class="icon">
-      <img v-if="!isAvailable() && !inCart" src="@/assets/images/icons/not-available.png" class="not-available-icon" />
-      <img v-if="isAvailable() && !inCart" src="@/assets/images/icons/add-to-cart.png" class="add-to-cart-icon" />
-      <img v-if="inCart" src="@/assets/images/icons/in-cart.png" class="in-cart-icon" />
+      <img
+        v-if="!isAvailable && !inCart"
+        src="@/assets/images/icons/not-available.png"
+        class="not-available-icon"
+      />
+      <img
+        v-if="isAvailable && !inCart"
+        src="@/assets/images/icons/add-to-cart.png"
+        class="add-to-cart-icon"
+      />
+      <img
+        v-if="inCart"
+        src="@/assets/images/icons/in-cart.png"
+        class="in-cart-icon"
+      />
     </div>
   </div>
 </template>
@@ -22,8 +49,13 @@ export default {
   },
   data() {
     return {
-      cart: {},
-      isDisabled: false
+      cart: {
+        items: [],
+      },
+      isAvailable: true,
+      inCart: false,
+      isDisabled: false,
+      reserved: false
     };
   },
   methods: {
@@ -32,19 +64,34 @@ export default {
         `${process.env.VUE_APP_REMOTE_API}/api/cart/${auth.getUser().sub}`,
         {
           headers: {
-            Authorization: `Bearer ${auth.getToken()}`
-          }
+            Authorization: `Bearer ${auth.getToken()}`,
+          },
         }
       )
-        .then(response => {
-          return response.json();
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
         })
-        .then(data => {
+        .then((data) => {
           this.cart = data;
+          this.checkCart();
         })
-        .catch(err => {
+        .catch((err) => {
           console.error(err);
         });
+    },
+    checkCart() {
+      const items = this.cart.items;
+      if (items.length === 0) {
+        this.inCart = false;
+      } else {
+        items.forEach((item) => {
+          if (item.toolId === this.tool.toolId) {
+            this.inCart = true;
+          }
+        });
+      }
     },
     clickedCart() {
       fetch(`${process.env.VUE_APP_REMOTE_API}/api/cart/add/${this.cart.id}`, {
@@ -52,84 +99,60 @@ export default {
         headers: {
           Authorization: `Bearer ${auth.getToken()}`,
           Accept: "application/json",
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ toolId: this.tool.toolId })
+        body: JSON.stringify({ toolId: this.tool.toolId }),
       })
-        .then(response => {
+        .then((response) => {
           if (response.ok) {
-            this.cart.items.push(this.tool);
+            this.inCart = true;
             this.isDisabled = true;
           }
         })
-        .catch(err => console.error(err));
+        .catch((err) => console.error(err));
     },
     clickedReserve() {
-      fetch(`${process.env.VUE_APP_REMOTE_API}/api/reservations/add/${this.user.id}`, {
-        method: "POST",
-        HEADERS: {
-          Authorization: `Bearer ${auth.getToken()}`,
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ toolId: this.tool.toolId })
-      })
-        .then(response => {
+      fetch(
+        `${process.env.VUE_APP_REMOTE_API}/api/reservations/add/${this.cart.id}`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${auth.getToken()}`,
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ toolId: this.tool.toolId }),
+        }
+      )
+        .then((response) => {
           if (response.ok) {
-            this.cart.items.push(this.tool);
             this.isDisabled = true;
+            this.reserved = true;
           }
         })
-        .catch(err => console.error(err));
+        .catch((err) => console.error(err));
     },
-    isAvailable(){
-      let availTools = [];
-
-      fetch(`${process.env.VUE_APP_REMOTE_API}/api/available`, {
-        Headers: {
-          Authorization: `Bearer ${auth.getToken()}`,
-        },
-      })
-        .then(response => {
-          if (response.ok) {
-            return response.json();
-          }
+    checkAvailability() {
+      fetch(
+        `${process.env.VUE_APP_REMOTE_API}/api/isToolAvailable?toolId=${this.tool.toolId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${auth.getToken()}`,
+          },
+        }
+      )
+        .then((response) => {
+          return response.json();
         })
-        .then ((data) => {
-          availTools = data;
+        .then((data) => {
+          this.isAvailable = data;
         })
-        .catch(err => console.error(err));
-
-        let bool = false;
-
-        availTools.forEach(item => {
-          if (this.tool.toolId === item.toolId){
-            bool = true;
-          }
-        })
-        return bool;
-    }
-  },
-  computed: {
-    inCart() {
-      if (this.cart.items.size === 0) {
-        return false;
-      } else {
-        const items = this.cart.items;
-        let added = false;
-
-        items.forEach(item => {
-          if (item.toolId === this.tool.toolId) {
-            added = true;
-          }
-        });
-
-        return added;
-      }
-    }
+        .catch((err) => console.error(err));
+    },
   },
   created() {
     this.getCart();
-  } 
+    this.checkAvailability();
+  },
 };
 </script>

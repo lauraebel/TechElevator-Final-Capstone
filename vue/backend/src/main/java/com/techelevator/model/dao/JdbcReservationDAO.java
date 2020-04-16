@@ -70,14 +70,15 @@ public class JdbcReservationDAO implements ReservationDAO{
 	public void removeReservation(long userId, long toolId) {
 		String sql = "DELETE FROM reservations WHERE user_id = ? AND tool_id = ?";
 		jdbcTemplate.update(sql, userId, toolId);
-		
 	}
 	
 	private Reservation mapRowToReservation(SqlRowSet row) {
 		Reservation reservation = new Reservation();
 		reservation.setUserId(row.getLong("user_id"));
 		reservation.setToolId(row.getLong("tool_id"));
-		reservation.setCancelDate(row.getDate("cancel_date").toLocalDate());
+		if (row.getDate("cancel_date") != null){
+			reservation.setCancelDate(row.getDate("cancel_date").toLocalDate());
+		}
 		return reservation;
 	}
 	

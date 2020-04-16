@@ -1,45 +1,55 @@
 <template>
   <div class="user-reservations">
     <h1 class="page-title">My Reservations</h1>
-    <reservation-info v-for="reservation in reservations" 
-        v-bind:key="reservation.id" v-bind:reservation="reservation" />
+    <reservation-info
+      v-for="reservation in reservations"
+      v-bind:key="reservation.id"
+      v-bind:reservation="reservation"
+    />
   </div>
 </template>
 
 <script>
-import auth from '../auth';
-import ReservationInfo from '../components/ReservationInfo';
+import auth from "../auth";
+import ReservationInfo from "../components/ReservationInfo";
 
 export default {
   name: "reservations",
   components: {
-      ReservationInfo
+    ReservationInfo,
   },
   data() {
-      return {
-          reservations: []
-      };
+    return {
+      reservations: [],
+    };
   },
   methods: {
-      getReservations() {
-          fetch(`${process.env.VUE_APP_REMOTE_API}/api/reservations/${auth.getUser().sub}`, {
+    getReservations() {
+      fetch(
+        `${process.env.VUE_APP_REMOTE_API}/api/reservations/${
+          auth.getUser().sub
+        }`,
+        {
           headers: {
-              Authorization: `Bearer ${auth.getToken()}`
+            Authorization: `Bearer ${auth.getToken()}`,
+          },
+        }
+      )
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
           }
         })
-            .then(response => {
-                return response.json();
-            })
-            .then(data => {
-                this.reservations = data;
-            })
-            .catch(err => {
-                console.error(err);
-            });
-      }
+        .then((data) => {
+          this.reservations = data;
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    },
   },
   created() {
-      this.getReservations();
-  }
-}
+    this.getReservations();
+  },
+};
 </script>

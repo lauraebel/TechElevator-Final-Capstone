@@ -95,10 +95,24 @@ public class ApiController {
 	public List<Tool> listAllTools() {
 		return toolDao.getAllTools();
 	}
-
+	
 	@GetMapping("/available")
 	public List<Tool> listAvailableTools() {
 		return toolDao.getAllAvailableTools();
+	}
+	
+	@GetMapping("/isToolAvailable")
+	public Boolean checkAvailability(@RequestParam long toolId) {
+		
+		List<Tool> tools = toolDao.getAllAvailableTools();
+		
+		for (Tool tool : tools) {
+			if (tool.getToolId() == toolId) {
+				return true;
+			}
+		}
+		
+		return false;
 	}
 
 	@GetMapping("/tools/filtered")
@@ -194,9 +208,7 @@ public class ApiController {
 		Cart cart = cartDao.getCartByUser(user.getId());
 		
 		for (Tool item : cart.getItems()) {
-			if (reservationDao.getReservationByIds(user.getId(), item.getToolId()) != null) {
-				reservationDao.removeReservation(user.getId(), item.getToolId());
-			}
+			reservationDao.removeReservation(user.getId(), item.getToolId());
 		}
 		
 		loanDao.addLoan(cart);
@@ -267,8 +279,8 @@ public class ApiController {
 		}
 	}
 	
-	@GetMapping("/reservations/{userId}")
-	public List<Reservation> listUserReservations(@RequestBody String username) throws Exception {
+	@GetMapping("/reservations/{username}")
+	public List<Reservation> listUserReservations(@PathVariable String username) throws Exception {
 		User user = userDao.getUserByUsername(username);
 		List<Reservation> userReservations = new ArrayList<Reservation>();
 		List<Reservation> allReservations = reservationDao.getAllReservations();
