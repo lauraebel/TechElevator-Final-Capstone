@@ -968,8 +968,13 @@ button.return.clickable {
    .user-loans {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: flex-start;
   }
+
+  .user-loans .page-title {
+    height: 10%;
+  }
+
   .loan-info {
     padding: 1vw;
     width: 100%;
@@ -1007,38 +1012,15 @@ button.return.clickable {
   p.dates {
     width: 100%;
     font-size: 3vw;
+    padding-left: 1vw;
   }
 
   button.return.clickable {
     width: 100%;
     font-size: 3vw;
-  }
-
-  /*
-  .loan-info {
-    width: 31%;
-    margin: 1vw;
-  }
-
-  .loan-info .tool-name {
-    margin: 1vw;
-    font-size: 3.5vw;
-  }
-
-  p.dates {
     margin-left: 1vw;
     margin-right: 1vw;
-    margin-bottom: 1vw;
   }
-
-  button.return.clickable {
-    border-radius: 1vw;
-    border: .3vw solid white;
-    font-size: 3vw;
-    color: white;
-    background-color: var(--nav-background);
-    padding: 1vw;
-  } */
 }
 
 @media only screen and (min-width: 1024px) {
@@ -1072,16 +1054,22 @@ button.return.clickable {
     height: 100%;
   }
 
+  div.more-info {
+    height: 100%;
+    margin: 0;
+    padding: 0.5vw;
+    align-self: flex-start;
+    border-radius: 6px;
+  }
+
   p.dates {
     grid-area: info;
     font-size: 1.2vw;
     margin: 0;
     padding: 0;
-    padding: 1vw;
     width: 100%;
-    height: 100%;
     text-align: left;
-    border-radius: 6px;
+    align-self: flex-start;
   }
 
   button.return.clickable {
