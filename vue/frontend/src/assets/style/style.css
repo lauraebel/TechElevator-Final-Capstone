@@ -1492,7 +1492,8 @@ div.alert.alert-danger {
 
   #authors > h2 {
     grid-area: title;
-    padding-top: 10vw;
+    padding-top: 1vw;
+
     font-size: 3.5vw;
   }
 

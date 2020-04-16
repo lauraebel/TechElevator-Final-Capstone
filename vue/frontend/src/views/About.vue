@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <div id="authors">
-		<h2>Authors</h2>
+		<h2>Meet the Team</h2>
       <div class="laura">
         <h3>Laura Ebel</h3>
         <img src="../assets/images/authors/laura.jpg" alt="laura-headshot" />
