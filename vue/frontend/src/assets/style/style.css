@@ -965,11 +965,56 @@ button.return.clickable {
 }
 
 @media only screen and (min-width: 760px) {
-  .user-loans {
+   .user-loans {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
   }
+  .loan-info {
+    padding: 1vw;
+    width: 100%;
+    height: 12%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+      "img info";
+  }
+
+  .loan-info .tool-name {
+    grid-area: info;
+    width: 100%;
+    height: 20%;
+    margin: 0;
+    margin-bottom: 1vw;
+    align-self: flex-start;
+    font-size: 4vw;
+    padding-top: 1.75vw;
+  }
+
+  .loan-info .tool-img {
+    grid-area: img;
+  }
+
+  div.more-info {
+    grid-area: info;
+    height: 78%;
+    align-self: flex-end;
+    margin: 0;
+    margin-top: 1vw;
+    flex-wrap: wrap;
+  }
+
+  p.dates {
+    width: 100%;
+    font-size: 3vw;
+  }
+
+  button.return.clickable {
+    width: 100%;
+    font-size: 3vw;
+  }
+
+  /*
   .loan-info {
     width: 31%;
     margin: 1vw;
@@ -993,7 +1038,7 @@ button.return.clickable {
     color: white;
     background-color: var(--nav-background);
     padding: 1vw;
-  }
+  } */
 }
 
 @media only screen and (min-width: 1024px) {
