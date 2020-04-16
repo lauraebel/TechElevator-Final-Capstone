@@ -960,6 +960,7 @@ button.return.clickable {
     flex-wrap: wrap;
     justify-content: space-evenly;
   }
+
   .loan-info {
     width: 31%;
     margin: 1vw;
@@ -1065,7 +1066,7 @@ button.return.clickable {
   background-color: var(--nav-background);
 }
 
-.description {
+.reservation-info > .description {
   padding: 2vw;
   margin: 1.5vw;
   width: 100%;
@@ -1075,26 +1076,37 @@ button.return.clickable {
   font-size: 4.3vw;
 }
 
-.tool-img {
+.reservation-info > .tool-img {
   width: 65vw;
 }
 
 @media only screen and (min-width: 760px) {
+  .user-reservations {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
+  .reservation-info {
+    width: 40%;
+    margin: 1vw;
+  }
+
+  .reservation-info > .tool-name {
+    margin: 1vw;
+    font-size: 3.5vw;
+  }
+
   .user-reservations > .page-title {
     font-size: 7.5vw;
   }
 
-  .reservation-info > .tool-name {
-    font-size: 6vw;
-    height: 8vw;
+  .reservation-info > .tool-img {
+    width: 10vw;
   }
 
-  .tool-img {
-    width: 50vw;
-  }
-
-  .description {
-    font-size: 3.5vw;
+  .reservation-info > .description {
+    font-size: 3vw;
   }
 
 }
@@ -1104,13 +1116,19 @@ button.return.clickable {
     font-size: 6vw;
   }
 
-  .description {
+  .reservation-info > .description {
     font-size: 2vw;
+    order: 3;
   }
 
   .reservation-info > .tool-name {
     order: 1;
   }
+
+  .reservation-info > .tool-img {
+    order: 2;
+  }
+
 
 
 
