@@ -1,16 +1,13 @@
 <template>
   <div class="add-to-cart">
     <span v-if="isAvailable" v-on:click="clickedCart" class="add">Add to Cart</span>
-    <span v-if="inCart" :disabled='isDisabled' class="in-cart">In your Cart!</span>
+    <!-- <span v-if="inCart" :disabled='isDisabled' class="in-cart">In your Cart!</span> -->
     <span v-else v-on:click="clickedReserve" class="reserve">Reserve Tool</span>
     <div class="icon">
       <img v-if="isAvailable" src="@/assets/images/icons/add-to-cart.png" class="add-to-cart-icon" />
-      <img v-if="inCart" src="@/assets/images/icons/in-cart.png" class="in-cart-icon" />
+      <!-- <img v-if="inCart" src="@/assets/images/icons/in-cart.png" class="in-cart-icon" /> -->
       <img v-else src="@/assets/images/icons/not-available.png" class="not-available-icon" /> 
     </div>
-
-    <!-- <button v-if="!isAvailable" :disabled='isDisabled'><img src="@/assets/images/icons/add-to-cart.png" class="can-not-add-to-cart-icon" /></button>
-        <button v-if="inCart"><img src="@/assets/images/icons/in-cart.png" class="mobile-in-cart-icon" /><img src="@/assets/images/icons/desktop-in-cart.png" class="desktop-in-cart-icon" /></button> -->
   </div>
 </template>
 
