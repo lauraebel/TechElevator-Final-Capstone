@@ -115,14 +115,6 @@ public class JdbcUserDao implements UserDao {
         return users;
     }
 
-    private User mapResultToUser(SqlRowSet results) {
-        User user = new User();
-        user.setId(results.getLong("id"));
-        user.setUsername(results.getString("username"));
-        user.setRoleID(results.getLong("role"));
-        return user;
-    }
-
     @Override
     public User getUserByUsername(String username) {
         String sqlSelectUserByUsername = "SELECT id, username, role FROM users WHERE username = ?";
@@ -134,5 +126,28 @@ public class JdbcUserDao implements UserDao {
             return null;
         }
     }
+    
+    @Override
+    public User getUserById(long userId) {
+    	String sqlSelectUserByUsername = "SELECT id, username, role, email FROM users WHERE id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectUserByUsername, userId);
+
+        if (results.next()) {
+        	User user = mapResultToUser(results);
+        	user.setEmail(results.getString("email"));
+            return user;
+        } else {
+            return null;
+        }
+    }
+    
+    private User mapResultToUser(SqlRowSet results) {
+        User user = new User();
+        user.setId(results.getLong("id"));
+        user.setUsername(results.getString("username"));
+        user.setRoleID(results.getLong("role"));
+        return user;
+    }
+
 
 }

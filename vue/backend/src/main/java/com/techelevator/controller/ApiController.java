@@ -226,26 +226,23 @@ public class ApiController {
 			return loans;
 		} else {
 			throw new FetchUserLoansException();
-		}
-		
+		}	
 	}
 	
-	@PostMapping("/loans/return/{username}")
-	public void returnLoan(@PathVariable String username, @RequestBody Long toolId) throws Exception {
-		User user = userDao.getUserByUsername(username);
-		List<Loan> loans = loanDao.getLoansByUser(user.getId());
-		long loanId = 0;
-		for (Loan loan : loans) {
-			if ( loan.getTool().getToolId() == toolId) {
-				loanId = loan.getLoanId();
-			}
-		}
-		if (loanId != 0) {
-			loanDao.returnLoan(loanId);
+	@PostMapping("/loans/return")
+	public void returnLoan(@RequestBody Loan loan) throws Exception {
+		if (loan.getLoanId() != 0) {
+			loanDao.returnLoan(loan.getLoanId());
+			Reservation reservation = reservationDao.getFirstReservationByToolId(loan.getTool().getToolId());
+		
+			if (reservation != null) {
+				User user = userDao.getUserById(reservation.getUserId());
+				cartDao.addToCart(user.getId(), reservation.getToolId());
+				mailer.sendMail(user.getEmail());
+			}			
 		} else {
 			throw new Exception("No loan to return.");
-		}
-		
+		}	
 	}
 	
 	@GetMapping("/users")
