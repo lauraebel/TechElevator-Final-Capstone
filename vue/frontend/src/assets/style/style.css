@@ -249,7 +249,8 @@ div#icons {
 }
 
 .dropdown {
-  margin-bottom: 4vw;
+  margin-top: 1vw;
+  margin-bottom: 2vw;
   width: 100%;
   order: 4;
 }
@@ -334,6 +335,7 @@ div.sign-out {
   }
 
   .dropdown {
+    margin-top: 0;
     grid-area: dropdown;
     width: 100%;
 
@@ -345,11 +347,11 @@ div.sign-out {
   }
 
   .dropdown a {
-    font-size: 2vw;
+    font-size: 1.4vw;
   }
 
   div.sign-out {
-    font-size: 2vw;
+    font-size: 1.4vw;
   }
 }
 

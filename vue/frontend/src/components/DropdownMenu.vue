@@ -1,10 +1,10 @@
 <template>
   <div class="dropdown" >
     <transition name="fade">
-      <div>
-        <router-link class="clickable" v-if="isVisible" :to="{name: 'tools'}">Find a Tool</router-link>
-        <router-link class="clickable" v-if="isVisible" :to="{name: 'user-loans'}">My Loans</router-link> 
-        <router-link class="clickable" v-if="isVisible" :to="{name: 'reservations'}">My Reservations</router-link>
+      <div v-if="isVisible">
+        <router-link class="clickable" :to="{name: 'tools'}">Find a Tool</router-link>
+        <router-link class="clickable" :to="{name: 'user-loans'}">My Loans</router-link> 
+        <router-link class="clickable" :to="{name: 'reservations'}">My Reservations</router-link>
         <router-link class="clickable" :to="{name: 'about'}">About</router-link> 
         <div class="sign-out clickable" v-on:click="signOut()">Sign Out</div>
       </div>

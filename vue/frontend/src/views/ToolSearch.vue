@@ -7,7 +7,7 @@
         type="text"
         placeholder="Search by Keyword"
         v-model="keyword"
-        class="keyword" v-on:keyup="filteredTools"
+        class="keyword" v-on:keyup="containsKeyword()"
       />
       <div class="toggle">
         <span v-if="onlyAvailable">Available Tools</span>
@@ -38,7 +38,6 @@
         <tool-tile v-bind:tool="tool" />
         <add-to-cart
           v-bind:tool="tool"
-          v-bind:isAvailable="onlyAvailable"
         />
       </div>
     </div>
@@ -171,14 +170,16 @@ export default {
       this.keyword = null;
     },
     containsKeyword() {
-      const filter = new RegExp(this.keyword, "i");
+      if (this.keyword !== ''){
+        const filter = new RegExp(this.keyword, "i");
 
-      return this.tools.filter((tool) => {
+        this.tools = this.tools.filter((tool) => {
         const name = tool.toolName;
         const description = tool.toolDescription;
 
         return name.match(filter) || description.match(filter);
       });
+      }
     },
     filteredTools() {
       if (this.brand === null && this.category === null && this.keyword === ''){
@@ -197,10 +198,6 @@ export default {
         }
 
         this.getTools(this.onlyAvailable, categoryId, brandId);
-
-        if (this.keyword !== ""){
-          this.tools = this.containsKeyword();
-        }
       }
     },
   },

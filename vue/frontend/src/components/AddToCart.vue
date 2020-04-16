@@ -1,12 +1,12 @@
 <template>
   <div class="add-to-cart">
-    <span v-if="!isAvailable && !inCart" v-on:click="clickedReserve" class="reserve">Reserve Tool</span>
-    <span v-if="isAvailable && !inCart" v-on:click="clickedCart" class="add">Add to Cart</span>
+    <span v-if="!isAvailable() && !inCart" v-on:click="clickedReserve" class="reserve">Reserve Tool</span>
+    <span v-if="isAvailable() && !inCart" v-on:click="clickedCart" class="add">Add to Cart</span>
     <span v-if="inCart" :disabled='isDisabled' class="in-cart">In your Cart!</span>
 
     <div class="icon">
-      <img v-if="!isAvailable && !inCart" src="@/assets/images/icons/not-available.png" class="not-available-icon" />
-      <img v-if="isAvailable && !inCart" src="@/assets/images/icons/add-to-cart.png" class="add-to-cart-icon" />
+      <img v-if="!isAvailable() && !inCart" src="@/assets/images/icons/not-available.png" class="not-available-icon" />
+      <img v-if="isAvailable() && !inCart" src="@/assets/images/icons/add-to-cart.png" class="add-to-cart-icon" />
       <img v-if="inCart" src="@/assets/images/icons/in-cart.png" class="in-cart-icon" />
     </div>
   </div>
@@ -19,7 +19,6 @@ export default {
   name: "add-to-cart",
   props: {
     tool: Object,
-    isAvailable: Boolean
   },
   data() {
     return {
@@ -82,6 +81,33 @@ export default {
           }
         })
         .catch(err => console.error(err));
+    },
+    isAvailable(){
+      let availTools = [];
+
+      fetch(`${process.env.VUE_APP_REMOTE_API}/api/available`, {
+        Headers: {
+          Authorization: `Bearer ${auth.getToken()}`,
+        },
+      })
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          }
+        })
+        .then ((data) => {
+          availTools = data;
+        })
+        .catch(err => console.error(err));
+
+        let bool = false;
+
+        availTools.forEach(item => {
+          if (this.tool.toolId === item.toolId){
+            bool = true;
+          }
+        })
+        return bool;
     }
   },
   computed: {
