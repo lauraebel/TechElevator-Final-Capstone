@@ -100,9 +100,10 @@ export default {
 
         return added;
       }
-    },
+    }
+  },
   created() {
     this.getCart();
-  }
+  } 
 };
 </script>
