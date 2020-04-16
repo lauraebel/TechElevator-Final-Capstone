@@ -1541,4 +1541,123 @@ div.alert.alert-danger {
   }
 }
 
+/* --------------------------- TOOL DETAIL --------------------------- */
 
+.tool-detail {
+  background-color: white;
+  padding: 1.5vw;
+  border-radius: 8px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tool-detail h1 {
+  width: 100%;
+  background-color: var(--nav-background);
+  border-radius: 5px 5px 0px 0px;
+}
+
+.tool-detail img {
+  width: 100%;
+}
+
+.tool-detail .description {
+  color: white;
+  background-color: var(--nav-background);
+  padding: 2vw;
+  border-radius: 0px 0px 5px 5px;
+  margin-bottom: 2vw;
+}
+
+.tool-detail .add-to-cart {
+  background-color: var(--nav-background);
+  height: fit-content;
+  border-radius: 5px;
+  border: 0.5vw solid var(--nav-background);
+}
+
+.tool-detail span.add {
+  margin: 0;
+}
+@media only screen and (min-width: 760px) {
+  .tool-detail {
+    justify-content: center;
+  }
+
+  .tool-detail h1 {
+    font-size: 5vw;
+  }
+  
+  .tool-detail div.info {
+    font-size: 3vw;
+  }
+
+  .tool-detail img {
+    width: 63%;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .tool-detail {
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas:
+    "header header" 
+    "img info";
+
+    gap: 1vw;
+    border-radius: 0.75vw;
+  }
+
+  .tool-detail h1 {
+    grid-area: header;
+    width: 100%;
+    display: block;
+    height: fit-content;
+    border-radius: 0.75vw;
+  }
+
+  .tool-detail div.info {
+    
+    grid-area: info;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: fit-content;
+    justify-content: center;
+  }
+
+  .tool-detail div.description {
+    height: fit-content;
+    order: 99;
+    font-size: 2vw;
+    align-self: flex-end;
+    margin: 0;
+    padding: 1vw;
+    border-radius: 0.75vw;
+  }
+
+  .tool-detail img {
+    grid-area: img;
+    width: 100%;
+  }
+
+  .tool-detail .add-to-cart {
+    width: 100%;
+    align-self: flex-start;
+    height: fit-content;
+    margin: 1vw;
+    border-radius: 0.75vw;
+  }
+
+  .tool-detail .add-to-cart span.add {
+    font-size: 2vw;
+  } 
+
+  .tool-detail .add-to-cart div.icon {
+    height: 4vw;
+    width: 4.5vw;
+  }
+}

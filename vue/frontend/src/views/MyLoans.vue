@@ -2,6 +2,7 @@
   <div class="user-loans">
     <h1 class="page-title">My Loans</h1>
     <div class="no-loans" v-if="noLoans" >No current loans.</div>
+    <div class="no-loans" v-if="this.$route.query.checkout">Checkout succesful!</div>
     <loan-info
       v-for="loan in loans"
       v-bind:key="loan.loanId"

@@ -36,7 +36,6 @@
       <div class="tool" v-for="tool in filteredTools" v-bind:key="tool.toolId">
         <tool-tile v-bind:tool="tool" />
         <add-to-cart
-          v-if="containsKeyword"
           v-bind:tool="tool"
         />
       </div>
