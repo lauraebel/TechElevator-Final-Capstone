@@ -309,7 +309,7 @@
 	"toolImgName": "husky-floorjack.jpg",
 	"toolId": 39,
 	"toolBrand": 5,
-	"toolCategories": [6]		
+	"toolCategories": [9]		
 	},
 	{
 	"toolName": "Scissor Jack",
@@ -317,7 +317,7 @@
 	"toolImgName": "husky-scissorjack.jpg",
 	"toolId": 40,
 	"toolBrand": 5,
-	"toolCategories": [6]	
+	"toolCategories": [9]	
 	},
 	{
 	"toolName": "Farm Jack",

@@ -85,7 +85,7 @@ export default {
   },
   computed: {
     inCart() {
-      if (this.cart.items.length === 0) {
+      if (this.cart.items.size === 0) {
         return false;
       } else {
         const items = this.cart.items;

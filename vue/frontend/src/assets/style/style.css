@@ -405,6 +405,15 @@ h1.page-title {
   text-align: center;
 }
 
+.home {
+  text-align: center;
+  color: white;
+}
+
+.home > h3 {
+  padding-bottom: 30vw;
+}
+
 @media only screen and (min-width: 760px) {
   h1.page-title {
     font-size: 7vw;
@@ -553,6 +562,10 @@ span.add {
   display: none;
 }
 
+.in-cart-icon {
+  display: none;
+}
+
 @media only screen and (min-width: 760px) {
   /* ------ FILTERS ------ */
   .toggle span {
@@ -698,6 +711,11 @@ span.add {
   }
 
   .not-available-icon {
+    display: block;
+    height: 100%;
+  }
+
+  .in-cart-icon {
     display: block;
     height: 100%;
   }
