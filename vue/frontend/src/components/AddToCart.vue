@@ -23,7 +23,7 @@ export default {
   data() {
     return {
       cart: {},
-      disabled: false
+      isDisabled: false
     };
   },
   methods: {
@@ -59,7 +59,7 @@ export default {
         .then(response => {
           if (response.ok) {
             this.cart.items.push(this.tool);
-            this.disabled = true;
+            this.isDisabled = true;
           }
         })
         .catch(err => console.error(err));
@@ -77,7 +77,7 @@ export default {
         .then(response => {
           if (response.ok) {
             this.cart.items.push(this.tool);
-            this.disabled = true;
+            this.isDisabled = true;
           }
         })
         .catch(err => console.error(err));
