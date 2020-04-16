@@ -763,6 +763,10 @@ span.add {
   .img-container {
     height: 80%;
   }
+
+  .add-to-cart{
+    border: 0.25vw solid white;
+  }
 }
 
 /* --------------------------- CART VIEW --------------------------- */
