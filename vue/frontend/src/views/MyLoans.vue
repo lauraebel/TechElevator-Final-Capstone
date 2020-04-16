@@ -1,19 +1,21 @@
 <template>
   <div class="user-loans">
     <h1 class="page-title">My Loans</h1>
-    <!-- <div v-for="loan in loans" v-bind:key="loan.loanId">{{loan.loanId}}</div> -->
     <loan-info v-for="loan in loans" v-bind:key="loan.loanId" v-bind:loan="loan" />
+    <return-tool v-bind:loan="loan" />
   </div>
 </template>
 
 <script>
 import auth from '../auth';
 import LoanInfo from '../components/LoanInfo';
+import ReturnTool from '../components/ReturnTool';
 
 export default {
   name: "user-loans",
   components: {
-      LoanInfo
+      LoanInfo,
+      ReturnTool
   },
   data() {
     return {
@@ -59,5 +61,3 @@ export default {
   }
 };
 </script>
-
-<style></style>

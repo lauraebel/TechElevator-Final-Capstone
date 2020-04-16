@@ -218,6 +218,24 @@ public class ApiController {
 		
 	}
 	
+	@PostMapping("/loans/return/{username}")
+	public void returnLoan(@PathVariable String username, @RequestBody Long toolId) throws Exception {
+		User user = userDao.getUserByUsername(username);
+		List<Loan> loans = loanDao.getLoansByUser(user.getId());
+		long loanId = 0;
+		for (Loan loan : loans) {
+			if ( loan.getTool().getToolId() == toolId) {
+				loanId = loan.getLoanId();
+			}
+		}
+		if (loanId != 0) {
+			loanDao.returnLoan(loanId);
+		} else {
+			throw new Exception("No loan to return.");
+		}
+		
+	}
+	
 	@GetMapping("/users")
 	public List<User> listAllUsers() throws Exception {
 		List<User> allUsers = userDao.getAllUsers();
