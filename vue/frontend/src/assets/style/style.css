@@ -634,7 +634,7 @@ span.add {
   .tool-name {
     grid-area: name;
     height: 5vw;
-    font-size: 4vw;
+    font-size: 3vw;
     align-self: flex-end;
   }
 
@@ -1029,47 +1029,6 @@ button.return.clickable {
     height: 3vw;
     padding: .5vw;
   }
-
-  /* .user-loans > h1 {
-    text-align: center;
-  }
-
-  .loan-info {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      "title title"
-      "img loaned"
-      "img due"
-      "img returned";
-    border: solid white;
-    margin-top: 20px;
-    margin-bottom: 10px;
-  }
-
-  .tool-name {
-    grid-area: title;
-    padding-bottom: 50px;
-    font-size: 30px;
-  }
-
-  .tool-img {
-    grid-area: img;
-    width: 50%;
-    padding-left: 10px;
-    padding-bottom: 10px;
-    padding-right: 10px;
-  }
-
-  .loaned-on {
-    grid-area: loaned;
-    font-size: 20px;
-  }
-
-  .due-on {
-    grid-area: due;
-    font-size: 20px;
-  } */
 }
 
 /* --------------------------- REGISTER --------------------------- */
@@ -1272,6 +1231,21 @@ div.alert.alert-danger {
 
 /* --------------------------- ABOUT --------------------------- */
 
+#credits {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  font-size: 2vw;
+}
+
+#icons {
+  text-align: right;
+}
+
 #authors {
   display: block;
   text-align: center;
@@ -1372,17 +1346,20 @@ div.alert.alert-danger {
     width: 23vw;
     height: 27vw;
     padding-right: 4vw;
+    object-fit: cover;
   }
 
   .kate > img {
     width: 23vw;
     height: 27vw;
     padding-right: 3vw;
+    object-fit: cover;
   }
 
   .martha > img {
-    width: 21vw;
+    width: 23vw;
     height: 27vw;
+    object-fit: cover;
   }
 
   .laura > h3 {
@@ -1404,22 +1381,3 @@ div.alert.alert-danger {
 }
 
 
-/* --------------------------- CREDITS --------------------------- */
-#credits {
-  width: 100%;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  font-size: 2vw;
-}
-
-#author {
-  text-align: left;
-}
-
-#icons {
-  text-align: right;
-}

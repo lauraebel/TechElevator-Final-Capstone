@@ -12,7 +12,7 @@
       <div class="toggle">
         <span v-if="onlyAvailable">Available Tools</span>
         <span v-else>All Tools</span>
-        <toggle-button v-model="onlyAvailable" color="#FFD58E" v-on:change="filteredTools"/>
+        <toggle-button v-model="onlyAvailable" color="#FFD58E" v-on:change="checkCategoryAndBrand"/>
       </div>
       <v-select
         placeholder="Brand"
@@ -20,7 +20,7 @@
         v-model="brand"
         :options="allBrands"
         :reduce="(brandName) => brandName.brandId"
-        v-on:input="filteredTools"
+        v-on:input="checkCategoryAndBrand"
       ></v-select>
       <v-select
         placeholder="Category"
@@ -29,13 +29,13 @@
         :options="allCategories"
         :reduce="(categoryName) => categoryName.categoryId"
         :clearable="true"
-        v-on:input="filteredTools"
+        v-on:input="checkCategoryAndBrand"
       ></v-select>
     </div>
 
     <div class="tools">
-      <div class="tool" v-for="tool in tools" v-bind:key="tool.toolId">
-        <tool-tile v-if="containsKeyword" v-bind:tool="tool" />
+      <div class="tool" v-for="tool in filteredTools" v-bind:key="tool.toolId">
+        <tool-tile v-bind:tool="tool" />
         <add-to-cart
           v-if="containsKeyword"
           v-bind:tool="tool"
@@ -60,7 +60,6 @@ export default {
     return {
       username: "",
       tools: [],
-      toolsWithKeyword: [],
       allBrands: [],
       allCategories: [],
       brand: null,
@@ -180,7 +179,7 @@ export default {
         return name.match(filter) || description.match(filter);
       }
     },
-    filteredTools() {
+    checkCategoryAndBrand() {
       if (this.brand === null && this.category === null && this.keyword === ''){
         this.getTools(this.onlyAvailable, 0, 0);
       } 
@@ -199,6 +198,20 @@ export default {
         this.getTools(this.onlyAvailable, categoryId, brandId);
       }
     },
+  },
+  computed: {
+    filteredTools(){
+      if (this.keyword === ''){
+        return this.tools;
+      } else {
+        return this.tools.filter(tool => {
+          const filter = new RegExp(this.keyword, "i");
+          const name = tool.toolName;
+          const description = tool.toolDescription;
+          return name.match(filter) || description.match(filter);
+        })
+      }
+    }
   },
   created() {
     // real data
