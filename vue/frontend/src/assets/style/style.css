@@ -398,20 +398,65 @@ div.sign-out {
     display: none;
   }
 }
-
-/* --------------------------- CONTENT --------------------------- */
-h1.page-title {
-  font-size: 8vw;
-  text-align: center;
-}
-
+/* --------------------------- HOME --------------------------- */
 .home {
   text-align: center;
   color: white;
 }
 
+.home > h1 {
+  padding-top: 3vw;
+  padding-bottom: 4vw;
+  font-size: 8vw;
+}
+
+.home > h2 {
+  padding-top: 3vw;
+  font-size: 6vw;
+}
+
 .home > h3 {
-  padding-bottom: 30vw;
+  padding-top: 6vw;
+  padding-bottom: 15vw;
+  font-size: 4.3vw;
+}
+
+.home > img {
+  width: 70vw;
+  border-radius: 2vw;
+}
+
+@media only screen and (min-width: 760px) {
+}
+
+@media only screen and (min-width: 1024px) {
+
+  .home > h1 {
+    padding-bottom: 3vw;
+    font-size: 5vw;
+  }
+  
+  .home > h2 {
+    padding-top: 2.5vw;
+    font-size: 3vw;;
+  }
+  
+  .home > h3 {
+    padding-top: 5vw;
+    padding-bottom: 15vw;
+    font-size: 2vw;
+  }
+  
+  .home > img {
+    width: 50vw;
+    border-radius: 1vw;
+  }
+}
+
+/* --------------------------- CONTENT --------------------------- */
+h1.page-title {
+  font-size: 8vw;
+  text-align: center;
 }
 
 @media only screen and (min-width: 760px) {
@@ -1291,7 +1336,7 @@ div.alert.alert-danger {
     grid-area: kate;
   }
 
-  .martha{
+  .martha {
     grid-area: martha;
   }
 
@@ -1313,19 +1358,19 @@ div.alert.alert-danger {
   }
 
   .laura > h3 {
-    font-size: 2vw;
+    font-size: 1.96vw;
     padding-bottom: 1vw;
     padding-right: 3vw;
   }
 
   .kate > h3 {
-    font-size: 2vw;
+    font-size: 1.96vw;
     padding-bottom: 1vw;
     padding-right: 3vw;
   }
 
   .martha > h3 {
-    font-size: 2vw;
+    font-size: 1.96vw;
     padding-bottom: 1vw;
   }
 }
