@@ -2,7 +2,6 @@
   <div class="tool-search">
     <h1 class="page-title">Tool Search</h1>
     <div class="filters">
-      <button v-on:click="resetSearch()" class="reset">Clear Filters</button>
       <input
         type="text"
         placeholder="Search by Keyword"
@@ -163,11 +162,6 @@ export default {
         .catch((err) => {
           console.error(err);
         });
-    },
-    resetSearch() {
-      this.brand = null;
-      this.category = null;
-      this.keyword = null;
     },
     containsKeyword(tool) {
       if (this.keyword !== ''){
