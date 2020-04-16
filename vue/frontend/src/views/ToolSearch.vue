@@ -12,7 +12,7 @@
       <div class="toggle">
         <span v-if="onlyAvailable">Available Tools</span>
         <span v-else>All Tools</span>
-        <toggle-button :options="allAvailable" v-model="onlyAvailable" color="#FFD58E" v-on:change="filteredTools"/>
+        <toggle-button v-model="onlyAvailable" color="#FFD58E" v-on:change="filteredTools"/>
       </div>
       <v-select
         placeholder="Brand"
@@ -164,22 +164,6 @@ export default {
         .catch((err) => {
           console.error(err);
         });
-    },
-    getAvailable() {
-      fetch(`${process.env.VUE_APP_REMOTE_API}/api/available`, {
-        headers: {
-          Authorization: `Bearer ${auth.getToken()}`,
-        },
-      })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        this.allAvailable = data;
-      })
-      .catch((err) => {
-        console.error(err);
-      });
     },
     resetSearch() {
       this.brand = null;

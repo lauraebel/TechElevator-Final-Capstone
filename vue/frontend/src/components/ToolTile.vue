@@ -27,12 +27,12 @@ export default {
       isAvailable: true
     };
   },
-  // methods: {
-  //   clickedCart() {
-  //     this.addedToCart = !this.addedToCart;
-  //     this.$emit("clickedCart", this.tool.toolId);
-  //   }
-  // }
+  methods: {
+    clickedCart() {
+      this.addedToCart = !this.addedToCart;
+      this.$emit("clickedCart", this.tool.toolId);
+    }
+  }
 };
 </script>
 
