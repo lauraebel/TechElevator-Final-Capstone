@@ -406,7 +406,7 @@ div.sign-out {
 
 .home > h1 {
   padding-top: 3vw;
-  padding-bottom: 4vw;
+  padding-bottom: 6vw;
   font-size: 8vw;
 }
 
@@ -416,7 +416,7 @@ div.sign-out {
 }
 
 .home > h3 {
-  padding-top: 6vw;
+  padding-top: 7vw;
   padding-bottom: 15vw;
   font-size: 4.3vw;
 }
@@ -424,9 +424,6 @@ div.sign-out {
 .home > img {
   width: 70vw;
   border-radius: 2vw;
-}
-
-@media only screen and (min-width: 760px) {
 }
 
 @media only screen and (min-width: 1024px) {
@@ -1292,7 +1289,7 @@ div.alert.alert-danger {
   #authors > h2 {
     color: white;
     padding-bottom: 5vw;
-    font-size: 5vw;
+    font-size: 7vw;
   }
   .laura > h3 {
     color: white;
