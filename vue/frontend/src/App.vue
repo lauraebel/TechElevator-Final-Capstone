@@ -36,17 +36,26 @@ export default {
     handleMenu() {
       this.visible = !this.visible;
     },
-    // handleLoggedIn(event){
-    //   this.userRole = event;
-    // },
-    // getRole() {
-    //   if (auth.getUser() !== null){
-    //   this.userRole = auth.getUser().rol;
-    //   }
-    // }
+    testEmail(){
+      fetch(`${process.env.VUE_APP_REMOTE_API}/api/email`, {
+        headers: {
+          Authorization: `Bearer ${auth.getToken()}`,
+        },
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          return data;
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
   },
   created() {
     //this.getRole();
+    this.testEmail();
   }
 }
 </script>

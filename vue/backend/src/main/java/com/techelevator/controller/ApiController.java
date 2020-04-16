@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.techelevator.authentication.AuthProvider;
 import com.techelevator.authentication.UnauthorizedException;
+import com.techelevator.email.Mailer;
 import com.techelevator.model.beans.Brand;
 import com.techelevator.model.beans.Cart;
 import com.techelevator.model.beans.Category;
@@ -66,6 +67,9 @@ public class ApiController {
 	
 	@Autowired
 	private ReservationDAO reservationDao;
+	
+	@Autowired
+	private Mailer mailer;
 
 //	@RequestMapping(path = "/", method = RequestMethod.GET)
 //	public String authorizedOnly() throws UnauthorizedException {
@@ -81,6 +85,11 @@ public class ApiController {
 //		}
 //		return "Success";
 //	}
+	
+	@GetMapping("/email")
+	public void sendReservationReadyEmail() throws Exception {
+		mailer.sendMail("katherine.lillemoen@gmail.com");
+	}
 
 	@GetMapping("/tools")
 	public List<Tool> listAllTools() {
@@ -265,7 +274,6 @@ public class ApiController {
 		} else {
 			throw new Exception("Unable to add reservation.");
 		}
-		
 	}
 
 }
