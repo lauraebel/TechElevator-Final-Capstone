@@ -1,13 +1,13 @@
 <template>
   <div class="add-to-cart">
-    <span v-if="!isAvailable" v-on:click="clickedReserve" class="reserve">Reserve Tool</span>
+    <span v-if="!isAvailable && !inCart" v-on:click="clickedReserve" class="reserve">Reserve Tool</span>
     <span v-if="inCart" :disabled='isDisabled' class="in-cart">In your Cart!</span>
-    <span v-if="isAvailable" v-on:click="clickedCart" class="add">Add to Cart</span>
+    <span v-if="isAvailable && !inCart" v-on:click="clickedCart" class="add">Add to Cart</span>
 
     <div class="icon">
-      <img v-if="!isAvailable" src="@/assets/images/icons/not-available.png" class="not-available-icon" />
+      <img v-if="!isAvailable && !inCart" src="@/assets/images/icons/not-available.png" class="not-available-icon" />
       <img v-if="inCart" src="@/assets/images/icons/in-cart.png" class="in-cart-icon" /> 
-      <img v-if="isAvailable" src="@/assets/images/icons/add-to-cart.png" class="add-to-cart-icon" /> 
+      <img v-if="isAvailable && !inCart" src="@/assets/images/icons/add-to-cart.png" class="add-to-cart-icon" /> 
     </div>
   </div>
 </template>
