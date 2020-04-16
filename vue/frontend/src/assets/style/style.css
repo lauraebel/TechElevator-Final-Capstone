@@ -903,8 +903,9 @@ span.add {
   height: 100%;
   width: 100%;
   text-align: center;
-  font-size: 2vw;
+  font-size: 5vw;
   color: white;
+  margin-top: 10vw;
 }
 
 .user-loans .page-title {
@@ -962,6 +963,11 @@ button.return.clickable {
     height: 10%;
   }
 
+  .no-loans {
+    font-size: 5vw;
+    margin-top: 0;
+  }
+
   .loan-info {
     padding: 1vw;
     width: 100%;
@@ -1013,6 +1019,11 @@ button.return.clickable {
 @media only screen and (min-width: 1024px) {
   .user-loans {
     justify-content: space-evenly;
+  }
+
+  .no-loans {
+    font-size: 3vw;
+    margin-top: 10vw;
   }
 
   .loan-info {
