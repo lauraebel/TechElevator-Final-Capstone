@@ -2,7 +2,7 @@
   <div class="dropdown" >
     <transition name="fade">
       <div v-if="isVisible" v-on:click="clickedLink">
-        <router-link v-on:click="collapseMenu" class="clickable" :to="{name: 'tools'}">Find a Tool</router-link>
+        <router-link class="clickable" :to="{name: 'tools'}">Find a Tool</router-link>
         <router-link class="clickable" :to="{name: 'user-loans'}">My Loans</router-link> 
         <router-link class="clickable" :to="{name: 'reservations'}">My Reservations</router-link>
         <router-link class="clickable" :to="{name: 'about'}">About</router-link> 

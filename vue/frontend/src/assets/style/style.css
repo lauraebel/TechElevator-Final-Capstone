@@ -1024,6 +1024,10 @@ button.return.clickable {
 }
 
 @media only screen and (min-width: 1024px) {
+  .user-loans {
+    justify-content: space-evenly;
+  }
+
   .loan-info {
     width: 31.5vw;
     height: 16.5vw;
@@ -1043,7 +1047,7 @@ button.return.clickable {
     grid-area: name;
     font-size: 1.6vw;
     margin: 0;
-    padding: 1.5vw;
+    padding-top: 0.75vw;
     height: 100%;
     text-align: center;
     border-radius: 6px;
