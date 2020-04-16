@@ -55,7 +55,7 @@ export default {
   },
   created() {
     //this.getRole();
-    this.testEmail();
+    //this.testEmail();
   }
 }
 </script>

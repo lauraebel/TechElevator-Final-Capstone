@@ -86,10 +86,10 @@ public class ApiController {
 //		return "Success";
 //	}
 	
-	@GetMapping("/email")
-	public void sendReservationReadyEmail() throws Exception {
-		mailer.sendMail("katherine.lillemoen@gmail.com");
-	}
+//	@GetMapping("/email")
+//	public void sendReservationReadyEmail() throws Exception {
+//		mailer.sendMail("katherine.lillemoen@gmail.com");
+//	}
 
 	@GetMapping("/tools")
 	public List<Tool> listAllTools() {
