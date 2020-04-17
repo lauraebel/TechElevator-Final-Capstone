@@ -1179,7 +1179,7 @@ button.return.clickable {
       padding: 0.5vw
   }
 
-  .reservation-info .tool-name {
+  .reservation-info > .tool-name {
     grid-area: name;
     font-size: 1.6vw;
     margin: 0;
@@ -1189,19 +1189,18 @@ button.return.clickable {
     border-radius: 6px;
   }
 
-  .reservation-info .tool-img {
+  .reservation-info > .tool-img {
     grid-area: img;
     height: 100%;
   }
 
-  .reservation-info .description {
+  .reservation-info > .description {
     height: 100%;
     margin: 0;
     padding: 0.5vw;
     align-self: flex-start;
     border-radius: 6px;
     font-size: 1.2vw;
-    
   }
 }
 
