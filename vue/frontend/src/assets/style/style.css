@@ -420,7 +420,8 @@ div.sign-out {
 
   .home > h1 {
     padding-bottom: 3vw;
-    font-size: 5vw;
+    font-size: 3.8vw;
+    padding-top: 0;
   }
   
   .home > h2 {
@@ -430,7 +431,7 @@ div.sign-out {
   
   .home > h3 {
     padding-top: 5vw;
-    padding-bottom: 15vw;
+    padding-bottom: 0vw;
     font-size: 2vw;
   }
   
@@ -468,17 +469,6 @@ h1.page-title {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-}
-
-.reset {
-  margin: 1vw;
-  padding: 1vw;
-  padding-left: 4vw;
-  padding-right: 4vw;
-  border-radius: 4px;
-  order: 2;
-  font-size: 4vw;
-  background-color: white;
 }
 
 div.v-select {
@@ -639,18 +629,11 @@ span.add {
     justify-content: space-evenly;
   }
 
-  .reset {
-    margin: 0.15vw;
-    padding: 0.15vw;
-    width: 12%;
-    order: 99;
-    font-size: 1vw;
-  }
-
   div.v-select {
     margin: 0.15vw;
+    margin-top: 0.17vw;
     padding: 0.15vw;
-    width: 18%;
+    width: 25%;
     order: 3;
     font-size: 1vw;
   }
@@ -665,6 +648,7 @@ span.add {
 
   .toggle {
     margin: 0.15vw;
+    margin-bottom: 0.5vw;
     margin-right: 0;
     order: 1;
     width: 100%;
@@ -779,6 +763,10 @@ span.add {
 
   .img-container {
     height: 80%;
+  }
+
+  .add-to-cart{
+    border: 0.25vw solid white;
   }
 }
 
@@ -916,8 +904,9 @@ span.add {
   height: 100%;
   width: 100%;
   text-align: center;
-  font-size: 2vw;
+  font-size: 5vw;
   color: white;
+  margin-top: 10vw;
 }
 
 .user-loans .page-title {
@@ -975,6 +964,11 @@ button.return.clickable {
     height: 10%;
   }
 
+  .no-loans {
+    font-size: 5vw;
+    margin-top: 0;
+  }
+
   .loan-info {
     padding: 1vw;
     width: 100%;
@@ -1024,6 +1018,15 @@ button.return.clickable {
 }
 
 @media only screen and (min-width: 1024px) {
+  .user-loans {
+    justify-content: space-evenly;
+  }
+
+  .no-loans {
+    font-size: 3vw;
+    margin-top: 10vw;
+  }
+
   .loan-info {
     width: 31.5vw;
     height: 16.5vw;
@@ -1043,7 +1046,7 @@ button.return.clickable {
     grid-area: name;
     font-size: 1.6vw;
     margin: 0;
-    padding: 1.5vw;
+    padding-top: 0.75vw;
     height: 100%;
     text-align: center;
     border-radius: 6px;
@@ -1499,7 +1502,8 @@ div.alert.alert-danger {
 
   #authors > h2 {
     grid-area: title;
-    padding-top: 10vw;
+    padding-top: 1vw;
+
     font-size: 3.5vw;
   }
 
@@ -1553,4 +1557,123 @@ div.alert.alert-danger {
   }
 }
 
+/* --------------------------- TOOL DETAIL --------------------------- */
 
+.tool-detail {
+  background-color: white;
+  padding: 1.5vw;
+  border-radius: 8px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tool-detail h1 {
+  width: 100%;
+  background-color: var(--nav-background);
+  border-radius: 5px 5px 0px 0px;
+}
+
+.tool-detail img {
+  width: 100%;
+}
+
+.tool-detail .description {
+  color: white;
+  background-color: var(--nav-background);
+  padding: 2vw;
+  border-radius: 0px 0px 5px 5px;
+  margin-bottom: 2vw;
+}
+
+.tool-detail .add-to-cart {
+  background-color: var(--nav-background);
+  height: fit-content;
+  border-radius: 5px;
+  border: 0.5vw solid var(--nav-background);
+}
+
+.tool-detail span.add {
+  margin: 0;
+}
+@media only screen and (min-width: 760px) {
+  .tool-detail {
+    justify-content: center;
+  }
+
+  .tool-detail h1 {
+    font-size: 5vw;
+  }
+  
+  .tool-detail div.info {
+    font-size: 3vw;
+  }
+
+  .tool-detail img {
+    width: 63%;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .tool-detail {
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas:
+    "header header" 
+    "img info";
+
+    gap: 1vw;
+    border-radius: 0.75vw;
+  }
+
+  .tool-detail h1 {
+    grid-area: header;
+    width: 100%;
+    display: block;
+    height: fit-content;
+    border-radius: 0.75vw;
+  }
+
+  .tool-detail div.info {
+    
+    grid-area: info;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: fit-content;
+    justify-content: center;
+  }
+
+  .tool-detail div.description {
+    height: fit-content;
+    order: 99;
+    font-size: 2vw;
+    align-self: flex-end;
+    margin: 0;
+    padding: 1vw;
+    border-radius: 0.75vw;
+  }
+
+  .tool-detail img {
+    grid-area: img;
+    width: 100%;
+  }
+
+  .tool-detail .add-to-cart {
+    width: 100%;
+    align-self: flex-start;
+    height: fit-content;
+    margin: 1vw;
+    border-radius: 0.75vw;
+  }
+
+  .tool-detail .add-to-cart span.add {
+    font-size: 2vw;
+  } 
+
+  .tool-detail .add-to-cart div.icon {
+    height: 4vw;
+    width: 4.5vw;
+  }
+}

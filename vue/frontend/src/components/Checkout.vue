@@ -1,5 +1,5 @@
 <template>
-	<button class="checkout clickable" v-on:click="checkout">Check Out</button>
+	<button class="checkout clickable" v-on:click="checkout">{{message}}</button>
 </template>
 
 <script>
@@ -7,6 +7,11 @@ import auth from '../auth';
 
 export default {
   name: "checkout",
+  data() {
+    return {
+      message: 'Check Out'
+    }
+  },
   methods: {
     checkout() {
 		fetch(`${process.env.VUE_APP_REMOTE_API}/api/cart/checkout/${auth.getUser().sub}`, {
@@ -19,7 +24,10 @@ export default {
       })
         .then(response => {
           if (response.ok) {
-            this.$router.go('/success');
+            this.$router.push({
+              path:'/loans',
+              query: {checkout: "success"}
+            });
           }
         })
         .catch(err => console.error(err));

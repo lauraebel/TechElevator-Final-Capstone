@@ -1,52 +1,52 @@
 <template>
-  <div class="tool-details">
-    <h1 class="page-title">Tool Details</h1>
-    <reservation-info
-      v-for="tool in tools"
-      v-bind:key="tool.id"
-      v-bind:tool="tool"
-    />
+  <div class="tool-detail">
+    <h1>{{ tool.toolName }}</h1>
+    <img :src="require('../assets/images/product-img/' + tool.toolImgName)" />
+    <div class="info">
+      <div class="description">{{ tool.toolDescription }}</div>
+      <add-to-cart v-bind:tool="tool" />
+    </div>
   </div>
 </template>
 
 <script>
-import ToolDetails from "../components/ToolDetails";
+import auth from "../auth";
+import AddToCart from "../components/AddToCart";
 
 export default {
-  name: 'tool-view',
-    components: {
-    ToolDetails,
+  name: "tool-detail",
+  components: {
+    AddToCart,
   },
-    data() {
+  data() {
     return {
-      tool: "",
+      tool: {},
     };
   },
   methods: {
-    getReservations() {
-      fetch(
-        `${process.env.VUE_APP_REMOTE_API}/api/tools/${
-          auth.getUser().sub
-        }`,
-        {
-          headers: {
-            Authorization: `Bearer ${auth.getToken()}`,
-          },
-        }
-      )
+    getTool(id) {
+      fetch(`${process.env.VUE_APP_REMOTE_API}/api/tools/${id}`, {
+        headers: {
+          Authorization: `Bearer ${auth.getToken()}`,
+        },
+      })
         .then((response) => {
-          return response.json();
+          if (response.ok) {
+            return response.json();
+          }
         })
         .then((data) => {
-          this.allTools = data;
+          this.tool = data;
         })
         .catch((err) => {
           console.error(err);
         });
-  }
-  }
+    },
+  },
+  created() {
+    this.getTool(this.$route.params.id);
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

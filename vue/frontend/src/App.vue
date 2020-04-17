@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import auth from './auth'
 import MenuIcon from './components/MenuIcon'
 import DropdownMenu from './components/DropdownMenu'
 import Branding from './components/Branding'

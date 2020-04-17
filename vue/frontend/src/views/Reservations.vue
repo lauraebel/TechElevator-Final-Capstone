@@ -1,6 +1,7 @@
 <template>
   <div class="user-reservations">
     <h1 class="page-title">My Reservations</h1>
+    <div class="no-loans" v-if="noReservations" >No current reservations.</div>
     <reservation-info
       v-for="reservation in reservations"
       v-bind:key="reservation.id"
@@ -21,6 +22,7 @@ export default {
   data() {
     return {
       reservations: [],
+      noReservations: true
     };
   },
   methods: {
@@ -42,6 +44,9 @@ export default {
         })
         .then((data) => {
           this.reservations = data;
+          if (this.reservations.length !== 0){
+            this.noReservations = false;
+          }
         })
         .catch((err) => {
           console.error(err);
